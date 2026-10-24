@@ -1,4 +1,3 @@
-[SecurityPlus_Lesson_14_Backups_Recovery.md](https://github.com/user-attachments/files/33915510/SecurityPlus_Lesson_14_Backups_Recovery.md)
 # Day 14 — Backups, Recovery Objectives & Resilience
 
 > **CompTIA Security+ SY0-701** · **Week 03, Lesson 4 of 5** · Domain 3: Security Architecture · Objective **3.4 (resilience and recovery)**  
@@ -133,8 +132,8 @@ An attacker compromises the server, encrypts its files, and attempts to delete t
 | Why use separate backup credentials? | _Write here._ |
 | Why test restores? | _Write here._ |
 
-<details>
-<summary><strong>Reveal completed guided-notes table</strong></summary>
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
 | Prompt | Model answer |
 | --- | --- |
