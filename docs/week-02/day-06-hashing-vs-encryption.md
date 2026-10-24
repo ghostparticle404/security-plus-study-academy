@@ -2,7 +2,7 @@
 # Day 06 — Hashing vs. Encryption: Fingerprints, Locked Boxes & Password Storage
 
 > **Security+ SY0-701** · Domain 1 · Objective 1.4 · Beginner–intermediate · 60–75 minutes  
-> Previous: [Day 05 — Digital Signatures](day-05-non-repudiation-digital-signatures.md)
+> Previous: [Day 05 — Digital Signatures](../week-01/day-05-non-repudiation-digital-signatures.md)
 
 Yesterday we explored digital signatures. Today: what makes **hashing**, **encryption**, and **encoding** different—and why password storage needs special care.
 
