@@ -1,4 +1,3 @@
-[SecurityPlus_Lesson_01_CIA_Triad.md](https://github.com/user-attachments/files/33914801/SecurityPlus_Lesson_01_CIA_Triad.md)
 # Day 01 — The CIA Triad: What Are We Actually Protecting?
 
 > **CompTIA Security+ SY0-701** · Domain 1: General Security Concepts · Objective 1.2 (fundamental security concepts)  
