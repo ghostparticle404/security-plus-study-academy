@@ -1,4 +1,3 @@
-[day-04-audit-logs.md](https://github.com/user-attachments/files/33915138/day-04-audit-logs.md)
 # Day 04 — Audit Logs, Accountability & Incident Timelines
 
 > **CompTIA Security+ SY0-701** · Domain 4: Security Operations · Objectives 4.4 and 4.9  
@@ -141,8 +140,8 @@ Complete these prompts from memory:
 | Why centralize logs? | _Write here_ |
 | Why can't a username prove a person's identity? | _Write here_ |
 
-<details>
-<summary><strong>Reveal completed notes table (sample answers)</strong></summary>
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
 | Prompt | Model answer |
 |---|---|
