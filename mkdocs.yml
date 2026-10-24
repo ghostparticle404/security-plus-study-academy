@@ -1,0 +1,52 @@
+
+site_name: Security+ Study Academy
+site_description: Free, structured cybersecurity education — one lesson at a time.
+site_author: ghostparticle404
+site_url: https://ghostparticle404.github.io/security-plus-study-academy/
+
+repo_name: ghostparticle404/security-plus-study-academy
+repo_url: https://github.com/ghostparticle404/security-plus-study-academy
+
+theme:
+  name: material
+  language: en
+
+  palette:
+    - scheme: slate
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+
+    - scheme: default
+      primary: deep purple
+      accent: cyan
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+
+plugins:
+  - search
+
+markdown_extensions:
+  - admonition
+  - attr_list
+  - md_in_html
+  - tables
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+
+nav:
+  - Home: index.md
