@@ -1,4 +1,3 @@
-[day-06-hashing-vs-encryption.md](https://github.com/user-attachments/files/33915166/day-06-hashing-vs-encryption.md)
 # Day 06 — Hashing vs. Encryption: Fingerprints, Locked Boxes & Password Storage
 
 > **Security+ SY0-701** · Domain 1 · Objective 1.4 · Beginner–intermediate · 60–75 minutes  
@@ -108,8 +107,8 @@ Complete the table from memory.
 | What do salts and slow hashing accomplish? | _Write here._ |
 | What can AES-GCM provide beyond confidentiality? | _Write here._ |
 
-<details>
-<summary><strong>Reveal completed notes table (model answers)</strong></summary>
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
 | Prompt | Model answer |
 | --- | --- |
