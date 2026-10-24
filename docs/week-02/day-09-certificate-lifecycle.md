@@ -149,11 +149,8 @@ Choose the **BEST** answer before expanding. These are original study questions,
 ### Q1. Which item must NEVER be included in a CSR sent to a CA?
 
 A. Public key
-
 B. Requested domain
-
 C. Private key
-
 D. Requested SAN
 
 <details><summary>Reveal answer and explanation</summary>
@@ -165,11 +162,8 @@ D. Requested SAN
 ### Q2. A certificate expires tomorrow. What should the administrator do FIRST to avoid disruption?
 
 A. Disable certificate validation
-
 B. Obtain, deploy, and test a valid replacement
-
 C. Publish the private key
-
 D. Revoke the root CA
 
 <details><summary>Reveal answer and explanation</summary>
@@ -181,11 +175,8 @@ D. Revoke the root CA
 ### Q3. Which protocol requests certificate revocation status from a responder?
 
 A. NTP
-
 B. DNS
-
 C. OCSP
-
 D. AES
 
 <details><summary>Reveal answer and explanation</summary>
@@ -197,11 +188,8 @@ D. AES
 ### Q4. A server's private key is leaked. The team installs a replacement certificate. What else is MOST important?
 
 A. Revoke the old certificate and investigate
-
 B. Keep using the old key for backups
-
 C. Ignore the exposure until expiry
-
 D. Share the key to warn users
 
 <details><summary>Reveal answer and explanation</summary>
@@ -213,11 +201,8 @@ D. Share the key to warn users
 ### Q5. What is the MAIN operational benefit of ACME?
 
 A. Guarantees every website is honest
-
 B. Automates certificate issuance and renewal workflows
-
 C. Replaces TLS encryption
-
 D. Stores plaintext passwords
 
 <details><summary>Reveal answer and explanation</summary>
@@ -229,11 +214,8 @@ D. Stores plaintext passwords
 ### Q6. A certificate is still within its validity dates, but its CA invalidated it after a key compromise. It is:
 
 A. Expired
-
 B. Revoked
-
 C. Encoded
-
 D. Rehashed
 
 <details><summary>Reveal answer and explanation</summary>
@@ -245,11 +227,8 @@ D. Rehashed
 ### Q7. What is OCSP stapling?
 
 A. A server sends a signed status response during the TLS handshake
-
 B. A server sends its private key to the client
-
 C. A browser automatically trusts every status response
-
 D. A technique that prevents all certificate theft
 
 <details><summary>Reveal answer and explanation</summary>
@@ -261,11 +240,8 @@ D. A technique that prevents all certificate theft
 ### Q8. A valid certificate's SAN lists only `portal.example.com`. Users connect to `files.example.com` and receive a warning. What is MOST likely?
 
 A. Hash collision
-
 B. Hostname mismatch
-
 C. Password reuse
-
 D. Key escrow failure
 
 <details><summary>Reveal answer and explanation</summary>
@@ -300,5 +276,9 @@ Focus on **CSRs, certificate authorities, certificate revocation, and OCSP**. Wh
 **Next:** Day 10 — Cryptographic Key Management, HSMs & Key Escrow.
 
 ---
+© 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).
+All rights reserved. This original educational content is provided free of charge for personal, noncommercial study. Reproduction, redistribution, modification for republication, or commercial use requires prior written permission.
+
+Security+ is a trademark of CompTIA, Inc. This independent educational resource is not affiliated with or endorsed by CompTIA.
 
 *Independent educational material; not affiliated with or endorsed by CompTIA.*
