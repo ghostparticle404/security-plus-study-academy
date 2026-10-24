@@ -136,8 +136,8 @@ Use a two-column page, digital note, or flashcards. Don't transcribe this chapte
 | Why are backups not identical to high availability? | _Write your answer._ |
 | Give an incident that affects two CIA objectives. | _Write your answer._ |
 
-<details>
-<summary><strong>Reveal the completed notes table (sample answers)</strong></summary>
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
 Try filling in your own answers first. These are model responses, not the only correct answers.
 
