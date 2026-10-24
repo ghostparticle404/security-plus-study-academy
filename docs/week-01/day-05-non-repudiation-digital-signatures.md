@@ -435,5 +435,7 @@ Discuss:
 **Next: Day 06 — Hashing vs. Encryption: Fingerprints, Locked Boxes & Password Storage.**
 
 ---
+© 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).
+All rights reserved. This original educational content is provided free of charge for personal, noncommercial study. Reproduction, redistribution, modification for republication, or commercial use requires prior written permission.
 
-*Independent educational resource. Not affiliated with or endorsed by CompTIA. CompTIA Security+ and related marks belong to their respective owners.*
+Security+ is a trademark of CompTIA, Inc. This independent educational resource is not affiliated with or endorsed by CompTIA.
