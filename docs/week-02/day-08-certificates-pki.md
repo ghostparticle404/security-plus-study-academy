@@ -423,5 +423,9 @@ Explain:
 **Next:** Day 09 — Certificate Lifecycle: CSRs, Renewal, Revocation & Key Compromise.
 
 ---
+© 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).
+All rights reserved. This original educational content is provided free of charge for personal, noncommercial study. Reproduction, redistribution, modification for republication, or commercial use requires prior written permission.
+
+Security+ is a trademark of CompTIA, Inc. This independent educational resource is not affiliated with or endorsed by CompTIA.
 
 *Independent educational resource. Not affiliated with or endorsed by CompTIA.*
