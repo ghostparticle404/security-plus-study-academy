@@ -297,5 +297,9 @@ Before moving on, can you answer these without notes?
 If yes, you're ready for **Day 02 — Security Controls: Categories and Functions**.
 
 ---
+© 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).
+All rights reserved. This original educational content is provided free of charge for personal, noncommercial study. Reproduction, redistribution, modification for republication, or commercial use requires prior written permission.
+
+Security+ is a trademark of CompTIA, Inc. This independent educational resource is not affiliated with or endorsed by CompTIA.
 
 **Curriculum note:** This chapter is aligned to the SY0-701 concepts. Exam versions change; always confirm the exam code and official objectives for the test you intend to take. This is an independent educational resource, not affiliated with or endorsed by CompTIA.
