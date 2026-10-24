@@ -1,4 +1,3 @@
-[SecurityPlus_Lesson_11_Data_States.md](https://github.com/user-attachments/files/33915418/SecurityPlus_Lesson_11_Data_States.md)
 # Day 11 — Protecting Data at Rest, in Transit, and in Use
 
 > **CompTIA Security+ SY0-701** · **Week 03, Lesson 1 of 5** · Domain 3, Objective **3.3: Data protection** (related: Domain 1, Objective 1.4)  
@@ -114,8 +113,8 @@ A law firm receives an evidence archive, analyzes it, and sends a report to outs
 | What is DLP intended to do? | _Write here._ |
 | Why minimize retained data? | _Write here._ |
 
-<details>
-<summary><strong>Reveal the completed guided-notes table</strong></summary>
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
 | Prompt | Model answer |
 | --- | --- |
