@@ -1,4 +1,3 @@
-[SecurityPlus_Lesson_08_Certificates_PKI.md](https://github.com/user-attachments/files/33915208/SecurityPlus_Lesson_08_Certificates_PKI.md)
 # Day 08 — Digital Certificates & PKI: Who Can You Trust Online?
 
 > **CompTIA Security+ SY0-701** · Domain 1 · Objective **1.4: Cryptographic solutions**  
@@ -152,8 +151,8 @@ Fill in the second column without scrolling up. Then open the completed model ta
 | Does HTTPS prove a website is honest? Why? | _Write here._ |
 | What is the difference between a certificate and an encryption key? | _Write here._ |
 
-<details>
-<summary><strong>Reveal completed notes table (model answers)</strong></summary>
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
 | Prompt | Model answer |
 | --- | --- |
