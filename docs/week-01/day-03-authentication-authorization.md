@@ -1,4 +1,3 @@
-[day-03-authentication-authorization.md](https://github.com/user-attachments/files/33915124/day-03-authentication-authorization.md)
 # Day 03 — Authentication, Authorization & Least Privilege
 
 > **CompTIA Security+ SY0-701** · Domain 4, Objective 4.6 (Identity and Access Management) · Related: Domain 1, Objective 1.2  
@@ -158,8 +157,8 @@ Fill in your own answers before expanding the model table.
 | RBAC vs. ABAC? | _Write here._ |
 | Why can't a username in a log identify the human with certainty? | _Write here._ |
 
-<details>
-<summary><strong>Reveal completed notes table — sample answers</strong></summary>
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
 | Prompt | Model answer |
 | --- | --- |
