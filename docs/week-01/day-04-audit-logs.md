@@ -327,7 +327,7 @@ A law firm's logs show an `admin` login at 02:03 UTC and a 600-file export at 02
 - **Centralized, protected logs:** Support investigation and reduce tampering risk.
 - **Attribution:** A username is a clue, not proof of who acted.
 
-**Next:** [Day 05 — Non-repudiation & Digital Signatures](day-05-nonrepudiation-digital-signatures.md).
+**Next:** [Day 05 — Non-repudiation & Digital Signatures](day-05-non-repudiation-digital-signatures.md).
 
 ---
 © 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).
