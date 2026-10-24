@@ -1,4 +1,3 @@
-[SecurityPlus_Lesson_15_Business_Continuity.md](https://github.com/user-attachments/files/33915556/SecurityPlus_Lesson_15_Business_Continuity.md)
 # Day 15 — Business Continuity, Disaster Recovery & Week 3 Review
 
 > **Security+ SY0-701** · Week 03, Lesson 5/5 · Domain 3, Objective 3.4 · 65–85 minutes  
@@ -88,8 +87,8 @@ A successful backup job does **not** prove you can restore. Verify backup keys, 
 | Hot vs. warm vs. cold? | _Write here._ |
 | Why test failback? | _Write here._ |
 
-<details>
-<summary><strong>Reveal completed notes table</strong></summary>
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
 | Prompt | Model answer |
 | --- | --- |
