@@ -1,4 +1,3 @@
-[day-05-non-repudiation-digital-signatures.md](https://github.com/user-attachments/files/33915158/day-05-non-repudiation-digital-signatures.md)
 # Day 05 — Non-repudiation, Digital Signatures & Trust
 
 > **CompTIA Security+ SY0-701** · Domain 1: General Security Concepts · Objectives **1.2** (fundamental security concepts) and **1.4** (cryptographic solutions)  
@@ -190,8 +189,8 @@ Try completing the table without rereading the lesson. Then expand the model ans
 | What does a certificate add to signature verification? | _Write here._ |
 | Why does a signature not guarantee confidentiality? | _Write here._ |
 
-<details>
-<summary><strong>Reveal the completed notes table (model answers)</strong></summary>
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
 | Prompt | Model answer |
 | --- | --- |
