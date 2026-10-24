@@ -317,5 +317,9 @@ Without notes, explain:
 Next: **Day 03 — Authentication, Authorization, and Least Privilege.**
 
 ---
+© 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).
+All rights reserved. This original educational content is provided free of charge for personal, noncommercial study. Reproduction, redistribution, modification for republication, or commercial use requires prior written permission.
+
+Security+ is a trademark of CompTIA, Inc. This independent educational resource is not affiliated with or endorsed by CompTIA.
 
 **Curriculum note:** This is an independent educational resource aligned to CompTIA Security+ SY0-701 concepts, not affiliated with or endorsed by CompTIA. Confirm the exam version and official objectives for the exam you plan to take.
