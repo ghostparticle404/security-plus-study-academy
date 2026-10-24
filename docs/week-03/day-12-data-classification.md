@@ -1,4 +1,3 @@
-[SecurityPlus_Lesson_12_Data_Classification.md](https://github.com/user-attachments/files/33915449/SecurityPlus_Lesson_12_Data_Classification.md)
 # Day 12 — Data Classification, Labeling & Handling: Not Every File Is Equal
 
 > **CompTIA Security+ SY0-701** · Domain 3 · Objective **3.3: Data protection**  
@@ -116,8 +115,8 @@ Even if HTTPS or email transport encryption worked perfectly, **confidentiality*
 | What does DLP do? | _Write here._ |
 | Why protect integrity of public data? | _Write here._ |
 
-<details>
-<summary><strong>Reveal completed notes table (model answers)</strong></summary>
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
 | Prompt | Model answer |
 | --- | --- |
