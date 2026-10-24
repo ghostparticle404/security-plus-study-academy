@@ -1,4 +1,3 @@
-[SecurityPlus_Lesson_07_REVISED.md](https://github.com/user-attachments/files/33915182/SecurityPlus_Lesson_07_REVISED.md)
 # Day 07 — Symmetric vs. Asymmetric Cryptography: One Key or Two?
 
 > **CompTIA Security+ SY0-701** · Domain 1 · Objective **1.4: Cryptographic solutions**  
@@ -147,8 +146,8 @@ HTTPS helps secure traffic **between endpoints** and authenticate the server to 
 | Why does TLS combine asymmetric and symmetric techniques? | _Write here._ |
 | What is forward secrecy? | _Write here._ |
 
-<details>
-<summary><strong>Reveal completed notes table (model answers)</strong></summary>
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
 | Prompt | Model answer |
 | --- | --- |
