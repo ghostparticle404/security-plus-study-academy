@@ -1,4 +1,3 @@
-[SecurityPlus_Lesson_02_Security_Controls.md](https://github.com/user-attachments/files/33914849/SecurityPlus_Lesson_02_Security_Controls.md)
 # Day 02 — Security Controls: Categories, Functions, and Defense in Depth
 
 > **CompTIA Security+ SY0-701** · Domain 1 · Objective 1.1  
@@ -149,8 +148,8 @@ Fill in the table without looking back. Then expand the completed reference tabl
 | Why can segmentation be compensating and preventive? | _Write your answer._ |
 | Why use defense in depth? | _Write your answer._ |
 
-<details>
-<summary><strong>Reveal the completed notes table (sample answers)</strong></summary>
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
 | Prompt | Sample answer |
 | --- | --- |
