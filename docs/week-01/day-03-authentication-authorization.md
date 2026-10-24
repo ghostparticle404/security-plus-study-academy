@@ -1,4 +1,4 @@
-[day-03-authentication-authorization.md](https://github.com/user-attachments/files/33914904/day-03-authentication-authorization.md)
+[day-03-authentication-authorization.md](https://github.com/user-attachments/files/33915124/day-03-authentication-authorization.md)
 # Day 03 — Authentication, Authorization & Least Privilege
 
 > **CompTIA Security+ SY0-701** · Domain 4, Objective 4.6 (Identity and Access Management) · Related: Domain 1, Objective 1.2  
@@ -324,14 +324,12 @@ Use the CIA triad and the security-control categories from earlier lessons to su
 
 ## 12. Study from the Treadmill 🏃 + one-minute recap
 
-**Watch:** [Professor Messer's free Security+ SY0-701 course](https://www.professormesser.com/security-plus/sy0-701/). Find the lessons on authentication, MFA, and access control. [YouTube topic search](https://www.youtube.com/results?search_query=Professor+Messer+SY0-701+authentication+access+control).
+**Watch these exact lessons:**
 
-**While watching:** Why doesn't login equal permission? What makes two factors truly different? Why are phishing-resistant methods valuable?
+1. [Professor Messer — Authentication, Authorization, and Accounting (9:03)](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/authentication-authorization-and-accounting-sy0-701/) — start with the AAA framework.
+2. [Professor Messer — Multifactor Authentication (4:29)](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/multifactor-authentication-sy0-701/) — identify different factors.
+3. [Professor Messer — Access Controls (7:49)](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/access-controls-sy0-701/) — connect least privilege to permissions.
 
-**Recall without looking:** Identification claims; authentication proves; authorization permits; accounting records. MFA combines different factor types. Least privilege limits permissions. RBAC uses roles; ABAC uses attributes.
+**Active listening:** What is the difference between authentication and authorization? Why aren't two passwords MFA? How do access rules limit a compromised account?
 
-**Next: Day 04 — Audit Logs, Accountability, and Incident Timelines.**
 
----
-
-*Independent educational material; not affiliated with or endorsed by CompTIA. Security+ is a trademark of CompTIA.*
