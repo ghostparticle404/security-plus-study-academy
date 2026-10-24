@@ -1,4 +1,4 @@
-[SecurityPlus_Lesson_04_Audit_Logs.md](https://github.com/user-attachments/files/33914981/SecurityPlus_Lesson_04_Audit_Logs.md)
+[day-04-audit-logs.md](https://github.com/user-attachments/files/33915138/day-04-audit-logs.md)
 # Day 04 — Audit Logs, Accountability & Incident Timelines
 
 > **CompTIA Security+ SY0-701** · Domain 4: Security Operations · Objectives 4.4 and 4.9  
@@ -310,11 +310,12 @@ A law firm's logs show an `admin` login at 02:03 UTC and a 600-file export at 02
 
 ## 11. Study from the Treadmill 🏃
 
-**Recommended:** [Professor Messer's free Security+ SY0-701 course](https://www.professormesser.com/security-plus/sy0-701/). Look for lessons on **log data**, **security monitoring**, and **SIEM**.
+**Watch these exact lessons:**
 
-Optional video search: [Professor Messer SY0-701 log data](https://www.youtube.com/results?search_query=Professor+Messer+SY0-701+log+data).
+1. [Professor Messer — Log Data (SY0-701, Objective 4.9)](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/log-data-sy0-701/) — compare firewall, application, endpoint, and operating-system logs.
+2. [Professor Messer — Security Monitoring (SY0-701, Objective 4.4)](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/security-monitoring-sy0-701/) — connect collection, alerts, and investigation.
 
-**Listen for:** (1) Which sources generate security logs? (2) How does a SIEM correlate events? (3) Why does time synchronization matter?
+**Active listening:** Which data source would show a login? Which might show a process launch? Why must investigators correlate sources?
 
 ## 12. One-minute recap
 
