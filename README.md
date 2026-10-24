@@ -28,13 +28,6 @@ Every lesson combines technical explanations, memorable examples, guided notes, 
 
 ## 📬 Study by Email
 
-Personalized email lessons are planned, with options to study three, four, or five days per week.
-
-Every subscriber will begin with Lesson 1 and progress at their chosen pace.
-
-
-## 📬 Study by Email
-
 Prefer a structured study schedule delivered to your inbox?
 
 **Security+ Study Academy** offers personalized learning pathways:
