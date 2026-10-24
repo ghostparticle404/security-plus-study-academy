@@ -1,4 +1,3 @@
-[SecurityPlus_Lesson_13_Data_Retention_Disposal.md](https://github.com/user-attachments/files/33915481/SecurityPlus_Lesson_13_Data_Retention_Disposal.md)
 # Day 13 — Data Retention, Secure Disposal & Minimization
 
 > **CompTIA Security+ SY0-701** · **Week 03, Lesson 3 of 5** · Domain 3, Objective 3.3 (data protection)  
@@ -174,8 +173,8 @@ Use four fictional records: a public brochure; a confidential active-case contra
 
 **Tasks:** For each, identify checks before deletion, at least one possible extra copy, who authorizes disposition, and evidence of completion. **Do not invent legal retention periods.**
 
-<details>
-<summary><strong>Reveal sample disposal register</strong></summary>
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
 | Record | Decision | Copies to check | Evidence |
 | --- | --- | --- | --- |
