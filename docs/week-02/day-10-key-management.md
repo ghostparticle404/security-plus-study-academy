@@ -1,4 +1,3 @@
-[SecurityPlus_Lesson_10_Key_Management.md](https://github.com/user-attachments/files/33915257/SecurityPlus_Lesson_10_Key_Management.md)
 # Day 10 — Cryptographic Key Management: HSMs, TPMs, Escrow & Recovery
 
 > **CompTIA Security+ SY0-701** · Domain 1 · Objective 1.4  
@@ -124,8 +123,8 @@ A law firm's backup administrator discovers a key used for encrypted case archiv
 | Why might signing-key escrow be problematic? | _Write here._ |
 | What is cryptographic erasure? | _Write here._ |
 
-<details>
-<summary><strong>Reveal completed notes table (model answers)</strong></summary>
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
 | Prompt | Model answer |
 | --- | --- |
