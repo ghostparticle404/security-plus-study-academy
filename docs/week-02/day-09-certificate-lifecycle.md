@@ -1,4 +1,3 @@
-[SecurityPlus_Lesson_09_Certificate_Lifecycle.md](https://github.com/user-attachments/files/33915234/SecurityPlus_Lesson_09_Certificate_Lifecycle.md)
 # Day 09 — Certificate Lifecycle: CSRs, Renewal, Revocation & Key Compromise
 
 > **Security+ SY0-701** · Domain 1 · Objective 1.4 · **Week 02, Lesson 4 of 5**  
@@ -93,8 +92,8 @@ Deleting the commit does not make the key secret again. Deleting the only workin
 | CRL vs. OCSP vs. stapling? | _Write here._ |
 | Why isn't replacement alone enough after key compromise? | _Write here._ |
 
-<details>
-<summary><strong>Reveal completed notes table (model answers)</strong></summary>
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
 | Prompt | Model answer |
 | --- | --- |
