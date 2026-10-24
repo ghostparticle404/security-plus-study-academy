@@ -195,11 +195,8 @@ These are original educational questions, not real CompTIA exam items. Choose th
 A certificate authority must protect its signing key in dedicated tamper-resistant hardware. Which is BEST?
 
 A. IDS
-
 B. HSM
-
 C. SIEM
-
 D. DLP
 
 <details><summary>Reveal answer and explanation</summary>
@@ -213,11 +210,8 @@ D. DLP
 A laptop uses a platform security component to protect disk-unlock secrets. Which is MOST likely?
 
 A. TPM
-
 B. WAF
-
 C. UPS
-
 D. DNS
 
 <details><summary>Reveal answer and explanation</summary>
@@ -231,11 +225,8 @@ D. DNS
 An organization must recover encrypted archives after the only employee with access leaves. Which is BEST?
 
 A. Publish the key
-
 B. Controlled key escrow
-
 C. Disable encryption
-
 D. Base64 encoding
 
 <details><summary>Reveal answer and explanation</summary>
@@ -249,11 +240,8 @@ D. Base64 encoding
 A firm rotates its KEK but continues using the same DEK. What has MOST likely changed?
 
 A. All underlying data has been re-encrypted
-
 B. The DEK's protective wrapping
-
 C. The file contents
-
 D. The symmetric algorithm automatically changed to RSA
 
 <details><summary>Reveal answer and explanation</summary>
@@ -267,11 +255,8 @@ D. The symmetric algorithm automatically changed to RSA
 Which scenario BEST demonstrates cryptographic erasure?
 
 A. Encrypt a file twice
-
 B. Securely destroy the only remaining keys needed to decrypt correctly encrypted data
-
 C. Rotate a public certificate
-
 D. Compress a backup archive
 
 <details><summary>Reveal answer and explanation</summary>
@@ -285,11 +270,8 @@ D. Compress a backup archive
 Why can escrow of a private digital-signing key weaken non-repudiation?
 
 A. It increases the AES block size
-
 B. Multiple parties may be able to produce signatures using the same key
-
 C. It makes certificates expire immediately
-
 D. It prevents all signature verification
 
 <details><summary>Reveal answer and explanation</summary>
@@ -303,11 +285,8 @@ D. It prevents all signature verification
 A DEK used to encrypt files is confirmed compromised. Which response BEST addresses the continuing confidentiality risk?
 
 A. Only change the KEK wrapping the same compromised DEK
-
 B. Assess exposure and re-encrypt affected data with a new protected DEK as appropriate
-
 C. Publish the DEK so users can verify it
-
 D. Delete all audit logs
 
 <details><summary>Reveal answer and explanation</summary>
@@ -321,11 +300,8 @@ D. Delete all audit logs
 Which statement about a KMS is MOST accurate?
 
 A. It is always a chip inside a laptop
-
 B. It manages key lifecycle and access policies and may rely on HSM-backed protection
-
 C. It is a protocol for resolving hostnames
-
 D. It eliminates the need for key permissions
 
 <details><summary>Reveal answer and explanation</summary>
@@ -369,5 +345,7 @@ Without looking back, explain: (1) hashing vs. encryption, (2) symmetric vs. asy
 **Next:** Day 11 — Data at Rest, in Transit & in Use.
 
 ---
+© 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).
+All rights reserved. This original educational content is provided free of charge for personal, noncommercial study. Reproduction, redistribution, modification for republication, or commercial use requires prior written permission.
 
-*Independent educational material. Not affiliated with or endorsed by CompTIA.*
+Security+ is a trademark of CompTIA, Inc. This independent educational resource is not affiliated with or endorsed by CompTIA.
