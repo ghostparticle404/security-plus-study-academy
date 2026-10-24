@@ -1,4 +1,4 @@
-[SecurityPlus_Lesson_05_Digital_Signatures.md](https://github.com/user-attachments/files/33915031/SecurityPlus_Lesson_05_Digital_Signatures.md)
+[day-05-non-repudiation-digital-signatures.md](https://github.com/user-attachments/files/33915158/day-05-non-repudiation-digital-signatures.md)
 # Day 05 — Non-repudiation, Digital Signatures & Trust
 
 > **CompTIA Security+ SY0-701** · Domain 1: General Security Concepts · Objectives **1.2** (fundamental security concepts) and **1.4** (cryptographic solutions)  
@@ -416,20 +416,12 @@ Discuss:
 
 ## 11. Study from the Treadmill 🏃
 
-**Recommended:** Professor Messer's free **Security+ SY0-701** lessons on **hashing, digital signatures, and non-repudiation**.
+**Watch these exact lessons:**
 
-- [Professor Messer's SY0-701 course index](https://www.professormesser.com/security-plus/sy0-701/)
-- [Find Professor Messer's digital-signature lessons on YouTube](https://www.youtube.com/results?search_query=Professor+Messer+SY0-701+digital+signatures+non+repudiation)
+1. [Professor Messer — Non-repudiation (7:57)](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/non-repudiation-sy0-701/) — evidence of origin and integrity.
+2. [Professor Messer — Hashing and Digital Signatures (SY0-701, Objective 1.4)](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/hashing-and-digital-signatures-sy0-701/) — hashing and signature verification.
 
-**Active-listening prompts:**
-
-1. Which key signs, and which key verifies?
-2. Why is a bare hash insufficient to prove authorship?
-3. Why can a valid signature coexist with a confidentiality failure?
-
-The video is optional; the written lesson stands on its own.
-
----
+**Active listening:** Which key signs? Why does a hash alone not establish authorship? What happens when signed bytes change?
 
 ## 12. One-minute recap and what's next
 
