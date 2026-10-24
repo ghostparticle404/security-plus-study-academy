@@ -399,5 +399,9 @@ D. Encoding
 **Next:** Day 08 — Certificates and Public Key Infrastructure: Who Can You Trust Online?
 
 ---
+© 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).
+All rights reserved. This original educational content is provided free of charge for personal, noncommercial study. Reproduction, redistribution, modification for republication, or commercial use requires prior written permission.
+
+Security+ is a trademark of CompTIA, Inc. This independent educational resource is not affiliated with or endorsed by CompTIA.
 
 *Independent educational material. Not affiliated with or endorsed by CompTIA.*
