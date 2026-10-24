@@ -1,4 +1,4 @@
-[SecurityPlus_Lesson_06_Hashing_Encryption.md](https://github.com/user-attachments/files/33915064/SecurityPlus_Lesson_06_Hashing_Encryption.md)
+[day-06-hashing-vs-encryption.md](https://github.com/user-attachments/files/33915166/day-06-hashing-vs-encryption.md)
 # Day 06 — Hashing vs. Encryption: Fingerprints, Locked Boxes & Password Storage
 
 > **Security+ SY0-701** · Domain 1 · Objective 1.4 · Beginner–intermediate · 60–75 minutes  
@@ -182,7 +182,10 @@ Try each before opening its answer. These are original practice items, not actua
 ### Q1
 Which BEST protects confidential files on a powered-off stolen laptop?
 
-A. SHA-256  ·  B. Full-disk encryption  ·  C. Base64  ·  D. Checksum
+A. SHA-256  
+B. Full-disk encryption  
+C. Base64  
+D. Checksum  
 
 <details><summary>Reveal answer and explanation</summary>
 
@@ -193,7 +196,10 @@ A. SHA-256  ·  B. Full-disk encryption  ·  C. Base64  ·  D. Checksum
 ### Q2
 A download's SHA-256 matches a trusted vendor reference. What was MOST directly checked?
 
-A. Confidentiality  ·  B. Availability  ·  C. Integrity  ·  D. Authorization
+A. Confidentiality  
+B. Availability  
+C. Integrity  
+D. Authorization  
 
 <details><summary>Reveal answer and explanation</summary>
 
@@ -204,7 +210,10 @@ A. Confidentiality  ·  B. Availability  ·  C. Integrity  ·  D. Authorization
 ### Q3
 Which BEST protects stored passwords against rainbow tables and expensive offline guessing?
 
-A. Unsalted SHA-256  ·  B. Base64  ·  C. Unique salts with Argon2id  ·  D. Plaintext
+A. Unsalted SHA-256  
+B. Base64  
+C. Unique salts with Argon2id  
+D. Plaintext  
 
 <details><summary>Reveal answer and explanation</summary>
 
@@ -215,7 +224,10 @@ A. Unsalted SHA-256  ·  B. Base64  ·  C. Unique salts with Argon2id  ·  D. Pl
 ### Q4
 What is the PRIMARY weakness of unsalted SHA-256 password storage?
 
-A. It decrypts easily  ·  B. It is fast and identical passwords yield identical hashes  ·  C. It reveals plaintext automatically  ·  D. Hashes cannot be compared
+A. It decrypts easily  
+B. It is fast and identical passwords yield identical hashes  
+C. It reveals plaintext automatically  
+D. Hashes cannot be compared  
 
 <details><summary>Reveal answer and explanation</summary>
 
@@ -226,7 +238,10 @@ A. It decrypts easily  ·  B. It is fast and identical passwords yield identical
 ### Q5
 Which statement about Base64 is MOST accurate?
 
-A. Symmetric encryption  ·  B. Cryptographic hash  ·  C. Reversible encoding  ·  D. Requires a private key
+A. Symmetric encryption  
+B. Cryptographic hash  
+C. Reversible encoding  
+D. Requires a private key  
 
 <details><summary>Reveal answer and explanation</summary>
 
@@ -237,7 +252,10 @@ A. Symmetric encryption  ·  B. Cryptographic hash  ·  C. Reversible encoding  
 ### Q6
 Which is MOST appropriate for efficient encryption of a large backup archive?
 
-A. AES  ·  B. SHA-256  ·  C. Base64  ·  D. CRC32
+A. AES  
+B. SHA-256  
+C. Base64  
+D. CRC32  
 
 <details><summary>Reveal answer and explanation</summary>
 
@@ -248,7 +266,10 @@ A. AES  ·  B. SHA-256  ·  C. Base64  ·  D. CRC32
 ### Q7
 When used correctly, what additional protection does AES-GCM provide?
 
-A. Guaranteed availability  ·  B. Integrity/authenticity checking  ·  C. Proof of human approval  ·  D. Automatic backup recovery
+A. Guaranteed availability  
+B. Integrity/authenticity checking  
+C. Proof of human approval  
+D. Automatic backup recovery  
 
 <details><summary>Reveal answer and explanation</summary>
 
@@ -259,7 +280,10 @@ A. Guaranteed availability  ·  B. Integrity/authenticity checking  ·  C. Proof
 ### Q8
 Two employees choose the same password but their stored password hashes differ. What BEST explains this?
 
-A. Different random salts  ·  B. Base64  ·  C. Hash collision  ·  D. Identical unsalted SHA-256
+A. Different random salts  
+B. Base64  
+C. Hash collision  
+D. Identical unsalted SHA-256  
 
 <details><summary>Reveal answer and explanation</summary>
 
@@ -277,12 +301,13 @@ Use the CIA triad in your reasoning.
 
 ## 11. Study from the Treadmill 🏃
 
-**Recommended:** Professor Messer's free SY0-701 videos on hashing and encryption.
+**Watch these exact lessons:**
 
-- [SY0-701 course index](https://www.professormesser.com/security-plus/sy0-701/)
-- [Find hashing and encryption videos](https://www.youtube.com/results?search_query=Professor+Messer+SY0-701+hashing+encryption)
+1. [Professor Messer — Hashing and Digital Signatures (SY0-701, Objective 1.4)](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/hashing-and-digital-signatures-sy0-701/) — hashing and integrity.
+2. [Professor Messer — Encrypting Data (SY0-701, Objective 1.4)](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/encrypting-data-sy0-701/) — practical encryption use cases.
+3. [Professor Messer — Protecting Data (SY0-701, Objective 3.3)](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/protecting-data-sy0-701/) — compare encryption, hashing, and related protections.
 
-**Listening prompts:** Which transformation is reversible with a key? Why must a reference hash be trusted? Why is a salt useful even though it isn't secret?
+**Active listening:** Which operation is reversible with a key? Why must a reference hash be trusted? Why does password storage require more than fast SHA-256?
 
 ## 12. One-minute recap
 
