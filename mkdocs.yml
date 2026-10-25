@@ -9,6 +9,7 @@ repo_url: https://github.com/ghostparticle404/security-plus-study-academy
 
 theme:
   name: material
+  custom_dir: overrides
   language: en
 
   palette:
