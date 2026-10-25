@@ -1,0 +1,30 @@
+/* Security+ Study Academy — Cyberpunk Styling */
+
+:root {
+  --academy-purple: #9d4edd;
+  --academy-cyan: #00e5ff;
+}
+
+/* Keep navigation tabs visible */
+.md-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* Highlight navigation links */
+.md-nav__link:hover,
+.md-tabs__link:hover {
+  color: var(--academy-cyan);
+}
+
+/* Improve selected navigation visibility */
+.md-nav__link--active {
+  color: var(--academy-purple);
+  font-weight: 600;
+}
+
+/* Style expandable lesson sections */
+.md-typeset details {
+  border-radius: 8px;
+}
