@@ -30,11 +30,13 @@ theme:
     - navigation.tabs
     - navigation.tabs.sticky
     - navigation.sections
-    - navigation.expand
     - navigation.top
     - search.suggest
     - search.highlight
     - content.code.copy
+
+extra_css:
+  - assets/css/custom.css
 
 plugins:
   - search
@@ -49,28 +51,27 @@ markdown_extensions:
   - pymdownx.tabbed:
       alternate_style: true
 
-
 nav:
   - Home: index.md
 
-  - Week 01 — Security Foundations:
-      - "Day 01 — The CIA Triad": week-01/day-01-cia-triad.md
-      - "Day 02 — Security Controls": week-01/day-02-security-controls.md
-      - "Day 03 — Authentication & Authorization": week-01/day-03-authentication-authorization.md
-      - "Day 04 — Audit Logs": week-01/day-04-audit-logs.md
-      - "Day 05 — Non-repudiation & Digital Signatures": week-01/day-05-non-repudiation-digital-signatures.md
+  - Lessons:
+      - Week 01 — Security Foundations:
+          - "Day 01 — The CIA Triad": week-01/day-01-cia-triad.md
+          - "Day 02 — Security Controls": week-01/day-02-security-controls.md
+          - "Day 03 — Authentication & Authorization": week-01/day-03-authentication-authorization.md
+          - "Day 04 — Audit Logs": week-01/day-04-audit-logs.md
+          - "Day 05 — Non-repudiation & Digital Signatures": week-01/day-05-non-repudiation-digital-signatures.md
 
-  - Week 02 — Cryptography & PKI:
-      - "Day 06 — Hashing vs. Encryption": week-02/day-06-hashing-vs-encryption.md
-      - "Day 07 — Symmetric vs. Asymmetric Encryption": week-02/day-07-symmetric-vs-asymmetric.md
-      - "Day 08 — Certificates & PKI": week-02/day-08-certificates-pki.md
-      - "Day 09 — Certificate Lifecycle": week-02/day-09-certificate-lifecycle.md
-      - "Day 10 — Key Management": week-02/day-10-key-management.md
+      - Week 02 — Cryptography & PKI:
+          - "Day 06 — Hashing vs. Encryption": week-02/day-06-hashing-vs-encryption.md
+          - "Day 07 — Symmetric vs. Asymmetric Encryption": week-02/day-07-symmetric-vs-asymmetric.md
+          - "Day 08 — Certificates & PKI": week-02/day-08-certificates-pki.md
+          - "Day 09 — Certificate Lifecycle": week-02/day-09-certificate-lifecycle.md
+          - "Day 10 — Key Management": week-02/day-10-key-management.md
 
-  - Week 03 — Data Protection & Resilience:
-      - "Day 11 — Data States": week-03/day-11-data-states.md
-      - "Day 12 — Data Classification": week-03/day-12-data-classification.md
-      - "Day 13 — Data Retention & Disposal": week-03/day-13-data-retention-disposal.md
-      - "Day 14 — Backups & Recovery": week-03/day-14-backups-recovery.md
-      - "Day 15 — Business Continuity": week-03/day-15-business-continuity.md
-
+      - Week 03 — Data Protection & Resilience:
+          - "Day 11 — Data States": week-03/day-11-data-states.md
+          - "Day 12 — Data Classification": week-03/day-12-data-classification.md
+          - "Day 13 — Data Retention & Disposal": week-03/day-13-data-retention-disposal.md
+          - "Day 14 — Backups & Recovery": week-03/day-14-backups-recovery.md
+          - "Day 15 — Business Continuity": week-03/day-15-business-continuity.md
