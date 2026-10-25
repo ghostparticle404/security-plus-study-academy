@@ -28,3 +28,129 @@
 .md-typeset details {
   border-radius: 8px;
 }
+
+/* ==========================================
+   SECURITY+ ACADEMY — LESSONS DROPDOWN
+   ========================================== */
+
+.academy-custom-nav {
+  position: relative;
+  z-index: 20;
+  background: #311b56;
+  padding: 0.5rem 1.2rem;
+}
+
+.academy-lessons-menu {
+  position: relative;
+  display: inline-block;
+  color: #ffffff;
+  font-size: 0.85rem;
+}
+
+.academy-lessons-menu > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  background: #49316c;
+  user-select: none;
+}
+
+.academy-lessons-menu > summary::-webkit-details-marker {
+  display: none;
+}
+
+.academy-lessons-menu > summary:hover {
+  background: #674394;
+}
+
+.academy-lessons-menu[open] > summary {
+  background: #674394;
+  color: #ffffff;
+}
+
+/* Floating dropdown panel */
+
+.academy-weeks {
+  position: absolute;
+  top: calc(100% + 0.4rem);
+  left: 0;
+  width: min(370px, 90vw);
+  max-height: 70vh;
+  overflow-y: auto;
+  padding: 0.75rem;
+  border: 1px solid #665181;
+  border-radius: 10px;
+  background: #201a2d;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Individual week menus */
+
+.academy-weeks details {
+  margin-bottom: 0.35rem;
+}
+
+.academy-weeks summary {
+  cursor: pointer;
+  padding: 0.7rem;
+  border-radius: 6px;
+  color: #e9d5ff;
+  font-weight: 600;
+  list-style: none;
+}
+
+.academy-weeks summary::-webkit-details-marker {
+  display: none;
+}
+
+.academy-weeks summary::before {
+  content: "▸ ";
+  color: #00e5ff;
+}
+
+.academy-weeks details[open] > summary::before {
+  content: "▾ ";
+}
+
+.academy-weeks summary:hover {
+  background: #39284f;
+}
+
+/* Lesson links */
+
+.academy-weeks a {
+  display: block;
+  padding: 0.5rem 0.8rem 0.5rem 1.4rem;
+  border-radius: 5px;
+  color: #c4b5fd;
+  text-decoration: none;
+  font-size: 0.8rem;
+}
+
+.academy-weeks a:hover,
+.academy-weeks a:focus-visible {
+  background: #3a2851;
+  color: #00e5ff;
+}
+
+/* Keyboard focus visibility */
+
+.academy-lessons-menu summary:focus-visible,
+.academy-weeks summary:focus-visible {
+  outline: 2px solid #00e5ff;
+  outline-offset: 2px;
+}
+
+/* Smaller screens */
+
+@media screen and (max-width: 760px) {
+  .academy-custom-nav {
+    padding: 0.5rem;
+  }
+
+  .academy-weeks {
+    width: min(340px, 92vw);
+  }
+}
