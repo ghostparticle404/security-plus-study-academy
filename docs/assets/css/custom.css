@@ -153,4 +153,56 @@
   .academy-weeks {
     width: min(340px, 92vw);
   }
+
+  
+/* ==========================================
+   SECURITY+ ACADEMY — LIGHT NAVIGATION
+   ========================================== */
+
+/* Keep the purple navigation bar */
+.academy-custom-nav {
+  background: #311b56;
+}
+
+/* White dropdown panel */
+.academy-weeks {
+  background: #ffffff;
+  border: 1px solid #ded6e8;
+  box-shadow: 0 12px 30px rgba(40, 20, 65, 0.15);
+}
+
+/* Week headings */
+.academy-weeks summary {
+  color: #30223f;
+}
+
+/* Purple expand/collapse arrows */
+.academy-weeks summary::before {
+  color: #6d28d9;
+}
+
+/* Week heading hover */
+.academy-weeks summary:hover {
+  background: #f1eafb;
+}
+
+/* Lesson links: dark text on white */
+.academy-weeks a {
+  color: #292133;
+}
+
+/* Lesson link hover */
+.academy-weeks a:hover,
+.academy-weeks a:focus-visible {
+  background: #f1eafb;
+  color: #5b21b6;
+}
+
+/* Visible keyboard focus */
+.academy-lessons-menu summary:focus-visible,
+.academy-weeks summary:focus-visible {
+  outline: 2px solid #6d28d9;
+  outline-offset: 2px;
+}
+
 }
