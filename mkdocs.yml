@@ -75,8 +75,28 @@ nav:
         - "End-of-Week Review": week-02/review.w2.md
 
       - Week 03 — Data Protection & Resilience:
+          - "Start Here — Week 03 Diagnostic": week-03/00-diagnostic.w3.md
           - "Day 11 — Data States": week-03/day-11-data-states.md
           - "Day 12 — Data Classification": week-03/day-12-data-classification.md
           - "Day 13 — Data Retention & Disposal": week-03/day-13-data-retention-disposal.md
           - "Day 14 — Backups & Recovery": week-03/day-14-backups-recovery.md
           - "Day 15 — Business Continuity": week-03/day-15-business-continuity.md
+          - "End-of-Week Review": week-03/review.w3.md
+
+      
+
+      # Week 04 — Networking Fundamentals: Coming Soon
+      # Week 05 — Network Security: Coming Soon
+      # Week 06 — Threat Landscape and Social Engineering: Coming Soon
+      # Week 07 — Vulnerabilities and Mitigations: Coming Soon
+      # Week 08 — Security Architecture and Cloud: Coming Soon
+      # Week 09 — Identity and Access Management: Coming Soon
+      # Week 10 — Endpoint and Application Protection: Coming Soon
+      # Week 11 — Security Monitoring and Detection: Coming Soon
+      # Week 12 — Incident Response and Digital Forensics: Coming Soon
+      # Week 13 — Security Operations and Automation: Coming Soon
+      # Week 14 — Governance and Risk: Coming Soon
+      # Week 15 — Assurance, Privacy and Awareness: Coming Soon
+      # Week 16 — Exam Integration and Readiness: Coming Soon
+
+
