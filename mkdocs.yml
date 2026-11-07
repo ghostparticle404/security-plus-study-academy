@@ -62,6 +62,7 @@ nav:
           - "Day 03 — Authentication & Authorization": week-01/day-03-authentication-authorization.md
           - "Day 04 — Audit Logs": week-01/day-04-audit-logs.md
           - "Day 05 — Non-repudiation & Digital Signatures": week-01/day-05-non-repudiation-digital-signatures.md
+          - "Optional Diagnostic & Review": week-01/review.w1.md
 
       - Week 02 — Cryptography & PKI:
           - "Day 06 — Hashing vs. Encryption": week-02/day-06-hashing-vs-encryption.md
@@ -69,6 +70,7 @@ nav:
           - "Day 08 — Certificates & PKI": week-02/day-08-certificates-pki.md
           - "Day 09 — Certificate Lifecycle": week-02/day-09-certificate-lifecycle.md
           - "Day 10 — Key Management": week-02/day-10-key-management.md
+          - "Optional Diagnostic & Review": week-02/review.w2.md
 
       - Week 03 — Data Protection & Resilience:
           - "Day 11 — Data States": week-03/day-11-data-states.md
