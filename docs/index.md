@@ -78,7 +78,7 @@ If you completed the diagnostic, you can compare your before-and-after scores to
 
 These reviews emphasize understanding and application—not just memorizing the correct answers.
 
-### 🚀 Learn at Your Own Pace
+### Learn at Your Own Pace
 
 **Diagnostic → Study What You Need → Review → Move Forward**
 
