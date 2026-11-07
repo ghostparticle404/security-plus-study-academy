@@ -1,271 +1,47 @@
-# Optional Week 01 Review — Security Foundations
+
+# Week 01 Review — Security Foundations
 
 > **Security+ Study Academy · CompTIA Security+ SY0-701**  
-> **Five themes · Two parallel 20-question checks · Five cumulative questions**  
-> **Optional · Suggested time:** 25–35 minutes per check, plus 10–15 minutes for cumulative practice
+> **Week 01 · Five themes · 20 review questions + 5 cumulative questions**  
+> **Optional · Estimated time:** 35–50 minutes  
+> **Prerequisites:** Week 01 lessons or equivalent prior knowledge
 
-**Use this page in either direction.** Take the **pre-diagnostic before studying** to discover what you already know and which lessons to prioritize, or complete the lessons first and use the **parallel post-check** to evaluate what you learned. The cumulative questions connect multiple lessons.
+## Welcome to your Week 01 Review!
 
-These are **original educational practice questions**, not actual CompTIA exam questions. No login, scripting, or external tool is required. This Markdown version uses manual scoring and works on GitHub as well as MkDocs.
+**You've studied the concepts. Now let's see how well you can apply them.**
 
-> **How to avoid answer leakage:** Record your answers on paper or in a separate note before opening any answer section. The post-check is a different set of questions on the same five themes; do not use the answer key while testing.
+This optional review helps you evaluate your understanding of the five Week 01 themes, identify any remaining knowledge gaps, and determine which concepts deserve additional practice.
 
-## Your five themes
+You can complete this review whether you studied all five lessons or skipped some based on your diagnostic results.
 
-| Theme | Lesson | Questions on each 20-item check |
+**Haven't started the week yet?** Take the [Week 01 Diagnostic](00-diagnostic.md) to identify what you already know and which lessons to prioritize.
+
+### How to complete this review
+
+1. Answer **S1–S20** without consulting your notes or lessons.
+2. Record your answers before opening the answer key.
+3. Check your results by theme, not just your overall score.
+4. Follow the targeted lesson links for questions you missed.
+5. Complete **C1–C5**, which combine concepts from multiple lessons.
+6. Reflect on your progress and decide whether you're ready for Week 02.
+
+These are original educational practice questions, not actual CompTIA exam items.
+
+## Week 01 Themes
+
+| Questions | Theme | Lesson |
 | --- | --- | --- |
-| CIA Triad | [Day 01 — CIA Triad](day-01-cia-triad.md) | 1–4 |
-| Security Controls | [Day 02 — Security Controls](day-02-security-controls.md) | 5–8 |
-| Authentication, Authorization & Least Privilege | [Day 03 — Authentication, Authorization & Least Privilege](day-03-authentication-authorization.md) | 9–12 |
-| Audit Logs & Incident Timelines | [Day 04 — Audit Logs & Incident Timelines](day-04-audit-logs.md) | 13–16 |
-| Non-repudiation & Digital Signatures | [Day 05 — Non-repudiation & Digital Signatures](day-05-non-repudiation-digital-signatures.md) | 17–20 |
+| S1–S4 | CIA Triad | [Day 01](day-01-cia-triad.md) |
+| S5–S8 | Security Controls | [Day 02](day-02-security-controls.md) |
+| S9–S12 | Authentication, Authorization & Least Privilege | [Day 03](day-03-authentication-authorization.md) |
+| S13–S16 | Audit Logs & Incident Timelines | [Day 04](day-04-audit-logs.md) |
+| S17–S20 | Non-repudiation & Digital Signatures | [Day 05](day-05-non-repudiation-digital-signatures.md) |
 
-## How to use your results
+---
 
-1. **Before the lessons:** Answer P1–P20 without notes. Record your answers, then open the pre-diagnostic answer key.
-2. **Score each theme separately:** Each theme has four questions. Use the recommendation table below to decide what to study.
-3. **Study selectively:** Read any recommended lessons and complete their examples and hands-on activities.
-4. **After studying:** Answer S1–S20 without notes, then check the separate post-check key.
-5. **Integrate and retain:** Try C1–C5. Revisit this review later for spaced practice.
+## Part 1 — End-of-Week Knowledge Check
 
-| Score for one theme (out of 4) | Interpretation | Suggested next step |
-| --- | --- | --- |
-| **4/4** | Promising diagnostic evidence | You *may* skip the introductory lesson if you can also explain the reasoning and apply it in a new scenario. Recheck in cumulative practice. |
-| **3/4** | Mostly familiar, possible gap | Review the specific missed concept and relevant lesson section; complete the lesson's exit ticket. |
-| **0–2/4** | Important knowledge gaps | Study the full linked lesson, including its worked example and practice questions. |
-
-**These are study recommendations, not certification of mastery.** Four questions per topic cannot reliably establish comprehensive mastery; the cumulative scenarios and later spaced checks provide additional evidence. The 20-question total is useful for tracking progress, but **topic-level scores drive your study plan**.
-
-## Part A — Pre-diagnostic (before studying)
-
-**Directions:** Select the single BEST answer to each question. Do not open the answer key until you've answered all 20.
-
-### P1
-
-**A clinic's patient database remains online and unchanged, but a visitor reads restricted records. Which objective is most directly affected?**
-
-A. Availability  
-B. Confidentiality  
-C. Integrity  
-D. Non-repudiation  
-
-### P2
-
-**An attacker changes the destination account on a payment instruction without permission. Which objective is directly compromised?**
-
-A. Integrity  
-B. Availability  
-C. Confidentiality  
-D. Authentication  
-
-### P3
-
-**A firm can restore files from yesterday's backup, but its portal must remain online if a single server fails. Which measure best addresses the immediate requirement?**
-
-A. Data classification  
-B. SHA-256 hashing  
-C. Redundant server with failover  
-D. Digital signature  
-
-### P4
-
-**A ransomware actor steals client files and makes the originals inaccessible. Which objectives are clearly affected?**
-
-A. Integrity only  
-B. Confidentiality and availability  
-C. Availability only  
-D. Confidentiality only  
-
-### P5
-
-**A written rule requires employees to report suspected phishing. Which control function is primarily illustrated?**
-
-A. Corrective  
-B. Compensating  
-C. Directive  
-D. Detective  
-
-### P6
-
-**A network appliance reports suspicious traffic but never blocks it. What function is it performing?**
-
-A. Detective  
-B. Preventive  
-C. Corrective  
-D. Deterrent  
-
-### P7
-
-**An unpatchable legacy server is isolated from other systems. Why is the isolation a compensating control?**
-
-A. It removes the software flaw  
-B. It substitutes for an unavailable preferred protection  
-C. It restores lost data  
-D. It proves user identity  
-
-### P8
-
-**An organization installs a fence around its data center. Which category best describes the fence?**
-
-A. Technical  
-B. Operational  
-C. Managerial  
-D. Physical  
-
-### P9
-
-**An employee logs in successfully but cannot read payroll records. Which decision most directly explains the denial?**
-
-A. Identification  
-B. Authentication  
-C. Authorization  
-D. Accounting  
-
-### P10
-
-**Which pair represents two different authentication-factor categories?**
-
-A. Password and PIN  
-B. Fingerprint and face scan  
-C. Password and hardware security key  
-D. Two different passwords  
-
-### P11
-
-**A contractor needs elevated access for one approved change. Which option best limits unnecessary privilege?**
-
-A. Permanent admin membership  
-B. Shared administrator account  
-C. Just-in-time elevation  
-D. Disable activity logging  
-
-### P12
-
-**Access is allowed only when a user has an assigned case, uses a managed device, and requests a permitted action. Which model fits best?**
-
-A. DAC  
-B. ABAC  
-C. MAC  
-D. Role-only RBAC  
-
-### P13
-
-**A log says `user=admin action=EXPORT result=SUCCESS`. What can investigators safely conclude?**
-
-A. The administrator personally exported files  
-B. The export was approved  
-C. An export was recorded under that account or session  
-D. The log cannot help an investigation  
-
-### P14
-
-**A VPN event appears five minutes after a file export even though the VPN connection began first. What should analysts check?**
-
-A. Clock synchronization and time zones  
-B. Encryption key length  
-C. File compression settings  
-D. Monitor brightness  
-
-### P15
-
-**A team wants to correlate VPN sign-ins with file downloads across multiple systems. Which technology is designed to help?**
-
-A. UPS  
-B. SIEM  
-C. Load balancer  
-D. Password manager  
-
-### P16
-
-**A monitoring system flags repeated failed logins followed by success, but compromise is not confirmed. The notification is best classified as what?**
-
-A. Incident proof  
-B. Backup  
-C. Alert  
-D. Digital signature  
-
-### P17
-
-**Which key is used to create a digital signature on a software release?**
-
-A. Publisher's private key  
-B. Publisher's public key  
-C. Recipient's private key  
-D. Recipient's public key  
-
-### P18
-
-**A signed document is modified within the bytes covered by its signature. What should verification show?**
-
-A. The signature updates automatically  
-B. Verification fails  
-C. The document becomes encrypted  
-D. The certificate becomes a backup  
-
-### P19
-
-**What is the primary purpose of a trusted certificate when verifying a signature?**
-
-A. Guarantee that the signer is honest  
-B. Recover a lost private key  
-C. Associate a public key with an identity under a trust framework  
-D. Keep the signed document secret  
-
-### P20
-
-**A signature verifies, but the private key may have been stolen. Which statement is most defensible?**
-
-A. The named person definitely clicked Sign  
-B. The signed data must be confidential  
-C. The signature proves legal authority  
-D. Verification alone does not identify the human who used the key  
-
-<details markdown="1">
-<summary><strong>Reveal pre-diagnostic answer key and explanations — only after completing P1–P20</strong></summary>
-
-Questions are grouped by theme in sets of four. Count your correct answers within each group, then use the links below to review the exact concepts you need to strengthen.
-
-| Question | Answer | Targeted Lesson Section | Why |
-| --- | --- | --- | --- |
-| P1 | **B** | [Day 01 — Confidentiality](day-01-cia-triad.md#2-confidentiality-prevent-unauthorized-disclosure) | Unauthorized disclosure compromises confidentiality, even when records remain accurate and accessible. |
-| P2 | **A** | [Day 01 — Integrity](day-01-cia-triad.md#3-integrity-protect-trustworthiness) | An unauthorized modification undermines the trustworthiness of the instruction. |
-| P3 | **C** | [Day 01 — Availability](day-01-cia-triad.md#4-availability-keep-systems-usable) | Failover reduces service interruption; backups support restoration after disruption. |
-| P4 | **B** | [Day 01 — CIA Trade-offs](day-01-cia-triad.md#5-the-objectives-interactand-sometimes-compete) | Theft affects confidentiality; inability to access files affects availability. Additional evidence is needed to assess integrity. |
-| P5 | **C** | [Day 02 — Control Functions](day-02-security-controls.md#3-the-six-control-functions) | A directive control tells people what behavior is required. |
-| P6 | **A** | [Day 02 — IDS vs. IPS](day-02-security-controls.md#ids-versus-ips) | Alerting is detective; blocking would be preventive. |
-| P7 | **B** | [Day 02 — Corrective vs. Compensating](day-02-security-controls.md#corrective-versus-compensating) | Isolation reduces exposure while the underlying vulnerability remains. |
-| P8 | **D** | [Day 02 — Physical Controls](day-02-security-controls.md#physical) | A fence is a physical safeguard; its function may be preventive or deterrent. |
-| P9 | **C** | [Day 03 — Authorization](day-03-authentication-authorization.md#4-authorization-what-are-you-allowed-to-do) | Authentication verifies identity; authorization determines access rights. |
-| P10 | **C** | [Day 03 — Authentication Factors](day-03-authentication-authorization.md#the-three-classic-factor-categories) | Password is knowledge and hardware security key is possession. |
-| P11 | **C** | [Day 03 — Least Privilege](day-03-authentication-authorization.md#least-privilege) | JIT access grants temporary privileges for the approved task. |
-| P12 | **B** | [Day 03 — Access-Control Models](day-03-authentication-authorization.md#5-four-access-control-models) | ABAC evaluates multiple attributes of the subject, resource, action, or environment. |
-| P13 | **C** | [Day 04 — Reading Log Entries](day-04-audit-logs.md#3-under-the-hood-read-a-log-entry) | An account/session association does not establish which human acted. |
-| P14 | **A** | [Day 04 — NTP and Correlation](day-04-audit-logs.md#4-time-ntp-and-correlation) | Clock drift or mismatched time zones can distort cross-system timelines. |
-| P15 | **B** | [Day 04 — SIEM and Correlation](day-04-audit-logs.md#4-time-ntp-and-correlation) | A SIEM aggregates and correlates event records from different sources. |
-| P16 | **C** | [Day 04 — Events, Alerts, Incidents](day-04-audit-logs.md#2-the-big-idea-security-systems-keep-receipts) | An alert warrants investigation but is not automatically a confirmed incident. |
-| P17 | **A** | [Day 05 — Digital Signature Workflow](day-05-non-repudiation-digital-signatures.md#3-under-the-hood-how-digital-signatures-work) | The signer uses the private key; others verify with the matching public key. |
-| P18 | **B** | [Day 05 — Signed Document Changes](day-05-non-repudiation-digital-signatures.md#5-real-world-example-the-signed-contract-dispute) | A valid signature is bound to the signed content; altering that content breaks verification. |
-| P19 | **C** | [Day 05 — Certificates](day-05-non-repudiation-digital-signatures.md#4-certificates-whose-public-key-is-this) | A certificate helps establish the identity-to-public-key relationship. |
-| P20 | **D** | [Day 05 — Signature Limitations](day-05-non-repudiation-digital-signatures.md#3-under-the-hood-how-digital-signatures-work) | Verification supports key use and integrity; human attribution needs other evidence. |
-
-</details>
-
-### Pre-diagnostic scorecard
-
-| Theme | Correct out of 4 | Recommended action |
-| --- | --- | --- |
-| [CIA Triad](day-01-cia-triad.md) | ____ / 4 | ____________________ |
-| [Security Controls](day-02-security-controls.md) | ____ / 4 | ____________________ |
-| [Authentication, Authorization & Least Privilege](day-03-authentication-authorization.md) | ____ / 4 | ____________________ |
-| [Audit Logs & Incident Timelines](day-04-audit-logs.md) | ____ / 4 | ____________________ |
-| [Non-repudiation & Digital Signatures](day-05-non-repudiation-digital-signatures.md) | ____ / 4 | ____________________ |
-| **Total** | **____ / 20** | Use topic scores, not just total score |
-
-**Reflection:** Which answers were guesses? Which correct answers can you explain without looking at the key? Treat lucky guesses as topics to review.
-
-## Part B — Parallel post-check (after studying)
-
-**Directions:** These are new questions targeting the same learning outcomes as the pre-diagnostic. Select the single BEST answer. Use no notes; don't reveal the key until finished.
+**Directions:** Choose the single BEST answer to each question. Complete all 20 before revealing the answer key.
 
 ### S1
 
@@ -274,7 +50,7 @@ Questions are grouped by theme in sets of four. Count your correct answers withi
 A. Availability  
 B. Integrity  
 C. Confidentiality  
-D. Authentication  
+D. Authentication
 
 ### S2
 
@@ -283,7 +59,7 @@ D. Authentication
 A. Confidentiality  
 B. Integrity  
 C. Availability  
-D. Non-repudiation  
+D. Non-repudiation
 
 ### S3
 
@@ -292,7 +68,7 @@ D. Non-repudiation
 A. Trusted SHA-256 digest comparison  
 B. Redundant power supply  
 C. Security awareness policy  
-D. Access badge  
+D. Access badge
 
 ### S4
 
@@ -301,7 +77,7 @@ D. Access badge
 A. Better integrity at the cost of availability  
 B. Better availability at the cost of confidentiality  
 C. Better non-repudiation at the cost of integrity  
-D. Better hashing at the cost of authentication  
+D. Better hashing at the cost of authentication
 
 ### S5
 
@@ -310,7 +86,7 @@ D. Better hashing at the cost of authentication
 A. Detective  
 B. Corrective  
 C. Preventive  
-D. Compensating  
+D. Compensating
 
 ### S6
 
@@ -319,7 +95,7 @@ D. Compensating
 A. Managerial  
 B. Physical  
 C. Operational  
-D. Technical  
+D. Technical
 
 ### S7
 
@@ -328,7 +104,7 @@ D. Technical
 A. Deterrent  
 B. Directive  
 C. Corrective  
-D. Compensating  
+D. Compensating
 
 ### S8
 
@@ -337,7 +113,7 @@ D. Compensating
 A. It can serve preventive and detective functions  
 B. It is solely physical  
 C. It is solely directive  
-D. It removes every vulnerability  
+D. It removes every vulnerability
 
 ### S9
 
@@ -346,7 +122,7 @@ D. It removes every vulnerability
 A. Accounting  
 B. Authorization  
 C. Authentication  
-D. Classification  
+D. Classification
 
 ### S10
 
@@ -355,7 +131,7 @@ D. Classification
 A. Least availability  
 B. Separation of duties  
 C. DAC  
-D. Key escrow  
+D. Key escrow
 
 ### S11
 
@@ -364,7 +140,7 @@ D. Key escrow
 A. MAC  
 B. ABAC  
 C. DAC  
-D. RBAC  
+D. RBAC
 
 ### S12
 
@@ -373,7 +149,7 @@ D. RBAC
 A. Least privilege  
 B. Non-repudiation  
 C. Load balancing  
-D. Time synchronization  
+D. Time synchronization
 
 ### S13
 
@@ -382,7 +158,7 @@ D. Time synchronization
 A. CPU temperature  
 B. Session ID  
 C. File extension  
-D. Screen size  
+D. Screen size
 
 ### S14
 
@@ -391,7 +167,7 @@ D. Screen size
 A. It proves the human actor  
 B. It removes the need for investigation  
 C. It reduces reliance on a potentially compromised host's local records  
-D. It guarantees every event was captured  
+D. It guarantees every event was captured
 
 ### S15
 
@@ -400,7 +176,7 @@ D. It guarantees every event was captured
 A. EDR or Sysmon telemetry  
 B. Door-access controller  
 C. UPS status log  
-D. Certificate-expiration calendar  
+D. Certificate-expiration calendar
 
 ### S16
 
@@ -409,7 +185,7 @@ D. Certificate-expiration calendar
 A. Name the account owner as the culprit  
 B. Correlate identity, VPN, endpoint and approved-change evidence  
 C. Delete logs to preserve privacy  
-D. Assume all exports are malicious  
+D. Assume all exports are malicious
 
 ### S17
 
@@ -418,7 +194,7 @@ D. Assume all exports are malicious
 A. Recipient's private key  
 B. Publisher's private key  
 C. Publisher's authentic public key  
-D. Recipient's password  
+D. Recipient's password
 
 ### S18
 
@@ -427,7 +203,7 @@ D. Recipient's password
 A. The hash always encrypts the file  
 B. Both file and expected digest could have been replaced  
 C. The file cannot be downloaded  
-D. The hash identifies the person who created the file  
+D. The hash identifies the person who created the file
 
 ### S19
 
@@ -436,7 +212,7 @@ D. The hash identifies the person who created the file
 A. A second signature  
 B. More audit fields  
 C. Encryption  
-D. A longer filename  
+D. A longer filename
 
 ### S20
 
@@ -445,11 +221,16 @@ D. A longer filename
 A. Key custody and signing-platform audit records  
 B. Monitor resolution  
 C. Document page count alone  
-D. Number of backup copies  
+D. Number of backup copies
 
+---
+
+## Part 2 — Answer Key & Targeted Review
+
+**Do not open this section until you have answered all 20 questions.**
 
 <details markdown="1">
-<summary><strong>Reveal post-check answer key and explanations — only after completing S1–S20</strong></summary>
+<summary><strong>Reveal Week 01 answer key and explanations — S1–S20</strong></summary>
 
 Questions are grouped by theme in sets of four. Count your correct answers within each group, then use the targeted lesson links to review any concepts you missed.
 
@@ -478,22 +259,53 @@ Questions are grouped by theme in sets of four. Count your correct answers withi
 
 </details>
 
-### Compare your learning
+## Your Week 01 Scorecard
 
-| Theme | Pre-diagnostic | Post-check | Next action |
-| --- | --- | --- | --- |
-| [CIA Triad](day-01-cia-triad.md) | ____ / 4 | ____ / 4 | ____________________ |
-| [Security Controls](day-02-security-controls.md) | ____ / 4 | ____ / 4 | ____________________ |
-| [Authentication, Authorization & Least Privilege](day-03-authentication-authorization.md) | ____ / 4 | ____ / 4 | ____________________ |
-| [Audit Logs & Incident Timelines](day-04-audit-logs.md) | ____ / 4 | ____ / 4 | ____________________ |
-| [Non-repudiation & Digital Signatures](day-05-non-repudiation-digital-signatures.md) | ____ / 4 | ____ / 4 | ____________________ |
-| **Total** | **____ / 20** | **____ / 20** | |
+Record your results by theme.
 
-A higher score suggests progress, but it is not a complete measure of competence. If you missed a post-check question, revisit the linked lesson and explain the correct reasoning in your own words. If you scored perfectly, return to these ideas in later weeks rather than assuming they will stay memorized.
+| Theme | Questions | Your Score |
+| --- | --- | --- |
+| [Day 01 — CIA Triad](day-01-cia-triad.md) | S1–S4 | ____ / 4 |
+| [Day 02 — Security Controls](day-02-security-controls.md) | S5–S8 | ____ / 4 |
+| [Day 03 — Authentication & Authorization](day-03-authentication-authorization.md) | S9–S12 | ____ / 4 |
+| [Day 04 — Audit Logs](day-04-audit-logs.md) | S13–S16 | ____ / 4 |
+| [Day 05 — Digital Signatures](day-05-non-repudiation-digital-signatures.md) | S17–S20 | ____ / 4 |
+| **TOTAL** | **20 questions** | **____ / 20** |
 
-## Part C — Cumulative application (after the week)
+### Interpreting your results
 
-These five questions combine concepts from more than one lesson. They are **additional** to the two 20-question checks and are useful for spaced review.
+| Score per theme | Interpretation | Recommended Action |
+| --- | --- | --- |
+| **4/4** | Strong understanding demonstrated | Continue to cumulative questions. Revisit the theme during later spaced practice. |
+| **3/4** | Mostly understood | Review the specific concept you missed using the targeted lesson link. |
+| **0–2/4** | Knowledge gaps remain | Revisit the full lesson, worked examples, and optional lab before moving on. |
+
+**Remember:** A perfect score on four questions is encouraging, but it doesn't establish complete mastery of a topic. Use the cumulative scenarios below to test whether you can connect and apply what you've learned.
+
+### Compare Your Progress
+
+If you completed the [Week 01 Diagnostic](00-diagnostic.md), compare your results.
+
+| Theme | Diagnostic Score | Review Score |
+| --- | --- | --- |
+| CIA Triad | ____ / 4 | ____ / 4 |
+| Security Controls | ____ / 4 | ____ / 4 |
+| Authentication & Authorization | ____ / 4 | ____ / 4 |
+| Audit Logs | ____ / 4 | ____ / 4 |
+| Digital Signatures | ____ / 4 | ____ / 4 |
+| **TOTAL** | **____ / 20** | **____ / 20** |
+
+**Reflection:** Where did your understanding improve? Which concepts still need practice? Did you learn something you thought you already understood?
+
+---
+
+## Part 3 — Cumulative Application
+
+These five questions combine concepts from multiple Week 01 lessons.
+
+They are designed to assess your ability to **apply and connect security concepts**, rather than simply recognize definitions.
+
+Choose the single BEST answer for each question.
 
 ### C1
 
@@ -502,7 +314,7 @@ These five questions combine concepts from more than one lesson. They are **addi
 A. Assume the paralegal did it and reset nothing  
 B. Correlate identity, session, and file logs while assessing confidentiality exposure  
 C. Treat the event as an availability failure only  
-D. Rely only on the username  
+D. Rely only on the username
 
 ### C2
 
@@ -511,7 +323,7 @@ D. Rely only on the username
 A. The signature guarantees confidentiality  
 B. A stolen key could sign malicious updates that appear authentic  
 C. The public key can no longer verify signatures  
-D. Backups automatically prevent misuse  
+D. Backups automatically prevent misuse
 
 ### C3
 
@@ -520,7 +332,7 @@ D. Backups automatically prevent misuse
 A. Isolation is compensating/preventive; alerts are detective  
 B. Both controls are exclusively corrective  
 C. Isolation patches the underlying defect  
-D. Alerts prove the human actor  
+D. Alerts prove the human actor
 
 ### C4
 
@@ -529,7 +341,7 @@ D. Alerts prove the human actor
 A. Confidentiality failure and proven identity theft  
 B. Integrity concern supported by failed signature verification  
 C. Availability failure with guaranteed outage  
-D. Proof that the signer intentionally changed it  
+D. Proof that the signer intentionally changed it
 
 ### C5
 
@@ -538,36 +350,69 @@ D. Proof that the signer intentionally changed it
 A. MFA proves the person was authorized  
 B. Authentication may have succeeded while authorization or permissions were inadequate; corroborate the actor  
 C. Audit records prove a particular human downloaded them  
-D. Digital signatures would prevent every download  
+D. Digital signatures would prevent every download
+
+### Cumulative Answer Key
 
 <details markdown="1">
-<summary><strong>Reveal cumulative answers and connected lessons</strong></summary>
+<summary><strong>Reveal cumulative answers and connected lessons — C1–C5</strong></summary>
 
-| Question | Answer | Explanation | Connected lessons |
+| Question | Answer | Explanation | Connected Lessons |
 | --- | --- | --- | --- |
-| C1 | **B** | Cross-source logs help assess the export; unauthorized disclosure would affect confidentiality. | Days 01, 03, 04 |
-| C2 | **B** | A compromised private signing key weakens source assurance despite valid signature verification. | Days 02, 03, 05 |
-| C3 | **A** | Segmentation is an alternative protective measure; alerting detects suspicious activity. | Days 01, 02, 04 |
-| C4 | **B** | The changed signed bytes indicate an integrity issue; verification does not establish who altered them. | Days 01, 05 |
-| C5 | **B** | MFA does not grant authorization, and account logs do not conclusively identify a human. | Days 01, 03, 04, 05 |
+| C1 | **B** | Cross-source logs help assess the export; unauthorized disclosure would affect confidentiality. | [Day 01](day-01-cia-triad.md), [Day 03](day-03-authentication-authorization.md), [Day 04](day-04-audit-logs.md) |
+| C2 | **B** | A compromised private signing key weakens source assurance despite valid signature verification. | [Day 02](day-02-security-controls.md), [Day 03](day-03-authentication-authorization.md), [Day 05](day-05-non-repudiation-digital-signatures.md) |
+| C3 | **A** | Segmentation is an alternative protective measure; alerting detects suspicious activity. | [Day 01](day-01-cia-triad.md), [Day 02](day-02-security-controls.md), [Day 04](day-04-audit-logs.md) |
+| C4 | **B** | The changed signed bytes indicate an integrity issue; verification does not establish who altered them. | [Day 01](day-01-cia-triad.md), [Day 05](day-05-non-repudiation-digital-signatures.md) |
+| C5 | **B** | MFA does not grant authorization, and account logs do not conclusively identify a human. | [Day 01](day-01-cia-triad.md), [Day 03](day-03-authentication-authorization.md), [Day 04](day-04-audit-logs.md), [Day 05](day-05-non-repudiation-digital-signatures.md) |
+
 </details>
 
-### Cumulative reflection
+### Cumulative Reflection
 
-Choose **one** scenario above and explain, in 3–5 sentences:
+Choose **one scenario** above and explain your reasoning in 3–5 sentences.
 
 1. What facts are directly observed?
-2. Which security objective or control principle is involved?
-3. What evidence would you need before making a stronger claim?
-4. Which control would you recommend, and what limitation would it have?
+2. Which security objectives or control principles are involved?
+3. What additional evidence would you need before making a stronger claim?
+4. Which control would you recommend, and what limitations would it have?
 
-**Optional hands-on reinforcement:** Try the [Day 01 file-hash experiment](day-01-cia-triad.md), the [Day 03 permissions matrix](day-03-authentication-authorization.md), or the [Day 04 fictional log investigation](day-04-audit-logs.md). Those activities test skills that multiple-choice questions cannot fully measure.
+### Optional Hands-on Reinforcement
 
-## What to do next
+If you'd like to apply what you've learned, revisit one of these activities:
 
-- **Ready to continue?** If you can explain your answers, perform the relevant activities, and handle cumulative scenarios, move to Week 02.
-- **A theme still feels uncertain?** Return to the linked lesson and its exit ticket. Reattempt a *different* question set after studying; avoid memorizing this answer key.
-- **Planning a 12–16-week study schedule?** You can complete this optional review before or after the five lessons without adding a mandatory sixth instructional day.
+- [Day 01 — File Integrity Experiment](day-01-cia-triad.md#8-optional-hands-on-activity-10-minutes)
+- [Day 03 — Permissions Matrix](day-03-authentication-authorization.md#9-hands-on-exercise-design-a-permissions-matrix)
+- [Day 04 — Log Investigation](day-04-audit-logs.md#8-hands-on-lab-investigate-a-tiny-log-file)
+
+These activities develop practical skills that multiple-choice questions alone cannot fully assess.
+
+---
+
+## Week 01 — Final Reflection
+
+Before continuing, ask yourself:
+
+- Can I distinguish confidentiality, integrity, and availability in realistic scenarios?
+- Can I classify security controls by category and function?
+- Can I explain authentication, authorization, and least privilege?
+- Can I interpret basic security logs without making unsupported assumptions?
+- Can I explain what digital signatures prove—and what they don't?
+
+**If you can confidently explain and apply these concepts, you're ready to move forward.**
+
+If some concepts still feel uncertain, use your answer-key links to revisit the relevant sections. You don't necessarily need to repeat an entire lesson.
+
+## What's Next?
+
+**Congratulations on completing Week 01 — Security Foundations!**
+
+You've explored the fundamental principles that support cybersecurity decisions: protecting information, implementing controls, managing access, interpreting evidence, and establishing trust.
+
+In **Week 02 — Cryptography & Public Key Infrastructure**, you'll build on these foundations by exploring encryption, hashing, key pairs, certificates, and cryptographic key management.
+
+**Ready to continue?** Start with the Week 02 diagnostic, or proceed to [Day 06 — Hashing vs. Encryption](../week-02/day-06-hashing-vs-encryption.md).
+
+Remember: The goal isn't simply to finish the lessons. It's to understand the concepts well enough to recognize, explain, and apply them in real-world situations.
 
 ---
 
