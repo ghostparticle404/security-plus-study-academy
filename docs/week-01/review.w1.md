@@ -223,28 +223,31 @@ D. Verification alone does not identify the human who used the key
 <details markdown="1">
 <summary><strong>Reveal pre-diagnostic answer key and explanations — only after completing P1–P20</strong></summary>
 
-| Question | Answer | Why |
-| --- | --- | --- |
-| P1 | **B** | Unauthorized disclosure compromises confidentiality, even when records remain accurate and accessible. |
-| P2 | **A** | An unauthorized modification undermines the trustworthiness of the instruction. |
-| P3 | **C** | Failover reduces service interruption; backups support restoration after disruption. |
-| P4 | **B** | Theft affects confidentiality; inability to access files affects availability. Additional evidence is needed to assess integrity. |
-| P5 | **C** | A directive control tells people what behavior is required. |
-| P6 | **A** | Alerting is detective; blocking would be preventive. |
-| P7 | **B** | Isolation reduces exposure while the underlying vulnerability remains. |
-| P8 | **D** | A fence is a physical safeguard; its function may be preventive or deterrent. |
-| P9 | **C** | Authentication verifies identity; authorization determines access rights. |
-| P10 | **C** | Password is knowledge and hardware security key is possession. |
-| P11 | **C** | JIT access grants temporary privileges for the approved task. |
-| P12 | **B** | ABAC evaluates multiple attributes of the subject, resource, action, or environment. |
-| P13 | **C** | An account/session association does not establish which human acted. |
-| P14 | **A** | Clock drift or mismatched time zones can distort cross-system timelines. |
-| P15 | **B** | A SIEM aggregates and correlates event records from different sources. |
-| P16 | **C** | An alert warrants investigation but is not automatically a confirmed incident. |
-| P17 | **A** | The signer uses the private key; others verify with the matching public key. |
-| P18 | **B** | A valid signature is bound to the signed content; altering that content breaks verification. |
-| P19 | **C** | A certificate helps establish the identity-to-public-key relationship. |
-| P20 | **D** | Verification supports key use and integrity; human attribution needs other evidence. |
+Questions are grouped by theme in sets of four. Count your correct answers within each group, then use the links below to review the exact concepts you need to strengthen.
+
+| Question | Answer | Targeted Lesson Section | Why |
+| --- | --- | --- | --- |
+| P1 | **B** | [Day 01 — Confidentiality](day-01-cia-triad.md#2-confidentiality-prevent-unauthorized-disclosure) | Unauthorized disclosure compromises confidentiality, even when records remain accurate and accessible. |
+| P2 | **A** | [Day 01 — Integrity](day-01-cia-triad.md#3-integrity-protect-trustworthiness) | An unauthorized modification undermines the trustworthiness of the instruction. |
+| P3 | **C** | [Day 01 — Availability](day-01-cia-triad.md#4-availability-keep-systems-usable) | Failover reduces service interruption; backups support restoration after disruption. |
+| P4 | **B** | [Day 01 — CIA Trade-offs](day-01-cia-triad.md#5-the-objectives-interactand-sometimes-compete) | Theft affects confidentiality; inability to access files affects availability. Additional evidence is needed to assess integrity. |
+| P5 | **C** | [Day 02 — Control Functions](day-02-security-controls.md#3-the-six-control-functions) | A directive control tells people what behavior is required. |
+| P6 | **A** | [Day 02 — IDS vs. IPS](day-02-security-controls.md#ids-versus-ips) | Alerting is detective; blocking would be preventive. |
+| P7 | **B** | [Day 02 — Corrective vs. Compensating](day-02-security-controls.md#corrective-versus-compensating) | Isolation reduces exposure while the underlying vulnerability remains. |
+| P8 | **D** | [Day 02 — Physical Controls](day-02-security-controls.md#physical) | A fence is a physical safeguard; its function may be preventive or deterrent. |
+| P9 | **C** | [Day 03 — Authorization](day-03-authentication-authorization.md#4-authorization-what-are-you-allowed-to-do) | Authentication verifies identity; authorization determines access rights. |
+| P10 | **C** | [Day 03 — Authentication Factors](day-03-authentication-authorization.md#the-three-classic-factor-categories) | Password is knowledge and hardware security key is possession. |
+| P11 | **C** | [Day 03 — Least Privilege](day-03-authentication-authorization.md#least-privilege) | JIT access grants temporary privileges for the approved task. |
+| P12 | **B** | [Day 03 — Access-Control Models](day-03-authentication-authorization.md#5-four-access-control-models) | ABAC evaluates multiple attributes of the subject, resource, action, or environment. |
+| P13 | **C** | [Day 04 — Reading Log Entries](day-04-audit-logs.md#3-under-the-hood-read-a-log-entry) | An account/session association does not establish which human acted. |
+| P14 | **A** | [Day 04 — NTP and Correlation](day-04-audit-logs.md#4-time-ntp-and-correlation) | Clock drift or mismatched time zones can distort cross-system timelines. |
+| P15 | **B** | [Day 04 — SIEM and Correlation](day-04-audit-logs.md#4-time-ntp-and-correlation) | A SIEM aggregates and correlates event records from different sources. |
+| P16 | **C** | [Day 04 — Events, Alerts, Incidents](day-04-audit-logs.md#2-the-big-idea-security-systems-keep-receipts) | An alert warrants investigation but is not automatically a confirmed incident. |
+| P17 | **A** | [Day 05 — Digital Signature Workflow](day-05-non-repudiation-digital-signatures.md#3-under-the-hood-how-digital-signatures-work) | The signer uses the private key; others verify with the matching public key. |
+| P18 | **B** | [Day 05 — Signed Document Changes](day-05-non-repudiation-digital-signatures.md#5-real-world-example-the-signed-contract-dispute) | A valid signature is bound to the signed content; altering that content breaks verification. |
+| P19 | **C** | [Day 05 — Certificates](day-05-non-repudiation-digital-signatures.md#4-certificates-whose-public-key-is-this) | A certificate helps establish the identity-to-public-key relationship. |
+| P20 | **D** | [Day 05 — Signature Limitations](day-05-non-repudiation-digital-signatures.md#3-under-the-hood-how-digital-signatures-work) | Verification supports key use and integrity; human attribution needs other evidence. |
+
 </details>
 
 ### Pre-diagnostic scorecard
@@ -444,31 +447,35 @@ B. Monitor resolution
 C. Document page count alone  
 D. Number of backup copies  
 
+
 <details markdown="1">
 <summary><strong>Reveal post-check answer key and explanations — only after completing S1–S20</strong></summary>
 
-| Question | Answer | Why |
-| --- | --- | --- |
-| S1 | **B** | Unauthorized alteration affects integrity. |
-| S2 | **C** | The service cannot be used by authorized people. |
-| S3 | **A** | Comparing hashes against a trusted reference helps detect changes to bytes. |
-| S4 | **B** | Broad access may improve accessibility but expose private information. |
-| S5 | **C** | Actively blocking traffic is preventive. |
-| S6 | **A** | Risk assessment is a managerial control. |
-| S7 | **C** | Restoration repairs damage after an incident. |
-| S8 | **A** | Blocking prevents and alerting detects; one technical control can perform multiple functions. |
-| S9 | **C** | Authentication verifies the claimed identity. |
-| S10 | **B** | Dividing sensitive responsibilities reduces unilateral misuse. |
-| S11 | **C** | DAC lets a resource owner grant access, subject to system rules. |
-| S12 | **A** | Restricting permissions to necessary tasks limits damage. |
-| S13 | **B** | A session identifier can connect events from the same session. |
-| S14 | **C** | Centralization makes it harder for an attacker on one host to erase the only copies. |
-| S15 | **A** | Endpoint process telemetry can record process trees and command lines. |
-| S16 | **B** | Corroboration helps distinguish compromise from authorized jobs and avoids premature attribution. |
-| S17 | **C** | Signature verification uses the signer's corresponding public key. |
-| S18 | **B** | A hash comparison needs a trustworthy reference to support integrity assurance. |
-| S19 | **C** | Signatures do not hide content; encryption is the relevant confidentiality protection. |
-| S20 | **A** | Key custody and surrounding audit evidence help evaluate attribution and approval. |
+Questions are grouped by theme in sets of four. Count your correct answers within each group, then use the targeted lesson links to review any concepts you missed.
+
+| Question | Answer | Targeted Lesson Section | Why |
+| --- | --- | --- | --- |
+| S1 | **B** | [Day 01 — Integrity](day-01-cia-triad.md#3-integrity-protect-trustworthiness) | Unauthorized alteration affects integrity. |
+| S2 | **C** | [Day 01 — Availability](day-01-cia-triad.md#4-availability-keep-systems-usable) | The service cannot be used by authorized people. |
+| S3 | **A** | [Day 01 — Integrity Checks](day-01-cia-triad.md#3-integrity-protect-trustworthiness) | Comparing hashes against a trusted reference helps detect changes to bytes. |
+| S4 | **B** | [Day 01 — CIA Trade-offs](day-01-cia-triad.md#5-the-objectives-interactand-sometimes-compete) | Broad access may improve accessibility but expose private information. |
+| S5 | **C** | [Day 02 — IDS vs. IPS](day-02-security-controls.md#ids-versus-ips) | Actively blocking traffic is preventive. |
+| S6 | **A** | [Day 02 — Managerial Controls](day-02-security-controls.md#managerial) | Risk assessment is a managerial control. |
+| S7 | **C** | [Day 02 — Corrective Controls](day-02-security-controls.md#3-the-six-control-functions) | Restoration repairs damage after an incident. |
+| S8 | **A** | [Day 02 — Multiple Control Functions](day-02-security-controls.md#4-under-the-hood-one-control-multiple-labels) | Blocking prevents and alerting detects; one technical control can perform multiple functions. |
+| S9 | **C** | [Day 03 — Authentication](day-03-authentication-authorization.md#3-authentication-proving-identity) | Authentication verifies the claimed identity. |
+| S10 | **B** | [Day 03 — Separation of Duties](day-03-authentication-authorization.md#least-privilege) | Dividing sensitive responsibilities reduces unilateral misuse. |
+| S11 | **C** | [Day 03 — Access-Control Models](day-03-authentication-authorization.md#5-four-access-control-models) | DAC lets a resource owner grant access, subject to system rules. |
+| S12 | **A** | [Day 03 — Least Privilege](day-03-authentication-authorization.md#least-privilege) | Restricting permissions to necessary tasks limits damage. |
+| S13 | **B** | [Day 04 — Log Fields](day-04-audit-logs.md#3-under-the-hood-read-a-log-entry) | A session identifier can connect events from the same session. |
+| S14 | **C** | [Day 04 — Protecting Audit Evidence](day-04-audit-logs.md#5-protecting-audit-evidence) | Centralization makes it harder for an attacker on one host to erase the only copies. |
+| S15 | **A** | [Day 04 — Log Sources](day-04-audit-logs.md#common-log-sources) | Endpoint process telemetry can record process trees and command lines. |
+| S16 | **B** | [Day 04 — Investigating Exports](day-04-audit-logs.md#6-case-study-the-midnight-law-firm-export) | Corroboration helps distinguish compromise from authorized jobs and avoids premature attribution. |
+| S17 | **C** | [Day 05 — Signature Verification](day-05-non-repudiation-digital-signatures.md#3-under-the-hood-how-digital-signatures-work) | Signature verification uses the signer's corresponding public key. |
+| S18 | **B** | [Day 05 — Trusted Hashes](day-05-non-repudiation-digital-signatures.md#2-a-cryptographic-fingerprint-hashing) | A hash comparison needs a trustworthy reference to support integrity assurance. |
+| S19 | **C** | [Day 05 — Signatures vs. Encryption](day-05-non-repudiation-digital-signatures.md#5-real-world-example-the-signed-contract-dispute) | Signatures do not hide content; encryption is the relevant confidentiality protection. |
+| S20 | **A** | [Day 05 — Signature Attribution](day-05-non-repudiation-digital-signatures.md#5-real-world-example-the-signed-contract-dispute) | Key custody and surrounding audit evidence help evaluate attribution and approval. |
+
 </details>
 
 ### Compare your learning
