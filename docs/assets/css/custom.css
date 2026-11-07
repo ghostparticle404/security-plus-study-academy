@@ -1,9 +1,18 @@
-/* Security+ Study Academy — Cyberpunk Styling */
+
+/* ==========================================
+   SECURITY+ STUDY ACADEMY — CUSTOM STYLING
+   ========================================== */
 
 :root {
-  --academy-purple: #9d4edd;
+  --academy-purple: #6d28d9;
   --academy-cyan: #00e5ff;
+  --academy-dark-purple: #311b56;
+  --academy-light-purple: #f1eafb;
 }
+
+/* ==========================================
+   HEADER AND NAVIGATION
+   ========================================== */
 
 /* Keep navigation tabs visible */
 .md-tabs {
@@ -12,34 +21,36 @@
   z-index: 10;
 }
 
-/* Highlight navigation links */
+/* Navigation hover */
 .md-nav__link:hover,
 .md-tabs__link:hover {
-  color: var(--academy-cyan);
+  color: var(--academy-purple);
 }
 
-/* Improve selected navigation visibility */
+/* Active navigation link */
 .md-nav__link--active {
   color: var(--academy-purple);
   font-weight: 600;
 }
 
-/* Style expandable lesson sections */
+/* Expandable lesson sections */
 .md-typeset details {
   border-radius: 8px;
 }
 
 /* ==========================================
-   SECURITY+ ACADEMY — LESSONS DROPDOWN
+   CUSTOM LESSONS DROPDOWN
    ========================================== */
 
+/* Purple navigation bar */
 .academy-custom-nav {
   position: relative;
   z-index: 20;
-  background: #311b56;
+  background: var(--academy-dark-purple);
   padding: 0.5rem 1.2rem;
 }
 
+/* Lessons button */
 .academy-lessons-menu {
   position: relative;
   display: inline-block;
@@ -54,6 +65,7 @@
   border-radius: 6px;
   font-weight: 600;
   background: #49316c;
+  color: #ffffff;
   user-select: none;
 }
 
@@ -61,16 +73,15 @@
   display: none;
 }
 
-.academy-lessons-menu > summary:hover {
-  background: #674394;
-}
-
+.academy-lessons-menu > summary:hover,
 .academy-lessons-menu[open] > summary {
   background: #674394;
   color: #ffffff;
 }
 
-/* Floating dropdown panel */
+/* ==========================================
+   WHITE DROPDOWN PANEL
+   ========================================== */
 
 .academy-weeks {
   position: absolute;
@@ -80,14 +91,13 @@
   max-height: 70vh;
   overflow-y: auto;
   padding: 0.75rem;
-  border: 1px solid #665181;
+  border: 1px solid #ded6e8;
   border-radius: 10px;
-  background: #201a2d;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(40, 20, 65, 0.15);
 }
 
-/* Individual week menus */
-
+/* Individual week sections */
 .academy-weeks details {
   margin-bottom: 0.35rem;
 }
@@ -96,7 +106,7 @@
   cursor: pointer;
   padding: 0.7rem;
   border-radius: 6px;
-  color: #e9d5ff;
+  color: #30223f;
   font-weight: 600;
   list-style: none;
 }
@@ -105,45 +115,86 @@
   display: none;
 }
 
+/* Expand/collapse arrows */
 .academy-weeks summary::before {
   content: "▸ ";
-  color: #00e5ff;
+  color: var(--academy-purple);
 }
 
 .academy-weeks details[open] > summary::before {
   content: "▾ ";
 }
 
+/* Week heading hover */
 .academy-weeks summary:hover {
-  background: #39284f;
+  background: var(--academy-light-purple);
 }
 
 /* Lesson links */
-
 .academy-weeks a {
   display: block;
   padding: 0.5rem 0.8rem 0.5rem 1.4rem;
   border-radius: 5px;
-  color: #c4b5fd;
+  color: #292133;
   text-decoration: none;
   font-size: 0.8rem;
 }
 
+/* Hover and keyboard navigation */
 .academy-weeks a:hover,
 .academy-weeks a:focus-visible {
-  background: #3a2851;
-  color: #00e5ff;
+  background: var(--academy-light-purple);
+  color: #5b21b6;
 }
 
-/* Keyboard focus visibility */
-
+/* Visible keyboard focus */
 .academy-lessons-menu summary:focus-visible,
 .academy-weeks summary:focus-visible {
-  outline: 2px solid #00e5ff;
+  outline: 2px solid var(--academy-purple);
   outline-offset: 2px;
 }
 
-/* Smaller screens */
+/* ==========================================
+   DISTRACTION-FREE READING
+   ========================================== */
+
+/* Hide default left navigation */
+.md-sidebar--primary {
+  display: none;
+}
+
+/* Hide right-hand table of contents */
+.md-sidebar--secondary {
+  display: none;
+}
+
+/* Center main reading content */
+.md-main__inner {
+  justify-content: center;
+}
+
+/* Comfortable reading width */
+.md-content {
+  max-width: 960px;
+  margin: 0 auto;
+  min-width: 0;
+  flex-grow: 1;
+}
+
+/* Comfortable spacing */
+.md-typeset {
+  line-height: 1.7;
+}
+
+/* Responsive tables */
+.md-typeset__table {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* ==========================================
+   MOBILE RESPONSIVENESS
+   ========================================== */
 
 @media screen and (max-width: 760px) {
   .academy-custom-nav {
@@ -154,95 +205,7 @@
     width: min(340px, 92vw);
   }
 
-  
-/* ==========================================
-   SECURITY+ ACADEMY — LIGHT NAVIGATION
-   ========================================== */
-
-/* Keep the purple navigation bar */
-.academy-custom-nav {
-  background: #311b56;
-}
-
-/* White dropdown panel */
-.academy-weeks {
-  background: #ffffff;
-  border: 1px solid #ded6e8;
-  box-shadow: 0 12px 30px rgba(40, 20, 65, 0.15);
-}
-
-/* Week headings */
-.academy-weeks summary {
-  color: #30223f;
-}
-
-/* Purple expand/collapse arrows */
-.academy-weeks summary::before {
-  color: #6d28d9;
-}
-
-/* Week heading hover */
-.academy-weeks summary:hover {
-  background: #f1eafb;
-}
-
-/* Lesson links: dark text on white */
-.academy-weeks a {
-  color: #292133;
-}
-
-/* Lesson link hover */
-.academy-weeks a:hover,
-.academy-weeks a:focus-visible {
-  background: #f1eafb;
-  color: #5b21b6;
-}
-
-/* Visible keyboard focus */
-.academy-lessons-menu summary:focus-visible,
-.academy-weeks summary:focus-visible {
-  outline: 2px solid #6d28d9;
-  outline-offset: 2px;
-}
-
-  
-/* ==========================================
-   SECURITY+ ACADEMY — DISTRACTION-FREE READING
-   ========================================== */
-
-/* Hide the default left navigation sidebar */
-.md-sidebar--primary {
-  display: none;
-}
-
-/* Hide the right-hand table of contents */
-.md-sidebar--secondary {
-  display: none;
-}
-
-/* Center the main content area */
-.md-main__inner {
-  justify-content: center;
-}
-
-/* Give lessons more room without making lines too long */
-.md-content {
-  max-width: 960px;
-  margin: 0 auto;
-  min-width: 0;
-  flex-grow: 1;
-}
-
-/* Use comfortable spacing for long lessons */
-.md-typeset {
-  line-height: 1.7;
-}
-
-/* Keep tables usable on smaller screens */
-.md-typeset__table {
-  max-width: 100%;
-  overflow-x: auto;
-}
-
-
+  .md-content {
+    max-width: 100%;
+  }
 }
