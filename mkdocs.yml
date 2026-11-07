@@ -55,23 +55,24 @@ markdown_extensions:
 nav:
   - Home: index.md
 
-  - Lessons:
+    - Lessons:
       - Week 01 — Security Foundations:
-          - "Start Here: Diagnostic": week-01/00-diagnostic.md
-          - "Day 01 — The CIA Triad": week-01/day-01-cia-triad.md
-          - "Day 02 — Security Controls": week-01/day-02-security-controls.md
-          - "Day 03 — Authentication & Authorization": week-01/day-03-authentication-authorization.md
-          - "Day 04 — Audit Logs": week-01/day-04-audit-logs.md
-          - "Day 05 — Non-repudiation & Digital Signatures": week-01/day-05-non-repudiation-digital-signatures.md
-          - "End-of-Week Review": week-01/review.w1.md
+        - "Start Here — Week 01 Diagnostic": week-01/00-diagnostic.w1.md
+        - "Day 01 — CIA Triad": week-01/day-01-cia-triad.md
+        - "Day 02 — Security Controls": week-01/day-02-security-controls.md
+        - "Day 03 — Authentication & Authorization": week-01/day-03-authentication-authorization.md
+        - "Day 04 — Audit Logs": week-01/day-04-audit-logs.md
+        - "Day 05 — Digital Signatures": week-01/day-05-non-repudiation-digital-signatures.md
+        - "End-of-Week Review": week-01/review.w1.md
 
-      - Week 02 — Cryptography & PKI:
-          - "Day 06 — Hashing vs. Encryption": week-02/day-06-hashing-vs-encryption.md
-          - "Day 07 — Symmetric vs. Asymmetric Encryption": week-02/day-07-symmetric-vs-asymmetric.md
-          - "Day 08 — Certificates & PKI": week-02/day-08-certificates-pki.md
-          - "Day 09 — Certificate Lifecycle": week-02/day-09-certificate-lifecycle.md
-          - "Day 10 — Key Management": week-02/day-10-key-management.md
-          - "Optional Diagnostic & Review": week-02/review.w2.md
+    - Week 02 — Cryptography & PKI:
+        - "Start Here — Week 02 Diagnostic": week-02/00-diagnostic.w2.md
+        - "Day 06 — Hashing vs. Encryption": week-02/day-06-hashing-vs-encryption.md
+        - "Day 07 — Symmetric vs. Asymmetric Cryptography": week-02/day-07-symmetric-vs-asymmetric.md
+        - "Day 08 — Certificates & PKI": week-02/day-08-certificates-pki.md
+        - "Day 09 — Certificate Lifecycle": week-02/day-09-certificate-lifecycle.md
+        - "Day 10 — Key Management": week-02/day-10-key-management.md
+        - "End-of-Week Review": week-02/review.w2.md
 
       - Week 03 — Data Protection & Resilience:
           - "Day 11 — Data States": week-03/day-11-data-states.md
