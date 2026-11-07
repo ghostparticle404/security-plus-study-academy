@@ -205,4 +205,44 @@
   outline-offset: 2px;
 }
 
+  
+/* ==========================================
+   SECURITY+ ACADEMY — DISTRACTION-FREE READING
+   ========================================== */
+
+/* Hide the default left navigation sidebar */
+.md-sidebar--primary {
+  display: none;
+}
+
+/* Hide the right-hand table of contents */
+.md-sidebar--secondary {
+  display: none;
+}
+
+/* Center the main content area */
+.md-main__inner {
+  justify-content: center;
+}
+
+/* Give lessons more room without making lines too long */
+.md-content {
+  max-width: 960px;
+  margin: 0 auto;
+  min-width: 0;
+  flex-grow: 1;
+}
+
+/* Use comfortable spacing for long lessons */
+.md-typeset {
+  line-height: 1.7;
+}
+
+/* Keep tables usable on smaller screens */
+.md-typeset__table {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+
 }
