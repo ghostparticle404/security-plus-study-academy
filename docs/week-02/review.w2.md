@@ -13,7 +13,7 @@ This optional review helps you evaluate your understanding of the five Week 02 t
 
 You can complete this review whether you studied all five lessons or skipped some based on your diagnostic results.
 
-**Haven't started the week yet?** Take the [Week 02 Diagnostic](00-diagnostic.md) to identify what you already know and which lessons to prioritize.
+**Haven't started the week yet?** Take the [Week 02 Diagnostic](00-diagnostic.w2.md) to identify what you already know and which lessons to prioritize.
 
 ### How to complete this review
 
