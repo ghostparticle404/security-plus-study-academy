@@ -57,12 +57,13 @@ nav:
 
   - Lessons:
       - Week 01 — Security Foundations:
+          - "Start Here: Diagnostic": week-01/00-diagnostic.md
           - "Day 01 — The CIA Triad": week-01/day-01-cia-triad.md
           - "Day 02 — Security Controls": week-01/day-02-security-controls.md
           - "Day 03 — Authentication & Authorization": week-01/day-03-authentication-authorization.md
           - "Day 04 — Audit Logs": week-01/day-04-audit-logs.md
           - "Day 05 — Non-repudiation & Digital Signatures": week-01/day-05-non-repudiation-digital-signatures.md
-          - "Optional Diagnostic & Review": week-01/review.w1.md
+          - "End-of-Week Review": week-01/review.w1.md
 
       - Week 02 — Cryptography & PKI:
           - "Day 06 — Hashing vs. Encryption": week-02/day-06-hashing-vs-encryption.md
