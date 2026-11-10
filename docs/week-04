@@ -1,0 +1,73 @@
+
+# Week 04 — Networking Fundamentals
+
+**Security+ Study Academy | Days 16–20**
+
+## Week Overview
+
+Welcome to Week 04!
+
+This week, we'll explore how networks communicate, how devices find one another, and how data travels from its source to its destination.
+
+You'll learn to interpret IP addresses, recognize common ports and protocols, troubleshoot essential network services, and follow packets through a network.
+
+These fundamentals are essential for understanding network security, analyzing traffic, and investigating cybersecurity incidents.
+
+## Learning Objectives
+
+By the end of Week 04, you will be able to:
+
+1. Explain the OSI and TCP/IP models, including encapsulation and decapsulation.
+2. Interpret IPv4 and IPv6 addresses, CIDR notation, and subnet ranges.
+3. Identify common network ports, protocols, and their secure alternatives.
+4. Explain how DNS, DHCP, and other essential network services operate.
+5. Describe routing, switching, ARP, and packet forwarding.
+6. Apply networking concepts to practical security and troubleshooting scenarios.
+
+## Weekly Lesson Plan
+
+| Day | Lesson | Learning Outcome | Prerequisite | Practical Application | Assessment Focus |
+|---|---|---|---|---|---|
+| **16** | [OSI and TCP/IP](day-16-osi-and-tcp-ip.md) | Trace encapsulation and protocol layers | Days 01–03 | Annotate a packet path | Layer identification |
+| **17** | [IP Addressing and Subnetting](day-17-ip-addressing-and-subnetting.md) | Interpret IPv4, IPv6, CIDR, and network ranges | Day 16 | Work through CIDR examples | Addressing decisions |
+| **18** | [Ports and Protocols](day-18-ports-and-protocols.md) | Associate services, ports, and secure alternatives | Day 16 | Inspect local network connections | Protocol selection |
+| **19** | [DNS, DHCP and Network Services](day-19-dns-dhcp-and-network-services.md) | Explain name resolution and address assignment | Days 17–18 | Analyze a DNS query | Service troubleshooting |
+| **20** | [Routing, Switching and Packet Flow](day-20-routing-switching-and-packet-flow.md) | Explain routing, switching, ARP, and packet forwarding | Days 16–19 | Inspect packets in Wireshark | Traffic-path reasoning |
+
+## Weekly Assessments
+
+### Pre-Week Diagnostic
+
+Before studying the lessons, complete the 20-question diagnostic assessment to identify what you already know.
+
+The diagnostic covers all five topics and helps you decide where to focus your study time.
+
+### End-of-Week Knowledge Check
+
+After completing Days 16–20, return to the weekly assessment to complete:
+
+- 20 post-check questions aligned with the diagnostic.
+- 5 cumulative review questions covering previous weeks.
+- Topic-level scorecards to identify strengths and weaknesses.
+- Answer explanations linking directly to relevant lesson sections.
+
+**Assessment file:** [Week 04 Review](review.w4.md)
+
+## Recommended Study Approach
+
+1. Complete the pre-week diagnostic.
+2. Review your topic-level results.
+3. Study Days 16–20, focusing on weaker areas.
+4. Complete the practical exercises in each lesson.
+5. Take the end-of-week knowledge check.
+6. Compare your diagnostic and post-check results.
+
+**Remember:** The goal isn't simply to memorize networking terminology. It's to understand how networks behave so you can recognize when something goes wrong.
+
+---
+
+© 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).
+
+All rights reserved. This original educational content is provided free of charge for personal, noncommercial study. Reproduction, redistribution, modification for republication, or commercial use requires prior written permission.
+
+Security+ is a trademark of CompTIA, Inc. This independent educational resource is not affiliated with or endorsed by CompTIA.
