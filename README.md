@@ -1,5 +1,4 @@
-
-# ⚡ Security+ Study Academy
+# ⚡ Security+ Study Academy ⚡
 
 ### Understand the technology. Think like a security professional.
 
@@ -11,7 +10,7 @@ Designed for beginners, aspiring cybersecurity professionals, and learners prepa
 
 ## 🚀 Start Learning
 
-**The first three weeks are available!**
+**Weeks 01–04 are available!**
 
 Security+ Study Academy is being released one week at a time, with new material planned every Saturday.
 
@@ -24,6 +23,7 @@ Or explore the available weeks directly:
 | **01** | Security Foundations | [Week 01 Diagnostic](docs/week-01/00-diagnostic.w1.md) |
 | **02** | Cryptography & Public Key Infrastructure | [Week 02 Diagnostic](docs/week-02/00-diagnostic.w2.md) |
 | **03** | Data Protection, Retention & Resilience | [Week 03 Diagnostic](docs/week-03/00-diagnostic.w3.md) |
+| **04** | Networking Fundamentals | [Week 04 Diagnostic](docs/week-04/diagnostic.w4.md) |
 
 **No registration, payment, or subscription required.**
 
@@ -83,9 +83,9 @@ Each review includes detailed explanations, targeted links to lesson sections, a
 
 | Milestone | Status |
 | --- | --- |
-| Weeks 01–03 | ✅ Complete |
-| Week 04 — Networking Foundations | 🔜 Planned for November 14, 2026 |
-| Weeks 05–16 | 📅 Weekly releases planned |
+| Weeks 01–04 | ✅ Complete |
+| Week 05 — Network Security | 🔜 Planned for November 21, 2026 |
+| Weeks 06–16 | 📅 Weekly releases planned |
 | Complete 80-lesson curriculum | 📅 In development |
 | Email-based learning program | 📬 Planned for 2027 |
 
@@ -122,7 +122,6 @@ The project also serves as an ongoing demonstration of cybersecurity education, 
 ---
 
 © 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).  
-For permitted uses and restrictions, see [Copyright & Terms of Use](COPYRIGHT.md).
 All rights reserved. This original educational content is provided free of charge for personal, noncommercial study. Reproduction, redistribution, modification for republication, or commercial use requires prior written permission.
 
 Security+ is a trademark of CompTIA, Inc. This independent educational resource is not affiliated with or endorsed by CompTIA.
