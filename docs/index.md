@@ -1,4 +1,3 @@
-
 # ⚡ Security+ Study Academy ⚡
 
 ### One day at a time. One concept at a time.
@@ -107,6 +106,7 @@ Or jump straight into the first lesson:
 - **[Week 01 — Security Foundations](week-01/00-diagnostic.w1.md)**
 - **[Week 02 — Cryptography & Public Key Infrastructure](week-02/00-diagnostic.w2.md)**
 - **[Week 03 — Data Protection, Retention & Resilience](week-03/00-diagnostic.w3.md)**
+- **[Week 04 — Networking Fundamentals](week-04/diagnostic.w4.md)**
 
 Every published week includes a diagnostic, five lessons, and an end-of-week review.
 
@@ -118,15 +118,15 @@ Every published week includes a diagnostic, five lessons, and an end-of-week rev
 
 Security+ Study Academy is a free, self-paced cybersecurity learning program being released one week at a time.
 
-**Weeks 01–03 are available now.** New material is scheduled for release every Saturday.
+**Weeks 01–04 are available now.** New material is scheduled for release every Saturday.
 
 | Week | Topics | Release Date | Status |
 | --- | --- | --- | --- |
 | **01** | Security Foundations | Available | ✅ Complete |
 | **02** | Cryptography & Public Key Infrastructure | Available | ✅ Complete |
 | **03** | Data Protection, Retention & Resilience | Available | ✅ Complete |
-| **04** | Networking Foundations | November 14, 2026 | 🔜 Coming Soon |
-| **05** | To be announced | November 21, 2026 | 🔜 Coming Soon |
+| **04** | Networking Fundamentals | Available | ✅ Complete |
+| **05** | Network Security | November 21, 2026 | 🔜 Coming Soon |
 | **06** | To be announced | November 28, 2026 | 🔜 Coming Soon |
 | **07–16** | Additional Security+ topics | Weekly thereafter | 📅 Planned |
 
