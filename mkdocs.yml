@@ -1,4 +1,3 @@
-
 site_name: Security+ Study Academy
 site_description: Free, structured cybersecurity education — one lesson at a time.
 site_author: ghostparticle404
@@ -83,8 +82,16 @@ nav:
           - "Day 15 — Business Continuity": week-03/day-15-business-continuity.md
           - "End-of-Week Review": week-03/review.w3.md
 
+      - Week 04 — Networking Fundamentals:
+          - "Start Here — Week 04 Diagnostic": week-04/diagnostic.w4.md
+          - "Day 16 — OSI and TCP/IP": week-04/day-16-osi-and-tcp-ip.md
+          - "Day 17 — IP Addressing and Subnetting": week-04/day-17-ip-addressing-and-subnetting.md
+          - "Day 18 — Ports and Protocols": week-04/day-18-ports-and-protocols.md
+          - "Day 19 — DNS, DHCP and Network Services": week-04/day-19-dns-dhcp-and-network-services.md
+          - "Day 20 — Routing, Switching and Packet Flow": week-04/day-20-routing-switching-and-packet-flow.md
+          - "End-of-Week Review": week-04/review.w4.md
+
       # Upcoming weeks — add navigation links when published
-      # Week 04 — Networking Fundamentals: Coming Soon
       # Week 05 — Network Security: Coming Soon
       # Week 06 — Threat Landscape and Social Engineering: Coming Soon
       # Week 07 — Vulnerabilities and Mitigations: Coming Soon
