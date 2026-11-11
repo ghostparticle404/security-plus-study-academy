@@ -367,6 +367,9 @@ D. It is always unencrypted.
 
 ### Knowledge check answers and explanations {#knowledge-check-answers}
 
+<details markdown="1">
+<summary>Reveal answers and explanations</summary>
+
 | Q | Answer | Explanation | Review |
 |---|---|---|---|
 | 1 | **B** | `53001` is the temporary source port; `443` is the destination service port. | [Address and port](#address-and-port) |
@@ -379,6 +382,8 @@ D. It is always unencrypted.
 | 8 | **D** | SNMPv3 supports authenticated and encrypted management when configured with privacy. | [Secure alternatives](#secure-alternatives) |
 | 9 | **B** | A port is not proof of application identity or trustworthiness; correlate additional evidence. | [Security scenarios](#security-scenarios) |
 | 10 | **C** | HTTP/3 uses QUIC, which commonly runs over UDP port 443 and implements security and reliability. | [UDP behavior](#udp-behavior) |
+
+</details>
 
 **Score:** ____ / 10
 
