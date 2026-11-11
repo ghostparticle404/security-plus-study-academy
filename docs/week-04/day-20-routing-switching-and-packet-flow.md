@@ -277,12 +277,15 @@ Alice (`192.168.10.25/24`, MAC AA) sends a TCP packet to `192.168.20.40:443` via
 - **Transport destination?** TCP 443.
 - **Can ARP resolve the remote server directly?** Not in this ordinary routed setup; Alice ARPs for the local gateway.
 
-### Lab answers
+<details markdown="1">
+<summary>Reveal lab answers</summary>
 
 1. **No.** Ethernet delivers to the next hop, while IP identifies the final destination.
 2. **No.** ARP is not TCP or UDP and has no transport-layer ports.
 3. **No.** A router builds a new Layer 2 frame on the outgoing link.
 4. **No.** A capture generally shows only traffic visible at its observation point; capturing both sides requires suitable access or multiple captures.
+
+</details>
 
 ## 9. Security scenarios: Choose the right layer
 
@@ -312,66 +315,67 @@ Alice (`192.168.10.25/24`, MAC AA) sends a TCP packet to `192.168.20.40:443` via
 Choose the **best** answer. Try the questions before consulting the answer key.
 
 **1. A switch receives a unicast Ethernet frame whose destination MAC is not in its forwarding table. What will it typically do?**
-A. Drop every unknown unicast frame by definition
-B. Flood the frame to other eligible ports in the same VLAN
-C. Route the frame to the internet
+A. Drop every unknown unicast frame by definition  
+B. Flood the frame to other eligible ports in the same VLAN  
+C. Route the frame to the internet  
 D. Convert it into an ARP reply
 
 **2. A workstation at `192.168.10.25/24` needs to send a packet to `192.168.20.40`. Which MAC address should it normally use as the Ethernet destination?**
-A. The remote server's MAC
-B. The broadcast MAC
-C. The local default gateway's MAC
+A. The remote server's MAC  
+B. The broadcast MAC  
+C. The local default gateway's MAC  
 D. Its own MAC
 
 **3. Which protocol resolves an on-link IPv4 address to a MAC address?**
-A. DNS
-B. ARP
-C. DHCP
+A. DNS  
+B. ARP  
+C. DHCP  
 D. NTP
 
 **4. Which mechanism replaces ARP's neighbor-resolution role in IPv6?**
-A. ICMPv6 Neighbor Discovery
-B. TCP three-way handshake
-C. DNSSEC
+A. ICMPv6 Neighbor Discovery  
+B. TCP three-way handshake  
+C. DNSSEC  
 D. OSPF
 
 **5. A router has matching routes `10.0.0.0/8`, `10.20.0.0/16`, and `10.20.30.0/24`. Which route wins for `10.20.30.45`?**
-A. `/8` because it covers the most addresses
-B. `/16` because it is in the middle
-C. `/24` because it is the longest matching prefix
+A. `/8` because it covers the most addresses  
+B. `/16` because it is in the middle  
+C. `/24` because it is the longest matching prefix  
 D. None; the router must use the default route
 
 **6. What normally changes when a router forwards an IPv4 packet without NAT?**
-A. The IP destination becomes the router's IP
-B. The Ethernet source/destination MAC addresses and IPv4 TTL
-C. The TCP destination port always becomes 80
+A. The IP destination becomes the router's IP  
+B. The Ethernet source/destination MAC addresses and IPv4 TTL  
+C. The TCP destination port always becomes 80  
 D. The source and destination IP addresses both change
 
 **7. What is the main purpose of STP/RSTP in a switched network?**
-A. Encrypt Ethernet frames
-B. Assign IPv4 addresses
-C. Prevent Layer 2 forwarding loops
+A. Encrypt Ethernet frames  
+B. Assign IPv4 addresses  
+C. Prevent Layer 2 forwarding loops  
 D. Resolve domain names
 
 **8. Which feature commonly carries traffic for multiple VLANs between switches?**
-A. An 802.1Q trunk
-B. A DNS MX record
-C. An ARP cache entry
+A. An 802.1Q trunk  
+B. A DNS MX record  
+C. An ARP cache entry  
 D. A default IPv4 route
 
 **9. Which control is most directly associated with checking ARP messages against trusted bindings?**
-A. DNSSEC
-B. Dynamic ARP Inspection
-C. NTP authentication
+A. DNSSEC  
+B. Dynamic ARP Inspection  
+C. NTP authentication  
 D. TLS certificate validation
 
 **10. A traceroute displays `* * *` at one intermediate hop, but later hops respond. What is the best conclusion?**
-A. The network is definitely compromised
-B. The packet could not have reached any later hop
-C. The intermediate device may not answer probes; traffic can still pass through
+A. The network is definitely compromised  
+B. The packet could not have reached any later hop  
+C. The intermediate device may not answer probes; traffic can still pass through  
 D. The DNS server has failed
 
-### Answer key and explanations
+<details markdown="1">
+<summary>Reveal knowledge check answers and explanations</summary>
 
 | Q | Answer | Explanation |
 |---|---|---|
@@ -385,6 +389,8 @@ D. The DNS server has failed
 | 8 | **A** | 802.1Q trunks commonly transport multiple VLANs. Review [VLANs](#3-vlans-one-switch-multiple-logical-networks). |
 | 9 | **B** | DAI can validate ARP traffic against trusted bindings. Review [ARP security](#arp-cache-and-security). |
 | 10 | **C** | Missing traceroute replies do not necessarily indicate packet loss at that hop. Review [traceroute](#traceroute-and-ttl). |
+
+</details>
 
 ## 12. Exam-day quick reference
 
