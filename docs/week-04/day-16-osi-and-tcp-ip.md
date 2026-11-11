@@ -255,7 +255,7 @@ Copy and complete this worksheet in your notes:
 
 **Optional Wireshark observation:** On a device and network you are authorized to capture, inspect one of your own TCP conversations. Expand **Frame**, **Ethernet II** (or another link-layer header), **Internet Protocol**, and **Transmission Control Protocol**. Locate the MAC addresses, IP addresses, and ports. The precise capture layers depend on the interface and capture method; loopback captures may not show Ethernet headers.
 
-??? success "Exercise answer key"
+???+ success "Exercise answer key"
 
     1. **Layer 7 — Application.**
     2. **TCP.**
@@ -330,7 +330,7 @@ C. The application changed from HTTPS to HTTP
 D. TCP cannot cross routers  
 
 
-??? success "Knowledge check answers and explanations"
+???+ success "Knowledge check answers and explanations"
 
     1. **B — Network.** Layer 3 provides logical addressing and routing. See [Layer 3](#network-layer).
     2. **C — Frame.** Ethernet carries link-layer frames. See [Encapsulation](#encapsulation).
