@@ -256,15 +256,16 @@ Copy and complete this worksheet in your notes:
 **Optional Wireshark observation:** On a device and network you are authorized to capture, inspect one of your own TCP conversations. Expand **Frame**, **Ethernet II** (or another link-layer header), **Internet Protocol**, and **Transmission Control Protocol**. Locate the MAC addresses, IP addresses, and ports. The precise capture layers depend on the interface and capture method; loopback captures may not show Ethernet headers.
 
 ??? success "Exercise answer key"
-    1. Layer 7 — Application.
-    2. TCP.
-    3. `443`.
-    4. `192.168.10.50`.
-    5. `198.51.100.20`.
-    6. The local default gateway's MAC address (or the next-hop link-layer address appropriate to the link).
-    7. A frame.
-    8. The router processes the incoming frame and creates new framing for the outgoing link.
-    9. IPv4 **Time to Live (TTL)**.
+
+    1. **Layer 7 — Application.**
+    2. **TCP.**
+    3. **443.**
+    4. **192.168.10.50.**
+    5. **198.51.100.20.**
+    6. **The local default gateway's MAC address** (or the next-hop link-layer address appropriate to the link).
+    7. **A frame.**
+    8. **The router processes the incoming frame and creates new framing for the outgoing link.**
+    9. **IPv4 Time to Live (TTL).**
 
 ## 10. Knowledge check {#knowledge-check}
 
