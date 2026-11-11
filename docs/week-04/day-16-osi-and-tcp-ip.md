@@ -269,64 +269,64 @@ Copy and complete this worksheet in your notes:
 ## 10. Knowledge check {#knowledge-check}
 
 **1.** Which OSI layer is primarily responsible for routing IP packets between networks?
-A. Data Link
-B. Network
-C. Transport
-D. Application
+A. Data Link  
+B. Network  
+C. Transport  
+D. Application  
 
 **2.** Which PDU is most closely associated with Ethernet at Layer 2?
-A. Segment
-B. Packet
-C. Frame
-D. Datagram
+A. Segment  
+B. Packet  
+C. Frame  
+D. Datagram  
 
 **3.** A switch forwards Ethernet traffic using MAC addresses. Which layer is most directly involved?
-A. Physical
-B. Data Link
-C. Network
-D. Session
+A. Physical  
+B. Data Link  
+C. Network  
+D. Session  
 
 **4.** Which pairing is correct?
-A. TCP — Internet layer
-B. IP — Transport layer
-C. HTTP — Application layer
-D. Ethernet — Session layer
+A. TCP — Internet layer  
+B. IP — Transport layer  
+C. HTTP — Application layer  
+D. Ethernet — Session layer  
 
 **5.** A laptop sends a packet to a server on a different network. Which MAC address is typically placed in the outgoing frame's destination field?
-A. The remote server's MAC address
-B. The default gateway's MAC address
-C. The DNS server's MAC address
-D. The laptop's own MAC address
+A. The remote server's MAC address  
+B. The default gateway's MAC address  
+C. The DNS server's MAC address  
+D. The laptop's own MAC address  
 
 **6.** Which statement best describes encapsulation?
-A. Each router encrypts the entire application payload
-B. The receiver adds headers while delivering the data upward
-C. Lower layers add protocol information as data moves toward transmission
-D. Every packet always uses TCP
+A. Each router encrypts the entire application payload  
+B. The receiver adds headers while delivering the data upward  
+C. Lower layers add protocol information as data moves toward transmission  
+D. Every packet always uses TCP  
 
 **7.** Which value normally decreases when an IPv4 packet passes through a router?
-A. Destination TCP port
-B. Source IP address
-C. TTL
-D. HTTP method
+A. Destination TCP port  
+B. Source IP address  
+C. TTL  
+D. HTTP method  
 
 **8.** Which statement about TCP/IP and OSI is most accurate?
-A. Both always contain exactly seven layers
-B. TCP/IP's application layer combines functions described by OSI Layers 5–7
-C. TCP/IP has no transport layer
-D. Ethernet is an application-layer protocol
+A. Both always contain exactly seven layers  
+B. TCP/IP's application layer combines functions described by OSI Layers 5–7  
+C. TCP/IP has no transport layer  
+D. Ethernet is an application-layer protocol  
 
 **9.** A firewall blocks inbound TCP connections to port `22`. Which layer information is it using most directly to identify that service port?
-A. Physical
-B. Data Link
-C. Transport
-D. Presentation
+A. Physical  
+B. Data Link  
+C. Transport  
+D. Presentation  
 
 **10.** Two captures of the same routed connection show different Ethernet MAC addresses but the same destination IP. What is the best explanation?
-A. The data must have been compromised
-B. MAC addresses are rewritten for each local link during routing
-C. The application changed from HTTPS to HTTP
-D. TCP cannot cross routers
+A. The data must have been compromised  
+B. MAC addresses are rewritten for each local link during routing  
+C. The application changed from HTTPS to HTTP  
+D. TCP cannot cross routers  
 
 ??? success "Knowledge check answers and explanations"
     1. **B — Network.** Layer 3 provides logical addressing and routing. See [Layer 3](#network-layer).
