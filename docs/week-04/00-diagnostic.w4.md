@@ -12,132 +12,132 @@
 ## Questions 1–4: Day 16 — OSI and TCP/IP
 
 **1. A switch forwards Ethernet frames using destination MAC addresses. Which OSI layer is most directly involved?**
-A. Physical
-B. Data Link
-C. Network
-D. Transport
+A. Physical  
+B. Data Link  
+C. Network  
+D. Transport  
 
 **2. A technician captures a TCP segment being wrapped with an IP header before transmission. What is this process called?**
-A. Decapsulation
-B. Name resolution
-C. Encapsulation
-D. Port translation
+A. Decapsulation  
+B. Name resolution  
+C. Encapsulation  
+D. Port translation  
 
 **3. A packet travels through a router between two Ethernet networks. Which description is most accurate?**
-A. The original Ethernet frame remains unchanged end to end.
-B. The router changes the destination TCP port for every packet.
-C. The router replaces the application payload with a new one.
-D. The router forwards the IP packet in a new link-layer frame.
+A. The original Ethernet frame remains unchanged end to end.  
+B. The router changes the destination TCP port for every packet.  
+C. The router replaces the application payload with a new one.  
+D. The router forwards the IP packet in a new link-layer frame.  
 
 **4. A network cable is disconnected. Which OSI layer should a troubleshooter investigate first?**
-A. Physical
-B. Session
-C. Application
-D. Presentation
+A. Physical  
+B. Session  
+C. Application  
+D. Presentation  
 
 ## Questions 5–8: Day 17 — IP Addressing and Subnetting
 
 **5. Which address is within the RFC 1918 private IPv4 ranges?**
-A. 172.32.5.10
-B. 100.64.5.10
-C. 172.20.5.10
-D. 198.51.100.10
+A. 172.32.5.10  
+B. 100.64.5.10  
+C. 172.20.5.10  
+D. 198.51.100.10  
 
 **6. A host uses 192.168.40.70/26. What is its subnet network address?**
-A. 192.168.40.0
-B. 192.168.40.64
-C. 192.168.40.70
-D. 192.168.40.128
+A. 192.168.40.0  
+B. 192.168.40.64  
+C. 192.168.40.70  
+D. 192.168.40.128  
 
 **7. Which IPv6 address is a link-local unicast address?**
-A. 2001:db8::7
-B. ff02::1
-C. ::1
-D. fe80::7
+A. 2001:db8::7  
+B. ff02::1  
+C. ::1  
+D. fe80::7  
 
 **8. A workstation at 192.168.8.25/24 must reach 192.168.9.30. What does it normally need to send traffic beyond its local subnet?**
-A. A default gateway
-B. A larger source port
-C. A DNS TXT record
-D. A different loopback address
+A. A default gateway  
+B. A larger source port  
+C. A DNS TXT record  
+D. A different loopback address  
 
 ## Questions 9–12: Day 18 — Ports and Protocols
 
 **9. An administrator needs encrypted command-line access to a Linux server. Which destination port and protocol is the usual choice?**
-A. TCP 23 / Telnet
-B. TCP 22 / SSH
-C. UDP 69 / TFTP
-D. TCP 80 / HTTP
+A. TCP 23 / Telnet  
+B. TCP 22 / SSH  
+C. UDP 69 / TFTP  
+D. TCP 80 / HTTP  
 
 **10. A packet capture shows a client using UDP destination port 53. Which service is the most likely target?**
-A. NTP
-B. SNMP
-C. DNS
-D. SMB
+A. NTP  
+B. SNMP  
+C. DNS  
+D. SMB  
 
 **11. A web application uses HTTP/3 over QUIC. Which transport/port combination should a firewall generally allow for that service?**
-A. UDP 443
-B. TCP 23
-C. UDP 161
-D. TCP 110
+A. UDP 443  
+B. TCP 23  
+C. UDP 161  
+D. TCP 110  
 
 **12. A security analyst sees a TCP connection in ESTABLISHED state. What does that most directly indicate?**
-A. The remote host is guaranteed trustworthy.
-B. The application payload is encrypted.
-C. The server has no open ports.
-D. A TCP connection has been established between endpoints.
+A. The remote host is guaranteed trustworthy.  
+B. The application payload is encrypted.  
+C. The server has no open ports.  
+D. A TCP connection has been established between endpoints.  
 
 ## Questions 13–16: Day 19 — DNS, DHCP and Network Services
 
 **13. A user can reach a website by IP address but not by its hostname. Which service should be checked first?**
-A. DHCP lease duration
-B. DNS resolution
-C. NTP synchronization
-D. SNMP traps
+A. DHCP lease duration  
+B. DNS resolution  
+C. NTP synchronization  
+D. SNMP traps  
 
 **14. Which DNS record type maps a hostname to an IPv6 address?**
-A. MX
-B. PTR
-C. AAAA
-D. A
+A. MX  
+B. PTR  
+C. AAAA  
+D. A  
 
 **15. A new DHCP client has broadcast a Discover message. What normally comes next in the DHCPv4 DORA exchange?**
-A. Offer
-B. Acknowledge
-C. Release
-D. Request
+A. Offer  
+B. Acknowledge  
+C. Release  
+D. Request  
 
 **16. A DNS lookup returns NXDOMAIN. What does that response most directly mean?**
-A. The resolver provided a valid IPv4 address.
-B. The client received a DHCP address.
-C. The DNS answer was encrypted.
-D. The queried domain name does not exist according to the response.
+A. The resolver provided a valid IPv4 address.  
+B. The client received a DHCP address.  
+C. The DNS answer was encrypted.  
+D. The queried domain name does not exist according to the response.  
 
 ## Questions 17–20: Day 20 — Routing, Switching and Packet Flow
 
 **17. A switch receives a unicast Ethernet frame for a destination MAC address already in its MAC table. What does it normally do?**
-A. Flood the frame to every VLAN.
-B. Forward it through the associated port.
-C. Send it to the default gateway regardless of subnet.
-D. Replace its destination IP address.
+A. Flood the frame to every VLAN.  
+B. Forward it through the associated port.  
+C. Send it to the default gateway regardless of subnet.  
+D. Replace its destination IP address.  
 
 **18. A host needs the MAC address of its IPv4 default gateway on the local network. Which protocol is used?**
-A. DNS
-B. BGP
-C. ARP
-D. DHCP
+A. DNS  
+B. BGP  
+C. ARP  
+D. DHCP  
 
 **19. A router has routes for 10.0.0.0/8, 10.20.0.0/16, and 10.20.30.0/24. Which route is selected for 10.20.30.55?**
-A. 10.20.30.0/24
-B. 10.20.0.0/16
-C. 10.0.0.0/8
-D. 0.0.0.0/0
+A. 10.20.30.0/24  
+B. 10.20.0.0/16  
+C. 10.0.0.0/8  
+D. 0.0.0.0/0  
 
 **20. Two hosts are assigned to different VLANs on the same switch. What is normally required for them to exchange IP traffic?**
-A. Only a larger Ethernet frame
-B. A DNS CNAME record
-C. Disabling MAC learning
-D. Inter-VLAN routing
+A. Only a larger Ethernet frame  
+B. A DNS CNAME record  
+C. Disabling MAC learning  
+D. Inter-VLAN routing  
 
 ## Record your answers
 
