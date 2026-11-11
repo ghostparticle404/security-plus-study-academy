@@ -22,7 +22,7 @@ By the end of this lesson, you should be able to:
 6. Explain how addressing and subnetting support network segmentation and security.
 7. Inspect local IP configuration without changing any settings.
 
-## 1. Why do IP addresses matter? {#why-ip-addresses-matter}
+## 1. Why do IP addresses matter? 
 
 Imagine a large apartment building. The building's street address gets a delivery truck to the right property; the apartment number tells the courier which door to visit. Networks need a similar hierarchy.
 
@@ -35,7 +35,7 @@ Recall [Day 16](day-16-osi-and-tcp-ip.md#osi-layers): IP operates at **OSI Layer
 
 **Security connection:** If an analyst sees traffic from `192.168.50.23` to `192.168.60.10`, knowing the subnet boundaries helps identify whether that communication crosses a routed security boundary.
 
-## 2. IPv4: Four octets, 32 bits {#ipv4-basics}
+## 2. IPv4: Four octets, 32 bits 
 
 An IPv4 address has **32 bits**, conventionally written as four decimal **octets** separated by dots:
 
@@ -57,7 +57,7 @@ Example 192:  1   1   0   0   0   0   0   0
 
 You do **not** need to convert every address to binary by hand. But understanding the bit positions makes CIDR calculations much less mysterious.
 
-### Public and private IPv4 {#public-private-ipv4}
+### Public and private IPv4 
 
 **Private IPv4 addresses** are intended for internal networks and are not globally routed on the public Internet:
 
@@ -71,7 +71,7 @@ You do **not** need to convert every address to binary by hand. But understandin
 
 A **public IPv4 address** may be globally routable, provided it is actually allocated and not part of another reserved or special-use range. Not every address outside RFC 1918 is usable on the public Internet.
 
-### Other IPv4 addresses worth recognizing {#special-ipv4}
+### Other IPv4 addresses worth recognizing 
 
 | Address or range | Meaning |
 |---|---|
@@ -83,7 +83,7 @@ A **public IPv4 address** may be globally routable, provided it is actually allo
 
 **Troubleshooting clue:** A workstation unexpectedly using `169.254.x.x` may have failed to obtain an address from DHCP. This is a clue, not proof: link-local addressing can also be intentional.
 
-## 3. IPv6: More space, different conventions {#ipv6-basics}
+## 3. IPv6: More space, different conventions 
 
 IPv6 addresses contain **128 bits** and are written as eight groups of hexadecimal digits (0–9 and a–f):
 
@@ -104,7 +104,7 @@ Thus the example becomes:
 
 `2001:db8::/32` is reserved for **documentation**, so it is safe for textbook examples.
 
-### Common IPv6 address categories {#ipv6-address-types}
+### Common IPv6 address categories 
 
 | IPv6 address or prefix | Purpose |
 |---|---|
@@ -117,7 +117,7 @@ Thus the example becomes:
 
 IPv6 has **no broadcast**. It uses multicast and other mechanisms instead. Neighbor Discovery Protocol (NDP), which uses ICMPv6, replaces several IPv4-era local discovery functions, including ARP's address-resolution role.
 
-### IPv4 vs. IPv6 at a glance {#ipv4-vs-ipv6}
+### IPv4 vs. IPv6 at a glance 
 
 | Feature | IPv4 | IPv6 |
 |---|---|---|
@@ -131,7 +131,7 @@ IPv6 has **no broadcast**. It uses multicast and other mechanisms instead. Neigh
 
 **Exam caution:** IPv6 support for IPsec does **not** mean every IPv6 connection is automatically encrypted. Security depends on configuration and the protocols actually used.
 
-## 4. The network and host portions {#network-host-portions}
+## 4. The network and host portions 
 
 Consider `192.168.10.42/24`:
 
@@ -160,7 +160,7 @@ Why subtract two? Conventionally, the all-zero host value is the **network addre
 
 **Important exceptions:** `/31` networks can support two addresses on point-to-point links (RFC 3021), and a `/32` identifies one IPv4 address. Do not blindly apply the “minus two” rule to those cases.
 
-## 5. CIDR prefixes and subnet masks {#cidr-and-masks}
+## 5. CIDR prefixes and subnet masks 
 
 An IPv4 **subnet mask** is a 32-bit pattern of leading `1` bits followed by `0` bits. Its decimal form tells you which address bits represent the network.
 
@@ -185,7 +185,7 @@ An IPv4 **subnet mask** is a 32-bit pattern of leading `1` bits followed by `0` 
 
 **Pattern to notice:** Increasing a prefix by one bit **halves** the address block. A `/26` is half of a `/25`; a `/27` is half of a `/26`.
 
-### The block-size shortcut {#block-size-shortcut}
+### The block-size shortcut 
 
 For a subnet boundary within an octet, subtract the mask's value in that octet from **256**:
 
@@ -202,7 +202,7 @@ Therefore the last-octet network boundaries are:
 
 Each `/26` block contains 64 addresses. The boundary is the first address of a block, not its first usable host.
 
-## 6. Calculate a subnet, step by step {#subnet-calculation}
+## 6. Calculate a subnet, step by step 
 
 **Question:** What network contains `192.168.10.77/26`?
 
@@ -225,7 +225,7 @@ Total addresses:  64
 Usable hosts:     62
 ```
 
-### A second example: `/27` {#subnet-example-27}
+### A second example: `/27` 
 
 **Question:** Find the subnet for `10.5.8.142/27`.
 
@@ -236,7 +236,7 @@ Usable hosts:     62
 
 **Answer:** Network `10.5.8.128`, broadcast `10.5.8.159`, usable range `10.5.8.129–10.5.8.158`, with **30** typical usable host addresses.
 
-### A third example: boundaries in the third octet {#subnet-example-23}
+### A third example: boundaries in the third octet 
 
 **Question:** Find the network for `172.20.5.200/23`.
 
@@ -255,7 +255,7 @@ Typical hosts:    510
 
 **Exam trap:** Not every subnet boundary is in the fourth octet. Read the mask before doing arithmetic.
 
-## 7. Are two addresses on the same subnet? {#same-subnet-decisions}
+## 7. Are two addresses on the same subnet? 
 
 For ordinary IPv4 unicast communication, a host uses its configured prefix to decide whether the destination is **on-link** or should be sent toward a router. The comparison is based on the network prefix, not simply the first three decimal octets.
 
@@ -268,7 +268,7 @@ For ordinary IPv4 unicast communication, a host uses its configured prefix to de
 
 **Security implication:** Separate subnets commonly communicate through routers or Layer 3 switches, where administrators can apply access control lists (ACLs), firewall rules, and monitoring. **A subnet by itself is not a firewall.** Proper segmentation requires enforcement, not just different address ranges.
 
-## 8. NAT, gateways, and segmentation {#nat-gateways-segmentation}
+## 8. NAT, gateways, and segmentation 
 
 A **default gateway** is the next-hop router a host normally uses for destinations that are not on its local network and for which no more-specific route exists.
 
@@ -282,7 +282,7 @@ Phone  192.168.10.43 ──┘   public IPv4
 
 NAT conserves IPv4 addresses, but **NAT is not a substitute for a firewall** or a comprehensive security policy.
 
-### Segmentation scenario {#segmentation-scenario}
+### Segmentation scenario 
 
 A small law firm has three groups:
 
@@ -296,11 +296,11 @@ The addresses make the groups distinguishable. VLANs, routing policy, firewall r
 
 **Ask yourself:** If a guest laptop can still reach the case-file server, has segmentation achieved its security goal? **No.** Different subnet labels alone do not prevent access.
 
-## 9. Practical exercise — Work through CIDR examples {#practical-exercise}
+## 9. Practical exercise — Work through CIDR examples 
 
 **Goal:** Calculate network boundaries and make safe addressing decisions. No special software or administrator privileges required.
 
-### Part A — Pencil-and-paper subnetting {#exercise-part-a}
+### Part A — Pencil-and-paper subnetting 
 
 For each address, determine the network address, broadcast address, typical usable-host range, and number of usable hosts.
 
@@ -313,7 +313,7 @@ Then decide:
 4. Are `192.168.50.20/25` and `192.168.50.140/25` in the same subnet?
 5. A department needs **50 usable IPv4 host addresses** in a conventional subnet. Which is the smallest suitable prefix: `/27`, `/26`, or `/25`?
 
-### Part B — Inspect your own configuration {#exercise-part-b}
+### Part B — Inspect your own configuration 
 
 Use **one** of these read-only commands on a device you control:
 
@@ -343,7 +343,7 @@ Find an active interface and record **locally**:
 
 **Privacy note:** Do not post your full interface output publicly. It can include device identifiers, local addresses, and network configuration details. Do not modify your network settings for this exercise.
 
-### Part C — Security decision {#exercise-part-c}
+### Part C — Security decision 
 
 A guest workstation uses `192.168.20.45/24`. A confidential file server uses `192.168.30.10/24`.
 
@@ -351,7 +351,7 @@ A guest workstation uses `192.168.20.45/24`. A confidential file server uses `19
 - What kind of device normally forwards traffic between them?
 - What **additional control** is needed if guests must never reach the file server?
 
-### Practical exercise answer key {#practical-answer-key}
+### Practical exercise answer key 
 
 <details markdown="1">
 <summary>Reveal practical exercise answers</summary>
@@ -369,7 +369,7 @@ For Part B, your answers depend on your own device and network.
 
 </details>
 
-## 10. Knowledge check {#knowledge-check}
+## 10. Knowledge check 
 
 Choose the **single best answer** for each question. Try answering before opening the explanations.
 
@@ -443,7 +443,7 @@ B. They cannot communicate under any circumstances.
 C. They are isolated without needing security rules.  
 D. Routing and enforced security policy determine whether communication is permitted.  
 
-### Knowledge check answers and explanations {#knowledge-check-answers}
+### Knowledge check answers and explanations 
 
 <details markdown="1">
 <summary>Reveal knowledge check answers and explanations</summary>
@@ -469,7 +469,7 @@ D. Routing and enforced security policy determine whether communication is permi
 - **7–8:** Good progress. Revisit the subnet examples you missed.
 - **0–6:** Review [CIDR and masks](#cidr-and-masks), then redo the [practical exercise](#practical-exercise).
 
-## 11. Exam-day quick reference {#exam-quick-reference}
+## 11. Exam-day quick reference 
 
 | See this clue | Think this |
 |---|---|
