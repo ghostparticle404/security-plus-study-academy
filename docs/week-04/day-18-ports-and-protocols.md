@@ -21,7 +21,7 @@ By the end of this lesson, you should be able to:
 5. Interpret listening sockets and established connections on your own device.
 6. Explain why open ports, encryption, and network exposure matter to defenders.
 
-## 1. The apartment-building analogy {#address-and-port}
+## 1. The apartment-building analogy 
 
 Imagine a building with one street address and many apartments. The **IP address** identifies the building; the **port** identifies the apartment door. The **transport protocol** determines the rules for delivering a message.
 
@@ -41,7 +41,7 @@ The addresses above are documentation examples, not real destinations for an exe
 
 Recall [Day 16](day-16-osi-and-tcp-ip.md#osi-layers): TCP and UDP are usually discussed at **OSI Layer 4 (Transport)**. IP belongs to Layer 3. HTTP and DNS are application-layer protocols. **A port number is not an IP address or a protocol by itself.**
 
-## 2. What is a port? {#port-basics}
+## 2. What is a port? 
 
 TCP and UDP port numbers are **16-bit integers**, from `0` to `65535`. TCP port 53 and UDP port 53 are distinct transport endpoints.
 
@@ -61,7 +61,7 @@ Laptop                         Web server
 
 **Security connection:** Attackers may look for accessible listening services. Defenders limit exposure using host firewalls, network firewalls, access controls, secure configurations, and service hardening. An open port alone does **not** prove a vulnerability.
 
-## 3. TCP versus UDP {#tcp-versus-udp}
+## 3. TCP versus UDP 
 
 | Characteristic | TCP | UDP |
 |---|---|---|
@@ -72,7 +72,7 @@ Laptop                         Web server
 | Typical uses | HTTPS over TCP, SSH, SMTP, file transfers | Traditional DNS queries, DHCP, voice/video, QUIC |
 | Security by default | **Not encrypted by itself** | **Not encrypted by itself** |
 
-### TCP: The tracked delivery {#tcp-handshake}
+### TCP: The tracked delivery 
 
 TCP starts a typical connection with:
 
@@ -84,13 +84,13 @@ Client -> Server: ACK
 
 Afterward, TCP manages sequence numbers, acknowledgments, flow control, and retransmission. TCP reliability is useful when missing or out-of-order bytes would break an application. **TCP does not provide confidentiality or authentication on its own**; protocols such as TLS supply those protections.
 
-### UDP: The fast postcard {#udp-behavior}
+### UDP: The fast postcard 
 
 UDP sends datagrams without a transport-layer connection setup or built-in retransmission. This makes it useful for low-latency applications and for protocols that implement their own reliability when needed.
 
 **Exam trap:** UDP does not mean “always faster” or “always insecure.” **QUIC**, used by HTTP/3, runs over UDP and incorporates encryption and transport reliability mechanisms. DNS can use **UDP or TCP**, and encrypted DNS can use additional transports.
 
-## 4. Ports and protocols to recognize {#common-ports}
+## 4. Ports and protocols to recognize 
 
 The following are **common defaults**, not hard rules. Applications can use nonstandard ports, and the actual service must be verified from configuration or traffic.
 
@@ -134,7 +134,7 @@ The following are **common defaults**, not hard rules. Applications can use nons
 
 **Do not memorize blindly:** `443` usually suggests HTTPS, but an attacker can run a different application there. Conversely, HTTPS may run on a nonstandard port such as `8443`.
 
-### Service families that exam questions mix up {#service-families}
+### Service families that exam questions mix up 
 
 - **Web:** HTTP `80/TCP`; HTTPS `443/TCP`, or HTTP/3 over `443/UDP`.
 - **Remote access:** Telnet `23/TCP` is plaintext; SSH `22/TCP` is the typical encrypted alternative. RDP `3389` is a different remote desktop protocol, not a replacement for SSH.
@@ -143,7 +143,7 @@ The following are **common defaults**, not hard rules. Applications can use nons
 - **Directory and identity:** LDAP `389`, LDAPS `636`, Kerberos `88`, RADIUS `1812/1813`.
 - **Infrastructure:** DNS `53`, DHCPv4 `67/68`, NTP `123`, SNMP `161/162`.
 
-## 5. Choosing secure alternatives {#secure-alternatives}
+## 5. Choosing secure alternatives 
 
 | Less secure or legacy option | Prefer, when supported | Important qualification |
 |---|---|---|
@@ -161,7 +161,7 @@ The following are **common defaults**, not hard rules. Applications can use nons
 
 **Security+ reasoning:** The question is often not “Which port is encrypted?” but **“Which protocol and configuration best protects the communication?”** Port `443` alone does not prove TLS is enabled or correctly configured.
 
-## 6. Reading connection states {#connection-states}
+## 6. Reading connection states 
 
 A **socket** is an operating-system endpoint used by a network application. A listening TCP socket waits for incoming connection attempts; an established TCP connection has completed its handshake.
 
@@ -174,7 +174,7 @@ A **socket** is an operating-system endpoint used by a network application. A li
 
 UDP is connectionless at the transport layer, so UDP sockets generally do **not** have the same TCP connection-state lifecycle. Tools may display UDP endpoints without a `LISTEN` state.
 
-### Example: Interpret a socket listing {#socket-example}
+### Example: Interpret a socket listing 
 
 ```text
 Proto  Local Address          Foreign Address        State
@@ -191,13 +191,13 @@ What can we infer?
 
 **Critical distinction:** A service can be **listening locally** yet **not reachable remotely**, due to its bind address, firewall policy, network routing, or other controls.
 
-## 7. Practical lab: Inspect your own connections {#practical-lab}
+## 7. Practical lab: Inspect your own connections 
 
 **Goal:** Identify local listening ports, active connections, and possible services **without scanning anyone else's network**.
 
 **Safety and scope:** Run these read-only commands on a computer you own or are authorized to administer. Do not disable a firewall or install software for this lesson. Results will vary by OS and current activity.
 
-### macOS (including Intel Macs) {#macos-commands}
+### macOS (including Intel Macs) 
 
 Open Terminal and run **one command at a time**:
 
@@ -215,7 +215,7 @@ lsof -nP -iTCP -sTCP:ESTABLISHED
 
 If you receive a permissions error or see incomplete results, some processes may require elevated permissions; **do not escalate privileges for this exercise**.
 
-### Windows (PowerShell) {#windows-commands}
+### Windows (PowerShell) 
 
 ```powershell
 Get-NetTCPConnection -State Listen
@@ -227,7 +227,7 @@ Get-NetTCPConnection -State Established
 
 Look at `LocalAddress`, `LocalPort`, `RemoteAddress`, `RemotePort`, and `State`. Some process metadata may require administrator rights; that is not necessary here.
 
-### Linux {#linux-commands}
+### Linux 
 
 ```bash
 ss -ltn
@@ -239,7 +239,7 @@ ss -tn state established
 
 If `ss` is unavailable, use your distribution's existing network tools rather than installing packages solely for this exercise.
 
-### Record your observations {#lab-worksheet}
+### Record your observations 
 
 Fill in **three** rows from your own results. You may redact public IP addresses before sharing notes.
 
@@ -258,7 +258,7 @@ Fill in **three** rows from your own results. You may redact public IP addresses
 
 **Success criterion:** You can identify a local endpoint, distinguish listening from established TCP sockets, and explain why a port number is only a starting hypothesis.
 
-## 8. Security scenarios: Choose the right protocol {#security-scenarios}
+## 8. Security scenarios: Choose the right protocol 
 
 ### Scenario A: Remote server administration
 
@@ -291,7 +291,7 @@ An endpoint makes an unexpected connection to an unfamiliar IP on `443/TCP`. You
 - **“Any high port is malicious.”** False. Temporary client ports are normal.
 - **“STARTTLS means plaintext forever.”** False. Correctly negotiated and validated STARTTLS encrypts subsequent communication.
 
-## 10. Day 18 knowledge check {#knowledge-check}
+## 10. Day 18 knowledge check 
 
 Choose the **single best answer** for each question. Try without consulting the tables first.
 
@@ -365,7 +365,7 @@ B. It uses Telnet as its transport.
 C. It commonly runs over QUIC on UDP `443`.  
 D. It is always unencrypted.
 
-### Knowledge check answers and explanations {#knowledge-check-answers}
+### Knowledge check answers and explanations 
 
 <details markdown="1">
 <summary>Reveal answers and explanations</summary>
@@ -391,7 +391,7 @@ D. It is always unencrypted.
 - **7–8:** Good progress. Review the service families you mixed up.
 - **0–6:** Revisit [TCP versus UDP](#tcp-versus-udp) and [common ports](#common-ports), then retry the questions.
 
-## 11. Exam-day quick reference {#exam-quick-reference}
+## 11. Exam-day quick reference 
 
 | Clue in the question | Likely concept |
 |---|---|
