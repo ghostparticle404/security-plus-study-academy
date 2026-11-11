@@ -280,66 +280,67 @@ Generate a lookup with `nslookup example.com` and identify query/response IDs, n
 Choose the **best** answer. The weekly diagnostic and post-check will be written after all five lessons are finalized.
 
 **1. Which server role normally performs lookups on behalf of a client and caches answers?**
-A. Authoritative server
-B. Recursive resolver
-C. Default gateway
-D. DHCP relay
+A. Authoritative server  
+B. Recursive resolver  
+C. Default gateway  
+D. DHCP relay  
 
 **2. Which DNS record maps a hostname to an IPv6 address?**
-A. A
-B. PTR
-C. AAAA
-D. MX
+A. A  
+B. PTR  
+C. AAAA  
+D. MX  
 
 **3. A defender wants DNS answer authentication, not query encryption. Which mechanism is most directly relevant?**
-A. DNSSEC
-B. DHCP snooping
-C. NAT
-D. DoH
+A. DNSSEC  
+B. DHCP snooping  
+C. NAT  
+D. DoH  
 
 **4. Which DHCPv4 message generally follows DHCPOFFER in the DORA exchange?**
-A. DHCPACK
-B. DHCPREQUEST
-C. DHCPDISCOVER
-D. DHCPRELEASE
+A. DHCPACK  
+B. DHCPREQUEST  
+C. DHCPDISCOVER  
+D. DHCPRELEASE  
 
 **5. A client has an automatically assigned `169.254.18.4` IPv4 address. What should you investigate first?**
-A. MX record priorities
-B. DHCP availability and local connectivity
-C. TLS certificate expiration
-D. Kerberos tickets
+A. MX record priorities  
+B. DHCP availability and local connectivity  
+C. TLS certificate expiration  
+D. Kerberos tickets  
 
 **6. Which port pair is correct for DHCPv4?**
-A. UDP 53/853
-B. TCP 67/68
-C. UDP 67/68
-D. UDP 546/547
+A. UDP 53/853  
+B. TCP 67/68  
+C. UDP 67/68  
+D. UDP 546/547  
 
 **7. A client resolves a domain name but cannot establish an HTTPS connection. What is the best conclusion?**
-A. DNS must be down
-B. The DHCP server is necessarily rogue
-C. Name resolution worked; investigate the connection or service
-D. The A record must be absent
+A. DNS must be down  
+B. The DHCP server is necessarily rogue  
+C. Name resolution worked; investigate the connection or service  
+D. The A record must be absent  
 
 **8. Which switch security feature helps block unauthorized DHCP server responses on client-facing ports?**
-A. DNSSEC
-B. DHCP snooping
-C. DNS over HTTPS
-D. NTP
+A. DNSSEC  
+B. DHCP snooping  
+C. DNS over HTTPS  
+D. NTP  
 
 **9. Which response indicates that a queried name does not exist, according to the resolver's answer?**
-A. `NOERROR`
-B. `SERVFAIL`
-C. `NXDOMAIN`
-D. `REFUSED` only
+A. `NOERROR`  
+B. `SERVFAIL`  
+C. `NXDOMAIN`  
+D. `REFUSED` only  
 
 **10. Which statement about DHCPv6 is correct?**
-A. It always uses IPv4 DORA broadcasts
-B. It assigns IPv6 default gateways in place of Router Advertisements
-C. It uses UDP 546/547, and SLAAC is another IPv6 address-configuration method
-D. It uses TCP port 445
+A. It always uses IPv4 DORA broadcasts  
+B. It assigns IPv6 default gateways in place of Router Advertisements  
+C. It uses UDP 546/547, and SLAAC is another IPv6 address-configuration method  
+D. It uses TCP port 445  
 
-### Answer key and explanations
+<details markdown="1">
+<summary>Reveal knowledge check answers and explanations</summary>
 
 | Q | Answer | Explanation |
 |---|---|---|
@@ -353,6 +354,8 @@ D. It uses TCP port 445
 | 8 | **B** | DHCP snooping limits untrusted DHCP messages. Review [DHCP security](#dhcp-security-problems). |
 | 9 | **C** | NXDOMAIN reports a nonexistent queried name. Review [response codes](#step-d-interpret-response-codes). |
 | 10 | **C** | DHCPv6 uses UDP 546/547; SLAAC can configure IPv6 addresses. Review [IPv6](#dhcpv6-and-ipv6). |
+
+</details>
 
 ## 11. Exam-day quick reference
 
