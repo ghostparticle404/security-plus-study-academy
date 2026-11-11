@@ -28,7 +28,7 @@ Networking works similarly. Your browser does not need to know how electrical si
 
 **Important distinction:** The OSI model is a **conceptual seven-layer reference model**. TCP/IP is the **practical protocol suite and layered model** used by the Internet. Real protocols do not always fit neatly into a single layer.
 
-## 2. The seven OSI layers {#osi-layers}
+## 2. The seven OSI layers 
 
 | Layer | Name | Main question | Examples and clues |
 |---|---|---|---|
@@ -42,25 +42,25 @@ Networking works similarly. Your browser does not need to know how electrical si
 
 **Mnemonic (top to bottom):** **A**ll **P**eople **S**eem **T**o **N**eed **D**ata **P**rocessing.
 
-### Layer 7 — Application {#application-layer}
+### Layer 7 — Application 
 
 The application layer provides network services to software. A browser uses HTTP or HTTPS to request web content; a mail client might use SMTP to send mail; DNS resolves names into addresses.
 
 **Security connection:** An attacker might exploit a vulnerable web application or send a malicious HTTP request. A web application firewall (WAF) examines application-layer traffic, subject to what it can decrypt and inspect.
 
-### Layer 6 — Presentation {#presentation-layer}
+### Layer 6 — Presentation 
 
 This conceptual layer describes how information is encoded, formatted, compressed, or encrypted so the recipient can interpret it. Examples include character encoding and data serialization.
 
 **Exam nuance:** TLS is often associated with presentation-layer security in OSI teaching, but actual TLS implementations sit between application protocols and transport, rather than mapping perfectly to one OSI layer.
 
-### Layer 5 — Session {#session-layer}
+### Layer 5 — Session 
 
 The session layer describes establishing, coordinating, maintaining, and ending communication sessions.
 
 **Don't confuse:** An application login session, a TLS session, and a TCP connection are related ideas but are **not the same thing**.
 
-### Layer 4 — Transport {#transport-layer}
+### Layer 4 — Transport 
 
 The transport layer delivers data between processes using **port numbers**.
 
@@ -69,25 +69,25 @@ The transport layer delivers data between processes using **port numbers**.
 
 **Security connection:** A firewall can filter traffic based on transport protocol and source/destination ports. A TCP SYN flood targets connection-handling resources.
 
-### Layer 3 — Network {#network-layer}
+### Layer 3 — Network 
 
 The network layer uses **IP addresses** and routing to move packets between networks. Routers select a next hop based on routing information; the path can involve many routers.
 
 **Security connection:** IP-based access control lists, network segmentation, and routing decisions are important here. IP spoofing involves forging a packet's source IP address.
 
-### Layer 2 — Data Link {#data-link-layer}
+### Layer 2 — Data Link 
 
 The data link layer packages packets into **frames** for a particular local link. Ethernet and Wi-Fi use link-layer addressing; switches normally forward Ethernet frames based on MAC addresses.
 
 **Security connection:** ARP spoofing can misdirect IPv4 traffic on a local network. VLANs logically separate Layer 2 broadcast domains.
 
-### Layer 1 — Physical {#physical-layer}
+### Layer 1 — Physical 
 
 The physical layer transmits bits as electrical, optical, or radio signals.
 
 **Security connection:** A disconnected cable, damaged fiber, radio interference, or a physically attached unauthorized device can disrupt or expose communication.
 
-## 3. OSI versus TCP/IP {#osi-vs-tcp-ip}
+## 3. OSI versus TCP/IP 
 
 The commonly taught **four-layer TCP/IP model** groups several OSI functions together.
 
@@ -105,7 +105,7 @@ Some references use a **five-layer Internet model** that separates the physical 
 
 **Quick analogy:** OSI is a detailed seven-department organizational chart; TCP/IP is the practical four-team workflow. Both describe the same communication from different levels of detail.
 
-## 4. Encapsulation: wrapping the message {#encapsulation}
+## 4. Encapsulation: wrapping the message 
 
 When a sender transmits data, each lower layer adds information required for its job. This is called **encapsulation**.
 
@@ -142,7 +142,7 @@ The headers are **not interchangeable**:
 
 > **Exam trap:** Not every transport-layer unit is a TCP segment. UDP carries **datagrams**. Also, an IP packet can carry protocols other than TCP or UDP, including ICMP.
 
-## 5. Decapsulation: opening the message {#decapsulation}
+## 5. Decapsulation: opening the message 
 
 At the destination, the process is reversed:
 
@@ -154,7 +154,7 @@ At the destination, the process is reversed:
 
 **Think of nested envelopes:** The outer envelope gets the package across the local link; the next envelope identifies the IP destination; the inner transport information directs it to the correct service.
 
-## 6. Follow a packet through a real network {#packet-path}
+## 6. Follow a packet through a real network 
 
 Suppose your laptop at `192.168.1.25` opens an HTTPS connection to a website at `203.0.113.10`. These are **illustrative addresses**, not a live network trace. Assume the laptop uses a gateway at `192.168.1.1`, and the site uses TCP port `443` for this example.
 
@@ -170,7 +170,7 @@ Suppose your laptop at `192.168.1.25` opens an HTTPS connection to a website at 
 
 **Step F — Destination:** The server receives and processes the packet, and its transport/application software handles the request. The response travels back using the applicable routing and connection state.
 
-### What changes at each hop? {#hop-by-hop}
+### What changes at each hop? 
 
 | Field | Across a routed hop |
 |---|---|
@@ -182,7 +182,7 @@ Suppose your laptop at `192.168.1.25` opens an HTTPS connection to a website at 
 
 **Security takeaway:** If you capture traffic on two sides of a router, you may see different MAC addresses for the same logical IP conversation. That is expected, not necessarily suspicious.
 
-## 7. Where security tools fit {#security-controls-by-layer}
+## 7. Where security tools fit 
 
 | Tool or attack | Useful layer perspective | Why it matters |
 |---|---|---|
@@ -197,7 +197,7 @@ Suppose your laptop at `192.168.1.25` opens an HTTPS connection to a website at 
 
 **Important:** A device may operate across multiple layers. A next-generation firewall can inspect IPs, ports, protocols, and some application content. Do not assume every security product fits in exactly one box.
 
-## 8. Troubleshooting from the bottom up {#troubleshooting}
+## 8. Troubleshooting from the bottom up 
 
 **Scenario:** A laptop cannot load a website.
 
@@ -209,7 +209,7 @@ Suppose your laptop at `192.168.1.25` opens an HTTPS connection to a website at 
 
 This is a **diagnostic framework**, not a rule that every incident must be investigated in exactly this order. For example, if other websites work but one hostname fails, checking DNS early is sensible.
 
-### Useful beginner commands {#beginner-commands}
+### Useful beginner commands 
 
 On macOS or Linux, try these **read-only** commands:
 
@@ -233,7 +233,7 @@ Shows local network endpoints and connection states (output and options vary by 
 
 **Safety:** Run these only on your own device or an authorized lab. No scanning of other systems is required for this lesson.
 
-## 9. Practical exercise — Annotate a packet path {#practical-exercise}
+## 9. Practical exercise — Annotate a packet path 
 
 **Goal:** Identify what each layer contributes as a browser sends a request to a remote web server.
 
@@ -348,7 +348,7 @@ D. TCP cannot cross routers
 
 </details>
 
-## 11. Exam-day quick reference {#exam-quick-reference}
+## 11. Exam-day quick reference 
 
 | If you see… | Think… |
 |---|---|
