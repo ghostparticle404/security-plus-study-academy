@@ -255,17 +255,20 @@ Copy and complete this worksheet in your notes:
 
 **Optional Wireshark observation:** On a device and network you are authorized to capture, inspect one of your own TCP conversations. Expand **Frame**, **Ethernet II** (or another link-layer header), **Internet Protocol**, and **Transmission Control Protocol**. Locate the MAC addresses, IP addresses, and ports. The precise capture layers depend on the interface and capture method; loopback captures may not show Ethernet headers.
 
-???+ success "Exercise answer key"
+<details markdown="1">
+<summary>Exercise answer key</summary>
 
-    1. **Layer 7 — Application.**
-    2. **TCP.**
-    3. **443.**
-    4. **192.168.10.50.**
-    5. **198.51.100.20.**
-    6. **The local default gateway's MAC address** (or the next-hop link-layer address appropriate to the link).
-    7. **A frame.**
-    8. **The router processes the incoming frame and creates new framing for the outgoing link.**
-    9. **IPv4 Time to Live (TTL).**
+1. Layer 7 — Application.
+2. TCP.
+3. `443`.
+4. `192.168.10.50`.
+5. `198.51.100.20`.
+6. The local default gateway's MAC address (or the next-hop link-layer address appropriate to the link).
+7. A frame.
+8. The router processes the incoming frame and creates new framing for the outgoing link.
+9. IPv4 **Time to Live (TTL)**.
+
+</details>
 
 ## 10. Knowledge check {#knowledge-check}
 
@@ -329,20 +332,21 @@ B. MAC addresses are rewritten for each local link during routing
 C. The application changed from HTTPS to HTTP  
 D. TCP cannot cross routers  
 
+<details markdown="1">
+<summary>Knowledge check answers and explanations</summary>
 
-???+ success "Knowledge check answers and explanations"
+1. **B — Network.** Layer 3 provides logical addressing and routing. See [Layer 3](#network-layer).
+2. **C — Frame.** Ethernet carries link-layer frames. See [Encapsulation](#encapsulation).
+3. **B — Data Link.** Ethernet switches commonly use Layer 2 MAC addresses. See [Layer 2](#data-link-layer).
+4. **C — HTTP / Application.** HTTP is an application-layer protocol. See [Layer 7](#application-layer).
+5. **B — Default gateway.** The first link targets the next hop, not the remote server's MAC. See [Packet path](#packet-path).
+6. **C — Lower layers add information.** Encapsulation wraps data in protocol headers (and sometimes trailers). See [Encapsulation](#encapsulation).
+7. **C — TTL.** Routers reduce the IPv4 TTL as they forward packets. See [Hop-by-hop changes](#hop-by-hop).
+8. **B — Combined upper-layer functions.** The four-layer TCP/IP model groups OSI 5–7 into Application. See [OSI versus TCP/IP](#osi-vs-tcp-ip).
+9. **C — Transport.** TCP port numbers are transport-layer fields. See [Layer 4](#transport-layer).
+10. **B — New link-layer frames.** Each routed link can have different source/destination MAC addresses. See [Hop-by-hop changes](#hop-by-hop).
 
-    1. **B — Network.** Layer 3 provides logical addressing and routing. See [Layer 3](#network-layer).
-    2. **C — Frame.** Ethernet carries link-layer frames. See [Encapsulation](#encapsulation).
-    3. **B — Data Link.** Ethernet switches commonly use Layer 2 MAC addresses. See [Layer 2](#data-link-layer).
-    4. **C — HTTP / Application.** HTTP is an application-layer protocol. See [Layer 7](#application-layer).
-    5. **B — Default gateway.** The first link targets the next hop, not the remote server's MAC. See [Packet path](#packet-path).
-    6. **C — Lower layers add information.** Encapsulation wraps data in protocol headers (and sometimes trailers). See [Encapsulation](#encapsulation).
-    7. **C — TTL.** Routers reduce the IPv4 TTL as they forward packets. See [Hop-by-hop changes](#hop-by-hop).
-    8. **B — Combined upper-layer functions.** The four-layer TCP/IP model groups OSI 5–7 into Application. See [OSI versus TCP/IP](#osi-vs-tcp-ip).
-    9. **C — Transport.** TCP port numbers are transport-layer fields. See [Layer 4](#transport-layer).
-    10. **B — New link-layer frames.** Each routed link can have different source/destination MAC addresses. See [Hop-by-hop changes](#hop-by-hop).
-
+</details>
 
 ## 11. Exam-day quick reference {#exam-quick-reference}
 
