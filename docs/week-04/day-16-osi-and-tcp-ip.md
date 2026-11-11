@@ -329,7 +329,9 @@ B. MAC addresses are rewritten for each local link during routing
 C. The application changed from HTTPS to HTTP  
 D. TCP cannot cross routers  
 
+
 ??? success "Knowledge check answers and explanations"
+
     1. **B — Network.** Layer 3 provides logical addressing and routing. See [Layer 3](#network-layer).
     2. **C — Frame.** Ethernet carries link-layer frames. See [Encapsulation](#encapsulation).
     3. **B — Data Link.** Ethernet switches commonly use Layer 2 MAC addresses. See [Layer 2](#data-link-layer).
@@ -340,6 +342,7 @@ D. TCP cannot cross routers
     8. **B — Combined upper-layer functions.** The four-layer TCP/IP model groups OSI 5–7 into Application. See [OSI versus TCP/IP](#osi-vs-tcp-ip).
     9. **C — Transport.** TCP port numbers are transport-layer fields. See [Layer 4](#transport-layer).
     10. **B — New link-layer frames.** Each routed link can have different source/destination MAC addresses. See [Hop-by-hop changes](#hop-by-hop).
+
 
 ## 11. Exam-day quick reference {#exam-quick-reference}
 
