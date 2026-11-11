@@ -353,6 +353,9 @@ A guest workstation uses `192.168.20.45/24`. A confidential file server uses `19
 
 ### Practical exercise answer key {#practical-answer-key}
 
+<details markdown="1">
+<summary>Reveal practical exercise answers</summary>
+
 | Item | Answer |
 |---|---|
 | 1 | Network `192.168.50.128`; broadcast `.255`; usable `.129–.254`; **126 hosts** |
@@ -364,6 +367,8 @@ A guest workstation uses `192.168.20.45/24`. A confidential file server uses `19
 
 For Part B, your answers depend on your own device and network.
 
+</details>
+
 ## 10. Knowledge check {#knowledge-check}
 
 Choose the **single best answer** for each question. Try answering before opening the explanations.
@@ -373,72 +378,75 @@ Choose the **single best answer** for each question. Try answering before openin
 A. Physical  
 B. Data Link  
 C. Network  
-D. Application
+D. Application  
 
 **2. Which address belongs to an RFC 1918 private IPv4 block?**
 
 A. `172.32.10.5`  
 B. `192.169.1.5`  
 C. `172.20.10.5`  
-D. `169.254.10.5`
+D. `169.254.10.5`  
 
 **3. What subnet mask corresponds to `/26`?**
 
 A. `255.255.255.0`  
 B. `255.255.255.128`  
 C. `255.255.255.192`  
-D. `255.255.255.224`
+D. `255.255.255.224`  
 
 **4. How many typical usable IPv4 host addresses does a `/27` subnet provide?**
 
 A. 14  
 B. 30  
 C. 32  
-D. 62
+D. 62  
 
 **5. What is the network address for `192.168.5.70/26`?**
 
 A. `192.168.5.0`  
 B. `192.168.5.64`  
 C. `192.168.5.70`  
-D. `192.168.5.128`
+D. `192.168.5.128`  
 
 **6. Which IPv6 address is the loopback address?**
 
 A. `fe80::1`  
 B. `ff02::1`  
 C. `::1`  
-D. `2001:db8::1`
+D. `2001:db8::1`  
 
 **7. What does IPv6 use instead of broadcast?**
 
 A. Only NAT  
 B. Multicast mechanisms  
 C. ARP broadcast  
-D. IPv4 tunneling in every case
+D. IPv4 tunneling in every case  
 
 **8. A host unexpectedly receives `169.254.25.8`. What should you investigate first?**
 
 A. Whether DHCP address assignment failed  
 B. Whether its public DNS domain expired  
 C. Whether the server's TLS certificate expired  
-D. Whether a router changed the destination port
+D. Whether a router changed the destination port  
 
 **9. A company needs 100 typical usable IPv4 host addresses in one subnet. What is the smallest suitable prefix?**
 
 A. `/27`  
 B. `/26`  
 C. `/25`  
-D. `/28`
+D. `/28`  
 
 **10. Two departments use different IPv4 subnets. Which statement is most accurate?**
 
 A. Their traffic is automatically encrypted.  
 B. They cannot communicate under any circumstances.  
 C. They are isolated without needing security rules.  
-D. Routing and enforced security policy determine whether communication is permitted.
+D. Routing and enforced security policy determine whether communication is permitted.  
 
 ### Knowledge check answers and explanations {#knowledge-check-answers}
+
+<details markdown="1">
+<summary>Reveal knowledge check answers and explanations</summary>
 
 | Q | Answer | Explanation | Review |
 |---|---|---|---|
@@ -452,6 +460,8 @@ D. Routing and enforced security policy determine whether communication is permi
 | 8 | **A** | An IPv4 link-local address can indicate failure to obtain a DHCP lease. | [Special IPv4](#special-ipv4) |
 | 9 | **C** | `/25` supports 126 typical usable hosts; `/26` supports only 62. | [CIDR and masks](#cidr-and-masks) |
 | 10 | **D** | Subnets identify network boundaries; ACLs, firewalls, and routing policies enforce access. | [Segmentation scenario](#segmentation-scenario) |
+
+</details>
 
 **Score:** ____ / 10
 
