@@ -1,10 +1,16 @@
 # Day 35 — Penetration Testing and Remediation
 
-**Week 07 | Vulnerability Management**
+**Week 07 | Vulnerability Management**  
+**Level:** Beginner–intermediate  
+**Estimated study time:** 80–105 minutes  
+**Previous:** [Day 34](day-34-vulnerability-assessment-and-scanning.md)  
+**Next:** [Week 07 review](review.w7.md)
 
 A vulnerability scanner reports that a customer portal may expose confidential information. An authorized tester confirms that a test account can view another test account's records. The development team must now correct the weakness, and the security team must verify that the correction works. Today's lesson follows that journey from suspected vulnerability to documented resolution.
 
-## 2. Security+ exam alignment
+<a id="2-security-exam-alignment"></a>
+
+## Security+ exam alignment
 
 - **Domain 4 — Security Operations, Objective 4.3:** Explain various activities associated with vulnerability management, including penetration testing, responsible disclosure, remediation, validation, and reporting.
 - **Domain 5 — Security Program Management and Oversight, Objective 5.5:** Explain types and purposes of audits and assessments, including penetration testing perspectives and reconnaissance.
@@ -12,7 +18,9 @@ A vulnerability scanner reports that a customer portal may expose confidential i
 
 **Prerequisite:** [Day 34 — Vulnerability Assessment and Scanning](day-34-vulnerability-assessment-and-scanning.md).
 
-## 3. Learning objectives
+<a id="3-learning-objectives"></a>
+
+## 1. Learning objectives
 
 By the end of this lesson, you should be able to:
 
@@ -23,7 +31,9 @@ By the end of this lesson, you should be able to:
 - Select appropriate remediation or mitigation techniques based on evidence and organizational risk.
 - Draft a remediation plan with accountable owners, deadlines, and measurable validation criteria.
 
-## 4. Why this topic matters
+<a id="4-why-this-topic-matters"></a>
+
+## 2. The big idea: Evidence must lead to verified improvement
 
 Imagine a building inspector discovers a door with a damaged lock. The observation suggests a vulnerability. An authorized locksmith confirms that the lock fails to prevent entry. A maintenance worker replaces the lock, and a subsequent inspection verifies that it functions correctly. Each person contributes different evidence; none of these stages alone establishes that the building is secure.
 
@@ -31,7 +41,9 @@ Cybersecurity follows similar reasoning. A scanner can identify thousands of pos
 
 Penetration testing can reveal interactions between weaknesses that individual scans miss. Remediation transforms findings into security improvements. Without ownership and validation, even an excellent assessment can become a report that nobody acts upon.
 
-## 5. Detailed instruction
+<a id="5-detailed-instruction"></a>
+
+## 3. Detailed instruction
 
 ### From assessment to remediation
 
@@ -164,7 +176,9 @@ Root cause analysis asks why the weakness existed and how recurrence can be prev
 
 **Further reading:** [NIST SP 800-115](https://csrc.nist.gov/pubs/sp/800/115/final) on technical security testing and assessment; [NIST SP 800-40 Rev. 4](https://csrc.nist.gov/pubs/sp/800/40/r4/final) on enterprise patch management.
 
-## 6. Real-world cybersecurity examples
+<a id="6-real-world-cybersecurity-examples"></a>
+
+## 4. Real-world cybersecurity examples
 
 ### Customer portal authorization weakness
 
@@ -178,7 +192,9 @@ A production controller runs unsupported firmware and cannot immediately be repl
 
 A company deploys a critical update to 100 servers. Its management platform confirms success on 94, failure on four, and no recent contact with two. The team investigates the six unverified systems rather than recording all 100 as remediated. It verifies the running version after necessary restarts and repeats assessment checks before closure.
 
-## 7. Comparison tables
+<a id="7-comparison-tables"></a>
+
+## 5. Comparison tables
 
 | Activity | Main purpose | Typical evidence |
 | --- | --- | --- |
@@ -202,9 +218,90 @@ A company deploys a critical update to 100 servers. Its management platform conf
 | Risk acceptance | Approve documented residual risk | No |
 | Avoidance | Retire unnecessary vulnerable service | Exposure removed if retirement is complete |
 
-## 8. Technical demonstrations and practical activity
+<a id="9-common-misconceptions-and-exam-traps"></a>
 
-### Demonstration A: Verify local configuration evidence
+## 6. Common misconceptions and exam traps
+
+- A vulnerability scan is not equivalent to a penetration test. Controlled demonstration of impact is a distinct objective.
+- Unknown-environment testing is not unauthorized testing.
+- Scope and rules of engagement are not interchangeable: scope defines boundaries, while rules specify how work proceeds.
+- A bug bounty does not grant unlimited permission.
+- A critical CVSS score does not automatically establish the highest business priority.
+- Segmentation can reduce exposure without removing the underlying vulnerability.
+- Installing a patch does not establish that it is effective or active.
+- A failed or incomplete rescan is not proof of successful remediation.
+- Risk acceptance is an authorized decision, not an undocumented decision to ignore a finding.
+
+<a id="10-key-terminology-and-takeaways"></a>
+
+## 7. Key terminology and takeaways
+
+| Term | Meaning |
+| --- | --- |
+| Penetration test | Authorized assessment demonstrating security weaknesses within constraints |
+| Scope | Defined assessment boundaries |
+| Rules of engagement | Agreed operational requirements for testing |
+| Reconnaissance | Gathering information relevant to an assessment |
+| Known environment | Assessment with extensive internal information |
+| Responsible disclosure | Coordinated reporting of vulnerability information |
+| Bug bounty | Program offering potential rewards for eligible findings |
+| Remediation | Correcting or removing an identified weakness |
+| Compensating control | Alternative safeguard reducing risk when preferred control is unavailable |
+| Residual risk | Risk remaining after safeguards or responses |
+| Exception | Approved departure from a requirement |
+| Validation | Evidence-based verification of corrective action |
+
+Remember that the goal is not to produce the longest list of vulnerabilities. It is to reduce meaningful risk through authorized assessment, accountable action, and reliable evidence of improvement.
+
+## 8. Worked case study — A patch is not yet a verified fix
+
+A fictional payroll server has a confirmed vulnerable service. Its owner installs an approved patch, but the service has not restarted. The dashboard reports successful deployment while the running version remains vulnerable.
+
+| Stage | Evidence | Decision |
+| --- | --- | --- |
+| Assessment | Installed and running versions compared with vendor advisory | Confirm applicability |
+| Response | Patch installation recorded | Arrange approved restart; retain temporary restrictions |
+| Validation | Running version checked and targeted retest succeeds | Verify permitted payroll operations still work |
+| Closure | Owner records deployment, coverage and retest results | Close only the verified finding |
+
+**Memory hook:** Installed is not necessarily active; active is not necessarily verified.
+
+## 9. Guided notes — Write first, reveal later
+
+Complete the table from memory before revealing the model answers.
+
+| Prompt | Your notes |
+| --- | --- |
+| 1. How do scanning and penetration testing differ? | |
+| 2. How do scope and rules of engagement differ? | |
+| 3. What distinguishes known, partially known and unknown testing? | |
+| 4. How do active and passive reconnaissance differ? | |
+| 5. How does a disclosure policy differ from a bug bounty? | |
+| 6. How do remediation and compensating controls differ? | |
+| 7. What belongs in a temporary risk exception? | |
+| 8. What evidence supports closure? | |
+
+<details markdown="1">
+<summary>Reveal model guided notes</summary>
+
+| Prompt | Model answer |
+| --- | --- |
+| 1 | Scanning identifies potential weaknesses; penetration testing demonstrates impact within authorized limits. |
+| 2 | Scope defines boundaries; rules of engagement specify permitted methods, timing, stop conditions and handling requirements. |
+| 3 | Extensive, limited or little internal information respectively; all require authorization. |
+| 4 | Active reconnaissance interacts with targets; passive reconnaissance gathers information without directly probing them. |
+| 5 | A disclosure policy establishes reporting and research conditions; a bounty may additionally reward eligible findings. |
+| 6 | Remediation corrects the weakness; compensating controls reduce risk without necessarily removing it. |
+| 7 | Owner, rationale, residual risk, approval, safeguards and expiration or review date. |
+| 8 | Effective configuration or running version, successful retest with adequate coverage, functional checks and documented results. |
+
+</details>
+
+<a id="8-technical-demonstrations-and-practical-activity"></a>
+
+## 10. Hands-on lab (20–25 minutes)
+
+### Part A — Demonstration A: Verify local configuration evidence
 
 On a system you own or administer with permission, use the applicable read-only commands to inspect local software and listening services. These commands do not establish whether a particular product is vulnerable; compare the evidence against the correct vendor advisory and expected baseline.
 
@@ -243,7 +340,7 @@ The following is fictional evidence from a staging application using two approve
 
 The negative security test now passes, and the positive functional tests show the expected functionality remains available. This supports closure for the tested behavior, provided the corrected version is deployed to the relevant environment and the assessment covers affected endpoints.
 
-### Practical activity: Draft a remediation plan
+### Part B — Practical activity: Draft a remediation plan
 
 You are a security analyst at fictional Harbor Services. An assessment identified the following findings. All data and deadlines are illustrative, not official exam requirements.
 
@@ -272,45 +369,18 @@ The exact deadline depends on the real organization's risk policy and operationa
 
 </details>
 
-## 9. Common misconceptions and exam traps
+<a id="11-practice-questions"></a>
 
-- A vulnerability scan is not equivalent to a penetration test. Controlled demonstration of impact is a distinct objective.
-- Unknown-environment testing is not unauthorized testing.
-- Scope and rules of engagement are not interchangeable: scope defines boundaries, while rules specify how work proceeds.
-- A bug bounty does not grant unlimited permission.
-- A critical CVSS score does not automatically establish the highest business priority.
-- Segmentation can reduce exposure without removing the underlying vulnerability.
-- Installing a patch does not establish that it is effective or active.
-- A failed or incomplete rescan is not proof of successful remediation.
-- Risk acceptance is an authorized decision, not an undocumented decision to ignore a finding.
+## 11. Eight original Security+-style questions
 
-## 10. Key terminology and takeaways
-
-| Term | Meaning |
-| --- | --- |
-| Penetration test | Authorized assessment demonstrating security weaknesses within constraints |
-| Scope | Defined assessment boundaries |
-| Rules of engagement | Agreed operational requirements for testing |
-| Reconnaissance | Gathering information relevant to an assessment |
-| Known environment | Assessment with extensive internal information |
-| Responsible disclosure | Coordinated reporting of vulnerability information |
-| Bug bounty | Program offering potential rewards for eligible findings |
-| Remediation | Correcting or removing an identified weakness |
-| Compensating control | Alternative safeguard reducing risk when preferred control is unavailable |
-| Residual risk | Risk remaining after safeguards or responses |
-| Exception | Approved departure from a requirement |
-| Validation | Evidence-based verification of corrective action |
-
-Remember that the goal is not to produce the longest list of vulnerabilities. It is to reduce meaningful risk through authorized assessment, accountable action, and reliable evidence of improvement.
-
-## 11. Practice questions
+Choose the best answer before revealing each explanation.
 
 **1.** A scanner identifies a possible authorization weakness, and an approved test demonstrates that one synthetic account can access another account's record. Which activity specifically demonstrates the security impact?
 
-- A. Asset inventory
-- B. Penetration testing
-- C. Patch deployment
-- D. Risk transfer
+A. Asset inventory  
+B. Penetration testing  
+C. Patch deployment  
+D. Risk transfer  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -321,10 +391,10 @@ Remember that the goal is not to produce the longest list of vulnerabilities. It
 
 **2.** During a staging assessment, a tester encounters a production system excluded from the written scope. What should the tester do next?
 
-- A. Continue if no data is downloaded
-- B. Test only during off-hours
-- C. Treat the linked system as implicitly authorized
-- D. Stop that activity and request authorization before expanding scope
+A. Continue if no data is downloaded  
+B. Test only during off-hours  
+C. Treat the linked system as implicitly authorized  
+D. Stop that activity and request authorization before expanding scope  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -335,10 +405,10 @@ Remember that the goal is not to produce the longest list of vulnerabilities. It
 
 **3.** A tester receives an ordinary employee account and selected network diagrams, but no additional internal information. Which testing perspective best describes this arrangement?
 
-- A. Partially known environment
-- B. Unknown environment
-- C. Fully known environment
-- D. Passive monitoring only
+A. Partially known environment  
+B. Unknown environment  
+C. Fully known environment  
+D. Passive monitoring only  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -349,10 +419,10 @@ Remember that the goal is not to produce the longest list of vulnerabilities. It
 
 **4.** A vendor patch is not available for an important legacy application. The company restricts access to a small authorized network segment while awaiting a replacement. What is this restriction?
 
-- A. Risk transfer
-- B. Permanent software correction
-- C. Compensating control
-- D. False positive
+A. Risk transfer  
+B. Permanent software correction  
+C. Compensating control  
+D. False positive  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -363,10 +433,10 @@ Remember that the goal is not to produce the longest list of vulnerabilities. It
 
 **5.** A patch console reports successful installation, but the affected service still uses the old version until a restart. What is the best next step?
 
-- A. Close the finding based on the console
-- B. Arrange an approved restart and verify the running version and security condition
-- C. Reclassify the weakness as a false positive
-- D. Transfer the vulnerability to the vendor
+A. Close the finding based on the console  
+B. Arrange an approved restart and verify the running version and security condition  
+C. Reclassify the weakness as a false positive  
+D. Transfer the vulnerability to the vendor  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -377,10 +447,10 @@ Remember that the goal is not to produce the longest list of vulnerabilities. It
 
 **6.** Management approves a temporary exception for an unsupported device. Which record best supports accountable risk management?
 
-- A. A statement that no further review is required
-- B. A scanner screenshot without an owner
-- C. A lower CVSS score assigned by the asset owner
-- D. Documented residual risk, approving authority, safeguards, owner, and review date
+A. A statement that no further review is required  
+B. A scanner screenshot without an owner  
+C. A lower CVSS score assigned by the asset owner  
+D. Documented residual risk, approving authority, safeguards, owner, and review date  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -389,7 +459,43 @@ Remember that the goal is not to produce the longest list of vulnerabilities. It
 
 </details>
 
-## 12. Study from the Treadmill
+**7.** A researcher discovers an excluded asset while participating in a public bug bounty. What should the researcher do?
+
+A. Test it because rewards are offered  
+B. Collect customer records as evidence  
+C. Follow the disclosure policy and request authorization before testing the asset  
+D. Publish confidential data immediately
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**C.** A bounty does not extend authorization beyond its scope. A and B exceed permission; D risks unauthorized disclosure.
+
+</details>
+
+**8.** After an authorization fix, cross-account requests are denied, but legitimate users also cannot access their own records. What should the team do?
+
+A. Close the finding because the negative test passed  
+B. Reopen or retain the finding and correct the functional regression  
+C. Accept the risk without approval  
+D. Remove all authorization checks
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**B.** Both positive functional and negative security tests matter. A ignores broken functionality; C lacks authorization; D restores the weakness.
+
+</details>
+
+**Score guide:** 7–8: ready to advance; 5–6: review missed concepts; 0–4: revisit the instruction and repeat the lab.
+
+## 12. Discussion challenge
+
+A manager wants to close all findings before an audit, including an unsupported device with a temporary exception and a server that was unreachable during retesting. Explain how you would distinguish verified remediation, accepted residual risk, and pending validation in the report. What evidence would you require for each disposition?
+
+<a id="12-study-from-the-treadmill"></a>
+
+## 13. Study from the Treadmill 🏃
 
 Use these free Professor Messer SY0-701 video lessons while walking, exercising, or away from your desk.
 
@@ -410,6 +516,16 @@ Use these free Professor Messer SY0-701 video lessons while walking, exercising,
 After exercising, answer these questions without consulting the lesson. Revisit any concept you cannot explain using a practical example.
 
 **Keep moving. Keep learning.**
+
+## 14. One-minute recap
+
+- Testing requires written authorization, scope and rules of engagement.
+- Demonstrated impact is distinct from hypothetical impact.
+- Remediation removes weaknesses; mitigation reduces risk.
+- Assign owners, deadlines and validation criteria.
+- Verify effective fixes and document exceptions separately.
+
+**Next:** Complete the [Week 07 review](review.w7.md) and revisit the [Week 07 diagnostic](00-diagnostic.w7.md) as needed.
 
 ---
 
