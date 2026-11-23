@@ -5,7 +5,9 @@
 **Prerequisite:** [Day 20 — Routing, Switching, and Packet Flow](../week-04/day-20-routing-switching-and-packet-flow.md)  
 **Security+ SY0-701 alignment:** Domain 3.0, Security Architecture; especially **Objective 3.2**, applying security principles to secure enterprise infrastructure (including network segmentation and access controls). Related architectural context: Objective 3.1. This lesson explains the concepts; it is not a reproduction of CompTIA's official objective wording.
 
-## Learning objectives
+**Level:** Beginner to intermediate · **Study time:** 60–80 minutes
+
+## 1. Learning objectives
 
 By the end of this lesson, you should be able to:
 
@@ -16,7 +18,7 @@ By the end of this lesson, you should be able to:
 5. Sketch a small-office VLAN layout, including example subnets, gateways, and permitted flows.
 6. Recognize common configuration errors and evaluate segmentation choices in Security+ scenarios.
 
-## Why segmentation matters
+## 2. The big idea: Why segmentation matters
 
 Imagine an office with employee laptops, payment terminals, guest Wi-Fi, printers, and security cameras. If every device can freely reach every other device, a compromised guest device or camera may have a path toward systems containing sensitive data. A single shared network makes that risk harder to contain.
 
@@ -32,7 +34,7 @@ Segmentation can help:
 
 Segmentation is one layer of defense, not a guarantee that malware cannot spread. Weak firewall rules, shared credentials, compromised management systems, or incorrectly configured trunks can undermine the design.
 
-## 1. Start with the trust boundary
+## 3. Start with the trust boundary {#1-start-with-the-trust-boundary}
 
 A **trust boundary** is a point where communications cross between systems or zones with different security assumptions. Crossing that boundary should trigger a deliberate policy decision.
 
@@ -48,7 +50,7 @@ For example, a guest's phone and a finance workstation have different roles. Eve
 
 **Least privilege** applies to networks as well as user accounts: permit only the network access required for the task. A useful starting policy is **deny by default between zones, then allow documented exceptions**. This must be implemented carefully so essential services continue to work.
 
-## 2. Segmentation methods: what is actually being separated?
+## 4. Segmentation methods: what is actually being separated? {#2-segmentation-methods-what-is-actually-being-separated}
 
 | Method | How separation works | What it does well | Important limitation |
 |---|---|---|---|
@@ -75,7 +77,7 @@ A VLAN does not encrypt traffic. Devices in the **same VLAN** may still communic
 
 </details>
 
-## 3. How VLANs work on a switch
+## 5. How VLANs work on a switch {#3-how-vlans-work-on-a-switch}
 
 A **managed switch** can assign switch ports to VLANs. A VLAN identifier (VLAN ID) distinguishes the logical Layer 2 networks; IEEE **802.1Q** is the common standard for tagging VLAN traffic across Ethernet links.
 
@@ -108,7 +110,7 @@ Consider this typical pairing:
 
 These are **illustrative private-address examples**, not mandatory VLAN numbers or a universal standard. A `/24` subnet contains 256 total IPv4 addresses, typically 254 usable host addresses under conventional subnetting rules.
 
-## 4. How traffic crosses VLANs
+## 6. How traffic crosses VLANs {#4-how-traffic-crosses-vlans}
 
 A Layer 2 switch does not normally forward ordinary traffic from VLAN 10 into VLAN 20. To communicate between IP subnets in different VLANs, packets need **inter-VLAN routing**, performed by a router, a Layer 3 switch, or a firewall with routing capabilities.
 
@@ -132,7 +134,72 @@ An employee laptop at `192.168.10.25` needs to reach a finance application at `1
 
 There is no single required architecture for every office. The exam may ask you to choose the control that actually **enforces** separation rather than merely creates VLANs.
 
-## 5. Build a small-office segmentation design
+## 7. Common misconfigurations and security pitfalls {#7-common-misconfigurations-and-security-pitfalls}
+
+### Overly permissive inter-VLAN rules
+
+A rule such as “allow all internal VLANs to all internal VLANs” can erase the security benefit of separating them. Prefer specific source, destination, protocol, and port combinations.
+
+### Unnecessary trunk VLANs
+
+A trunk that carries VLANs not needed by the connected device expands exposure and makes configuration errors more consequential. Allowlist required VLANs.
+
+### VLAN hopping misconceptions
+
+**VLAN hopping** refers to techniques that exploit certain switch or trunk misconfigurations to reach traffic associated with another VLAN. Examples discussed in networking security include switch spoofing and double-tagging under specific conditions. These are **not automatic capabilities** of any device plugged into a VLAN. Properly configured access ports, disabled unwanted dynamic trunk negotiation where applicable, consistent native-VLAN handling, and restricted trunks reduce risk.
+
+### Confusing guest SSIDs with isolation
+
+A separate wireless network name (**SSID**) is not itself proof of segmentation. Verify that the guest SSID maps to the intended VLAN and that upstream policies block internal access. Consider wireless client isolation when guests should not reach each other.
+
+### Forgetting the management plane
+
+Switches, firewalls, and access points often expose administrative interfaces. Restrict these interfaces to trusted management sources, use secure administration protocols, and protect credentials. A separate management VLAN helps organization, but access controls provide the actual restriction.
+
+### Forgetting east–west traffic
+
+**North–south traffic** generally refers to traffic entering or leaving a network or environment. **East–west traffic** generally refers to traffic between internal systems or workloads. A perimeter firewall may protect north–south traffic while missing lateral movement that stays inside the network.
+
+### Treating VLANs as complete isolation
+
+VLANs help organize Layer 2 traffic, but they are not equivalent to physical air gaps, encryption, or comprehensive zero-trust enforcement. Use layered controls appropriate to the threat model.
+
+## 8. Security+ comparisons and exam traps {#8-security-comparisons-and-exam-traps}
+
+| If the question says… | Think about… |
+|---|---|
+| “Separate broadcast domains on the same managed switch” | VLANs |
+| “Assign distinct IP address ranges” | Subnetting; not necessarily access control |
+| “Allow only approved flows between departments” | Firewall rules, ACLs, or another enforcement mechanism |
+| “Multiple VLANs over one switch-to-switch cable” | 802.1Q trunk |
+| “One endpoint connected to one VLAN” | Access port |
+| “Default gateway for a VLAN on a Layer 3 switch” | SVI |
+| “Restrict traffic between individual workloads” | Microsegmentation |
+| “Compromised endpoint reaches other internal hosts” | Lateral movement; assess east–west controls |
+| “Guest Wi-Fi cannot reach internal devices” | Guest VLAN **plus enforced filtering**, not merely a separate SSID |
+
+**Exam trap:** “The administrator created separate VLANs, so all departments are securely isolated.” This conclusion is too strong. Ask whether inter-VLAN routing is enabled and what rules govern it.
+
+## 9. Key terminology and takeaways {#9-key-terminology-and-takeaways}
+
+- **Segmentation:** Dividing networks into zones with controlled communication paths.
+- **Trust boundary:** A point between systems or zones with different trust assumptions.
+- **VLAN:** Logical Layer 2 broadcast domain on managed network infrastructure.
+- **802.1Q:** Common Ethernet VLAN-tagging standard.
+- **Access port:** Usually an endpoint-facing port assigned to one VLAN.
+- **Trunk port:** Link carrying multiple VLANs, commonly with 802.1Q tags.
+- **Native VLAN:** VLAN associated with untagged traffic on an 802.1Q trunk in relevant configurations.
+- **Subnet:** Layer 3 IP addressing division; not by itself a firewall policy.
+- **Inter-VLAN routing:** Layer 3 forwarding between VLAN-associated subnets.
+- **SVI:** Switch virtual interface, often a VLAN's Layer 3 gateway.
+- **ACL:** Access control list that can permit or deny specified traffic.
+- **Microsegmentation:** Fine-grained control among hosts or workloads.
+- **Lateral movement:** An attacker moving from one compromised system to other systems.
+- **East–west traffic:** Traffic among internal systems or workloads.
+
+**Core takeaway:** Design VLANs around business roles and trust, but evaluate security by the **traffic that is actually allowed across boundaries**, not by the number of VLANs on the diagram.
+
+## 10. Worked case study: Build a small-office segmentation design {#5-build-a-small-office-segmentation-design}
 
 ### The business scenario
 
@@ -190,7 +257,38 @@ A 20-person office has employee laptops, a small finance team, network printers,
 
 </details>
 
-## 6. Guided lab: sketch and test your design
+## 11. Guided notes — Write first, reveal later
+
+| Prompt | Your answer |
+|---|---|
+| What is segmentation intended to prevent or limit? | _Write here._ |
+| How does a VLAN differ from a subnet? | _Write here._ |
+| Compare access and trunk ports. | _Write here._ |
+| What is the purpose of 802.1Q and the native VLAN? | _Write here._ |
+| What enables inter-VLAN communication, and what restricts it? | _Write here._ |
+| How does microsegmentation differ from ordinary VLAN segmentation? | _Write here._ |
+| Compare east–west and north–south traffic. | _Write here._ |
+| How would you verify guest isolation? | _Write here._ |
+
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
+
+| Prompt | Model answer |
+|---|---|
+| Segmentation | Limits unnecessary connectivity and lateral movement. |
+| VLAN vs subnet | VLAN separates Layer 2 broadcast domains; subnet defines Layer 3 address ranges. |
+| Ports | Access normally carries one VLAN; trunk carries multiple VLANs. |
+| 802.1Q | Identifies VLANs with tags; native VLAN may carry untagged traffic. |
+| Inter-VLAN | Routing enables communication; ACLs or firewall policies restrict it. |
+| Microsegmentation | Fine-grained policies between individual hosts or workloads. |
+| Traffic direction | East–west is internal; north–south enters or leaves the environment. |
+| Verification | Check SSID mapping, VLANs, actual routing path and filtering; test allowed and denied flows in an authorized environment. |
+
+</details>
+
+## 12. Hands-on lab: Sketch and test your design {#6-guided-lab-sketch-and-test-your-design}
+
+**Time:** 15–25 minutes · **Tools:** Paper or diagramming tool; optional terminal · **Safe, read-only**
 
 **Goal:** Draw a small-office VLAN layout and justify each trust boundary. This is a paper or diagramming exercise; no network hardware is required.
 
@@ -207,13 +305,13 @@ A 20-person office has employee laptops, a small finance team, network printers,
 
 For each proposed connection, answer: *Same VLAN or different VLAN? Does it need routing? What policy should decide whether it is permitted?*
 
-| Attempted connection | Expected design decision |
+| Attempted connection | Your prediction |
 |---|---|
-| Guest phone → finance workstation | Deny across the guest-to-finance boundary |
-| Employee laptop → approved printer | Permit required printing traffic only |
-| Camera → finance file share | Deny |
-| Authorized admin laptop → switch management interface | Permit approved secure management traffic |
-| Finance workstation → required DNS resolver | Permit DNS to the designated resolver |
+| Guest phone → finance workstation | _Write here._ |
+| Employee laptop → approved printer | _Write here._ |
+| Camera → finance file share | _Write here._ |
+| Authorized admin laptop → switch management interface | _Write here._ |
+| Finance workstation → required DNS resolver | _Write here._ |
 
 ### Part C — Optional safe observation commands
 
@@ -239,78 +337,25 @@ Get-NetRoute
 These commands reveal local configuration, **not proof that VLAN separation is enforced**. To verify enforcement in an authorized lab, inspect switch VLAN/trunk settings and firewall or ACL rules, then test permitted and prohibited paths from appropriate test devices. A failed ping alone does not prove segmentation because ICMP may be filtered independently.
 
 <details markdown="1">
-<summary>Reveal the lab's most important lesson</summary>
+<summary>Reveal lab answers and key lesson</summary>
+
+| Connection | Routing and policy decision |
+|---|---|
+| Guest → finance | Different VLANs; routing required; deny. |
+| Employee → printer | Different VLANs; allow only required printing traffic. |
+| Camera → finance | Different VLANs; deny. |
+| Admin → switch management | Allow approved secure administration from authorized sources; routing depends on admin location. |
+| Finance → DNS | Allow DNS to designated resolver; routing depends on resolver location. |
+
+For Part A, compare your sketch with the worked case study. For Part C, observations depend on your device; a routing table cannot prove filtering is enforced.
 
 **A successful segmentation design identifies both the boundary and the enforcement point.** Merely assigning six VLAN IDs does not prove that finance data is protected. Confirm that routing, firewall rules, ACLs, wireless SSID mapping, and management access all support the intended policy.
 
 </details>
 
-## 7. Common misconfigurations and security pitfalls
+## 13. Eight original Security+-style questions {#10-practice-questions}
 
-### Overly permissive inter-VLAN rules
-
-A rule such as “allow all internal VLANs to all internal VLANs” can erase the security benefit of separating them. Prefer specific source, destination, protocol, and port combinations.
-
-### Unnecessary trunk VLANs
-
-A trunk that carries VLANs not needed by the connected device expands exposure and makes configuration errors more consequential. Allowlist required VLANs.
-
-### VLAN hopping misconceptions
-
-**VLAN hopping** refers to techniques that exploit certain switch or trunk misconfigurations to reach traffic associated with another VLAN. Examples discussed in networking security include switch spoofing and double-tagging under specific conditions. These are **not automatic capabilities** of any device plugged into a VLAN. Properly configured access ports, disabled unwanted dynamic trunk negotiation where applicable, consistent native-VLAN handling, and restricted trunks reduce risk.
-
-### Confusing guest SSIDs with isolation
-
-A separate wireless network name (**SSID**) is not itself proof of segmentation. Verify that the guest SSID maps to the intended VLAN and that upstream policies block internal access. Consider wireless client isolation when guests should not reach each other.
-
-### Forgetting the management plane
-
-Switches, firewalls, and access points often expose administrative interfaces. Restrict these interfaces to trusted management sources, use secure administration protocols, and protect credentials. A separate management VLAN helps organization, but access controls provide the actual restriction.
-
-### Forgetting east–west traffic
-
-**North–south traffic** generally refers to traffic entering or leaving a network or environment. **East–west traffic** generally refers to traffic between internal systems or workloads. A perimeter firewall may protect north–south traffic while missing lateral movement that stays inside the network.
-
-### Treating VLANs as complete isolation
-
-VLANs help organize Layer 2 traffic, but they are not equivalent to physical air gaps, encryption, or comprehensive zero-trust enforcement. Use layered controls appropriate to the threat model.
-
-## 8. Security+ comparisons and exam traps
-
-| If the question says… | Think about… |
-|---|---|
-| “Separate broadcast domains on the same managed switch” | VLANs |
-| “Assign distinct IP address ranges” | Subnetting; not necessarily access control |
-| “Allow only approved flows between departments” | Firewall rules, ACLs, or another enforcement mechanism |
-| “Multiple VLANs over one switch-to-switch cable” | 802.1Q trunk |
-| “One endpoint connected to one VLAN” | Access port |
-| “Default gateway for a VLAN on a Layer 3 switch” | SVI |
-| “Restrict traffic between individual workloads” | Microsegmentation |
-| “Compromised endpoint reaches other internal hosts” | Lateral movement; assess east–west controls |
-| “Guest Wi-Fi cannot reach internal devices” | Guest VLAN **plus enforced filtering**, not merely a separate SSID |
-
-**Exam trap:** “The administrator created separate VLANs, so all departments are securely isolated.” This conclusion is too strong. Ask whether inter-VLAN routing is enabled and what rules govern it.
-
-## 9. Key terminology and takeaways
-
-- **Segmentation:** Dividing networks into zones with controlled communication paths.
-- **Trust boundary:** A point between systems or zones with different trust assumptions.
-- **VLAN:** Logical Layer 2 broadcast domain on managed network infrastructure.
-- **802.1Q:** Common Ethernet VLAN-tagging standard.
-- **Access port:** Usually an endpoint-facing port assigned to one VLAN.
-- **Trunk port:** Link carrying multiple VLANs, commonly with 802.1Q tags.
-- **Native VLAN:** VLAN associated with untagged traffic on an 802.1Q trunk in relevant configurations.
-- **Subnet:** Layer 3 IP addressing division; not by itself a firewall policy.
-- **Inter-VLAN routing:** Layer 3 forwarding between VLAN-associated subnets.
-- **SVI:** Switch virtual interface, often a VLAN's Layer 3 gateway.
-- **ACL:** Access control list that can permit or deny specified traffic.
-- **Microsegmentation:** Fine-grained control among hosts or workloads.
-- **Lateral movement:** An attacker moving from one compromised system to other systems.
-- **East–west traffic:** Traffic among internal systems or workloads.
-
-**Core takeaway:** Design VLANs around business roles and trust, but evaluate security by the **traffic that is actually allowed across boundaries**, not by the number of VLANs on the diagram.
-
-## 10. Practice questions
+Choose the **BEST** answer before revealing each explanation. These are original practice questions, not actual CompTIA exam items.
 
 ### Question 1
 
@@ -392,11 +437,82 @@ D. Verify the VLAN mapping and filtering rules, then test that guest clients can
 
 </details>
 
-## 11. Further reading
+### Question 6
+
+Two departments use different IPv4 subnets but share the same untagged switch VLAN. Which conclusion is MOST accurate?
+
+A. Their traffic is automatically encrypted.  
+B. They are physically isolated.  
+C. They still share a Layer 2 broadcast domain.  
+D. Their subnet masks enforce firewall policy.
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**Correct answer: C.** Subnetting changes Layer 3 addressing, not the Layer 2 broadcast domain. VLAN separation and appropriate enforcement are needed for the intended security boundary.
+
+</details>
+
+### Question 7
+
+A trunk to a wireless access point carries every office VLAN, although the access point needs only staff and guest VLANs. What is the BEST improvement?
+
+A. Allow only the VLANs required by the access point.  
+B. Disable all firewall logging.  
+C. Assign every endpoint the same IP address.  
+D. Extend DHCP lease durations.
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**Correct answer: A.** Restricting allowed VLANs reduces unnecessary exposure. The other changes do not address trunk configuration.
+
+</details>
+
+### Question 8
+
+A compromised internal workload communicates with other workloads without passing through the perimeter firewall. Which traffic should the security team focus on restricting?
+
+A. Only inbound internet traffic  
+B. Only external DNS queries  
+C. Only north–south traffic  
+D. East–west traffic
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**Correct answer: D.** East–west traffic moves between internal systems. Internal enforcement and microsegmentation can restrict lateral movement where perimeter filtering cannot see the flows.
+
+</details>
+
+**Score guide:** 7–8: strong understanding; 5–6: review VLAN forwarding and enforcement; 0–4: revisit the worked design and repeat the lab.
+
+## 14. Discussion challenge
+
+A law firm has separate staff, guest and management VLANs, but a compromised staff laptop can still reach administrative interfaces. Explain two possible reasons and recommend a control for each. Where must those controls be enforced, and how would you verify them?
+
+## 15. Study from the Treadmill 🏃
+
+- [Professor Messer — Security+ SY0-701 video course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/) — locate the secure infrastructure and security architecture lessons covering segmentation and access controls.
+
+**Active-listening prompts:** What separates broadcast domains? What actually enforces a trust boundary? Why might internal traffic bypass a perimeter firewall?
+
+### Further reading
 
 - [CompTIA Security+ certification and exam information](https://www.comptia.org/certifications/security) — consult the official SY0-701 objectives for authoritative exam scope.
 - [IEEE 802.1 Working Group](https://www.ieee802.org/1/) — standards context for bridged networks and VLANs.
 - [NIST SP 800-207: Zero Trust Architecture](https://csrc.nist.gov/pubs/sp/800/207/final) — broader context for minimizing implicit trust and controlling access.
+
+## 16. One-minute recap
+
+- **VLAN:** Separate Layer 2 broadcast domain; not encryption.
+- **Subnet:** Layer 3 address range; not a firewall.
+- **Access / trunk:** One VLAN versus multiple VLANs on a link.
+- **Inter-VLAN routing:** Enables communication; ACLs and firewalls enforce restrictions.
+- **Microsegmentation:** Limits fine-grained east–west communication.
+- **Golden rule:** Verify the actual traffic path and enforcement, not just the diagram.
+
+**Next:** Day 22 — Firewalls and access control lists.
 
 ---
 © 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).  
