@@ -1,11 +1,13 @@
-# Day 30: Indicators and Threat Intelligence
+# Day 30 — Indicators and Threat Intelligence
 
 **Week 06 — Threats, Vulnerabilities, and Mitigations**  
 **Security+ Study Academy**  
 **Prerequisites:** Days 26–29  
 **Estimated study time:** 75–100 minutes
 
-## Learning objectives
+**Security+ SY0-701 alignment:** Objectives 2.4 (indicators of malicious activity), 4.3 (vulnerability management, including threat intelligence sources), 4.4 (security monitoring), and 4.9 (investigation data sources). Related: 4.8 (incident response).
+
+## 1. Learning objectives {#learning-objectives}
 
 By the end of this lesson, you should be able to:
 
@@ -16,7 +18,13 @@ By the end of this lesson, you should be able to:
 5. Map indicators to proportionate investigation and response steps.
 6. Create a short, evidence-based threat intelligence assessment.
 
-## 1. From threat actors to observable evidence
+## 2. The big idea: From clues to decisions
+
+Think of an analyst as an investigator assembling a case file. A single clue may suggest a direction, but its value depends on provenance, timing, corroboration and relevance. Threat intelligence turns scattered observations into decisions about what to investigate, protect or change.
+
+**Memory hook:** Collect the clue, test the explanation, communicate the confidence.
+
+## 3. From threat actors to observable evidence {#1-from-threat-actors-to-observable-evidence}
 
 In Days 26–29, you examined who may attack an organization, which surfaces they can reach, how they manipulate people, and how malware behaves. Investigators connect those concepts to **observable evidence**: events, artifacts, and patterns that may indicate hostile activity.
 
@@ -38,7 +46,7 @@ A threat feed reports the SHA-256 hash of a confirmed malicious executable. That
 
 </details>
 
-## 2. Common indicator categories
+## 4. Common indicator categories {#2-common-indicator-categories}
 
 ### Network indicators
 
@@ -73,7 +81,7 @@ A cryptographic hash identifies file contents with high precision, but a differe
 
 **Remember:** A suspicious message is evidence to preserve, not a link to click or an attachment to execute.
 
-## 3. The Pyramid of Pain
+## 5. The Pyramid of Pain {#3-the-pyramid-of-pain}
 
 The **Pyramid of Pain** illustrates how difficult different types of detection indicators can be for an adversary to change.
 
@@ -88,7 +96,7 @@ The **Pyramid of Pain** illustrates how difficult different types of detection i
 
 The pyramid is a **general model**, not a universal ranking. Operational constraints can make a specific domain hard to replace or a tool easy to swap. Behavioral detections are often more durable than a single hash or address.
 
-## 4. Threat intelligence versus raw threat data
+## 6. Threat intelligence versus raw threat data {#4-threat-intelligence-versus-raw-threat-data}
 
 **Threat data** consists of observations: logs, suspicious hashes, domain lists, and reports. **Threat intelligence** adds analysis and context so someone can make a decision.
 
@@ -133,7 +141,7 @@ A public feed flags `203.0.113.77` as suspicious, but provides no timestamps or 
 
 </details>
 
-## 5. The threat intelligence lifecycle
+## 7. The threat intelligence lifecycle {#5-the-threat-intelligence-lifecycle}
 
 The cycle is iterative rather than strictly linear.
 
@@ -146,7 +154,7 @@ The cycle is iterative rather than strictly linear.
 
 **Example:** A law firm's security team collects mailbox reports, sign-in events, and endpoint alerts. Analysts correlate a suspicious login with a newly created forwarding rule. The team notifies incident responders, preserves evidence, and reviews affected accounts.
 
-## 6. Threat intelligence sharing and frameworks
+## 8. Threat intelligence sharing and frameworks {#6-threat-intelligence-sharing-and-frameworks}
 
 ### MITRE ATT&CK
 
@@ -163,7 +171,7 @@ The **Traffic Light Protocol (TLP)** communicates sharing boundaries. TLP 2.0 us
 
 Before sharing, remove unnecessary personal data, credentials, confidential client material, and other sensitive details. A useful indicator can often be shared without exposing the affected person's identity.
 
-## 7. Map indicators to investigation steps
+## 9. Map indicators to investigation steps {#7-map-indicators-to-investigation-steps}
 
 Use the workflow **observe → validate → scope → preserve → respond → document**.
 
@@ -187,7 +195,85 @@ Keep the **observation**, **interpretation**, and **confidence** separate:
 
 An IP address, malware family, or technique rarely establishes the identity of the actor. Attribution requires multiple independent lines of evidence and careful consideration of alternatives.
 
-## 8. Practical lab: investigate a simulated law firm incident
+## 10. Common misconceptions and exam traps
+
+| Misconception | Correct interpretation |
+| --- | --- |
+| A feed match confirms compromise | Validate freshness, provenance and local context. |
+| A hash identifies every malware variant | Modified content produces a different hash. |
+| No endpoint alert means no incident | Identity and cloud compromise may occur without endpoint malware. |
+| ATT&CK identifies the attacker | It describes behavior, not definitive attribution. |
+| STIX and TAXII are interchangeable | STIX represents intelligence; TAXII exchanges it. |
+| TLP is an encryption mechanism | TLP communicates sharing restrictions. |
+
+## 11. Key terminology and self-assessment {#10-quick-reference-glossary}
+
+| Term | Meaning |
+| --- | --- |
+| **IoC** | Artifact that may indicate compromise |
+| **IoA** | Pattern or behavior that may indicate an attack |
+| **TTP** | Tactic, technique, or procedure used by an adversary |
+| **OSINT** | Intelligence gathered from publicly available sources |
+| **SIEM** | Security information and event management system |
+| **EDR** | Endpoint detection and response |
+| **STIX** | Structured Threat Information Expression |
+| **TAXII** | Trusted Automated Exchange of Intelligence Information |
+| **TLP** | Traffic Light Protocol for information sharing boundaries |
+| **Attribution** | Assessment of who is responsible for an activity, based on evidence |
+
+
+<a id="11-self-assessment"></a>
+
+### Self-assessment
+
+- [ ] I can distinguish an IoC from an IoA and recognize overlap.
+- [ ] I can explain why indicators require context and validation.
+- [ ] I can compare technical, tactical, operational, and strategic intelligence.
+- [ ] I can describe the intelligence lifecycle and name common intelligence sources.
+- [ ] I can explain the purpose of ATT&CK, STIX, TAXII, and TLP.
+- [ ] I can map suspicious observations to safe investigation steps.
+- [ ] I can write an assessment that separates evidence, hypotheses, and confidence.
+
+## 12. Worked case study: A suspicious indicator becomes actionable
+
+A law firm receives a feed entry for a suspicious domain. Its DNS logs show a managed laptop queried the domain, but there is no confirmed connection or payload execution. The analyst checks the feed's provenance and dates, correlates proxy and endpoint logs, and asks whether the query came from an approved application. If corroborating evidence establishes unauthorized activity, the team scopes affected assets and applies authorized containment. If the query is explained by legitimate activity, the analyst documents the finding and reviews detection tuning.
+
+**Lesson:** A DNS query is an observation, not proof of successful communication. Intelligence becomes actionable through context and validation.
+
+## 13. Guided notes — Write first, reveal later
+
+Complete the table before revealing the model answers.
+
+| Prompt | Your notes |
+| --- | --- |
+| 1. IoC versus IoA | |
+| 2. Four categories of indicators | |
+| 3. Why hashes are easier to evade than TTP-based detections | |
+| 4. Four intelligence levels | |
+| 5. Six source-quality criteria | |
+| 6. Six lifecycle stages | |
+| 7. ATT&CK, STIX, TAXII and TLP | |
+| 8. Observation, interpretation and confidence | |
+
+<details markdown="1">
+<summary>Reveal model guided notes</summary>
+
+| Prompt | Model answer |
+| --- | --- |
+| 1 | IoCs are artifacts suggesting compromise; IoAs describe suspicious behavior. They can overlap. |
+| 2 | Network, host/file, identity/cloud, and email/human-reported indicators. |
+| 3 | Changing file contents changes the hash; established operating methods may be harder to replace. |
+| 4 | Strategic, operational, tactical, technical. |
+| 5 | Provenance, time, confidence, context, relevance, actionability. |
+| 6 | Direction, collection, processing, analysis, dissemination, feedback. |
+| 7 | ATT&CK describes behavior; STIX represents intelligence; TAXII exchanges it; TLP sets sharing boundaries. |
+| 8 | Record what happened, what it may mean, and how strongly evidence supports that interpretation separately. |
+
+</details>
+
+## 14. Hands-on lab: Investigate a simulated law firm incident {#8-practical-lab-investigate-a-simulated-law-firm-incident}
+
+**Time:** 15–25 minutes. Use only the fictional evidence below; no live investigation is required.
 
 **Scenario:** A 20-person law firm uses cloud email, shared document storage, managed laptops, and MFA. On Tuesday morning, the help desk receives a report that a staff member clicked a link in an unexpected “document review” email.
 
@@ -206,11 +292,14 @@ All names, domains, addresses, and events below are **fictional training data**.
 | E7 | 09:15 | Help desk | Employee denies creating the forwarding rule |
 | E8 | 09:20 | Threat feed | `198.51.100.24` listed as suspicious, without a cited first-seen date |
 
-### Your tasks
+### Part A — Classify evidence and develop a hypothesis
 
 1. Identify **at least four indicators**, labeling each as an IoC, IoA, or both where justified.
 2. Rank the **three most urgent investigative questions**.
 3. Write a plausible **attack-path hypothesis** without treating it as established fact.
+
+### Part B — Plan response and communicate findings
+
 4. Recommend **three immediate actions** that preserve evidence and reduce risk.
 5. Write a **five-sentence analyst summary** separating observations from conclusions.
 6. Assign an overall confidence level (**low, moderate, or high**) and explain it.
@@ -230,9 +319,9 @@ All names, domains, addresses, and events below are **fictional training data**.
 
 </details>
 
-## 9. Security+ knowledge check
+## 15. Eight original Security+-style questions {#9-security-knowledge-check}
 
-Choose the **best** answer for each question before opening its explanation.
+Choose the best answer before revealing the explanation.
 
 ### Question 1
 
@@ -362,64 +451,27 @@ D. It replaces incident response procedures
 
 </details>
 
-### Question 9
+**Score guide:** 7–8 correct: ready to advance; 5–6: revisit missed concepts; 0–4: review the lesson and repeat the lab.
 
-A staff member's laptop shows no malware alert, but cloud logs show suspicious account activity. What is the best conclusion?
+## 16. Discussion challenge
 
-A. No incident is possible without malware  
-B. Account compromise remains possible and should be investigated  
-C. The cloud logs must be false  
-D. All cloud accounts must be deleted immediately
+The endpoint shows no malware alert, but cloud logs suggest unauthorized access. Explain why the investigation must continue. A peer community requests the evidence: what sharing permissions, TLP restrictions and redactions must be checked before disclosure? Explain why the absence of malware and the presence of a feed hit do not settle attribution.
 
-<details markdown="1">
-<summary>Reveal answer and explanation</summary>
+## 17. Study from the Treadmill 🏃
 
-**Answer: B.** Credential theft and session misuse can occur without a malware alert on the endpoint.
+- [Professor Messer — Security+ SY0-701 video course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/) — select the threat intelligence and malicious activity lessons. Specific video links require verification before publication.
 
-</details>
+**Active-listening prompts:** How does intelligence differ from raw data? Why should an analyst validate a feed hit before blocking traffic?
 
-### Question 10
+## 18. One-minute recap
 
-Before sharing indicators from a client incident with an external community, an analyst should **first**:
+- IoCs describe artifacts; IoAs describe behavior. Neither alone proves compromise.
+- The Pyramid of Pain explains why behavioral detections may be more durable.
+- Intelligence adds context, confidence and relevance to observations.
+- ATT&CK, STIX, TAXII and TLP serve different purposes.
+- Validate, scope, preserve, respond and document; avoid unsupported attribution.
 
-A. Publish the full mailbox contents for transparency  
-B. Ignore classification and sharing restrictions  
-C. Check sharing permissions, sensitivity, and whether personal or confidential data can be removed  
-D. Upload all attachments to an unapproved public scanner
-
-<details markdown="1">
-<summary>Reveal answer and explanation</summary>
-
-**Answer: C.** Intelligence sharing must respect handling rules, privacy, and confidentiality.
-
-</details>
-
-## 10. Quick-reference glossary
-
-| Term | Meaning |
-| --- | --- |
-| **IoC** | Artifact that may indicate compromise |
-| **IoA** | Pattern or behavior that may indicate an attack |
-| **TTP** | Tactic, technique, or procedure used by an adversary |
-| **OSINT** | Intelligence gathered from publicly available sources |
-| **SIEM** | Security information and event management system |
-| **EDR** | Endpoint detection and response |
-| **STIX** | Structured Threat Information Expression |
-| **TAXII** | Trusted Automated Exchange of Intelligence Information |
-| **TLP** | Traffic Light Protocol for information sharing boundaries |
-| **Attribution** | Assessment of who is responsible for an activity, based on evidence |
-
-## 11. Self-assessment
-
-- [ ] I can distinguish an IoC from an IoA and recognize overlap.
-- [ ] I can explain why indicators require context and validation.
-- [ ] I can compare technical, tactical, operational, and strategic intelligence.
-- [ ] I can describe the intelligence lifecycle and name common intelligence sources.
-- [ ] I can explain the purpose of ATT&CK, STIX, TAXII, and TLP.
-- [ ] I can map suspicious observations to safe investigation steps.
-- [ ] I can write an assessment that separates evidence, hypotheses, and confidence.
-
-## 12. Review and next steps
+### Review and next steps {#12-review-and-next-steps}
 
 **Week 06 progression:**
 
@@ -428,7 +480,7 @@ D. Upload all attachments to an unapproved public scanner
 - [Day 28 — Social Engineering and Phishing](day-28-social-engineering-and-phishing.md)
 - [Day 29 — Malware and Ransomware](day-29-malware-and-ransomware.md)
 
-You have now followed the path from **actor → exposure → social engineering → malware behavior → investigation and intelligence**. Complete the Week 06 diagnostic and review activities when they are published.
+You have now followed the path from **actor → exposure → social engineering → malware behavior → investigation and intelligence**. Complete the [Week 06 review](review.w6.md) and revisit your [diagnostic](00-diagnostic.w6.md) results.
 
 ### Further reading
 
