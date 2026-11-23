@@ -1,16 +1,16 @@
 # Day 18 — Ports and Protocols: Finding the Right Door
 
 **Security+ Study Academy | Week 04 · Day 18**  
+**CompTIA Security+ SY0-701 alignment:** Foundational networking knowledge supporting Objectives 3.2 (secure enterprise infrastructure), 4.5 (enterprise security capabilities), and 4.9 (investigation data sources); port memorization is supporting knowledge, not a standalone objective.  
+**Previous:** [Day 17 — IP Addressing and Subnetting](day-17-ip-addressing-and-subnetting.md)  
+**Next:** [Day 19 — DNS, DHCP and Network Services](day-19-dns-dhcp-and-network-services.md)  
 **Topic:** Transport protocols, service ports, and secure alternatives  
 **Prerequisite:** [Day 16 — OSI and TCP/IP](day-16-osi-and-tcp-ip.md)  
-**Estimated study time:** 60–75 minutes  
-**Learning outcome:** Associate network services with ports and identify secure alternatives  
-**Practical application:** Inspect local network connections without changing system settings  
-**Assessment focus:** Protocol selection
+**Estimated study time:** 60–80 minutes  
 
-> **The big idea:** An IP address gets traffic to the right device. A **port number** helps the receiving device deliver that traffic to the right network service. But a port number is a clue, not a guarantee of what is actually running behind it.
 
-## Learning objectives
+## 1. Learning objectives
+
 
 By the end of this lesson, you should be able to:
 
@@ -21,7 +21,9 @@ By the end of this lesson, you should be able to:
 5. Interpret listening sockets and established connections on your own device.
 6. Explain why open ports, encryption, and network exposure matter to defenders.
 
-## 1. The apartment-building analogy 
+## 2. The big idea: The apartment-building analogy {#address-and-port}
+
+An IP address gets traffic to the right device. A **port number** helps the receiving device deliver that traffic to the right network service. But a port number is a clue, not a guarantee of what is actually running behind it.
 
 Imagine a building with one street address and many apartments. The **IP address** identifies the building; the **port** identifies the apartment door. The **transport protocol** determines the rules for delivering a message.
 
@@ -41,7 +43,9 @@ The addresses above are documentation examples, not real destinations for an exe
 
 Recall [Day 16](day-16-osi-and-tcp-ip.md#osi-layers): TCP and UDP are usually discussed at **OSI Layer 4 (Transport)**. IP belongs to Layer 3. HTTP and DNS are application-layer protocols. **A port number is not an IP address or a protocol by itself.**
 
-## 2. What is a port? 
+The reply reverses the source and destination endpoints. A stateful firewall can recognize matching return traffic without allowing unsolicited connections to every client port. NAT may change addresses and ports.
+
+## 3. What is a port? {#ports}
 
 TCP and UDP port numbers are **16-bit integers**, from `0` to `65535`. TCP port 53 and UDP port 53 are distinct transport endpoints.
 
@@ -61,7 +65,7 @@ Laptop                         Web server
 
 **Security connection:** Attackers may look for accessible listening services. Defenders limit exposure using host firewalls, network firewalls, access controls, secure configurations, and service hardening. An open port alone does **not** prove a vulnerability.
 
-## 3. TCP versus UDP 
+## 4. TCP versus UDP {#tcp-versus-udp}
 
 | Characteristic | TCP | UDP |
 |---|---|---|
@@ -84,13 +88,15 @@ Client -> Server: ACK
 
 Afterward, TCP manages sequence numbers, acknowledgments, flow control, and retransmission. TCP reliability is useful when missing or out-of-order bytes would break an application. **TCP does not provide confidentiality or authentication on its own**; protocols such as TLS supply those protections.
 
-### UDP: The fast postcard 
+SYN initiates synchronization, SYN-ACK acknowledges it, and ACK completes the handshake. FIN supports orderly closure; RST resets a connection. A successful handshake does not establish encryption or application authentication.
+
+### UDP: The fast postcard {#udp-behavior}
 
 UDP sends datagrams without a transport-layer connection setup or built-in retransmission. This makes it useful for low-latency applications and for protocols that implement their own reliability when needed.
 
 **Exam trap:** UDP does not mean “always faster” or “always insecure.” **QUIC**, used by HTTP/3, runs over UDP and incorporates encryption and transport reliability mechanisms. DNS can use **UDP or TCP**, and encrypted DNS can use additional transports.
 
-## 4. Ports and protocols to recognize 
+## 5. Ports and protocols to recognize {#common-ports}
 
 The following are **common defaults**, not hard rules. Applications can use nonstandard ports, and the actual service must be verified from configuration or traffic.
 
@@ -134,7 +140,7 @@ The following are **common defaults**, not hard rules. Applications can use nons
 
 **Do not memorize blindly:** `443` usually suggests HTTPS, but an attacker can run a different application there. Conversely, HTTPS may run on a nonstandard port such as `8443`.
 
-### Service families that exam questions mix up 
+### Service families that exam questions mix up {#service-families}
 
 - **Web:** HTTP `80/TCP`; HTTPS `443/TCP`, or HTTP/3 over `443/UDP`.
 - **Remote access:** Telnet `23/TCP` is plaintext; SSH `22/TCP` is the typical encrypted alternative. RDP `3389` is a different remote desktop protocol, not a replacement for SSH.
@@ -143,7 +149,9 @@ The following are **common defaults**, not hard rules. Applications can use nons
 - **Directory and identity:** LDAP `389`, LDAPS `636`, Kerberos `88`, RADIUS `1812/1813`.
 - **Infrastructure:** DNS `53`, DHCPv4 `67/68`, NTP `123`, SNMP `161/162`.
 
-## 5. Choosing secure alternatives 
+**Additional context:** Kerberos uses authentication tickets; LDAP accesses directories; RADIUS centralizes network access authentication, authorization and accounting. NTP supports accurate log timestamps, while syslog transports event messages. DNS and DHCP are covered in detail in Day 19.
+
+## 6. Choosing secure alternatives {#secure-alternatives}
 
 | Less secure or legacy option | Prefer, when supported | Important qualification |
 |---|---|---|
@@ -161,7 +169,9 @@ The following are **common defaults**, not hard rules. Applications can use nons
 
 **Security+ reasoning:** The question is often not “Which port is encrypted?” but **“Which protocol and configuration best protects the communication?”** Port `443` alone does not prove TLS is enabled or correctly configured.
 
-## 6. Reading connection states 
+**Defense in depth:** Encryption protects traffic, authentication verifies identity, and authorization limits permitted actions. Combine secure protocols with patching, restricted access and monitoring.
+
+## 7. Reading connection states {#connection-states}
 
 A **socket** is an operating-system endpoint used by a network application. A listening TCP socket waits for incoming connection attempts; an established TCP connection has completed its handshake.
 
@@ -174,7 +184,7 @@ A **socket** is an operating-system endpoint used by a network application. A li
 
 UDP is connectionless at the transport layer, so UDP sockets generally do **not** have the same TCP connection-state lifecycle. Tools may display UDP endpoints without a `LISTEN` state.
 
-### Example: Interpret a socket listing 
+### Example: Interpret a socket listing {#socket-example}
 
 ```text
 Proto  Local Address          Foreign Address        State
@@ -191,74 +201,9 @@ What can we infer?
 
 **Critical distinction:** A service can be **listening locally** yet **not reachable remotely**, due to its bind address, firewall policy, network routing, or other controls.
 
-## 7. Practical lab: Inspect your own connections 
+## 8. Worked case study: Securing and investigating a law firm network {#security-scenarios}
 
-**Goal:** Identify local listening ports, active connections, and possible services **without scanning anyone else's network**.
-
-**Safety and scope:** Run these read-only commands on a computer you own or are authorized to administer. Do not disable a firewall or install software for this lesson. Results will vary by OS and current activity.
-
-### macOS (including Intel Macs) 
-
-Open Terminal and run **one command at a time**:
-
-```bash
-lsof -nP -iTCP -sTCP:LISTEN
-```
-
-This lists processes with listening TCP sockets. `-nP` avoids DNS and service-name lookup, so you see numeric addresses and ports.
-
-Then inspect active TCP connections:
-
-```bash
-lsof -nP -iTCP -sTCP:ESTABLISHED
-```
-
-If you receive a permissions error or see incomplete results, some processes may require elevated permissions; **do not escalate privileges for this exercise**.
-
-### Windows (PowerShell) 
-
-```powershell
-Get-NetTCPConnection -State Listen
-```
-
-```powershell
-Get-NetTCPConnection -State Established
-```
-
-Look at `LocalAddress`, `LocalPort`, `RemoteAddress`, `RemotePort`, and `State`. Some process metadata may require administrator rights; that is not necessary here.
-
-### Linux 
-
-```bash
-ss -ltn
-```
-
-```bash
-ss -tn state established
-```
-
-If `ss` is unavailable, use your distribution's existing network tools rather than installing packages solely for this exercise.
-
-### Record your observations 
-
-Fill in **three** rows from your own results. You may redact public IP addresses before sharing notes.
-
-| Observation | Local IP:port | Remote IP:port (if any) | State | Possible service | What you can actually confirm |
-|---|---|---|---|---|---|
-| 1 | | | | | |
-| 2 | | | | | |
-| 3 | | | | | |
-
-**Reflection questions:**
-
-1. Did you find a port in the well-known range? Which one?
-2. Did you see a high-numbered client source port connected to a familiar service port?
-3. Was a listener bound to `127.0.0.1`, a specific LAN address, or `0.0.0.0`?
-4. What **additional evidence** would you need before claiming the connection is malicious?
-
-**Success criterion:** You can identify a local endpoint, distinguish listening from established TCP sockets, and explain why a port number is only a starting hypothesis.
-
-## 8. Security scenarios: Choose the right protocol 
+A law firm is reviewing remote administration, document exchange, mail, monitoring and unusual outbound connections. Work through each decision.
 
 ### Scenario A: Remote server administration
 
@@ -280,7 +225,7 @@ A network team wants to poll switches without exposing community strings and mon
 
 An endpoint makes an unexpected connection to an unfamiliar IP on `443/TCP`. You **cannot conclude** it is safe because it uses `443`, or malicious because the IP is unfamiliar. Correlate the owning process, destination reputation, DNS history, TLS details (when available), user activity, and endpoint alerts.
 
-## 9. Common exam traps {#exam-traps}
+### Common exam traps {#exam-traps}
 
 - **“TCP = secure.”** False. TCP is reliable, not encrypted by default.
 - **“UDP = no reliability anywhere.”** False. Applications and protocols such as QUIC can implement reliability above UDP.
@@ -291,107 +236,8 @@ An endpoint makes an unexpected connection to an unfamiliar IP on `443/TCP`. You
 - **“Any high port is malicious.”** False. Temporary client ports are normal.
 - **“STARTTLS means plaintext forever.”** False. Correctly negotiated and validated STARTTLS encrypts subsequent communication.
 
-## 10. Day 18 knowledge check 
-
-Choose the **single best answer** for each question. Try without consulting the tables first.
-
-**1. A web client connects from `192.168.1.25:53001` to `203.0.113.10:443` over TCP. Which is the client's source port?**
-
-A. `443`  
-B. `53001`  
-C. `192.168.1.25`  
-D. `203.0.113.10`
-
-**2. Which transport protocol provides built-in sequencing, acknowledgments, and retransmission?**
-
-A. UDP  
-B. IP  
-C. TCP  
-D. ICMP
-
-**3. A company wants encrypted command-line administration instead of Telnet. Which service is the best fit?**
-
-A. SSH on `22/TCP`  
-B. FTP on `21/TCP`  
-C. HTTP on `80/TCP`  
-D. TFTP on `69/UDP`
-
-**4. Which statement about DNS transport is correct?**
-
-A. DNS uses only UDP `53`.  
-B. DNS uses only TCP `53`.  
-C. DNS never uses port `53`.  
-D. Traditional DNS commonly uses UDP and TCP `53`.
-
-**5. Which pairing is correct for DHCPv4?**
-
-A. Server UDP `68`, client UDP `67`  
-B. Server UDP `67`, client UDP `68`  
-C. Server TCP `443`, client TCP `80`  
-D. Server TCP `22`, client TCP `23`
-
-**6. Which is the most accurate description of SFTP?**
-
-A. An unencrypted version of FTP  
-B. A synonym for FTPS  
-C. A file-transfer protocol carried over SSH  
-D. A file-transfer protocol that always uses UDP
-
-**7. A service listens only on `127.0.0.1:5432`. What is the strongest supported conclusion?**
-
-A. It is bound to the local loopback interface.  
-B. It is publicly accessible from the Internet.  
-C. It is confirmed to be PostgreSQL.  
-D. It is malicious.
-
-**8. Which configuration best protects SNMP management traffic?**
-
-A. SNMPv1 with a public community string  
-B. SNMPv2c over an untrusted network  
-C. Telnet tunneling without authentication  
-D. SNMPv3 with authentication and privacy
-
-**9. An analyst sees an unexpected outbound connection to TCP port `443`. What should they do next?**
-
-A. Assume it is safe because `443` is HTTPS.  
-B. Investigate the process, destination, and supporting telemetry.  
-C. Assume all encrypted traffic is malicious.  
-D. Disable all TCP traffic immediately.
-
-**10. Which statement about HTTP/3 is accurate?**
-
-A. It cannot provide reliability because it uses UDP.  
-B. It uses Telnet as its transport.  
-C. It commonly runs over QUIC on UDP `443`.  
-D. It is always unencrypted.
-
-### Knowledge check answers and explanations 
-
-<details markdown="1">
-<summary>Reveal answers and explanations</summary>
-
-| Q | Answer | Explanation | Review |
-|---|---|---|---|
-| 1 | **B** | `53001` is the temporary source port; `443` is the destination service port. | [Address and port](#address-and-port) |
-| 2 | **C** | TCP provides transport-layer reliability and ordered delivery. | [TCP versus UDP](#tcp-versus-udp) |
-| 3 | **A** | SSH is the common encrypted replacement for Telnet remote administration. | [Secure alternatives](#secure-alternatives) |
-| 4 | **D** | Traditional DNS can use UDP or TCP on port 53. | [Common ports](#common-ports) |
-| 5 | **B** | DHCPv4 servers typically use UDP 67; clients use UDP 68. | [Common ports](#common-ports) |
-| 6 | **C** | SFTP is the SSH File Transfer Protocol, not FTP with TLS. | [Service families](#service-families) |
-| 7 | **A** | Loopback binding means the socket is local-only on that interface; a port cannot identify a process with certainty. | [Socket example](#socket-example) |
-| 8 | **D** | SNMPv3 supports authenticated and encrypted management when configured with privacy. | [Secure alternatives](#secure-alternatives) |
-| 9 | **B** | A port is not proof of application identity or trustworthiness; correlate additional evidence. | [Security scenarios](#security-scenarios) |
-| 10 | **C** | HTTP/3 uses QUIC, which commonly runs over UDP port 443 and implements security and reliability. | [UDP behavior](#udp-behavior) |
-
-</details>
-
-**Score:** ____ / 10
-
-- **9–10:** Strong protocol-selection skills. Explain three secure alternatives without checking the table.
-- **7–8:** Good progress. Review the service families you mixed up.
-- **0–6:** Revisit [TCP versus UDP](#tcp-versus-udp) and [common ports](#common-ports), then retry the questions.
-
-## 11. Exam-day quick reference 
+### Exam-day quick reference
+ 
 
 | Clue in the question | Likely concept |
 |---|---|
@@ -412,15 +258,286 @@ D. It is always unencrypted.
 | High client source port | Often a normal ephemeral port |
 | Listener on loopback | Not the same as Internet-facing exposure |
 
-**Three things to remember:**
+## 9. Guided notes — Write first, reveal later
 
-1. **IP address = device/interface; port = service endpoint; TCP/UDP = transport rules.**
-2. **Choose secure protocols and secure configurations, not merely familiar port numbers.**
-3. **A port suggests a service, but only further evidence can confirm what is running and whether it is dangerous.**
+Complete the table without looking back at the lesson.
 
-### Coming next
+| Prompt | Your answer |
+|---|---|
+| Name the five fields of a flow's five-tuple. | _Write here._ |
+| Distinguish a client source port from a server listening port. | _Write here._ |
+| Explain the three TCP handshake steps. | _Write here._ |
+| Compare TCP and UDP reliability and encryption. | _Write here._ |
+| Explain why DNS can use TCP and UDP. | _Write here._ |
+| Compare SFTP and FTPS. | _Write here._ |
+| Compare SMTP, IMAP and POP3. | _Write here._ |
+| Distinguish LISTEN and ESTABLISHED. | _Write here._ |
+| Explain loopback versus wildcard binding. | _Write here._ |
+| Explain why port 443 is not proof of safety. | _Write here._ |
 
-**Day 19 — DNS, DHCP and Network Services:** Follow a DNS lookup and DHCP address assignment from beginning to end, then use these concepts to troubleshoot common network failures.
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
+
+| Prompt | Model answer |
+|---|---|
+| Five-tuple | Source IP, source port, destination IP, destination port, transport protocol. |
+| Ports | A client typically selects a temporary source port; a server listens on a service port. |
+| Handshake | SYN, SYN-ACK, ACK establish TCP connection state. |
+| TCP/UDP | TCP provides reliable ordered bytes; UDP has no built-in delivery guarantee. Neither encrypts by itself. |
+| DNS | UDP handles many queries; TCP supports operations including retry after truncation. |
+| File transfer | SFTP uses SSH; FTPS uses FTP protected by TLS. |
+| Email | SMTP sends/relays; IMAP synchronizes; POP3 retrieves. |
+| States | LISTEN waits for connections; ESTABLISHED indicates a completed handshake. |
+| Binding | Loopback accepts local connections; wildcard binds across applicable local interfaces, subject to controls. |
+| Port 443 | It is a convention; confirm the application, process, destination and context. |
+
+</details>
+
+## 10. Hands-on lab: Inspect connections and evaluate services {#practical-exercise}
+
+**Time:** 15–25 minutes · **Tools:** Terminal or PowerShell, notebook · **Safe, read-only**
+
+**Goal:** Identify local listening ports, active connections, and possible services **without scanning anyone else's network**.
+
+**Safety and scope:** Run these read-only commands on a computer you own or are authorized to administer. Do not disable a firewall or install software for this lesson. Results will vary by OS and current activity.
+
+### Part A — Inspect local network connections
+
+#### macOS (including Intel Macs) 
+
+Open Terminal and run **one command at a time**:
+
+```bash
+lsof -nP -iTCP -sTCP:LISTEN
+```
+
+This lists processes with listening TCP sockets. `-nP` avoids DNS and service-name lookup, so you see numeric addresses and ports.
+
+Then inspect active TCP connections:
+
+```bash
+lsof -nP -iTCP -sTCP:ESTABLISHED
+```
+
+If you receive a permissions error or see incomplete results, some processes may require elevated permissions; **do not escalate privileges for this exercise**.
+
+#### Windows (PowerShell) 
+
+```powershell
+Get-NetTCPConnection -State Listen
+```
+
+```powershell
+Get-NetTCPConnection -State Established
+```
+
+Look at `LocalAddress`, `LocalPort`, `RemoteAddress`, `RemotePort`, and `State`. Some process metadata may require administrator rights; that is not necessary here.
+
+#### Linux 
+
+```bash
+ss -ltn
+```
+
+```bash
+ss -tn state established
+```
+
+If `ss` is unavailable, use your distribution's existing network tools rather than installing packages solely for this exercise.
+
+#### Record your observations 
+
+Fill in **two or three** rows from your own results. Record the owning process if visible (macOS: process name/PID; Windows: `OwningProcess`; Linux: `ss -tnp`). Do not elevate privileges. You may redact public IP addresses before sharing notes.
+
+| Observation | Local IP:port | Remote IP:port (if any) | State | Possible service | What you can actually confirm |
+|---|---|---|---|---|---|
+| 1 | | | | | |
+| 2 | | | | | |
+| 3 | | | | | |
+
+**Reflection questions:**
+
+1. Did you find a port in the well-known range? Which one?
+2. Did you see a high-numbered client source port connected to a familiar service port?
+3. Was a listener bound to `127.0.0.1`, a specific LAN address, or `0.0.0.0`?
+4. What **additional evidence** would you need before claiming the connection is malicious?
+
+**Success criterion:** You can identify a local endpoint, distinguish listening from established TCP sockets, and explain why a port number is only a starting hypothesis.
+
+<details markdown="1">
+<summary>Reveal Part A sample observations</summary>
+
+A listener on `127.0.0.1:5432` is bound to loopback; an established connection from a high local port to remote TCP 443 may be ordinary web traffic. A wildcard listener may accept connections on multiple interfaces, but actual reachability depends on firewall and routing policy. Your results will vary. Confirm process identity and expected behavior before classifying traffic.
+
+</details>
+
+### Part B — Interpret traffic and choose secure controls
+
+Use these fictional firewall records. Guests may access Internet web services but not internal file servers; only management devices may administer servers.
+
+| Source | Destination | Protocol/port | Action |
+|---|---|---|---|
+| Guest | Internal file server | TCP 445 | ALLOW |
+| Guest | Internet | TCP 443 | ALLOW |
+| Management | Internal server | TCP 23 | ALLOW |
+| Staff | Internet | UDP 443 | ALLOW |
+
+1. Identify the likely service for each record and flag any policy violation.
+2. Recommend a secure replacement for Telnet and plaintext FTP.
+3. Explain why TCP 443 does not establish that traffic is safe, and why UDP 443 may be legitimate.
+4. Recall the DHCPv4 server and client ports.
+
+<details markdown="1">
+<summary>Reveal Part B answers</summary>
+
+- TCP 445 suggests SMB; guest access violates the policy.
+- TCP 443 suggests HTTPS and is consistent with guest web access, but verify the application and context.
+- TCP 23 suggests Telnet. Management access is permitted, but SSH on TCP 22 is the safer choice. Use SFTP or properly configured FTPS instead of plaintext FTP.
+- UDP 443 may be QUIC/HTTP/3; staff Internet policy is unspecified. Confirm the application before classifying traffic.
+- DHCPv4 uses UDP 67 for servers and UDP 68 for clients.
+
+A firewall ALLOW record does not prove that an application session succeeded. Correlate process identity, destination and other telemetry.
+
+</details>
+
+## 11. Eight original Security+-style questions {#knowledge-check}
+
+Choose the **BEST** answer before revealing each explanation. These are original practice questions, not actual CompTIA items.
+
+### Q1. A web client connects from `192.168.1.25:53001` to `203.0.113.10:443` over TCP. Which is the client's source port?
+
+A. `443`  
+B. `53001`  
+C. `192.168.1.25`  
+D. `203.0.113.10`  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**B.** `53001` is the temporary source port; `443` is the destination service port. Review: [Address and port](#address-and-port).
+
+</details>
+
+### Q2. Which transport protocol provides built-in sequencing, acknowledgments, and retransmission?
+
+A. UDP  
+B. IP  
+C. TCP  
+D. ICMP  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**C.** TCP provides transport-layer reliability and ordered delivery. Review: [TCP versus UDP](#tcp-versus-udp).
+
+</details>
+
+### Q3. A company wants encrypted command-line administration instead of Telnet. Which service is the best fit?
+
+A. SSH on `22/TCP`  
+B. FTP on `21/TCP`  
+C. HTTP on `80/TCP`  
+D. TFTP on `69/UDP`  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**A.** SSH is the common encrypted replacement for Telnet remote administration. Review: [Secure alternatives](#secure-alternatives).
+
+</details>
+
+### Q4. Which statement about DNS transport is correct?
+
+A. DNS uses only UDP `53`.  
+B. DNS uses only TCP `53`.  
+C. DNS never uses port `53`.  
+D. Traditional DNS commonly uses UDP and TCP `53`.  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**D.** Traditional DNS can use UDP or TCP on port 53. Review: [Common ports](#common-ports).
+
+</details>
+
+### Q5. Which is the most accurate description of SFTP?
+
+A. An unencrypted version of FTP  
+B. A synonym for FTPS  
+C. A file-transfer protocol carried over SSH  
+D. A file-transfer protocol that always uses UDP  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**C.** SFTP is the SSH File Transfer Protocol, not FTP with TLS. Review: [Service families](#service-families).
+
+</details>
+
+### Q6. A service listens only on `127.0.0.1:5432`. What is the strongest supported conclusion?
+
+A. It is bound to the local loopback interface.  
+B. It is publicly accessible from the Internet.  
+C. It is confirmed to be PostgreSQL.  
+D. It is malicious.  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**A.** Loopback binding means the socket is local-only on that interface; a port cannot identify a process with certainty. Review: [Socket example](#socket-example).
+
+</details>
+
+### Q7. Which configuration best protects SNMP management traffic?
+
+A. SNMPv1 with a public community string  
+B. SNMPv2c over an untrusted network  
+C. Telnet tunneling without authentication  
+D. SNMPv3 with authentication and privacy  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**D.** SNMPv3 supports authenticated and encrypted management when configured with privacy. Review: [Secure alternatives](#secure-alternatives).
+
+</details>
+
+### Q8. An analyst sees an unexpected outbound connection to TCP port `443`. What should they do next?
+
+A. Assume it is safe because `443` is HTTPS.  
+B. Investigate the process, destination, and supporting telemetry.  
+C. Assume all encrypted traffic is malicious.  
+D. Disable all TCP traffic immediately.  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**B.** A port is not proof of application identity or trustworthiness; correlate additional evidence. Review: [Security scenarios](#security-scenarios).
+
+</details>
+
+**Score:** ____ / 8. **7–8:** strong understanding; **5–6:** revisit missed topics; **0–4:** review the service families and redo the lab.
+
+## 12. Discussion challenge
+
+A law firm allows all outbound TCP 443 traffic and blocks Telnet. An employee argues that this guarantees confidential information cannot leave the network insecurely. Explain two flaws in the argument, recommend two complementary controls, and describe what evidence an analyst would need to distinguish legitimate web traffic from unauthorized data transfer. Consider confidentiality, integrity and availability.
+
+## 13. Study from the Treadmill 🏃
+
+**Suggested topic-specific video:** [Professor Messer — Secure Protocols (SY0-701)](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/secure-protocols-sy0-701/). Link not independently verified; confirm before publication.
+
+**Active-listening prompts:** Which protocols replace plaintext services? How do secure configurations differ from merely selecting a port? Why does encryption not guarantee trustworthy traffic?
+
+## 14. One-minute recap
+
+- **IP addresses** identify logical endpoints; **ports** identify transport endpoints.
+- **TCP** provides ordered reliable bytes; **UDP** carries datagrams without built-in delivery guarantees.
+- **Neither transport encrypts by itself.** Use appropriate secure protocols and configurations.
+- **Five-tuples** distinguish flows; **socket states** help interpret local activity.
+- **Listening does not equal reachable.** Binding, routing and firewall policy matter.
+- **Golden rule:** A port number is a clue, not proof of service identity or malicious activity.
+
+**Next:** [Day 19 — DNS, DHCP and Network Services](day-19-dns-dhcp-and-network-services.md).
 
 ---
 © 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).  
