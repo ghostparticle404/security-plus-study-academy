@@ -3,9 +3,11 @@
 **Security+ Study Academy | Week 06: Threats, Vulnerabilities, and Mitigations**  
 **File:** `docs/week-06/day-28-social-engineering-and-phishing.md`  
 **Prerequisites:** [Day 26 — Threat Actors and Motivations](day-26-threat-actors-and-motivations.md) and [Day 27 — Attack Surfaces and Vectors](day-27-attack-surfaces-and-vectors.md)  
-**Estimated study time:** 90–115 minutes
+**Estimated study time:** 60–80 minutes (allow additional time for the lab if needed)
 
-## Learning objectives
+**Security+ SY0-701 alignment:** Objective 2.2 (threat vectors and attack surfaces, including human vectors); related Objective 2.1 (threat actors and motivations) and 5.6 (security awareness).
+
+## 1. Learning objectives {#learning-objectives}
 
 By the end of this lesson, you should be able to:
 
@@ -15,7 +17,13 @@ By the end of this lesson, you should be able to:
 4. Analyze a suspicious message using sender information, URLs, context, and independently verified evidence.
 5. Recommend practical prevention, verification, reporting, and response controls.
 
-## 1. Social engineering: exploiting trust rather than code
+## 2. The big idea: Trust is an attack surface
+
+A locked door is only useful if people verify who is asking to enter. Social engineering targets the decision to open that door, whether it is a payment approval, an account recovery request, or a physical entrance. Security controls must protect both technology and the decisions people make.
+
+**Memory hook:** Stop, verify independently, then act.
+
+## 3. Social engineering: exploiting trust rather than code {#1-social-engineering-exploiting-trust-rather-than-code}
 
 **Social engineering** is the use of deception or manipulation to persuade someone to disclose information, grant access, transfer money, install software, or take another action that benefits an attacker. It can be carried out through email, text messages, phone calls, collaboration platforms, social networks, or face-to-face interactions.
 
@@ -42,7 +50,7 @@ A caller claims to be from IT and asks an employee to approve a login notificati
 
 </details>
 
-## 2. Phishing and its major variations
+## 4. Phishing and its major variations {#2-phishing-and-its-major-variations}
 
 **Phishing** uses deceptive communications to induce an action. The message may link to a counterfeit sign-in page, deliver a malicious attachment, solicit confidential information, or request a fraudulent payment. Not every phishing message contains malware.
 
@@ -80,7 +88,7 @@ Attackers may repeatedly trigger authentication prompts, hoping someone approves
 
 </details>
 
-## 3. Influence techniques and psychological triggers
+## 5. Influence techniques and psychological triggers {#3-influence-techniques-and-psychological-triggers}
 
 Attackers often combine several techniques in one message.
 
@@ -118,7 +126,93 @@ An attacker can pretend to be a manager, supplier, recruiter, colleague, or IT t
 
 > **Exam tip:** Distinguish the *story* (pretexting), the *claimed identity* (impersonation), the *psychological pressure* (urgency/authority), and the *delivery channel* (email, SMS, voice). A single incident can involve all four.
 
-## 4. Anatomy of a suspicious email
+## 6. Links, domains, and message authentication {#5-links-domains-and-message-authentication}
+
+A phishing message may look polished and contain no spelling mistakes. Instead of judging by appearance alone, inspect its technical and business context.
+
+### Reading a URL safely
+
+Consider this fictional URL:
+
+`https://login.northstar.example.security-check.example/session`
+
+The **registered-domain portion** here is `security-check.example`, not `northstar.example`. A familiar company name placed earlier in a hostname does not make the site belong to that company.
+
+Other warning signs include lookalike spelling, unexpected shortened links, misleading hyperlink text, and unexpected redirects. **HTTPS indicates an encrypted connection, not that a website is trustworthy.**
+
+For suspicious messages, use a known bookmark or manually navigate to the official service instead of opening the supplied link. Do not paste sensitive tokens or private links into public URL-analysis services.
+
+### Email headers and authentication
+
+| Mechanism | What it helps establish | What it does **not** prove |
+| --- | --- | --- |
+| **SPF** | Whether a sending server is authorized for an envelope sender domain | That the visible sender is honest or the message is safe |
+| **DKIM** | Whether a message has a valid cryptographic signature associated with a signing domain | That the signer is trustworthy |
+| **DMARC** | Whether SPF or DKIM authentication aligns with the visible From domain, subject to the domain's policy | That a legitimate or compromised sender cannot send malicious content |
+
+A message can pass SPF, DKIM, and DMARC and still be phishing—especially when sent from an attacker-controlled domain or a compromised legitimate account. Conversely, forwarding and configuration problems can sometimes affect authentication results.
+
+### Safe handling principles
+
+- Use the email client's **Report phishing** function or the organization's designated security channel.
+- Preserve the original message and headers when the incident-response process requires them.
+- Do not open suspicious attachments or enable macros to “test” a message.
+- Avoid clicking links simply to see where they lead; inspect available link information without visiting the destination.
+- Record what is **observed** separately from what is **inferred**.
+
+## 7. Defensive controls: people, process, and technology {#6-defensive-controls-people-process-and-technology}
+
+| Layer | Controls | Why they help |
+| --- | --- | --- |
+| **People** | Scenario-based training, simple reporting, verification habits | Improves recognition and early escalation |
+| **Process** | Out-of-band payment confirmation, dual approval, verified vendor change workflow | Prevents one deceptive message from authorizing a high-impact action |
+| **Identity** | Phishing-resistant MFA, least privilege, secure recovery procedures | Reduces credential theft and account-takeover risk |
+| **Email** | SPF, DKIM, DMARC, attachment scanning, anti-phishing filters | Makes some spoofing and malicious content easier to block or detect |
+| **Endpoint** | Patch management, application controls, endpoint detection and response | Limits damage from malicious attachments or downloads |
+| **Monitoring** | Login anomaly detection, mailbox-rule alerts, unusual payment-change alerts | Helps discover account misuse and fraudulent workflows |
+
+**Phishing-resistant MFA**, such as appropriately configured FIDO2/WebAuthn security keys or passkeys, offers stronger protection against credential-harvesting attacks than one-time codes. No single control eliminates all forms of social engineering, particularly fraudulent payment instructions made by an authorized user.
+
+### If someone clicked or submitted information
+
+1. **Report promptly** through the approved security channel; early reporting can reduce harm.
+2. **Describe exactly what happened:** link opened, file downloaded, credentials entered, MFA approved, or payment sent.
+3. **Follow incident-response instructions:** the appropriate containment differs by event. For suspected credential exposure, use a trusted route to reset credentials and revoke sessions as directed.
+4. **Preserve evidence:** message, time, destination, relevant screenshots, and any available logs. Do not delete or alter evidence unnecessarily.
+5. **Escalate payment fraud immediately:** notify the financial institution and internal fraud-response contacts using verified channels; recovery can be time-sensitive.
+
+**Avoid blaming the reporter.** A reporting culture that punishes honest mistakes can delay detection and increase impact.
+
+## 8. Key terminology and self-assessment
+
+Before moving to Day 29, confirm that you can:
+
+- [ ] Explain social engineering and its relationship to attack vectors.
+- [ ] Distinguish phishing, spear phishing, whaling, smishing, vishing, quishing, and BEC.
+- [ ] Recognize pretexting, impersonation, urgency, authority, and scarcity.
+- [ ] Explain baiting, quid pro quo, tailgating, shoulder surfing, and dumpster diving.
+- [ ] Analyze a mock email without assuming that suspicious indicators prove compromise.
+- [ ] Explain why SPF, DKIM, DMARC, and HTTPS do not guarantee safety.
+- [ ] Recommend independent verification, phishing-resistant MFA, reporting, and payment controls.
+
+
+### Key terms
+
+**Social engineering:** Manipulation of people to induce actions that benefit an attacker.  
+**Phishing:** Deceptive communication intended to obtain information or prompt an unsafe action.  
+**Spear phishing:** Targeted phishing tailored to a particular recipient or group.  
+**Whaling:** Phishing targeting executives or other high-value leaders.  
+**Smishing:** SMS/text-based phishing.  
+**Vishing:** Voice-based phishing.  
+**Quishing:** QR-code-based phishing.  
+**BEC:** Business email compromise; fraud exploiting business communications or identities.  
+**Pretexting:** Creating a plausible story to justify a deceptive request.  
+**Impersonation:** Pretending to be another person or trusted role.  
+**MFA fatigue:** Repeated authentication prompts intended to elicit an unintended approval.  
+**Out-of-band verification:** Confirmation through a separate, independently established channel.  
+**SPF / DKIM / DMARC:** Email authentication and domain-alignment mechanisms.  
+**Phishing-resistant MFA:** Authentication designed to resist credential capture and relay through counterfeit sign-in pages.
+## 9. Worked case study: Suspected vendor-payment fraud {#4-anatomy-of-a-suspicious-email}
 
 Use this fictional example for analysis. All names, addresses, and domains below are illustrative; `example.com` and `.example` domains are reserved for documentation.
 
@@ -165,64 +259,38 @@ Do **not** reply to the suspicious message to verify it. Use the finance directo
 
 </details>
 
-## 5. Links, domains, and message authentication
+## 10. Guided notes — Write first, reveal later
 
-A phishing message may look polished and contain no spelling mistakes. Instead of judging by appearance alone, inspect its technical and business context.
+| Prompt | Your answer |
+| --- | --- |
+| What distinguishes social engineering from technical exploitation? | _Write here._ |
+| Compare phishing, spear phishing, and whaling. | _Write here._ |
+| Distinguish smishing, vishing, and quishing. | _Write here._ |
+| Compare pretexting, impersonation, and urgency. | _Write here._ |
+| Why can a message pass DMARC and still be dangerous? | _Write here._ |
+| What does HTTPS establish, and what does it not establish? | _Write here._ |
+| How does independent verification prevent payment fraud? | _Write here._ |
+| What should you do after suspected credential disclosure? | _Write here._ |
 
-### Reading a URL safely
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
 
-Consider this fictional URL:
+| Prompt | Model answer |
+| --- | --- |
+| Social engineering | Manipulates human decisions; it can succeed without exploiting a software flaw. |
+| Phishing variants | General phishing is broad; spear phishing is tailored; whaling targets high-value leaders. |
+| Channels | SMS, voice, and QR codes respectively. |
+| Influence | Pretexting supplies a story; impersonation supplies a claimed identity; urgency creates time pressure. |
+| DMARC | A malicious or compromised legitimate sender can pass authentication. |
+| HTTPS | Protects transport to the authenticated endpoint; it does not prove the site's intentions. |
+| Verification | Confirm changes through a previously established contact and approval workflow. |
+| Disclosure | Report promptly, preserve evidence, and follow approved credential reset and session revocation procedures. |
 
-`https://login.northstar.example.security-check.example/session`
+</details>
 
-The **registered-domain portion** here is `security-check.example`, not `northstar.example`. A familiar company name placed earlier in a hostname does not make the site belong to that company.
+## 11. Hands-on lab: Analyze a mock phishing email {#7-practical-lab-analyze-a-mock-phishing-email}
 
-Other warning signs include lookalike spelling, unexpected shortened links, misleading hyperlink text, and unexpected redirects. **HTTPS indicates an encrypted connection, not that a website is trustworthy.**
-
-For suspicious messages, use a known bookmark or manually navigate to the official service instead of opening the supplied link. Do not paste sensitive tokens or private links into public URL-analysis services.
-
-### Email headers and authentication
-
-| Mechanism | What it helps establish | What it does **not** prove |
-| --- | --- | --- |
-| **SPF** | Whether a sending server is authorized for an envelope sender domain | That the visible sender is honest or the message is safe |
-| **DKIM** | Whether a message has a valid cryptographic signature associated with a signing domain | That the signer is trustworthy |
-| **DMARC** | Whether SPF or DKIM authentication aligns with the visible From domain, subject to the domain's policy | That a legitimate or compromised sender cannot send malicious content |
-
-A message can pass SPF, DKIM, and DMARC and still be phishing—especially when sent from an attacker-controlled domain or a compromised legitimate account. Conversely, forwarding and configuration problems can sometimes affect authentication results.
-
-### Safe handling principles
-
-- Use the email client's **Report phishing** function or the organization's designated security channel.
-- Preserve the original message and headers when the incident-response process requires them.
-- Do not open suspicious attachments or enable macros to “test” a message.
-- Avoid clicking links simply to see where they lead; inspect available link information without visiting the destination.
-- Record what is **observed** separately from what is **inferred**.
-
-## 6. Defensive controls: people, process, and technology
-
-| Layer | Controls | Why they help |
-| --- | --- | --- |
-| **People** | Scenario-based training, simple reporting, verification habits | Improves recognition and early escalation |
-| **Process** | Out-of-band payment confirmation, dual approval, verified vendor change workflow | Prevents one deceptive message from authorizing a high-impact action |
-| **Identity** | Phishing-resistant MFA, least privilege, secure recovery procedures | Reduces credential theft and account-takeover risk |
-| **Email** | SPF, DKIM, DMARC, attachment scanning, anti-phishing filters | Makes some spoofing and malicious content easier to block or detect |
-| **Endpoint** | Patch management, application controls, endpoint detection and response | Limits damage from malicious attachments or downloads |
-| **Monitoring** | Login anomaly detection, mailbox-rule alerts, unusual payment-change alerts | Helps discover account misuse and fraudulent workflows |
-
-**Phishing-resistant MFA**, such as appropriately configured FIDO2/WebAuthn security keys or passkeys, offers stronger protection against credential-harvesting attacks than one-time codes. No single control eliminates all forms of social engineering, particularly fraudulent payment instructions made by an authorized user.
-
-### If someone clicked or submitted information
-
-1. **Report promptly** through the approved security channel; early reporting can reduce harm.
-2. **Describe exactly what happened:** link opened, file downloaded, credentials entered, MFA approved, or payment sent.
-3. **Follow incident-response instructions:** the appropriate containment differs by event. For suspected credential exposure, use a trusted route to reset credentials and revoke sessions as directed.
-4. **Preserve evidence:** message, time, destination, relevant screenshots, and any available logs. Do not delete or alter evidence unnecessarily.
-5. **Escalate payment fraud immediately:** notify the financial institution and internal fraud-response contacts using verified channels; recovery can be time-sensitive.
-
-**Avoid blaming the reporter.** A reporting culture that punishes honest mistakes can delay detection and increase impact.
-
-## 7. Practical lab: analyze a mock phishing email
+**Time:** 15–25 minutes.
 
 **Lab objective:** Identify social engineering indicators, distinguish observations from hypotheses, classify the vector, and recommend a safe response.
 
@@ -244,23 +312,27 @@ You work on the security team for a 25-person law firm. An administrative assist
 
 The assistant reports the message **without opening the link**.
 
-### Task A — Extract observable evidence
+### Part A — Analyze the evidence
+
+#### Task A — Extract observable evidence
 
 Create a table with three columns: **Observation**, **Possible interpretation**, and **What would verify it?** Include at least five entries.
 
-### Task B — Classify the attack
+#### Task B — Classify the attack
 
 Identify the delivery channel, suspected phishing subtype, pretext, influence techniques, requested action, likely attacker objective, and targeted asset.
 
-### Task C — Build a plausible attack path
+#### Task C — Build a plausible attack path
 
 Write a possible sequence from message delivery to unauthorized account access. Label each step as **observed**, **possible**, or **not established**.
 
-### Task D — Recommend controls
+### Part B — Recommend controls and report
+
+#### Task D — Recommend controls
 
 Choose one control each from the **people**, **process**, and **technical** categories. Explain why each would help.
 
-### Task E — Write an analyst summary
+#### Task E — Write an analyst summary
 
 In 75–125 words, explain the evidence, your confidence level, remaining unknowns, and the next safe action.
 
@@ -269,7 +341,7 @@ In 75–125 words, explain the evidence, your confidence level, remaining unknow
 
 **Task A examples:** The subject threatens a 20-minute deadline (**observed**; urgency is a reasonable interpretation); the sender uses a support-themed domain (**observed**; ownership must be verified); the message asks for an authenticator code (**observed**; possible MFA interception); it discourages calls (**observed**; may be attempting to prevent independent verification); the link points to a login page on the same support-themed domain (**observed**; legitimacy unverified).
 
-**Task B:** Email phishing; possibly spear phishing if the recipient was intentionally selected (not proven from this message alone). Pretext: emergency account-security verification. Techniques: urgency, fear, authority, and help-desk impersonation. Requested action: enter credentials or an authenticator code. Likely objective: obtain account access. Targeted asset: employee identity and associated firm data.
+**Task B:** Email phishing; possibly spear phishing if the recipient was intentionally selected (not proven from this message alone). Pretext: emergency account-security verification. Techniques: urgency, fear, authority, and help-desk impersonation. Requested action: visit the link and enter an authenticator code; credential entry is a possible further request, not established. Likely objective: obtain account access. Targeted asset: employee identity and associated firm data.
 
 **Task C:** Message received (**observed**) → recipient visits link (**not observed**) → submits credentials/code (**not observed**) → attacker attempts authentication (**possible**) → attacker accesses account (**not established**).
 
@@ -279,20 +351,17 @@ In 75–125 words, explain the evidence, your confidence level, remaining unknow
 
 </details>
 
-## 8. Knowledge check: 10 Security+-style questions
+## 12. Eight original Security+-style questions {#8-knowledge-check-10-security-style-questions}
 
-Choose the **single best answer** unless otherwise stated. Reveal the explanation after committing to an answer.
+Choose the BEST answer before revealing each explanation. These are original practice questions, not actual CompTIA items.
 
 ### Question 1
 
 An attacker sends the same fake password-expiration email to thousands of employees at unrelated organizations. Which technique is MOST directly described?
 
-A. Whaling
-
-B. General phishing
-
-C. Tailgating
-
+A. Whaling  
+B. General phishing  
+C. Tailgating  
 D. Shoulder surfing
 
 <details markdown="1">
@@ -306,12 +375,9 @@ D. Shoulder surfing
 
 A text message names an employee's real supervisor and asks the employee to visit a fake company portal. Which classification is BEST?
 
-A. Smishing and spear phishing
-
-B. Vishing and tailgating
-
-C. Whaling and dumpster diving
-
+A. Smishing and spear phishing  
+B. Vishing and tailgating  
+C. Whaling and dumpster diving  
 D. Baiting and shoulder surfing
 
 <details markdown="1">
@@ -325,12 +391,9 @@ D. Baiting and shoulder surfing
 
 A caller claims to be the company's IT administrator and says the employee must approve an MFA prompt immediately. Which combination BEST describes the attempt?
 
-A. Vishing, impersonation, and authority
-
-B. DNS poisoning and lateral movement
-
-C. Tailgating and scarcity
-
+A. Vishing, impersonation, and authority  
+B. DNS poisoning and lateral movement  
+C. Tailgating and scarcity  
 D. Credential stuffing and patch management
 
 <details markdown="1">
@@ -344,12 +407,9 @@ D. Credential stuffing and patch management
 
 An accounts payable clerk receives a message from a purported vendor asking to change bank details for an invoice. What is the BEST immediate action?
 
-A. Reply to the email asking whether the request is genuine
-
-B. Send a small test payment to the new account
-
-C. Verify the change through a previously established vendor contact and approval workflow
-
+A. Reply to the email asking whether the request is genuine  
+B. Send a small test payment to the new account  
+C. Verify the change through a previously established vendor contact and approval workflow  
 D. Trust the request if the email uses HTTPS links
 
 <details markdown="1">
@@ -363,12 +423,9 @@ D. Trust the request if the email uses HTTPS links
 
 A suspicious email passes SPF, DKIM, and DMARC. Which conclusion is MOST accurate?
 
-A. The message cannot be phishing
-
-B. The sender is guaranteed to be an employee
-
-C. The email's authentication results do not establish that its content is safe
-
+A. The message cannot be phishing  
+B. The sender is guaranteed to be an employee  
+C. The email's authentication results do not establish that its content is safe  
 D. The attachment has been scanned and found harmless
 
 <details markdown="1">
@@ -382,12 +439,9 @@ D. The attachment has been scanned and found harmless
 
 A message claims that a confidential report is available only to the first five employees who click a link. Which influence technique is MOST prominent?
 
-A. Scarcity
-
-B. Tailgating
-
-C. Lateral movement
-
+A. Scarcity  
+B. Tailgating  
+C. Lateral movement  
 D. Data masking
 
 <details markdown="1">
@@ -401,12 +455,9 @@ D. Data masking
 
 A visitor follows an employee through a badge-controlled door without presenting credentials. What is this called?
 
-A. Smishing
-
-B. Tailgating
-
-C. Clone phishing
-
+A. Smishing  
+B. Tailgating  
+C. Clone phishing  
 D. Quishing
 
 <details markdown="1">
@@ -420,12 +471,9 @@ D. Quishing
 
 Which control MOST directly reduces the risk of credential theft through a counterfeit sign-in website?
 
-A. Requiring longer email signatures
-
-B. Disabling all email attachments
-
-C. Using phishing-resistant FIDO2/WebAuthn authentication
-
+A. Requiring longer email signatures  
+B. Disabling all email attachments  
+C. Using phishing-resistant FIDO2/WebAuthn authentication  
 D. Changing the office Wi-Fi name weekly
 
 <details markdown="1">
@@ -435,74 +483,28 @@ D. Changing the office Wi-Fi name weekly
 
 </details>
 
-### Question 9
+**Score guide:** 7–8: strong understanding; 5–6: review missed concepts; 0–4: revisit the lesson and repeat the lab.
 
-An analyst sees an urgent email containing a suspicious link but has no evidence the recipient opened it. What should the analyst report?
+## 13. Discussion challenge
 
-A. Confirmed account compromise
+A finance employee receives a payment instruction from a genuinely compromised executive mailbox. The message passes email authentication. A colleague also reports a suspicious link but has not opened it. Explain why authentication does not establish safety, what independent payment controls could prevent fraud, and how you would report the second event without claiming a confirmed compromise.
 
-B. Confirmed malware execution
+## 14. Study from the Treadmill 🏃
 
-C. A suspected phishing attempt with no established compromise
+- [Professor Messer — Security+ SY0-701 video course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/) — look for the lessons on phishing and human vectors. Specific video links require verification before publication.
 
-D. Confirmed data exfiltration
+**Active-listening prompts:** How do delivery channels differ from influence techniques? Why is independent verification important even when email authentication passes?
 
-<details markdown="1">
-<summary>Reveal answer and explanation</summary>
+## 15. One-minute recap
 
-**Correct answer: C.** Separate observable indicators from unverified outcomes. See [Practical lab: analyze a mock phishing email](#7-practical-lab-analyze-a-mock-phishing-email).
+- Social engineering exploits human decisions and business processes.
+- Phishing can be broad, targeted, executive-focused, or delivered through SMS, voice, or QR codes.
+- Pretexting, impersonation, authority, and urgency are distinct but overlapping techniques.
+- SPF, DKIM, DMARC, and HTTPS do not guarantee trustworthy content.
+- Verify high-risk requests independently; report suspicious messages promptly.
+- Separate observed evidence from suspected objectives and unconfirmed compromise.
 
-</details>
-
-### Question 10
-
-A finance employee receives an apparently legitimate instruction from a compromised executive mailbox to wire funds to a new account. Which statement is BEST?
-
-A. DMARC will necessarily block the message
-
-B. The request is safe because it came from the executive's real mailbox
-
-C. An independent payment-verification process can still prevent the fraud
-
-D. The event cannot be BEC because no sender address was spoofed
-
-<details markdown="1">
-<summary>Reveal answer and explanation</summary>
-
-**Correct answer: C.** BEC can involve genuinely compromised accounts, and independent financial controls remain important. See [Defensive controls: people, process, and technology](#6-defensive-controls-people-process-and-technology).
-
-</details>
-
-## 9. Review and self-assessment
-
-Before moving to Day 29, confirm that you can:
-
-- [ ] Explain social engineering and its relationship to attack vectors.
-- [ ] Distinguish phishing, spear phishing, whaling, smishing, vishing, quishing, and BEC.
-- [ ] Recognize pretexting, impersonation, urgency, authority, and scarcity.
-- [ ] Explain baiting, quid pro quo, tailgating, shoulder surfing, and dumpster diving.
-- [ ] Analyze a mock email without assuming that suspicious indicators prove compromise.
-- [ ] Explain why SPF, DKIM, DMARC, and HTTPS do not guarantee safety.
-- [ ] Recommend independent verification, phishing-resistant MFA, reporting, and payment controls.
-
-**Suggested score:** 8–10 correct = ready to advance; 6–7 = review phishing variations and defensive controls; 0–5 = revisit the terminology and repeat the lab.
-
-### Key terms
-
-**Social engineering:** Manipulation of people to induce actions that benefit an attacker.  
-**Phishing:** Deceptive communication intended to obtain information or prompt an unsafe action.  
-**Spear phishing:** Targeted phishing tailored to a particular recipient or group.  
-**Whaling:** Phishing targeting executives or other high-value leaders.  
-**Smishing:** SMS/text-based phishing.  
-**Vishing:** Voice-based phishing.  
-**Quishing:** QR-code-based phishing.  
-**BEC:** Business email compromise; fraud exploiting business communications or identities.  
-**Pretexting:** Creating a plausible story to justify a deceptive request.  
-**Impersonation:** Pretending to be another person or trusted role.  
-**MFA fatigue:** Repeated authentication prompts intended to elicit an unintended approval.  
-**Out-of-band verification:** Confirmation through a separate, independently established channel.  
-**SPF / DKIM / DMARC:** Email authentication and domain-alignment mechanisms.  
-**Phishing-resistant MFA:** Authentication designed to resist credential capture and relay through counterfeit sign-in pages.
+**Next:** [Day 29 — Malware and Ransomware](day-29-malware-and-ransomware.md).
 
 ---
 © 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).  
