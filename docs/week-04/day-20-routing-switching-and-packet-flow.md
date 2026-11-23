@@ -1,13 +1,14 @@
 # Day 20 — Routing, Switching and Packet Flow
 
-**Security+ Study Academy | Week 04 | Day 20**
+> **CompTIA Security+ SY0-701** · **Week 04, Lesson 5 of 5** · Supporting foundations for Objectives **3.2** (secure enterprise infrastructure), **2.4** (malicious activity), and **2.5** (mitigation techniques). Routing mechanics are foundational rather than a standalone exam objective.
+> **Level:** Beginner to intermediate · **Study time:** 60–80 minutes
 
 **Prerequisites:** [Day 16 — OSI and TCP/IP](day-16-osi-and-tcp-ip.md), [Day 17 — IP Addressing and Subnetting](day-17-ip-addressing-and-subnetting.md), [Day 18 — Ports and Protocols](day-18-ports-and-protocols.md), and [Day 19 — DNS, DHCP and Network Services](day-19-dns-dhcp-and-network-services.md).  
 **Learning outcome:** Explain routing, switching, ARP, and packet forwarding.  
 **Practical application:** Inspect packets in Wireshark.  
 **Assessment focus:** Traffic-path reasoning.
 
-## Learning objectives
+## 1. Learning objectives
 
 By the end of this lesson, you should be able to:
 
@@ -18,7 +19,9 @@ By the end of this lesson, you should be able to:
 5. Trace packet forwarding across subnets, including changing Ethernet headers and IP TTL.
 6. Interpret a basic Wireshark capture and connect network behavior to security controls.
 
-## 1. Two different delivery jobs
+<a id="1-two-different-delivery-jobs"></a>
+
+## 2. The big idea: Two different delivery jobs
 
 Imagine a university campus. **A switch** is like the mailroom inside one building: it knows which desk receives mail on which hallway. **A router** is like the campus delivery service: it decides which building or campus the package should go to next.
 
@@ -34,7 +37,11 @@ The distinction matters because a device can have the correct IP address and sti
 
 **Nuance:** Multilayer switches can perform Layer 3 routing, and some devices combine switching, routing, firewall, and wireless functions. The exam often asks about the *function*, not the box's marketing name.
 
-## 2. How Ethernet switching works
+<a id="2-how-ethernet-switching-works"></a>
+
+<a id="switching"></a>
+
+## 3. How Ethernet switching works
 
 An Ethernet frame includes a **source MAC address**, **destination MAC address**, an EtherType or length field, a payload, and a frame check sequence (FCS). A switch normally learns which MAC addresses are reachable on its ports by inspecting **source** MAC addresses on incoming frames.
 
@@ -58,7 +65,9 @@ When Alice sends a frame to Bob, the switch checks its forwarding table and send
 
 **Security+ connection:** A **MAC flooding** attack attempts to exhaust or disrupt a switch's forwarding table, potentially increasing flooding. Defenses may include port security, switch hardening, and monitoring. A switch is not automatically a confidentiality boundary for all traffic.
 
-## 3. VLANs: One switch, multiple logical networks
+<a id="3-vlans-one-switch-multiple-logical-networks"></a>
+
+## 4. VLANs: One switch, multiple logical networks
 
 A **virtual LAN (VLAN)** separates Layer 2 broadcast domains even when devices share physical switching hardware. For example:
 
@@ -72,7 +81,9 @@ An **access port** typically carries traffic for one VLAN to an end device. A **
 
 **Exam trap:** VLANs provide segmentation, but a VLAN alone does not encrypt traffic or guarantee that every policy between segments is secure.
 
-## 4. ARP: Finding the next-hop MAC address
+<a id="4-arp-finding-the-next-hop-mac-address"></a>
+
+## 5. ARP: Finding the next-hop MAC address
 
 IPv4 hosts use the **Address Resolution Protocol (ARP)** to discover the MAC address associated with an on-link IPv4 address.
 
@@ -100,7 +111,9 @@ arp -a
 
 **IPv6 distinction:** IPv6 does **not** use ARP. It uses **Neighbor Discovery Protocol (NDP)** through ICMPv6 Neighbor Solicitation and Neighbor Advertisement messages. IPv6 Router Advertisements also support router discovery and address configuration. Do not block all ICMPv6 indiscriminately; some messages are essential to IPv6 operation.
 
-## 5. Routing: Choosing the next network
+<a id="5-routing-choosing-the-next-network"></a>
+
+## 6. Routing: Choosing the next network
 
 Routers examine the destination IP address and consult routing information to select a next hop or outgoing interface. A route generally contains a destination prefix, a next hop or interface, and associated selection information.
 
@@ -126,7 +139,9 @@ A **default route** (`0.0.0.0/0` for IPv4; `::/0` for IPv6) is the fallback rout
 
 Routing protocols do not automatically provide end-to-end encryption. Misconfiguration or malicious route announcements can redirect or blackhole traffic; routing authentication, filtering, and monitoring help reduce risk.
 
-## 6. Follow a packet across two subnets
+<a id="6-follow-a-packet-across-two-subnets"></a>
+
+## 7. Follow a packet across two subnets
 
 Let's trace a simplified TCP connection from Alice to a web server. Assume the two LANs are connected by one router and there is no NAT.
 
@@ -168,7 +183,9 @@ MAC AA                   LAN 2: 192.168.20.1       MAC DD
 
 **Important exceptions:** NAT may rewrite IP addresses and sometimes transport ports; tunneling adds outer headers; and security devices may filter or otherwise process traffic. The table describes ordinary forwarding without those features. In IPv6, the equivalent field is **Hop Limit**, and routers do not update an IPv6 header checksum because there is none.
 
-## 7. Why loops, missing routes, and bad gateways matter
+<a id="7-why-loops-missing-routes-and-bad-gateways-matter"></a>
+
+## 8. Why loops, missing routes, and bad gateways matter
 
 Routing and switching failures often look like application problems:
 
@@ -188,11 +205,72 @@ Redundant Ethernet links can create Layer 2 loops, which may cause broadcast sto
 
 `traceroute` (macOS/Linux) or `tracert` (Windows) can reveal some intermediate hops by sending probes with increasing TTL/Hop Limit values. Routers may respond with ICMP Time Exceeded messages. Missing or starred hops do **not** automatically mean the route is broken: filtering, rate limiting, or nonresponsive devices can hide hops.
 
-## 8. Practical lab: Inspect packet flow in Wireshark
+## 9. Worked case study: Troubleshooting a segmented office network
+
+A business separates staff, guests and management into VLANs. The security team investigates five observations. Use the relevant layer to select the first check.
+
+
+**Scenario A — Guest Wi-Fi can reach the management subnet.** The networks have separate VLANs but no effective Layer 3 restriction. **Think:** inter-VLAN routing policy, firewall rules, and ACLs.
+
+**Scenario B — A workstation suddenly associates the gateway IP with an unfamiliar MAC.** **Think:** possible ARP poisoning, but verify against authorized network changes and switch data before concluding there is an attack.
+
+**Scenario C — The switch reports a flood of broadcasts after a redundant cable is connected.** **Think:** a possible Layer 2 loop and STP/RSTP configuration.
+
+**Scenario D — The route to `10.20.30.45` unexpectedly uses a `/24` route instead of a `/16` route.** **Think:** longest-prefix match; the more specific `/24` wins when both match.
+
+**Scenario E — HTTPS works to a local server but fails to a remote server.** **Think:** gateway, routes, firewall policies, DNS if using a hostname, and service reachability. Do not assume port 443 itself is the cause.
+
+### Common Security+ exam traps {#exam-traps}
+
+- **MAC versus IP:** A switch normally forwards using MAC addresses; a router selects routes using IP addresses.
+- **Next hop versus final destination:** The Ethernet destination can be the gateway while the IP destination is the remote server.
+- **ARP versus DNS:** ARP resolves an on-link IPv4 address to a MAC address; DNS resolves names to records such as A or AAAA.
+- **ARP versus IPv6 NDP:** IPv6 uses Neighbor Discovery, not ARP.
+- **VLAN versus subnet:** They often align in designs, but they are different concepts at different layers.
+- **STP versus routing:** STP prevents Layer 2 loops; routing determines Layer 3 paths.
+- **TTL versus TCP port:** A router decrements TTL/Hop Limit; it does not normally change the TCP destination port.
+- **Default route versus guaranteed delivery:** A default route supplies a next hop, not an assurance of end-to-end connectivity.
+
+## 10. Guided notes — Write first, reveal later
+
+Complete the table without consulting the lesson, then compare your answers.
+
+| Prompt | Your answer |
+|---|---|
+| How does a switch learn MAC addresses? | _Write here._ |
+| What happens to an unknown unicast frame? | _Write here._ |
+| Compare access and trunk ports. | _Write here._ |
+| When does a host resolve the gateway's MAC rather than the destination host's MAC? | _Write here._ |
+| Compare ARP and IPv6 NDP. | _Write here._ |
+| How does longest-prefix matching work? | _Write here._ |
+| Which fields change at a router without NAT? | _Write here._ |
+| How do STP and DAI address different risks? | _Write here._ |
+
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
+
+| Prompt | Model answer |
+|---|---|
+| MAC learning | Inspect incoming source MAC addresses and associate them with ingress ports. |
+| Unknown unicast | Flood to other eligible ports in the same VLAN. |
+| Access vs trunk | Access typically carries one VLAN; trunk carries multiple VLANs, commonly using 802.1Q tags. |
+| Gateway MAC | When the selected next hop is the gateway for an off-link destination. |
+| ARP vs NDP | ARP resolves on-link IPv4 addresses to MAC addresses; IPv6 uses ICMPv6 Neighbor Discovery. |
+| Longest prefix | Select the most specific matching destination prefix. |
+| Router changes | New link-layer framing, reduced TTL, updated IPv4 header checksum; IP endpoints and ports normally remain unchanged. |
+| STP vs DAI | STP prevents Layer 2 loops; DAI helps detect or block invalid ARP mappings. |
+
+</details>
+
+<a id="8-practical-lab-inspect-packet-flow-in-wireshark"></a>
+
+## 11. Hands-on lab: Inspect packet flow in Wireshark
+
+**Time:** 15–25 minutes · **Tools:** Terminal, Wireshark (optional), notebook · **Read-only**
 
 **Goal:** Identify local versus routed traffic, ARP behavior, IP endpoints, and the layers visible in a packet capture.
 
-**Safety:** Capture only traffic from your own device or a network where you have permission. Avoid sharing captures containing credentials, private addresses tied to identifiable users, or personal data. If live capture is unavailable, use an instructor-provided sanitized PCAP.
+**Safety:** Capture only traffic from your own device or a network where you have permission. Avoid sharing captures containing credentials, private addresses tied to identifiable users, or personal data. If live capture is unavailable, use a sanitized PCAP you already have or complete the worked example below.
 
 ### Part A — Record your network configuration
 
@@ -214,7 +292,7 @@ arp -a
 
 Write down your device's IP address, prefix or subnet mask, default gateway, and one ARP cache entry if available. Do not change network settings.
 
-### Part B — Capture or open a PCAP
+### Part B — Capture, inspect and annotate packet flow
 
 1. Open Wireshark and choose the interface carrying your permitted traffic, or open a sanitized PCAP.
 2. If using live capture, generate ordinary browsing traffic to a site you trust; your system may already have cached DNS and ARP information.
@@ -243,7 +321,7 @@ The last filter uses a **fictional example MAC**. Replace it with a MAC visible 
 
 **Note:** On loopback, VPN, Wi-Fi monitor-mode, or some virtual interfaces, the capture may not show ordinary Ethernet headers. That is expected and does not invalidate the IP-level analysis.
 
-### Part C — Packet-path annotation worksheet
+#### Packet-path annotation worksheet
 
 For each packet you choose, fill in:
 
@@ -266,8 +344,10 @@ For each packet you choose, fill in:
 2. If an ARP request has no TCP port, is that an error?
 3. If the same IP packet is forwarded through a router, should its Ethernet MAC addresses remain unchanged?
 4. Can one capture point always show both sides of a router?
+5. Which switch control validates ARP messages against trusted bindings?
+6. A traceroute shows `* * *` at one hop but later hops respond. Does that prove forwarding failed?
 
-### Worked example
+#### Worked example
 
 Alice (`192.168.10.25/24`, MAC AA) sends a TCP packet to `192.168.20.40:443` via gateway `192.168.10.1` (MAC BB).
 
@@ -284,115 +364,152 @@ Alice (`192.168.10.25/24`, MAC AA) sends a TCP packet to `192.168.20.40:443` via
 2. **No.** ARP is not TCP or UDP and has no transport-layer ports.
 3. **No.** A router builds a new Layer 2 frame on the outgoing link.
 4. **No.** A capture generally shows only traffic visible at its observation point; capturing both sides requires suitable access or multiple captures.
+5. **Dynamic ARP Inspection (DAI).** It can validate ARP messages against trusted bindings.
+6. **No.** An intermediate router may not answer probes even while forwarding traffic normally.
 
 </details>
 
-## 9. Security scenarios: Choose the right layer
+<a id="11-knowledge-check-10-questions"></a>
 
-**Scenario A — Guest Wi-Fi can reach the management subnet.** The networks have separate VLANs but no effective Layer 3 restriction. **Think:** inter-VLAN routing policy, firewall rules, and ACLs.
+## 12. Eight original Security+-style questions
 
-**Scenario B — A workstation suddenly associates the gateway IP with an unfamiliar MAC.** **Think:** possible ARP poisoning, but verify against authorized network changes and switch data before concluding there is an attack.
+Choose the **BEST** answer before revealing each explanation. These are original practice questions, not actual CompTIA items.
 
-**Scenario C — The switch reports a flood of broadcasts after a redundant cable is connected.** **Think:** a possible Layer 2 loop and STP/RSTP configuration.
+### Q1. A switch receives a unicast Ethernet frame whose destination MAC is not in its forwarding table. What will it typically do?
 
-**Scenario D — The route to `10.20.30.45` unexpectedly uses a `/24` route instead of a `/16` route.** **Think:** longest-prefix match; the more specific `/24` wins when both match.
-
-**Scenario E — HTTPS works to a local server but fails to a remote server.** **Think:** gateway, routes, firewall policies, DNS if using a hostname, and service reachability. Do not assume port 443 itself is the cause.
-
-## 10. Common Security+ exam traps
-
-- **MAC versus IP:** A switch normally forwards using MAC addresses; a router selects routes using IP addresses.
-- **Next hop versus final destination:** The Ethernet destination can be the gateway while the IP destination is the remote server.
-- **ARP versus DNS:** ARP resolves an on-link IPv4 address to a MAC address; DNS resolves names to records such as A or AAAA.
-- **ARP versus IPv6 NDP:** IPv6 uses Neighbor Discovery, not ARP.
-- **VLAN versus subnet:** They often align in designs, but they are different concepts at different layers.
-- **STP versus routing:** STP prevents Layer 2 loops; routing determines Layer 3 paths.
-- **TTL versus TCP port:** A router decrements TTL/Hop Limit; it does not normally change the TCP destination port.
-- **Default route versus guaranteed delivery:** A default route supplies a next hop, not an assurance of end-to-end connectivity.
-
-## 11. Knowledge check — 10 questions
-
-Choose the **best** answer. Try the questions before consulting the answer key.
-
-**1. A switch receives a unicast Ethernet frame whose destination MAC is not in its forwarding table. What will it typically do?**
 A. Drop every unknown unicast frame by definition  
 B. Flood the frame to other eligible ports in the same VLAN  
 C. Route the frame to the internet  
-D. Convert it into an ARP reply
-
-**2. A workstation at `192.168.10.25/24` needs to send a packet to `192.168.20.40`. Which MAC address should it normally use as the Ethernet destination?**
-A. The remote server's MAC  
-B. The broadcast MAC  
-C. The local default gateway's MAC  
-D. Its own MAC
-
-**3. Which protocol resolves an on-link IPv4 address to a MAC address?**
-A. DNS  
-B. ARP  
-C. DHCP  
-D. NTP
-
-**4. Which mechanism replaces ARP's neighbor-resolution role in IPv6?**
-A. ICMPv6 Neighbor Discovery  
-B. TCP three-way handshake  
-C. DNSSEC  
-D. OSPF
-
-**5. A router has matching routes `10.0.0.0/8`, `10.20.0.0/16`, and `10.20.30.0/24`. Which route wins for `10.20.30.45`?**
-A. `/8` because it covers the most addresses  
-B. `/16` because it is in the middle  
-C. `/24` because it is the longest matching prefix  
-D. None; the router must use the default route
-
-**6. What normally changes when a router forwards an IPv4 packet without NAT?**
-A. The IP destination becomes the router's IP  
-B. The Ethernet source/destination MAC addresses and IPv4 TTL  
-C. The TCP destination port always becomes 80  
-D. The source and destination IP addresses both change
-
-**7. What is the main purpose of STP/RSTP in a switched network?**
-A. Encrypt Ethernet frames  
-B. Assign IPv4 addresses  
-C. Prevent Layer 2 forwarding loops  
-D. Resolve domain names
-
-**8. Which feature commonly carries traffic for multiple VLANs between switches?**
-A. An 802.1Q trunk  
-B. A DNS MX record  
-C. An ARP cache entry  
-D. A default IPv4 route
-
-**9. Which control is most directly associated with checking ARP messages against trusted bindings?**
-A. DNSSEC  
-B. Dynamic ARP Inspection  
-C. NTP authentication  
-D. TLS certificate validation
-
-**10. A traceroute displays `* * *` at one intermediate hop, but later hops respond. What is the best conclusion?**
-A. The network is definitely compromised  
-B. The packet could not have reached any later hop  
-C. The intermediate device may not answer probes; traffic can still pass through  
-D. The DNS server has failed
+D. Convert it into an ARP reply  
 
 <details markdown="1">
-<summary>Reveal knowledge check answers and explanations</summary>
+<summary>Reveal answer and explanation</summary>
 
-| Q | Answer | Explanation |
-|---|---|---|
-| 1 | **B** | Unknown unicast frames are ordinarily flooded within the VLAN. Review [switching](#2-how-ethernet-switching-works). |
-| 2 | **C** | The host sends off-subnet traffic to its local gateway's MAC. Review [ARP](#4-arp-finding-the-next-hop-mac-address). |
-| 3 | **B** | ARP maps on-link IPv4 addresses to MAC addresses. Review [ARP](#4-arp-finding-the-next-hop-mac-address). |
-| 4 | **A** | IPv6 uses ICMPv6 Neighbor Discovery. Review [IPv6 distinction](#4-arp-finding-the-next-hop-mac-address). |
-| 5 | **C** | The `/24` is the most specific matching route. Review [longest-prefix match](#longest-prefix-match). |
-| 6 | **B** | Routing changes the link-layer frame and decrements TTL, without normally rewriting IP endpoints. Review [packet path](#6-follow-a-packet-across-two-subnets). |
-| 7 | **C** | STP/RSTP prevents Layer 2 loops over redundant paths. Review [STP](#spanning-tree-protocol-stp). |
-| 8 | **A** | 802.1Q trunks commonly transport multiple VLANs. Review [VLANs](#3-vlans-one-switch-multiple-logical-networks). |
-| 9 | **B** | DAI can validate ARP traffic against trusted bindings. Review [ARP security](#arp-cache-and-security). |
-| 10 | **C** | Missing traceroute replies do not necessarily indicate packet loss at that hop. Review [traceroute](#traceroute-and-ttl). |
+**B.** Unknown unicast frames are ordinarily flooded within the VLAN. Review [switching](#2-how-ethernet-switching-works).
 
 </details>
 
-## 12. Exam-day quick reference
+### Q2. A workstation at `192.168.10.25/24` needs to send a packet to `192.168.20.40`. Which MAC address should it normally use as the Ethernet destination?
+
+A. The remote server's MAC  
+B. The broadcast MAC  
+C. The local default gateway's MAC  
+D. Its own MAC  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**C.** The host sends off-subnet traffic to its local gateway's MAC. Review [ARP](#4-arp-finding-the-next-hop-mac-address).
+
+</details>
+
+### Q3. Which protocol resolves an on-link IPv4 address to a MAC address?
+
+A. DNS  
+B. ARP  
+C. DHCP  
+D. NTP  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**B.** ARP maps on-link IPv4 addresses to MAC addresses. Review [ARP](#4-arp-finding-the-next-hop-mac-address).
+
+</details>
+
+### Q4. Which mechanism replaces ARP's neighbor-resolution role in IPv6?
+
+A. ICMPv6 Neighbor Discovery  
+B. TCP three-way handshake  
+C. DNSSEC  
+D. OSPF  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**A.** IPv6 uses ICMPv6 Neighbor Discovery. Review [IPv6 distinction](#4-arp-finding-the-next-hop-mac-address).
+
+</details>
+
+### Q5. A router has matching routes `10.0.0.0/8`, `10.20.0.0/16`, and `10.20.30.0/24`. Which route wins for `10.20.30.45`?
+
+A. `/8` because it covers the most addresses  
+B. `/16` because it is in the middle  
+C. `/24` because it is the longest matching prefix  
+D. None; the router must use the default route  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**C.** The `/24` is the most specific matching route. Review [longest-prefix match](#longest-prefix-match).
+
+</details>
+
+### Q6. What normally changes when a router forwards an IPv4 packet without NAT?
+
+A. The IP destination becomes the router's IP  
+B. The Ethernet source/destination MAC addresses and IPv4 TTL  
+C. The TCP destination port always becomes 80  
+D. The source and destination IP addresses both change  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**B.** Routing changes the link-layer frame and decrements TTL, without normally rewriting IP endpoints. Review [packet path](#6-follow-a-packet-across-two-subnets).
+
+</details>
+
+### Q7. What is the main purpose of STP/RSTP in a switched network?
+
+A. Encrypt Ethernet frames  
+B. Assign IPv4 addresses  
+C. Prevent Layer 2 forwarding loops  
+D. Resolve domain names  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**C.** STP/RSTP prevents Layer 2 loops over redundant paths. Review [STP](#spanning-tree-protocol-stp).
+
+</details>
+
+### Q8. Which feature commonly carries traffic for multiple VLANs between switches?
+
+A. An 802.1Q trunk  
+B. A DNS MX record  
+C. An ARP cache entry  
+D. A default IPv4 route  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**A.** 802.1Q trunks commonly transport multiple VLANs. Review [VLANs](#3-vlans-one-switch-multiple-logical-networks).
+
+</details>
+
+**Score guide:** 7–8: strong understanding; 5–6: revisit missed concepts; 0–4: retrace the packet path and retry.
+
+## 13. Discussion challenge
+
+A guest device can reach a management server despite being assigned to a separate VLAN. At the same time, a staff workstation reports an unfamiliar gateway MAC address. Explain why these are different problems, what evidence you would collect, and which controls could address each. Why would encryption alone not resolve either network configuration issue?
+
+## 14. Study from the Treadmill 🏃
+
+- [Professor Messer — Security+ SY0-701 video course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/) — look for secure infrastructure and network segmentation lessons. This is a course index, not a verified direct video link.
+
+**Active-listening prompts:** Where is segmentation enforced? Why do MAC addresses change across routed links? What is the difference between a routing failure and a Layer 2 loop?
+
+## 15. One-minute recap
+
+- **Switch:** Learns source MACs and forwards frames within a VLAN.
+- **Router:** Selects the longest matching IP prefix and forwards packets between networks.
+- **ARP / NDP:** Resolve local next-hop link-layer addresses for IPv4 / IPv6 respectively.
+- **VLANs:** Separate broadcast domains; ACLs and firewalls enforce inter-VLAN policy.
+- **Router hop:** New link-layer frame, reduced TTL/Hop Limit; IP endpoints normally stay unchanged.
+- **STP / DAI:** Prevent Layer 2 loops / help validate ARP mappings.
+
+### Exam-day quick reference
+
 
 | Clue | Think |
 |---|---|
