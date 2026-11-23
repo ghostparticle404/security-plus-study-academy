@@ -4,21 +4,27 @@
 
 When an organization installs an application, it rarely installs only code written by the application's developer. It may also install libraries maintained by volunteers, commercial components, and software produced by automated build systems. Even the computer running the application depends on firmware supplied by hardware manufacturers. Today we examine how those relationships create security risks and how defenders manage them.
 
-## 2. Security+ exam alignment
+> **Security+ exam alignment**
+>
+> **SY0-701 — Domain 2: Threats, Vulnerabilities, and Mitigations**
+>
+> - **2.2:** Explain common threat vectors and attack surfaces.
+> - **2.3:** Explain various types of vulnerabilities, including malicious updates, firmware, legacy platforms, and supply chain vulnerabilities involving service providers, hardware providers, and software providers.
+> - **2.5:** Explain the purpose of mitigation techniques used to secure the enterprise.
+> - **4.3 (supporting):** Explain various activities associated with vulnerability management, including package monitoring.
+> - **5.3 (supporting):** Explain the processes associated with third-party risk assessment and management.
+>
+> An SBOM is a practical enrichment topic that supports dependency identification and vulnerability management; memorizing SBOM formats is not the primary exam goal.
+>
+> **Prerequisite:** [Day 31 — Vulnerability Sources and Misconfiguration](day-31-vulnerability-sources-and-misconfiguration.md).
+>
+> **Level:** Beginner–intermediate | **Estimated study time:** 80–105 minutes
+>
+> **Previous:** [Day 32](day-32-web-application-vulnerabilities.md) | **Next:** [Day 34](day-34-vulnerability-assessment-and-scanning.md)
 
-**SY0-701 — Domain 2: Threats, Vulnerabilities, and Mitigations**
+<a id="3-learning-objectives"></a>
 
-- **2.2:** Explain common threat vectors and attack surfaces.
-- **2.3:** Explain various types of vulnerabilities, including malicious updates, firmware, legacy platforms, and supply chain vulnerabilities involving service providers, hardware providers, and software providers.
-- **2.5:** Explain the purpose of mitigation techniques used to secure the enterprise.
-- **4.3 (supporting):** Explain various activities associated with vulnerability management, including package monitoring.
-- **5.3 (supporting):** Explain the processes associated with third-party risk assessment and management.
-
-An SBOM is a practical enrichment topic that supports dependency identification and vulnerability management; memorizing SBOM formats is not the primary exam goal.
-
-**Prerequisite:** [Day 31 — Vulnerability Sources and Misconfiguration](day-31-vulnerability-sources-and-misconfiguration.md).
-
-## 3. Learning objectives
+## 1. Learning objectives
 
 By the end of this lesson, you should be able to:
 
@@ -29,7 +35,9 @@ By the end of this lesson, you should be able to:
 - Interpret a sample software bill of materials (SBOM).
 - Recommend technical and organizational mitigations for supply-chain risks.
 
-## 4. Why this topic matters
+<a id="4-why-this-topic-matters"></a>
+
+## 2. The big idea: Trust extends beyond your organization
 
 Imagine a bakery purchasing flour from a wholesaler. Even excellent hygiene at the bakery cannot compensate completely for contaminated flour arriving from a supplier. The bakery needs controls within its own kitchen and confidence in the materials it receives.
 
@@ -37,7 +45,11 @@ Cybersecurity works similarly. An organization can harden its servers, enforce M
 
 The potential impact reaches all three elements of the CIA triad. A compromised component might disclose confidential information, modify records, or interrupt an essential service. A shared component can also create correlated risk: many organizations may become vulnerable at the same time.
 
-## 5. Detailed instruction
+**Memory hook:** Inventory tells you what you have; verification tells you what you received; controls limit what it can do.
+
+<a id="5-detailed-instruction"></a>
+
+## 3. Software, firmware, and supply-chain security
 
 ### Software components and dependencies
 
@@ -54,7 +66,7 @@ DocumentPortal 3.0
 
 The portal directly requests RenderKit and AuthKit. RenderKit itself requires ImageCore. ImageCore is therefore a **transitive dependency** of the portal. The portal developers may never explicitly import ImageCore, but its code may still be present and executed.
 
-See the comparison tables in Section 7 for a summary.
+See the [comparison tables](#7-comparison-tables) for a summary.
 
 
 #### Manifests and lockfiles
@@ -91,7 +103,7 @@ A **malicious update** is an update intentionally containing harmful behavior. T
 
 #### Common supply-chain weaknesses
 
-See the comparison tables in Section 7 for a summary.
+See the [comparison tables](#7-comparison-tables) for a summary.
 
 
 These are defensive recognition examples. The goal is to identify where trust can fail, not to reproduce attacks against real repositories.
@@ -102,7 +114,7 @@ These are defensive recognition examples. The goal is to identify where trust ca
 
 Firmware is not synonymous with an operating system. Some firmware provides an embedded operating environment, while other firmware performs narrow hardware-control tasks. It is typically updated through mechanisms provided by the manufacturer.
 
-See the comparison tables in Section 7 for a summary.
+See the [comparison tables](#7-comparison-tables) for a summary.
 
 
 #### Why firmware weaknesses matter
@@ -129,7 +141,7 @@ A **digital signature** allows a verifier to check whether data was signed using
 
 **Provenance** describes the origin and production history of an artifact, such as the source revision and build process associated with a release. Signed provenance can provide useful evidence about how an artifact was produced, subject to the trustworthiness of the system making the claim.
 
-See the comparison tables in Section 7 for a summary.
+See the [comparison tables](#7-comparison-tables) for a summary.
 
 
 #### Secure boot and firmware updates
@@ -156,7 +168,7 @@ Common machine-readable formats include SPDX and CycloneDX. The lesson uses a si
 
 An SBOM can dramatically narrow the investigation when a widely used component becomes vulnerable. It is not itself a vulnerability scan, patch, or security certificate. A stale or incomplete SBOM can omit important components. A version match also requires interpretation: vendor backports and configuration differences can affect applicability.
 
-See the comparison tables in Section 7 for a summary.
+See the [comparison tables](#7-comparison-tables) for a summary.
 
 
 ### Third-party and supplier risk
@@ -167,7 +179,7 @@ Supplier risks are not restricted to software defects. A payroll provider handle
 
 #### Supplier lifecycle
 
-See the comparison tables in Section 7 for a summary.
+See the [comparison tables](#7-comparison-tables) for a summary.
 
 
 Contractual requirements establish obligations but do not technically enforce them. Combine governance with network restrictions, identity controls, and monitoring.
@@ -191,17 +203,9 @@ If a vulnerable library is present, upgrade or replace it when an appropriate fi
 
 A valid signature on a suspicious release is evidence to investigate, not grounds to dismiss an alert. A new hash after an approved upgrade is expected; a mismatch against the trusted hash for that exact release requires investigation.
 
-### References and further reading
+<a id="6-real-world-cybersecurity-examples"></a>
 
-- [Professor Messer — SY0-701 video course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
-- [CISA — SolarWinds and Active Exploitation of SolarWinds Software (AA20-352A)](https://www.cisa.gov/news-events/cybersecurity-advisories/aa20-352a)
-- [NTIA — Minimum Elements for an SBOM](https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom)
-- [CycloneDX](https://cyclonedx.org/)
-- [SPDX](https://spdx.dev/)
-- [NIST SP 800-218 — Secure Software Development Framework](https://doi.org/10.6028/NIST.SP.800-218)
-- [NIST SP 800-161 Rev. 1 — Cybersecurity Supply Chain Risk Management Practices](https://doi.org/10.6028/NIST.SP.800-161r1)
-
-## 6. Real-world cybersecurity examples
+## 4. Real-world cybersecurity examples
 
 ### Example: inherited vulnerabilities
 
@@ -219,7 +223,9 @@ A retailer grants its support provider a shared administrator account with unres
 
 A better design uses individually attributable accounts, MFA, least privilege, time-limited access, segmentation, and centralized logs. The retailer should retain the ability to revoke vendor access quickly. This limits the potential blast radius without assuming the supplier will never experience an incident.
 
-## 7. Comparison tables
+<a id="7-comparison-tables"></a>
+
+## 5. Comparison tables
 
 ### Dependency relationships
 
@@ -279,9 +285,86 @@ A better design uses individually attributable accounts, MFA, least privilege, t
 | Operation | Periodic reviews, vulnerability notifications, access recertification |
 | Offboarding | Revoke credentials, remove integrations, return or delete data as agreed |
 
-## 8. Technical demonstrations and practical activity
+<a id="9-common-misconceptions-and-exam-traps"></a>
 
-### Safe technical demonstration: inspecting local artifacts
+## 6. Common misconceptions and exam traps
+
+| Misconception | Correct interpretation |
+| --- | --- |
+| A direct dependency list shows all components. | Transitive dependencies may also be present. |
+| An SBOM removes vulnerabilities. | It supports identification and investigation; remediation is separate. |
+| A valid signature means the software is safe. | Authorized signing can occur after a compromised build. |
+| Reinstalling an OS always removes firmware compromise. | Firmware is a separate layer and may persist. |
+| Unsupported means definitely compromised. | Support status is a risk factor, not incident evidence. |
+| Open-source software is inherently unsafe or safe. | Assess maintenance, provenance, vulnerabilities, and usage regardless of licensing model. |
+| A supplier contract prevents unauthorized access. | Technical controls must enforce access boundaries. |
+
+<a id="10-key-terminology-and-takeaways"></a>
+
+## 7. Key terminology and takeaways
+
+| Term | Meaning |
+| --- | --- |
+| Dependency | Component required by another component |
+| Transitive dependency | Indirect requirement inherited through another component |
+| Malicious update | Release deliberately containing harmful behavior |
+| Firmware | Software closely associated with hardware operation |
+| SBOM | Structured software component inventory |
+| Provenance | Evidence describing an artifact's origin and production history |
+| Digital signature | Mechanism supporting integrity and authenticity relative to a trusted key |
+| Compensating control | Alternative measure that reduces risk when a preferred control cannot be implemented |
+| Third-party risk | Risk arising from external products, services, or relationships |
+
+The central lesson is that trust must be managed across the entire lifecycle. Inventory establishes visibility, verification improves confidence, and layered controls limit the consequences when a trusted component fails.
+
+## 8. Worked case study: A signed release with unexpected behavior
+
+A fictional legal services firm installs a signed portal update. Monitoring subsequently detects unexpected outbound connections. The signature is valid, but the release provenance has not yet been reviewed.
+
+| Step | Analyst reasoning |
+| --- | --- |
+| Establish facts | Record the installed version, signature result, connection times, and affected systems. |
+| Evaluate hypotheses | A compromised build, legitimate new feature, or unrelated activity could explain the observations. |
+| Limit exposure | Restrict unnecessary outbound access and escalate through approved response procedures. |
+| Verify | Compare release metadata and trusted artifacts, consult the supplier, and correlate logs. |
+| Recover | If compromise is confirmed, use trusted artifacts and assess credentials and downstream exposure. |
+
+**Takeaway:** A valid signature establishes integrity and authenticity relative to a trusted key, not the safety of the build.
+
+## 9. Guided notes — Write first, reveal later
+
+Complete the table from memory before revealing the model answers.
+
+| Prompt | Your notes |
+| --- | --- |
+| Direct versus transitive dependency | |
+| Manifest versus lockfile | |
+| Malicious versus defective update | |
+| Firmware versus OS | |
+| Hash versus signature | |
+| Secure boot limitation | |
+| SBOM versus asset inventory | |
+| Supplier access controls | |
+
+<details markdown="1">
+<summary>Reveal model guided notes</summary>
+
+- **Direct versus transitive dependency:** Direct is explicitly required; transitive is inherited through another component.
+- **Manifest versus lockfile:** A manifest declares requirements; a lockfile records resolved versions.
+- **Malicious versus defective update:** Malicious updates intentionally contain harmful behavior; defective updates introduce weaknesses accidentally.
+- **Firmware versus OS:** Firmware controls or initializes hardware; reinstalling an OS does not necessarily replace firmware.
+- **Hash versus signature:** A trusted hash checks expected bytes; a signature also supports authenticity relative to a trusted key.
+- **Secure boot limitation:** It checks boot components against a trust policy, not whether all authorized code is safe.
+- **SBOM versus asset inventory:** An SBOM lists components; an asset inventory identifies deployment locations.
+- **Supplier access controls:** Individual accounts, MFA, least privilege, time limits, logging and revocation limit exposure.
+
+</details>
+
+<a id="8-technical-demonstrations-and-practical-activity"></a>
+
+## 10. Hands-on lab (20–25 minutes)
+
+### Part A — Inspect local artifacts
 
 The following commands are read-only. Use them on your own computer or an authorized laboratory system. Output depends on the files and tools installed; no sample output is represented as an actual execution result.
 
@@ -316,7 +399,18 @@ Get-FileHash -Path .\package.zip -Algorithm SHA256
 
 Replace `package.zip` with the path to an existing authorized local file. Compare the resulting digest with a trusted reference for that exact release. These commands calculate a hash; they do not automatically verify a signature or determine whether a file contains malware.
 
-### Practical activity: Review a sample SBOM
+Record one package version and dependency, if available, and explain what a hash comparison would establish. If you cannot run the commands, explain their purpose from the examples.
+
+<details markdown="1">
+<summary>Reveal Part A interpretation</summary>
+
+Package metadata identifies installed components in the selected environment, not all deployed software. A matching trusted hash supports integrity; it does not prove safety.
+
+</details>
+
+### Part B — Review a sample SBOM
+
+
 
 You are a junior security analyst at a fictional legal services company. Its internet-facing document portal uses the following components. All product names, versions, and advisories in this exercise are fictional and are not claims about real vulnerabilities.
 
@@ -366,44 +460,20 @@ Use approved, individually attributable, time-limited access with MFA and only t
 
 </details>
 
-## 9. Common misconceptions and exam traps
+<a id="11-practice-questions"></a>
 
-| Misconception | Correct interpretation |
-| --- | --- |
-| A direct dependency list shows all components. | Transitive dependencies may also be present. |
-| An SBOM removes vulnerabilities. | It supports identification and investigation; remediation is separate. |
-| A valid signature means the software is safe. | Authorized signing can occur after a compromised build. |
-| Reinstalling an OS always removes firmware compromise. | Firmware is a separate layer and may persist. |
-| Unsupported means definitely compromised. | Support status is a risk factor, not incident evidence. |
-| Open-source software is inherently unsafe or safe. | Assess maintenance, provenance, vulnerabilities, and usage regardless of licensing model. |
-| A supplier contract prevents unauthorized access. | Technical controls must enforce access boundaries. |
+## 11. Eight original Security+-style questions
 
-## 10. Key terminology and takeaways
-
-| Term | Meaning |
-| --- | --- |
-| Dependency | Component required by another component |
-| Transitive dependency | Indirect requirement inherited through another component |
-| Malicious update | Release deliberately containing harmful behavior |
-| Firmware | Software closely associated with hardware operation |
-| SBOM | Structured software component inventory |
-| Provenance | Evidence describing an artifact's origin and production history |
-| Digital signature | Mechanism supporting integrity and authenticity relative to a trusted key |
-| Compensating control | Alternative measure that reduces risk when a preferred control cannot be implemented |
-| Third-party risk | Risk arising from external products, services, or relationships |
-
-The central lesson is that trust must be managed across the entire lifecycle. Inventory establishes visibility, verification improves confidence, and layered controls limit the consequences when a trusted component fails.
-
-## 11. Practice questions
+Choose the best answer before revealing each explanation.
 
 ### Question 1
 
 An application requires Package A, which requires Package B. A vulnerability is discovered in Package B. How should Package B be classified relative to the application?
 
-- A. Firmware
-- B. Transitive dependency
-- C. Configuration baseline
-- D. Digital signature
+A. Firmware  
+B. Transitive dependency  
+C. Configuration baseline  
+D. Digital signature  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -416,10 +486,10 @@ An application requires Package A, which requires Package B. A vulnerability is 
 
 A release passes signature verification, but investigators discover that malicious code entered the build before signing. Which conclusion is correct?
 
-- A. The signature necessarily used an invalid key.
-- B. The malicious code must have entered after distribution.
-- C. Signature verification proves the source code was reviewed.
-- D. A valid signature does not guarantee that the signed content is safe.
+A. The signature necessarily used an invalid key.  
+B. The malicious code must have entered after distribution.  
+C. Signature verification proves the source code was reviewed.  
+D. A valid signature does not guarantee that the signed content is safe.  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -432,10 +502,10 @@ A release passes signature verification, but investigators discover that malicio
 
 A router has a known firmware vulnerability and no supported update. Replacement requires several weeks. Which action best reduces exposure during that period?
 
-- A. Restrict management access, isolate the device, and monitor it.
-- B. Reinstall the operating systems on nearby workstations.
-- C. Disable logging to reduce processing load.
-- D. Assume the device is safe because it still operates normally.
+A. Restrict management access, isolate the device, and monitor it.  
+B. Reinstall the operating systems on nearby workstations.  
+C. Disable logging to reduce processing load.  
+D. Assume the device is safe because it still operates normally.  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -448,10 +518,10 @@ A router has a known firmware vulnerability and no supported update. Replacement
 
 A widely used library has a newly disclosed vulnerability. Which artifact most directly helps identify software products containing the library?
 
-- A. Firewall rule set
-- B. Incident notification agreement
-- C. Software bill of materials
-- D. Password policy
+A. Firewall rule set  
+B. Incident notification agreement  
+C. Software bill of materials  
+D. Password policy  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -464,10 +534,10 @@ A widely used library has a newly disclosed vulnerability. Which artifact most d
 
 A service provider needs temporary access to maintain one server. Which approach best limits supplier-related risk?
 
-- A. Provide a shared permanent domain administrator account.
-- B. Grant individual, time-limited access with MFA and least privilege.
-- C. Rely exclusively on a confidentiality agreement.
-- D. Disable monitoring during maintenance.
+A. Provide a shared permanent domain administrator account.  
+B. Grant individual, time-limited access with MFA and least privilege.  
+C. Rely exclusively on a confidentiality agreement.  
+D. Disable monitoring during maintenance.  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -480,10 +550,10 @@ A service provider needs temporary access to maintain one server. Which approach
 
 An analyst calculates a downloaded package's SHA-256 hash and finds it matches an independently trusted reference for that release. What does this establish?
 
-- A. Every dependency is supported.
-- B. The developer's build environment was uncompromised.
-- C. The package contains no exploitable flaws.
-- D. The downloaded bytes match the expected digest, providing integrity assurance.
+A. Every dependency is supported.  
+B. The developer's build environment was uncompromised.  
+C. The package contains no exploitable flaws.  
+D. The downloaded bytes match the expected digest, providing integrity assurance.  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -492,7 +562,47 @@ An analyst calculates a downloaded package's SHA-256 hash and finds it matches a
 
 </details>
 
-## 12. Study from the Treadmill
+### Question 7
+
+A package manager resolves an internal package name to an unintended public repository. Which weakness is most directly described?
+
+A. Typosquatting  
+B. Dependency confusion  
+C. Firmware rollback  
+D. Configuration drift  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**Correct answer: B.** Dependency confusion concerns unintended package resolution across sources. Explicit registry scoping and source policies reduce this risk.
+
+</details>
+
+### Question 8
+
+A supplier contract ends. Which action most directly reduces remaining technical access risk?
+
+A. Retain the shared administrator account  
+B. Review only the original contract  
+C. Revoke supplier credentials and remove unused integrations  
+D. Disable audit logs  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**Correct answer: C.** Offboarding must remove actual access, not merely end contractual obligations.
+
+</details>
+
+**Score guide:** 7–8: ready to advance; 5–6: review missed concepts; 0–4: revisit the comparison tables and lab.
+
+## 12. Discussion challenge
+
+A vendor offers a signed emergency update but cannot provide a current SBOM or build provenance. Your organization depends on the affected service. How would you balance the risk of delaying the update against the risk of installing it? Explain what evidence, temporary controls, testing, and approval you would require.
+
+<a id="12-study-from-the-treadmill"></a>
+
+## 13. Study from the Treadmill 🏃
 
 Use these free video lessons to reinforce today's concepts while walking, exercising, or taking a break from your desk.
 
@@ -514,6 +624,25 @@ After your workout, explain each answer without consulting your notes.
 
 **Keep moving. Keep learning.**
 
+## 14. One-minute recap
+
+- Direct and transitive dependencies can both introduce weaknesses.
+- Trusted suppliers and signed updates can still be compromised.
+- Firmware requires device-specific maintenance and lifecycle planning.
+- SBOMs support identification; deployment context determines exposure.
+- Verify integrity, limit privileges, monitor behavior, and plan recovery.
+
+**Next:** [Day 34 — Vulnerability Assessment and Scanning](day-34-vulnerability-assessment-and-scanning.md).
+
+## References and further reading
+
+- [Professor Messer — SY0-701 video course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/)
+- [CISA — SolarWinds and Active Exploitation of SolarWinds Software (AA20-352A)](https://www.cisa.gov/news-events/cybersecurity-advisories/aa20-352a)
+- [NTIA — Minimum Elements for an SBOM](https://www.ntia.gov/report/2021/minimum-elements-software-bill-materials-sbom)
+- [CycloneDX](https://cyclonedx.org/)
+- [SPDX](https://spdx.dev/)
+- [NIST SP 800-218 — Secure Software Development Framework](https://doi.org/10.6028/NIST.SP.800-218)
+- [NIST SP 800-161 Rev. 1 — Cybersecurity Supply Chain Risk Management Practices](https://doi.org/10.6028/NIST.SP.800-161r1)
 
 ---
 
