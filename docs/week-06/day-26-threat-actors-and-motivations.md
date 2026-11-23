@@ -3,9 +3,11 @@
 **Security+ Study Academy | Week 06: Threats, Vulnerabilities, and Mitigations**  
 **File:** `docs/week-06/day-26-threat-actors-and-motivations.md`  
 **Prerequisites:** Weeks 01–05  
-**Estimated study time:** 75–100 minutes
+**Security+ SY0-701 alignment:** Domain 2, Objective 2.1 (threat actors and motivations).  
+**Level:** Beginner to intermediate  
+**Estimated study time:** 60–80 minutes
 
-## Learning objectives
+## 1. Learning objectives
 
 By the end of this lesson, you should be able to:
 
@@ -15,9 +17,19 @@ By the end of this lesson, you should be able to:
 4. Use evidence from an incident to develop a defensible threat actor profile.
 5. Recommend defensive priorities based on the likely actor, their objectives, and the organization's exposure.
 
-## 1. What is a threat actor? 
+## 2. The big idea: Why threat actors matter
 
-A **threat actor** is a person, group, or organization that may intentionally cause harm to systems, data, people, or operations. Threat actors differ in what they want, what they can access, and what resources they can bring to an attack.
+Imagine two people accessing the same confidential folder: one wants to sell its contents, while the other accidentally shares it publicly. The exposure may look similar, but the motivation, access and appropriate response differ.
+
+🧠 **Memory hook:** Motive = why; capability = how; resources = with what; access = from where.
+
+Threat profiling helps defenders prioritize controls and investigations without confusing a plausible explanation with proven attribution.
+
+<a id="1-what-is-a-threat-actor"></a>
+
+## 3. What is a threat actor?
+
+A **threat actor** is a person, group, or organization that may cause harm to systems, data, people, or operations, whether deliberately or through negligent activity. Threat actors differ in what they want, what they can access, and what resources they can bring to an attack.
 
 A useful way to assess an actor is to separate four dimensions:
 
@@ -37,7 +49,9 @@ An attacker who wants to steal money has a **financial motivation**. Their abili
 
 </details>
 
-## 2. Common threat actor categories
+<a id="2-common-threat-actor-categories"></a>
+
+## 4. Common threat actor categories
 
 ### Nation-state and state-sponsored actors 
 
@@ -91,7 +105,9 @@ An **unskilled attacker**, sometimes called a *script kiddie*, often uses readil
 
 **Defensive priorities:** Approved alternatives, asset discovery, SaaS governance, data classification, and practical security awareness.
 
-## 3. Compare actors without stereotyping 
+<a id="3-compare-actors-without-stereotyping"></a>
+
+## 5. Compare actors without stereotyping
 
 | Actor type | Common motivations | Possible resources | Typical access starting point | Important qualification |
 | --- | --- | --- | --- | --- |
@@ -104,7 +120,9 @@ An **unskilled attacker**, sometimes called a *script kiddie*, often uses readil
 
 **Remember:** These are patterns, not rules. Attackers can collaborate, change objectives, or imitate another group's tactics.
 
-## 4. Motivations and objectives 
+<a id="4-motivations-and-objectives"></a>
+
+## 6. Motivations and objectives
 
 A **motivation** explains *why* an actor attacks; an **objective** describes the specific result they seek.
 
@@ -115,11 +133,16 @@ A **motivation** explains *why* an actor attacks; an **objective** describes the
 | Ideology | Draw attention to a cause | Public claim of responsibility |
 | Disruption | Interrupt services or operations | Destructive changes or traffic flooding |
 | Revenge | Harm a former employer or colleague | Targeted deletion after a dispute |
+| Blackmail or coercion | Force a person or organization to comply | Threat to disclose sensitive information |
+| Philosophical or ethical beliefs | Act on a perceived moral obligation | Stated justification for unauthorized disclosure |
+| War or strategic conflict | Degrade an adversary’s operations | Targeting strategically important services |
 | Curiosity or recognition | Demonstrate access or gain status | Public boasting about unauthorized access |
 
 An **indicator** is evidence worth investigating, not automatic proof of motive. For example, data exfiltration might support espionage, extortion, resale, or several motives at once.
 
-## 5. Capability, resources, and attack sophistication 
+<a id="5-capability-resources-and-attack-sophistication"></a>
+
+## 7. Capability, resources, and attack sophistication
 
 Consider the following distinctions:
 
@@ -142,9 +165,49 @@ Use calibrated language:
 - **Inferred:** “The pattern is consistent with attempted data theft.”
 - **Unconfirmed:** “The activity may be linked to a financially motivated group.”
 
-## 6. Practical lab — Build a threat actor profile 
+<a id="7-defensive-decision-making"></a>
 
-**Scenario: Northstar Legal Services**
+## 8. Defensive decision-making
+
+Threat profiling should inform controls, not replace foundational security practices. A practical order of operations is:
+
+1. **Protect identities:** MFA, least privilege, secure recovery, and session management.
+2. **Reduce exposure:** Patch known vulnerabilities, inventory assets, and limit unnecessary internet-facing services.
+3. **Detect misuse:** Collect identity, endpoint, network, and cloud audit logs.
+4. **Limit impact:** Segment networks, protect backups, and restrict sensitive-data access.
+5. **Prepare response:** Define escalation paths, evidence preservation procedures, and business verification processes.
+
+**Exam tip:** When a question asks which threat actor is *most likely*, use the actor's stated **motive**, **access**, and **resources** together. Do not select “nation-state” simply because an attack is complex.
+
+<a id="9-review-and-self-assessment"></a>
+
+## 9. Key terminology and self-assessment
+
+Before moving to Day 27, confirm that you can:
+
+- [ ] Explain the difference between motivation, capability, resources, and access.
+- [ ] Compare nation-state actors, organized cybercriminals, hacktivists, insiders, and unskilled attackers.
+- [ ] Distinguish malicious, negligent, and compromised insider scenarios.
+- [ ] Explain why shadow IT is a risk condition rather than a threat actor identity.
+- [ ] Build an evidence-based threat actor profile with an explicit confidence level.
+- [ ] Recommend controls without overclaiming who conducted an attack.
+
+### Key terms 
+
+**Threat actor:** Entity capable of carrying out harmful activity.  
+**Motivation:** Reason for acting.  
+**Capability:** Ability to execute techniques.  
+**Resources:** Funding, time, personnel, tools, and infrastructure.  
+**Insider threat:** Security risk arising through an individual with authorized access.  
+**Hacktivism:** Ideologically motivated cyber activity.  
+**Shadow IT:** Technology used without organizational approval or oversight.  
+**Attribution:** Assessment of who is responsible for observed activity.  
+**Indicator:** Observable information relevant to an investigation, not necessarily proof of identity or intent.
+
+
+<a id="6-practical-lab-build-a-threat-actor-profile"></a>
+
+## 10. Worked case study: Northstar Legal Services
 
 A midsize law firm reports the following events:
 
@@ -154,7 +217,46 @@ A midsize law firm reports the following events:
 4. The firm's finance team receives a message requesting a change to a vendor's payment details.
 5. Investigators have not confirmed whether the employee entered credentials into a phishing site or whether the sign-in resulted from another form of account compromise.
 
-**Task:** Complete the profile below using only the available evidence.
+
+
+**Worked reasoning:** The payment-change request supports a financial-fraud hypothesis, but the unfamiliar sign-in and download do not establish the actor’s identity. A compromised account is plausible; employee complicity and the precise entry method remain unconfirmed. Prioritize account containment, evidence preservation and independent payment verification.
+
+## 11. Guided notes — Write first, reveal later
+
+| Prompt | Your answer |
+| --- | --- |
+| Four actor dimensions | _Write here._ |
+| Motivation versus objective | _Write here._ |
+| State-sponsored versus cybercrime | _Write here._ |
+| Insider incident types | _Write here._ |
+| Shadow IT | _Write here._ |
+| Attribution | _Write here._ |
+| Evidence versus inference | _Write here._ |
+| Defensive priorities | _Write here._ |
+
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
+
+| Prompt | Model answer |
+| --- | --- |
+| Four actor dimensions | Motivation, capability, resources, access. |
+| Motivation versus objective | Why an actor acts versus the result sought. |
+| State-sponsored versus cybercrime | Strategic interests versus typically financial gain; neither is proven by sophistication. |
+| Insider incident types | Malicious, negligent, or activity through a compromised account. |
+| Shadow IT | Unapproved technology that can bypass governance and monitoring. |
+| Attribution | Assessing responsibility using corroborated evidence. |
+| Evidence versus inference | A recorded download is an observation; theft is a hypothesis until supported. |
+| Defensive priorities | Protect identities, reduce exposure, detect misuse, limit impact and prepare response. |
+
+</details>
+
+## 12. Hands-on lab: Build and revise a threat actor profile
+
+**Time:** 15–25 minutes · **Tools:** Notebook or text editor · **Safe, fictional evidence only**
+
+### Part A — Build the profile
+
+Use the Northstar case above. **Task:** Complete the profile below using only the available evidence.
 
 | Profile field | Your assessment |
 | --- | --- |
@@ -187,7 +289,7 @@ A midsize law firm reports the following events:
 
 </details>
 
-### Stretch task 
+### Part B — Reassess when evidence changes 
 
 Suppose the same account had legitimately downloaded the files for a scheduled client migration. Which part of your profile would change? Explain how independent verification affects your confidence and response priorities.
 
@@ -198,30 +300,28 @@ The download would no longer support the data-theft hypothesis as strongly, assu
 
 </details>
 
-## 7. Defensive decision-making 
+**Additional checks:** Explain how purchased credentials can substitute for technical skill, and why a confidential download does not establish state espionage.
 
-Threat profiling should inform controls, not replace foundational security practices. A practical order of operations is:
+<details markdown="1">
+<summary>Reveal additional reasoning</summary>
 
-1. **Protect identities:** MFA, least privilege, secure recovery, and session management.
-2. **Reduce exposure:** Patch known vulnerabilities, inventory assets, and limit unnecessary internet-facing services.
-3. **Detect misuse:** Collect identity, endpoint, network, and cloud audit logs.
-4. **Limit impact:** Segment networks, protect backups, and restrict sensitive-data access.
-5. **Prepare response:** Define escalation paths, evidence preservation procedures, and business verification processes.
+Purchased access can reduce the technical work needed to compromise an account. A download can support several motives; attribution requires independent corroboration.
 
-**Exam tip:** When a question asks which threat actor is *most likely*, use the actor's stated **motive**, **access**, and **resources** together. Do not select “nation-state” simply because an attack is complex.
+</details>
 
-## 8. Knowledge check 
+<a id="8-knowledge-check"></a>
 
-Choose the **best** answer for each question before opening the explanation.
+## 13. Eight original Security+-style questions
 
-### Question 1 
+Choose the **BEST** answer before opening each explanation. These are original practice questions, not actual CompTIA items.
 
+### Q1.
 A group steals proprietary defense research to support a government's strategic objectives. Which actor category is most consistent with the scenario?
 
 A. Hacktivist  
 B. Nation-state or state-sponsored actor  
 C. Negligent insider  
-D. Unskilled attacker
+D. Unskilled attacker  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -230,14 +330,13 @@ D. Unskilled attacker
 
 </details>
 
-### Question 2 
-
+### Q2.
 An employee accidentally shares a confidential folder publicly. Which description best fits the event?
 
 A. Malicious insider attack  
 B. Nation-state espionage  
 C. Negligent insider incident  
-D. Hacktivism
+D. Hacktivism  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -246,14 +345,13 @@ D. Hacktivism
 
 </details>
 
-### Question 3 
-
+### Q3.
 Which factor most directly describes a threat actor's **motivation**?
 
 A. Their ability to develop malware  
 B. Their number of servers  
 C. Their desire to obtain ransom payments  
-D. Their access to an administrator account
+D. Their access to an administrator account  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -262,14 +360,13 @@ D. Their access to an administrator account
 
 </details>
 
-### Question 4 
-
+### Q4.
 An attacker uses a freely available exploit against an exposed, unpatched server. What is the best conclusion?
 
 A. The attacker must be highly sophisticated  
 B. The attacker must be a current employee  
 C. A relatively unskilled attacker may still cause serious damage  
-D. The attack necessarily involves a nation-state
+D. The attack necessarily involves a nation-state  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -278,14 +375,13 @@ D. The attack necessarily involves a nation-state
 
 </details>
 
-### Question 5 
-
+### Q5.
 A group floods a government website with traffic to protest a new policy and publicly claims responsibility. Which actor category is most consistent?
 
 A. Hacktivist  
 B. Negligent insider  
 C. Authorized penetration tester  
-D. Vendor support technician
+D. Vendor support technician  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -294,14 +390,13 @@ D. Vendor support technician
 
 </details>
 
-### Question 6 
-
+### Q6.
 An investigator sees a successful login from a foreign IP address. What should they conclude?
 
 A. The user is a foreign intelligence operative  
 B. The IP address proves the attacker's physical location  
 C. The login is irrelevant to the investigation  
-D. The event warrants correlation with additional evidence
+D. The event warrants correlation with additional evidence  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -310,14 +405,13 @@ D. The event warrants correlation with additional evidence
 
 </details>
 
-### Question 7 
-
+### Q7.
 A departing contractor intentionally deletes project files using access they still possess. Which factor most distinguishes this threat?
 
 A. Access through authorized credentials  
 B. Use of a public DDoS service  
 C. Government funding  
-D. A purely accidental mistake
+D. A purely accidental mistake  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -326,14 +420,13 @@ D. A purely accidental mistake
 
 </details>
 
-### Question 8
-
+### Q8.
 A team adopts an unapproved cloud storage tool for convenience. Which statement is most accurate?
 
 A. The team is automatically a cybercriminal organization  
 B. Shadow IT creates potential security and governance gaps  
 C. Shadow IT is always safer than approved services  
-D. The service is secure if employees have good intentions
+D. The service is secure if employees have good intentions  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -342,62 +435,28 @@ D. The service is secure if employees have good intentions
 
 </details>
 
-### Question 9 
+**Score guide:** 7–8 correct: strong understanding. 5–6: revisit actor comparisons and attribution. 0–4: review the lesson and repeat the lab.
 
-A criminal group buys stolen credentials rather than developing its own exploit. What does this illustrate?
+## 14. Discussion challenge
 
-A. Resources and access can substitute for some technical capabilities  
-B. The group cannot be financially motivated  
-C. Credential theft is never serious  
-D. All purchased credentials belong to insiders
+A company discovers that an employee account accessed sensitive files after hours. The manager wants to blame the employee immediately. Explain two alternative explanations, identify evidence that would distinguish them, and recommend a proportionate response that protects the organization without making unsupported accusations.
 
-<details markdown="1">
-<summary>Reveal answer and explanation</summary>
+## 15. Study from the Treadmill 🏃
 
-**Correct answer: A.** Actors can acquire tools, services, or access from others, so direct exploit-development skill is not always required.
+- [Professor Messer — Security+ SY0-701 video course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/) — locate the Objective 2.1 lesson on threat actors.
 
-</details>
+**Active-listening prompts:** How do actor resources differ from capability? Why is insider access important? What evidence would change your attribution assessment?
 
-### Question 10 
+## 16. One-minute recap
 
-An analyst reports: “The attacker downloaded confidential files, so the attacker was definitely conducting state espionage.” What is the main problem?
+- **Motivation:** Why an actor acts.
+- **Capability, resources, access:** Different dimensions of what an actor can accomplish.
+- **Actor categories:** State-sponsored, criminal, hacktivist, insider and unskilled actors.
+- **Shadow IT:** Governance risk, not proof of hostile intent.
+- **Attribution:** Corroborate evidence and state confidence.
+- **Defense:** Match controls to exposure and likely objectives, not stereotypes.
 
-A. Downloads are never logged  
-B. Confidential files have no value to criminals  
-C. The analyst treats a possible motivation as proven attribution  
-D. State espionage never involves documents
-
-<details markdown="1">
-<summary>Reveal answer and explanation</summary>
-
-**Correct answer: C.** A download is observable activity; its purpose and the responsible actor require additional corroboration.
-
-</details>
-
-## 9. Review and self-assessment 
-
-Before moving to Day 27, confirm that you can:
-
-- [ ] Explain the difference between motivation, capability, resources, and access.
-- [ ] Compare nation-state actors, organized cybercriminals, hacktivists, insiders, and unskilled attackers.
-- [ ] Distinguish malicious, negligent, and compromised insider scenarios.
-- [ ] Explain why shadow IT is a risk condition rather than a threat actor identity.
-- [ ] Build an evidence-based threat actor profile with an explicit confidence level.
-- [ ] Recommend controls without overclaiming who conducted an attack.
-
-**Suggested score:** 8–10 correct = ready to advance; 6–7 = review the actor comparison and attribution sections; 0–5 = revisit the lesson and redo the practical lab.
-
-### Key terms 
-
-**Threat actor:** Entity capable of carrying out harmful activity.  
-**Motivation:** Reason for acting.  
-**Capability:** Ability to execute techniques.  
-**Resources:** Funding, time, personnel, tools, and infrastructure.  
-**Insider threat:** Security risk arising through an individual with authorized access.  
-**Hacktivism:** Ideologically motivated cyber activity.  
-**Shadow IT:** Technology used without organizational approval or oversight.  
-**Attribution:** Assessment of who is responsible for observed activity.  
-**Indicator:** Observable information relevant to an investigation, not necessarily proof of identity or intent.
+**Next:** Day 27 — Attack Vectors and Attack Surfaces.
 
 ---
 © 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).  
