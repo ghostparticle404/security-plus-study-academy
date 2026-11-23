@@ -1,12 +1,14 @@
 # Day 25 — Wireless and Network Access Control
 
-**Week 05: Network Security**  
+**Week 05: Network Security · Lesson 5 of 5**  
+**Level:** Beginner to intermediate · **Study time:** 60–80 minutes  
 **Canonical path:** `docs/week-05/day-25-wireless-and-network-access-control.md`  
 **Prerequisites:** [Day 21 — Segmentation and VLANs](day-21-segmentation-and-vlans.md), [Day 22 — Firewalls and Filtering](day-22-firewalls-and-filtering.md), [Day 23 — IDS, IPS, and Network Monitoring](day-23-ids-ips-and-network-monitoring.md), and [Day 24 — VPNs and Secure Connectivity](day-24-vpns-and-secure-connectivity.md).  
 **Security+ SY0-701 alignment:** Domain **3.0 Security Architecture**, particularly **Objective 3.2** (security principles applied to enterprise infrastructure, including wireless and network access controls); related **Objective 4.1** (common security techniques applied to computing resources). These are topical mappings; consult CompTIA's official objectives for authoritative wording.
 
-## Learning objectives
+<a id="learning-objectives"></a>
 
+## 1. Learning objectives
 By the end of this lesson, you should be able to:
 
 1. Explain wireless authentication, encryption, association, and network authorization as separate steps.
@@ -16,8 +18,9 @@ By the end of this lesson, you should be able to:
 5. Design guest wireless access that is isolated from employee, finance, camera, and management networks.
 6. Interpret simple wireless/NAC events and select proportionate corrective controls in Security+ scenarios.
 
-## Why wireless and network access control matter
+<a id="why-wireless-and-network-access-control-matter"></a>
 
+## 2. The big idea: Why wireless and network access control matter
 In the small office from [Day 21](day-21-segmentation-and-vlans.md), we separated employees, finance, printers, guests, cameras, and management into VLANs. That separation only helps if devices are placed in the **right** VLAN and traffic between VLANs is controlled. Wireless access creates another entry point: someone in a waiting room—or outside the building—may be within radio range of an access point (AP).
 
 Imagine a visitor who asks for Wi-Fi. The visitor needs internet access, not access to payroll files, security cameras, or the switch-management interface. A secure design answers several questions: **Which wireless network can the visitor join? How is the connection protected? How do we determine which network the device belongs to? What traffic is allowed after connection?**
@@ -26,8 +29,9 @@ A password on the Wi-Fi network is not a substitute for a firewall, and a guest 
 
 > **Security+ decision point:** Separate **joining the wireless network** from **being permitted to reach a resource**. Authentication and encryption protect access to the wireless link; VLANs, ACLs, firewalls, and NAC policies determine the next trust boundary.
 
-## 1. Wireless fundamentals: radios, APs, SSIDs, and clients
+<a id="1-wireless-fundamentals-radios-aps-ssids-and-clients"></a>
 
+## 3. Wireless fundamentals: radios, APs, SSIDs, and clients
 A **wireless local area network (WLAN)** connects devices using radio instead of an Ethernet cable. An **access point (AP)** bridges wireless clients into a wired or otherwise upstream network. A **station (STA)** is a wireless client, such as a laptop or phone.
 
 An **SSID** (service set identifier) is the human-readable network name, such as `Office-Staff` or `Office-Guest`. A **BSSID** commonly identifies a particular AP radio/interface with a MAC address. Several APs can advertise the same SSID to support roaming; that does not make them one physical radio.
@@ -65,8 +69,9 @@ This is a conceptual overview, not a complete frame-by-frame exchange. In an ent
 
 Wi-Fi operates across bands including 2.4 GHz, 5 GHz, and (on supported Wi-Fi 6E/7 equipment) 6 GHz. Band choice affects range, interference, channel availability, and performance; it does **not** by itself establish confidentiality or access rights. Avoid treating a different frequency or a hidden SSID as a substitute for proper authentication.
 
-## 2. Wireless security modes: what actually protects the link?
+<a id="2-wireless-security-modes-what-actually-protects-the-link"></a>
 
+## 4. Wireless security modes: what actually protects the link?
 Wireless security includes **authentication** (establishing credentials or identity) and **link-layer encryption** (protecting wireless frames over the radio connection). These are not interchangeable.
 
 | Mode | Typical authentication | Main use | Key concern |
@@ -101,8 +106,9 @@ A **captive portal** presents a web page to users before they receive ordinary i
 
 </details>
 
-## 3. Enterprise authentication: 802.1X, EAP, and RADIUS
+<a id="3-enterprise-authentication-8021x-eap-and-radius"></a>
 
+## 5. Enterprise authentication: 802.1X, EAP, and RADIUS
 A managed organization may want each employee to authenticate individually rather than share one password. **IEEE 802.1X** is a framework for **port-based network access control** used on wired and wireless networks. It involves three roles:
 
 1. **Supplicant:** The user's laptop or other device requesting network access.
@@ -144,8 +150,9 @@ The diagram simplifies several message exchanges and key-establishment steps. It
 
 An employee may authenticate successfully but still be placed in a limited-access VLAN. A contractor may receive only application-specific permissions. A printer may use a distinct onboarding mechanism because it cannot support the same supplicant configuration as a managed laptop. The important design principle is **identity and device role should influence access**; success at login must not imply unrestricted network reachability.
 
-## 4. Network access control (NAC): identity plus device posture
+<a id="4-network-access-control-nac-identity-plus-device-posture"></a>
 
+## 6. Network access control (NAC): identity plus device posture
 **Network access control (NAC)** enforces conditions for joining or using a network. Depending on the product and design, NAC may consider:
 
 - User or device identity, often from 802.1X credentials or certificates.
@@ -179,8 +186,9 @@ Some NAC systems use an installed **agent** to report device posture. Others use
 
 </details>
 
-## 5. Wireless threats and what the controls actually stop
+<a id="5-wireless-threats-and-what-the-controls-actually-stop"></a>
 
+## 7. Wireless threats and what the controls actually stop
 Wireless security must account for threats to the radio link, user trust, AP administration, and network segmentation.
 
 | Threat | What happens | Appropriate defensive response |
@@ -205,8 +213,79 @@ Disabling SSID broadcast does not make a WLAN secret. Network identifiers can st
 
 PMF protects certain management frames against forgery and tampering. It helps reduce some management-frame attacks, but does not prevent all radio interference, jamming, or denial of service. **Do not claim PMF makes Wi-Fi immune to deauthentication in every circumstance.**
 
-## 6. Design lab: secure guest wireless for the six-VLAN office
+<a id="7-reading-wireless-and-nac-logs"></a>
 
+## 8. Reading wireless and NAC logs
+The following entries are **fictional examples** for learning. They are not output captured from a real AP or NAC product.
+
+```text
+09:14:02 AP-2  SSID=Office-Staff  client=lab-laptop-01  auth=EAP-TLS  result=SUCCESS  vlan=10
+09:15:18 AP-2  SSID=Office-Staff  client=unknown-07     auth=EAP-TLS  result=FAIL     reason=UNTRUSTED_CERT
+09:16:40 NAC-1 device=lab-laptop-02 posture=NONCOMPLIANT action=QUARANTINE vlan=70
+09:17:05 FW-1  src=192.168.40.23 dst=192.168.20.10 proto=TCP dport=443 action=DENY
+09:18:22 AP-2  SSID=Office-Guest  client=guest-phone-04 result=ASSOCIATED vlan=40
+```
+
+| Event | Interpretation | Next analyst action |
+| --- | --- | --- |
+| Staff EAP-TLS success | Certificate-based authentication succeeded | Confirm correct role/VLAN if investigating access |
+| Untrusted certificate | Authentication failed certificate trust checks | Check enrollment, certificate chain, expiration, and server/client policy; do not disable validation |
+| NAC quarantine | Device failed a posture requirement | Identify failed requirement and approved remediation path |
+| Guest-to-finance deny | Segmentation rule blocked attempted access | Determine whether expected test, misconfiguration, or suspicious behavior |
+| Guest association | Client joined guest WLAN | Verify guest VLAN and effective restrictions; association alone does not prove internet access |
+
+### Correlation matters
+
+One blocked guest-to-finance connection might be a benign misclick or a controlled test. Repeated attempts across many internal hosts may warrant investigation. Correlate timestamps, AP identifiers, device inventory, firewall decisions, and authentication logs. Recall from [Day 23](day-23-ids-ips-and-network-monitoring.md) that **an alert is evidence to interpret**, not proof of malicious intent.
+
+<a id="9-common-misconceptions-and-security-exam-traps"></a>
+
+## 9. Common misconceptions and Security+ exam traps
+| Tempting but wrong statement | More accurate interpretation |
+| --- | --- |
+| “A hidden SSID is secure.” | SSID hiding is not meaningful authentication or encryption. |
+| “Guest Wi-Fi is isolated because it has a different name.” | Isolation requires correct VLAN mapping and enforceable network policy. |
+| “A captive portal encrypts Wi-Fi.” | A portal is an onboarding/web-access mechanism, not wireless link encryption. |
+| “802.1X and RADIUS are the same protocol.” | 802.1X controls network access; RADIUS commonly connects authenticator and AAA server. |
+| “MAC filtering is strong device authentication.” | MAC addresses can be spoofed. |
+| “WPA3 stops all wireless attacks.” | WPA3 improves specific protections but does not eliminate rogue APs, phishing, endpoint compromise, or jamming. |
+| “Authentication means access to every subnet.” | Authorization and segmentation still restrict resources. |
+| “A failed ping proves the firewall works.” | The target may block ICMP; validate intended traffic and logs. |
+| “NAC posture proves a device is safe.” | Posture is one security signal, not proof of absence of compromise. |
+
+**Exam strategy:** Identify the requirement first. If the question asks for **individual employee authentication**, think 802.1X/EAP and an AAA backend. If it asks for **guest separation**, think VLAN/ACL/firewall and client isolation. If it asks about **certificate-based mutual authentication**, think EAP-TLS. If it asks about **device compliance before access**, think NAC posture assessment and quarantine/remediation.
+
+<a id="10-key-terminology-and-takeaways"></a>
+
+## 10. Key terminology and takeaways
+- **WLAN:** Local network using Wi-Fi radio connections.
+- **SSID:** Network name; not proof of authenticity.
+- **AP:** Device connecting wireless clients to a network.
+- **WPA2/WPA3:** Families of Wi-Fi security protections.
+- **SAE:** Authentication mechanism used in WPA3-Personal.
+- **PMF:** Protects selected management frames.
+- **802.1X:** Port-based network access control framework.
+- **Supplicant / authenticator / authentication server:** Three key 802.1X roles.
+- **EAP:** Framework for authentication methods.
+- **EAP-TLS:** Certificate-based EAP method.
+- **RADIUS:** AAA protocol frequently used with enterprise network access.
+- **NAC:** Controls access using identity, device status, and policy.
+- **Posture assessment:** Evaluation of device security requirements.
+- **Quarantine VLAN:** Restricted network used for remediation or limited access.
+- **Rogue AP / evil twin:** Unauthorized AP / impersonating wireless network.
+- **Client isolation:** Restriction on direct communication among wireless clients.
+
+**Five essential takeaways:**
+
+1. Protect the **wireless link** with an appropriate security mode; do not rely on hidden SSIDs or portals.
+2. Use **individual identity and certificates** for managed enterprise access where feasible.
+3. Treat **NAC posture** as an additional access-control signal, not absolute assurance.
+4. Map guest traffic to a **separate VLAN** and enforce deny rules for internal resources.
+5. **Verify** the effective configuration with controlled connection tests and correlated logs.
+
+<a id="6-design-lab-secure-guest-wireless-for-the-six-vlan-office"></a>
+
+## 11. Worked case study: Secure guest wireless for the six-VLAN office
 **Scenario:** A small office has staff, finance, printers, guests, cameras, and management networks. Visitors need web access while waiting for meetings. Employees need access to approved office services. The administrator needs secure AP management. Your job is to design the guest WLAN without exposing private resources.
 
 ### Existing logical layout
@@ -284,7 +363,45 @@ The DNS and DHCP entries depend on where those services run; allow only the nece
 - Monitor AP inventory, association/authentication failures, and unauthorized SSIDs.
 - For staff, use certificate-based authentication and appropriate device-posture policies where feasible.
 
-### Step 5 — Test isolation instead of assuming it works
+## 12. Guided notes — Write first, reveal later
+Complete the table before revealing the model answers.
+
+| Prompt | Your answer |
+| --- | --- |
+| How do SSID and BSSID differ? | _Write here._ |
+| How do WPA2-Personal and WPA3-Personal differ? | _Write here._ |
+| Name the three 802.1X roles. | _Write here._ |
+| Distinguish EAP, EAP-TLS and RADIUS. | _Write here._ |
+| What does NAC posture assessment evaluate? | _Write here._ |
+| Distinguish rogue AP and evil twin. | _Write here._ |
+| Why is a captive portal insufficient for confidentiality? | _Write here._ |
+| How do you verify guest isolation? | _Write here._ |
+
+<details markdown="1">
+<summary>Reveal completed guided notes</summary>
+
+| Prompt | Model answer |
+| --- | --- |
+| How do SSID and BSSID differ? | SSID names the network; BSSID identifies a basic service set, commonly an AP radio MAC. |
+| How do WPA2-Personal and WPA3-Personal differ? | WPA2 uses a shared PSK; WPA3 uses SAE and requires PMF for WPA3 connections. |
+| Name the three 802.1X roles. | Supplicant, authenticator, authentication server. |
+| Distinguish EAP, EAP-TLS and RADIUS. | EAP is a framework; EAP-TLS is a certificate-based method; RADIUS commonly carries authentication and authorization information. |
+| What does NAC posture assessment evaluate? | Device compliance with required security controls; it can trigger restricted access or quarantine. |
+| Distinguish rogue AP and evil twin. | A rogue AP is unauthorized; an evil twin impersonates a trusted network. |
+| Why is a captive portal insufficient for confidentiality? | It controls onboarding but does not itself encrypt wireless frames. |
+| How do you verify guest isolation? | Check VLAN mapping, enforcement rules, approved connection tests and logs. |
+
+</details>
+
+<a id="8-safe-technical-demonstrations"></a>
+
+## 13. Hands-on lab: Design and validate wireless access
+**Time:** 15–25 minutes · **Tools:** Notebook, optional terminal · **Scope:** Paper exercise or authorized lab only.
+
+### Part A — Design and validate guest access
+
+Sketch the case-study topology from memory. Label the staff and guest SSIDs, VLANs, management boundary, and allowed DNS/DHCP/internet flows. Predict the results of the following tests before revealing the assessment. If you lack an authorized test network, perform this as a paper exercise.
+
 
 Use an **authorized** test laptop connected to `Office-Guest`:
 
@@ -307,31 +424,11 @@ Use an **authorized** test laptop connected to `Office-Guest`:
 
 </details>
 
-## 7. Reading wireless and NAC logs
 
-The following entries are **fictional examples** for learning. They are not output captured from a real AP or NAC product.
+### Part B — Inspect wireless configuration and interpret NAC logs
 
-```text
-09:14:02 AP-2  SSID=Office-Staff  client=lab-laptop-01  auth=EAP-TLS  result=SUCCESS  vlan=10
-09:15:18 AP-2  SSID=Office-Staff  client=unknown-07     auth=EAP-TLS  result=FAIL     reason=UNTRUSTED_CERT
-09:16:40 NAC-1 device=lab-laptop-02 posture=NONCOMPLIANT action=QUARANTINE vlan=70
-09:17:05 FW-1  src=192.168.40.23 dst=192.168.20.10 proto=TCP dport=443 action=DENY
-09:18:22 AP-2  SSID=Office-Guest  client=guest-phone-04 result=ASSOCIATED vlan=40
-```
+Choose the commands appropriate for your operating system. Then use the fictional logs in Section 8 to identify the failed certificate check, quarantine decision, and blocked guest connection. Explain what each proves and what remains unknown.
 
-| Event | Interpretation | Next analyst action |
-| --- | --- | --- |
-| Staff EAP-TLS success | Certificate-based authentication succeeded | Confirm correct role/VLAN if investigating access |
-| Untrusted certificate | Authentication failed certificate trust checks | Check enrollment, certificate chain, expiration, and server/client policy; do not disable validation |
-| NAC quarantine | Device failed a posture requirement | Identify failed requirement and approved remediation path |
-| Guest-to-finance deny | Segmentation rule blocked attempted access | Determine whether expected test, misconfiguration, or suspicious behavior |
-| Guest association | Client joined guest WLAN | Verify guest VLAN and effective restrictions; association alone does not prove internet access |
-
-### Correlation matters
-
-One blocked guest-to-finance connection might be a benign misclick or a controlled test. Repeated attempts across many internal hosts may warrant investigation. Correlate timestamps, AP identifiers, device inventory, firewall decisions, and authentication logs. Recall from [Day 23](day-23-ids-ips-and-network-monitoring.md) that **an alert is evidence to interpret**, not proof of malicious intent.
-
-## 8. Safe technical demonstrations
 
 These examples are for **your own device or an authorized lab**. Commands and interfaces vary by operating system and adapter.
 
@@ -371,57 +468,29 @@ A guest IP address in the expected subnet supports that the client received the 
 
 If a designated internal test service should be blocked from guest Wi-Fi, attempt only the approved connection and inspect the firewall logs. Do not scan nearby networks, collect other users' traffic, or attempt to bypass access controls. Security+ asks you to **select and validate controls**, not to attack networks without authorization.
 
-## 9. Common misconceptions and Security+ exam traps
 
-| Tempting but wrong statement | More accurate interpretation |
-| --- | --- |
-| “A hidden SSID is secure.” | SSID hiding is not meaningful authentication or encryption. |
-| “Guest Wi-Fi is isolated because it has a different name.” | Isolation requires correct VLAN mapping and enforceable network policy. |
-| “A captive portal encrypts Wi-Fi.” | A portal is an onboarding/web-access mechanism, not wireless link encryption. |
-| “802.1X and RADIUS are the same protocol.” | 802.1X controls network access; RADIUS commonly connects authenticator and AAA server. |
-| “MAC filtering is strong device authentication.” | MAC addresses can be spoofed. |
-| “WPA3 stops all wireless attacks.” | WPA3 improves specific protections but does not eliminate rogue APs, phishing, endpoint compromise, or jamming. |
-| “Authentication means access to every subnet.” | Authorization and segmentation still restrict resources. |
-| “A failed ping proves the firewall works.” | The target may block ICMP; validate intended traffic and logs. |
-| “NAC posture proves a device is safe.” | Posture is one security signal, not proof of absence of compromise. |
+<details markdown="1">
+<summary>Reveal Part B sample answers</summary>
 
-**Exam strategy:** Identify the requirement first. If the question asks for **individual employee authentication**, think 802.1X/EAP and an AAA backend. If it asks for **guest separation**, think VLAN/ACL/firewall and client isolation. If it asks about **certificate-based mutual authentication**, think EAP-TLS. If it asks about **device compliance before access**, think NAC posture assessment and quarantine/remediation.
+- An expected SSID and guest subnet support correct onboarding but do not prove isolation.
+- The certificate failure indicates a trust-check failure; investigate certificate configuration without disabling validation.
+- Quarantine indicates a posture-policy decision, not proof of compromise.
+- The firewall deny shows that particular guest-to-finance attempt was blocked; investigate context before assigning intent.
 
-## 10. Key terminology and takeaways
+</details>
 
-- **WLAN:** Local network using Wi-Fi radio connections.
-- **SSID:** Network name; not proof of authenticity.
-- **AP:** Device connecting wireless clients to a network.
-- **WPA2/WPA3:** Families of Wi-Fi security protections.
-- **SAE:** Authentication mechanism used in WPA3-Personal.
-- **PMF:** Protects selected management frames.
-- **802.1X:** Port-based network access control framework.
-- **Supplicant / authenticator / authentication server:** Three key 802.1X roles.
-- **EAP:** Framework for authentication methods.
-- **EAP-TLS:** Certificate-based EAP method.
-- **RADIUS:** AAA protocol frequently used with enterprise network access.
-- **NAC:** Controls access using identity, device status, and policy.
-- **Posture assessment:** Evaluation of device security requirements.
-- **Quarantine VLAN:** Restricted network used for remediation or limited access.
-- **Rogue AP / evil twin:** Unauthorized AP / impersonating wireless network.
-- **Client isolation:** Restriction on direct communication among wireless clients.
+<a id="11-practice-questions"></a>
 
-**Five essential takeaways:**
+## 14. Eight original Security+-style questions
+Choose the **BEST** answer before revealing each explanation. These are original practice questions, not actual CompTIA items.
 
-1. Protect the **wireless link** with an appropriate security mode; do not rely on hidden SSIDs or portals.
-2. Use **individual identity and certificates** for managed enterprise access where feasible.
-3. Treat **NAC posture** as an additional access-control signal, not absolute assurance.
-4. Map guest traffic to a **separate VLAN** and enforce deny rules for internal resources.
-5. **Verify** the effective configuration with controlled connection tests and correlated logs.
 
-## 11. Practice questions
+### Q1. A company wants employees to authenticate individually to corporate Wi-Fi using managed device certificates. Which solution BEST meets this requirement?
 
-**Question 1.** A company wants employees to authenticate individually to corporate Wi-Fi using managed device certificates. Which solution BEST meets this requirement?
-
-A. WPA2-Personal with one shared password
-B. 802.1X using EAP-TLS and a RADIUS authentication server
-C. Hidden SSID with MAC filtering
-D. Open Wi-Fi with a captive portal
+A. WPA2-Personal with one shared password  
+B. 802.1X using EAP-TLS and a RADIUS authentication server  
+C. Hidden SSID with MAC filtering  
+D. Open Wi-Fi with a captive portal  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -430,12 +499,12 @@ D. Open Wi-Fi with a captive portal
 
 </details>
 
-**Question 2.** Visitors can join `Office-Guest`, but a test shows they can connect to a finance server. What should the administrator correct FIRST?
+### Q2. Visitors can join `Office-Guest`, but a test shows they can connect to a finance server. What should the administrator correct FIRST?
 
-A. Rename the guest SSID to make it less obvious
-B. Increase AP transmit power
-C. Configure and verify guest VLAN mapping and firewall/ACL isolation
-D. Replace the captive portal logo
+A. Rename the guest SSID to make it less obvious  
+B. Increase AP transmit power  
+C. Configure and verify guest VLAN mapping and firewall/ACL isolation  
+D. Replace the captive portal logo  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -444,12 +513,12 @@ D. Replace the captive portal logo
 
 </details>
 
-**Question 3.** A managed laptop passes 802.1X authentication, but NAC places it on a remediation network because disk encryption is disabled. Which concept BEST explains this outcome?
+### Q3. A managed laptop passes 802.1X authentication, but NAC places it on a remediation network because disk encryption is disabled. Which concept BEST explains this outcome?
 
-A. Successful authentication does not guarantee compliance-based authorization
-B. The AP is necessarily an evil twin
-C. WPA3 automatically blocks all unencrypted disks
-D. RADIUS always assigns every device to the same VLAN
+A. Successful authentication does not guarantee compliance-based authorization  
+B. The AP is necessarily an evil twin  
+C. WPA3 automatically blocks all unencrypted disks  
+D. RADIUS always assigns every device to the same VLAN  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -458,12 +527,12 @@ D. RADIUS always assigns every device to the same VLAN
 
 </details>
 
-**Question 4.** An employee's laptop displays a familiar corporate SSID at a conference. The network requests corporate credentials, but the authentication server certificate is unexpected. What is the BEST action?
+### Q4. An employee's laptop displays a familiar corporate SSID at a conference. The network requests corporate credentials, but the authentication server certificate is unexpected. What is the BEST action?
 
-A. Ignore the certificate warning because the SSID matches
-B. Disable certificate validation to complete the connection
-C. Enter the credentials and report the warning later
-D. Refuse the connection and verify the network with IT
+A. Ignore the certificate warning because the SSID matches  
+B. Disable certificate validation to complete the connection  
+C. Enter the credentials and report the warning later  
+D. Refuse the connection and verify the network with IT  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -472,12 +541,12 @@ D. Refuse the connection and verify the network with IT
 
 </details>
 
-**Question 5.** A small business provides guest Wi-Fi with a web page requiring visitors to accept terms. The SSID is open. Which statement is MOST accurate?
+### Q5. A small business provides guest Wi-Fi with a web page requiring visitors to accept terms. The SSID is open. Which statement is MOST accurate?
 
-A. The portal automatically provides WPA3 encryption
-B. The portal replaces the need for network segmentation
-C. The portal controls an onboarding step but does not itself encrypt wireless frames
-D. Open Wi-Fi prevents nearby devices from observing any radio traffic
+A. The portal automatically provides WPA3 encryption  
+B. The portal replaces the need for network segmentation  
+C. The portal controls an onboarding step but does not itself encrypt wireless frames  
+D. Open Wi-Fi prevents nearby devices from observing any radio traffic  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -486,7 +555,60 @@ D. Open Wi-Fi prevents nearby devices from observing any radio traffic
 
 </details>
 
-## 12. Further reading
+
+### Q6. Which mechanism improves resistance to offline password guessing in WPA3-Personal?
+
+A. SAE  
+B. WPS PIN  
+C. MAC filtering  
+D. SSID hiding  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**Correct answer: A.** SAE improves resistance to offline dictionary attacks against captured exchanges. The other choices do not provide this protection.
+
+</details>
+
+### Q7. Which control protects selected wireless management frames against forgery?
+
+A. DHCP relay  
+B. PMF  
+C. DNSSEC  
+D. NAT  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**Correct answer: B.** Protected Management Frames protect selected management frames; they do not eliminate radio jamming.
+
+</details>
+
+### Q8. A legacy printer cannot support 802.1X. Which approach BEST limits risk?
+
+A. Disable authentication for all staff  
+B. Place it in the management VLAN with unrestricted access  
+C. Use a hidden SSID as its only protection  
+D. Enroll it through an approved alternative and restrict it to a printer VLAN  
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**Correct answer: D.** Controlled enrollment and restricted flows reduce exposure. MAC-based identification is weaker than certificate authentication and should not grant broad access.
+
+</details>
+
+**Score guide:** 7–8: strong understanding; 5–6: review missed concepts; 0–4: revisit Sections 4–7 and repeat the lab.
+
+## 15. Discussion challenge
+A visitor connects to an encrypted guest SSID but can reach a finance server. Explain why encryption did not prevent this, identify two configuration checks, and propose a controlled test to verify the correction.
+
+## 16. Study from the Treadmill 🏃
+- [Professor Messer — SY0-701 video course index](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/) — select lessons on wireless security and network access control. Specific video links have not been independently verified.
+
+**Active-listening prompts:** How does SAE differ from a shared PSK handshake? What are the three 802.1X roles? Why does successful authentication not guarantee unrestricted access?
+
+### Further reading
 
 - [CompTIA Security+ certification and exam information](https://www.comptia.org/certifications/security) — obtain the official SY0-701 objectives for precise exam scope.
 - [NIST SP 800-153 — Guidelines for Securing Wireless Local Area Networks](https://csrc.nist.gov/pubs/sp/800/153/final) — wireless security principles (older publication; verify current applicability).
@@ -495,6 +617,16 @@ D. Open Wi-Fi prevents nearby devices from observing any radio traffic
 - [RFC 5216 — EAP-TLS](https://www.rfc-editor.org/rfc/rfc5216) — foundational EAP-TLS specification; see also [RFC 9190](https://www.rfc-editor.org/rfc/rfc9190) for TLS 1.3 support.
 - [RFC 2865 — RADIUS](https://www.rfc-editor.org/rfc/rfc2865) — RADIUS protocol background.
 - [Wi-Fi Alliance security overview](https://www.wi-fi.org/discover-wi-fi/security) — WPA3 and wireless security resources.
+
+## 17. One-minute recap
+- **WPA3-Personal:** SAE and PMF; not immunity from all wireless threats.
+- **Enterprise Wi-Fi:** 802.1X, EAP and RADIUS; EAP-TLS uses certificates.
+- **NAC:** Identity and posture guide access or quarantine.
+- **Evil twin:** Impersonates a trusted network; validate certificates.
+- **Guest access:** Separate VLAN, enforced filtering and verified isolation.
+- **Golden rule:** Joining a network is not authorization to reach every resource.
+
+**Next:** Complete the [Week 05 review](review.w5.md) and compare your diagnostic and post-check results.
 
 ---
 © 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).  
