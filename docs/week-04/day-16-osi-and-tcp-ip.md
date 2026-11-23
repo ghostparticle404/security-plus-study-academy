@@ -1,15 +1,11 @@
 # Day 16 — OSI and TCP/IP: How Data Travels Across a Network
 
-**Security+ Study Academy | Week 04 · Day 16**  
-**Topic:** Networking fundamentals  
-**Prerequisites:** Days 01–03  
-**Estimated study time:** 45–60 minutes  
-**Learning outcome:** Trace encapsulation and identify protocol layers  
-**Practical application:** Annotate a packet's path through a network
+> **CompTIA Security+ SY0-701** · **Week 04, Lesson 1 of 5** · Networking foundations supporting Domain 3 (3.2: secure enterprise infrastructure) and Domain 4 (4.5: enterprise security capabilities). The OSI model is foundational knowledge rather than a standalone SY0-701 objective.  
+> **Level:** Beginner to intermediate · **Study time:** 75–100 minutes  
+> **Prerequisites:** Days 01–03 · **Previous:** Day 15 — Week 03 final lesson  
+> **Next:** Day 17 — IP Addressing and Subnetting
 
-> **The big idea:** Networks are complicated, so we divide communication into layers. Each layer has a job, and each adds or interprets information that helps data reach the right destination.
-
-## Learning objectives
+## 1. Learning objectives
 
 By the end of this lesson, you should be able to:
 
@@ -20,7 +16,7 @@ By the end of this lesson, you should be able to:
 5. Identify where common protocols and security controls operate.
 6. Use layer-based reasoning to troubleshoot a network problem.
 
-## 1. Why do network models exist?
+## 2. The big idea: Why do network models exist?
 
 Imagine ordering a book online. You choose the title, a warehouse packs it, a courier sorts it, and a driver delivers it. Each participant needs different information, but no single participant must perform every job.
 
@@ -28,7 +24,11 @@ Networking works similarly. Your browser does not need to know how electrical si
 
 **Important distinction:** The OSI model is a **conceptual seven-layer reference model**. TCP/IP is the **practical protocol suite and layered model** used by the Internet. Real protocols do not always fit neatly into a single layer.
 
-## 2. The seven OSI layers 
+🧠 **Memory hook:** Think of layers as separate jobs, not separate physical machines.
+
+**CIA connection:** Layered controls protect confidentiality (TLS), integrity (authenticated encryption), and availability (redundant links and resilient services). A failure at one layer can affect the entire stack.
+
+## 3. The seven OSI layers 
 
 | Layer | Name | Main question | Examples and clues |
 |---|---|---|---|
@@ -42,7 +42,7 @@ Networking works similarly. Your browser does not need to know how electrical si
 
 **Mnemonic (top to bottom):** **A**ll **P**eople **S**eem **T**o **N**eed **D**ata **P**rocessing.
 
-### Layer 7 — Application 
+### Layer 7 — Application {#application-layer}
 
 The application layer provides network services to software. A browser uses HTTP or HTTPS to request web content; a mail client might use SMTP to send mail; DNS resolves names into addresses.
 
@@ -60,7 +60,7 @@ The session layer describes establishing, coordinating, maintaining, and ending 
 
 **Don't confuse:** An application login session, a TLS session, and a TCP connection are related ideas but are **not the same thing**.
 
-### Layer 4 — Transport 
+### Layer 4 — Transport {#transport-layer}
 
 The transport layer delivers data between processes using **port numbers**.
 
@@ -69,13 +69,13 @@ The transport layer delivers data between processes using **port numbers**.
 
 **Security connection:** A firewall can filter traffic based on transport protocol and source/destination ports. A TCP SYN flood targets connection-handling resources.
 
-### Layer 3 — Network 
+### Layer 3 — Network {#network-layer}
 
 The network layer uses **IP addresses** and routing to move packets between networks. Routers select a next hop based on routing information; the path can involve many routers.
 
 **Security connection:** IP-based access control lists, network segmentation, and routing decisions are important here. IP spoofing involves forging a packet's source IP address.
 
-### Layer 2 — Data Link 
+### Layer 2 — Data Link {#data-link-layer}
 
 The data link layer packages packets into **frames** for a particular local link. Ethernet and Wi-Fi use link-layer addressing; switches normally forward Ethernet frames based on MAC addresses.
 
@@ -87,7 +87,13 @@ The physical layer transmits bits as electrical, optical, or radio signals.
 
 **Security connection:** A disconnected cable, damaged fiber, radio interference, or a physically attached unauthorized device can disrupt or expose communication.
 
-## 3. OSI versus TCP/IP 
+### How adjacent layers cooperate
+
+A protocol defines rules for communication between peers. A layer uses services from the layer below and provides services to the layer above. For example, HTTP can use TCP to carry bytes; TCP uses IP to reach the destination; IP uses a local link to reach the next hop. TCP reliability does not guarantee that an HTTP request succeeds: the server can still return an error.
+
+A MAC address identifies a link-layer interface for local delivery, an IP address provides logical addressing across networks, and a port identifies a transport endpoint. A socket endpoint combines an IP address and port with a transport protocol; a TCP conversation is distinguished by both endpoints. Ports are not physical connectors.
+
+## 4. OSI versus TCP/IP {#osi-vs-tcp-ip}
 
 The commonly taught **four-layer TCP/IP model** groups several OSI functions together.
 
@@ -105,7 +111,7 @@ Some references use a **five-layer Internet model** that separates the physical 
 
 **Quick analogy:** OSI is a detailed seven-department organizational chart; TCP/IP is the practical four-team workflow. Both describe the same communication from different levels of detail.
 
-## 4. Encapsulation: wrapping the message 
+## 5. Encapsulation: wrapping the message {#encapsulation}
 
 When a sender transmits data, each lower layer adds information required for its job. This is called **encapsulation**.
 
@@ -142,7 +148,13 @@ The headers are **not interchangeable**:
 
 > **Exam trap:** Not every transport-layer unit is a TCP segment. UDP carries **datagrams**. Also, an IP packet can carry protocols other than TCP or UDP, including ICMP.
 
-## 5. Decapsulation: opening the message 
+### Reading the nested headers
+
+A header carries protocol metadata; a payload is the content carried by that protocol. What counts as payload depends on the layer: a TCP segment is the payload of an IP packet. Ethernet FCS detects accidental transmission errors, not deliberate tampering by an attacker who can recompute it. TLS provides cryptographic integrity when properly configured. Encapsulation alone is not encryption.
+
+TCP can split an application byte stream into multiple segments; a single HTTP request need not correspond to one packet. UDP preserves datagram boundaries, while IP fragmentation is a separate network-layer mechanism.
+
+## 6. Decapsulation: opening the message 
 
 At the destination, the process is reversed:
 
@@ -154,7 +166,7 @@ At the destination, the process is reversed:
 
 **Think of nested envelopes:** The outer envelope gets the package across the local link; the next envelope identifies the IP destination; the inner transport information directs it to the correct service.
 
-## 6. Follow a packet through a real network 
+## 7. Follow a packet through a real network {#packet-path}
 
 Suppose your laptop at `192.168.1.25` opens an HTTPS connection to a website at `203.0.113.10`. These are **illustrative addresses**, not a live network trace. Assume the laptop uses a gateway at `192.168.1.1`, and the site uses TCP port `443` for this example.
 
@@ -170,7 +182,11 @@ Suppose your laptop at `192.168.1.25` opens an HTTPS connection to a website at 
 
 **Step F — Destination:** The server receives and processes the packet, and its transport/application software handles the request. The response travels back using the applicable routing and connection state.
 
-### What changes at each hop? 
+### How the next hop is found
+
+The host uses its subnet configuration and routing table to decide whether the destination is on-link or requires a gateway. On Ethernet IPv4 networks, Address Resolution Protocol (ARP) resolves the next-hop IPv4 address to a MAC address; IPv6 uses Neighbor Discovery (NDP). A switch forwards frames within the local network; a router forwards packets between networks. DNS resolves names to IP addresses, not MAC addresses.
+
+### What changes at each hop? {#hop-by-hop}
 
 | Field | Across a routed hop |
 |---|---|
@@ -182,7 +198,7 @@ Suppose your laptop at `192.168.1.25` opens an HTTPS connection to a website at 
 
 **Security takeaway:** If you capture traffic on two sides of a router, you may see different MAC addresses for the same logical IP conversation. That is expected, not necessarily suspicious.
 
-## 7. Where security tools fit 
+## 8. Where security tools fit 
 
 | Tool or attack | Useful layer perspective | Why it matters |
 |---|---|---|
@@ -197,7 +213,60 @@ Suppose your laptop at `192.168.1.25` opens an HTTPS connection to a website at 
 
 **Important:** A device may operate across multiple layers. A next-generation firewall can inspect IPs, ports, protocols, and some application content. Do not assume every security product fits in exactly one box.
 
-## 8. Troubleshooting from the bottom up 
+## 9. Worked case study: A law firm's inaccessible client portal
+
+A law firm's workstation can reach its gateway and resolve the portal hostname, but its browser cannot establish a TCP connection to the portal on port 443. The firewall log records a denied outbound TCP connection to that destination. These are synthetic observations.
+
+| Evidence | Layer perspective | Interpretation |
+|---|---|---|
+| Wi-Fi connected | 1–2 | Local connectivity is plausible, not proof of end-to-end access |
+| Gateway responds | 3 | Local IP reachability works for this test |
+| DNS returns an address | 7 | Name resolution succeeded; the portal may still be unavailable |
+| TCP connection denied | 3–4 | Firewall policy is a likely cause |
+| No HTTP response | 7 | Application symptom, not proof of an application fault |
+
+The administrator checks the intended egress policy, confirms the destination and business requirement, and uses the approved change process if the rule is incorrect. Do not disable the firewall simply to restore access. Retest TCP, TLS certificate validation and HTTP after the authorized change.
+
+**Lesson:** The symptom appears in the browser, but the evidence points to a lower-layer control. A successful test narrows the investigation; it does not prove every service at that layer is working.
+
+## 10. Guided notes — Write first, reveal later
+
+| Prompt | Your answer |
+| --- | --- |
+| Name the seven OSI layers from top to bottom. | _Write here._ |
+| Map OSI to the four TCP/IP layers. | _Write here._ |
+| Compare MAC addresses, IP addresses and ports. | _Write here._ |
+| List the PDUs from application to physical. | _Write here._ |
+| Explain encapsulation and decapsulation. | _Write here._ |
+| What changes when a router forwards a packet? | _Write here._ |
+| Compare TCP and UDP. | _Write here._ |
+| How do ARP and DNS differ? | _Write here._ |
+| Why can a browser symptom originate below Layer 7? | _Write here._ |
+| Does encapsulation or Ethernet FCS provide cryptographic confidentiality? | _Write here._ |
+
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
+
+| Prompt | Model answer |
+| --- | --- |
+| Name the seven OSI layers from top to bottom. | Application, Presentation, Session, Transport, Network, Data Link, Physical. |
+| Map OSI to the four TCP/IP layers. | 5–7 Application; 4 Transport; 3 Internet; 1–2 Link. |
+| Compare MAC addresses, IP addresses and ports. | Local link delivery, logical network delivery, and transport endpoints respectively. |
+| List the PDUs from application to physical. | Data, TCP segment or UDP datagram, IP packet, frame, bits. |
+| Explain encapsulation and decapsulation. | Add protocol metadata down the stack; process and remove it as appropriate up the stack. |
+| What changes when a router forwards a packet? | New link framing; TTL/Hop Limit decreases; NAT may alter IP addresses and ports. |
+| Compare TCP and UDP. | TCP provides an ordered reliable byte stream; UDP provides datagrams without built-in reliability. |
+| How do ARP and DNS differ? | ARP resolves local IPv4 next-hop addresses to MAC addresses; DNS resolves names to records such as IP addresses. |
+| Why can a browser symptom originate below Layer 7? | Application services depend on transport, routing and local connectivity. |
+| Does encapsulation or Ethernet FCS provide cryptographic confidentiality? | No. Encapsulation organizes data; FCS detects errors. Encryption is a separate protection. |
+
+</details>
+
+## 11. Hands-on lab: Troubleshoot, annotate and inspect network traffic
+
+**Time:** 25–35 minutes · **Tools:** Terminal, notebook, optional Wireshark · **Scope:** Your own device and authorized traffic only; no configuration changes.
+
+### Part A — Troubleshooting from the bottom up 
 
 **Scenario:** A laptop cannot load a website.
 
@@ -209,7 +278,7 @@ Suppose your laptop at `192.168.1.25` opens an HTTPS connection to a website at 
 
 This is a **diagnostic framework**, not a rule that every incident must be investigated in exactly this order. For example, if other websites work but one hostname fails, checking DNS early is sensible.
 
-### Useful beginner commands 
+#### Useful beginner commands 
 
 On macOS or Linux, try these **read-only** commands:
 
@@ -233,11 +302,26 @@ Shows local network endpoints and connection states (output and options vary by 
 
 **Safety:** Run these only on your own device or an authorized lab. No scanning of other systems is required for this lesson.
 
-## 9. Practical exercise — Annotate a packet path 
+#### Record and interpret your results
+
+Check the local network connection in system settings, then run the commands above. Use `curl -I --connect-timeout 10 https://example.com` to request HTTP headers with a ten-second connection timeout. Record whether DNS resolves, ICMP replies arrive, and an HTTP response is returned. Do not bypass TLS verification. If offline, use the synthetic case in Section 9 instead.
+
+<details markdown="1">
+<summary>Reveal Part A lab answers</summary>
+
+- `ping -c 4` sends four echo requests; replies indicate ICMP reachability, not TCP service availability.
+- `nslookup` should return DNS records if resolution works; a failure may indicate a resolver or connectivity problem.
+- `netstat -an` displays numeric endpoints and connection states; TCP may show LISTEN or ESTABLISHED.
+- An HTTP status from curl indicates an HTTP exchange occurred; certificate errors or timeouts require separate investigation. Results vary by network.
+- In the worked case, inspect the denied firewall rule rather than assuming the web server is broken.
+
+</details>
+
+### Part B — Practical exercise: Annotate a packet path 
 
 **Goal:** Identify what each layer contributes as a browser sends a request to a remote web server.
 
-**Scenario:** A workstation `192.168.10.50` sends an HTTPS request over TCP to `198.51.100.20:443` through gateway `192.168.10.1`. Assume the client source port is `53000`. All addresses are documentation examples.
+**Scenario:** A workstation `192.168.10.50` sends an HTTPS request over TCP to `198.51.100.20:443` through gateway `192.168.10.1`. Assume the client source port is `53000`. The public destination is a documentation address; the private addresses are illustrative. Assume a /24 client subnet.
 
 Copy and complete this worksheet in your notes:
 
@@ -253,7 +337,7 @@ Copy and complete this worksheet in your notes:
 | What happens to link-layer framing when a router forwards the packet? | __________ |
 | Which IP header field is reduced at each IPv4 router? | __________ |
 
-**Optional Wireshark observation:** On a device and network you are authorized to capture, inspect one of your own TCP conversations. Expand **Frame**, **Ethernet II** (or another link-layer header), **Internet Protocol**, and **Transmission Control Protocol**. Locate the MAC addresses, IP addresses, and ports. The precise capture layers depend on the interface and capture method; loopback captures may not show Ethernet headers.
+**Packet capture preparation:** On a device and network you are authorized to capture, inspect one of your own TCP conversations. Expand **Frame**, **Ethernet II** (or another link-layer header), **Internet Protocol**, and **Transmission Control Protocol**. Locate the MAC addresses, IP addresses, and ports. The precise capture layers depend on the interface and capture method; loopback captures may not show Ethernet headers.
 
 <details markdown="1">
 <summary>Exercise answer key</summary>
@@ -270,85 +354,163 @@ Copy and complete this worksheet in your notes:
 
 </details>
 
-## 10. Knowledge check {#knowledge-check}
+### Part C — Observe encapsulation in Wireshark
 
-**1.** Which OSI layer is primarily responsible for routing IP packets between networks?
+1. Open Wireshark on an authorized interface and start a short capture of your own traffic. Avoid capturing on shared or sensitive networks.
+2. Run `curl -I https://example.com` and stop the capture.
+3. Apply the display filter `tcp.port == 443`. If there is no matching traffic, check the selected interface or use a provided authorized sample capture.
+4. Select a packet and expand the link-layer header (if present), IP header and TCP header. Record source/destination addresses, ports and TTL or Hop Limit. Look for SYN, SYN-ACK and ACK in a new TCP connection if captured.
+5. Explain why encrypted HTTPS application content may not be readable. Do not attempt to decrypt other people's traffic.
+
+**Interpretation challenges:** A firewall blocks inbound TCP port 22: which layer supplies the port? Two captures of the same routed connection show different MAC addresses but the same destination IP: why?
+
+<details markdown="1">
+<summary>Reveal Part C lab answers</summary>
+
+The link header describes local delivery, IP identifies logical endpoints, and TCP supplies ports and connection metadata. TLS protects application content; visible metadata does not imply plaintext is available. Port 22 is Layer 4 information. Different MAC addresses across routed links are expected because routers create new link framing. Capture results vary with interface, NAT, VPNs and connection reuse.
+
+</details>
+
+## 12. Eight original Security+-style questions {#knowledge-check}
+
+Choose the **BEST** answer before revealing each explanation. These are original practice questions, not actual CompTIA items.
+
+### Q1. Which OSI layer is primarily responsible for routing IP packets between networks?
+
 A. Data Link  
 B. Network  
 C. Transport  
 D. Application  
 
-**2.** Which PDU is most closely associated with Ethernet at Layer 2?
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**B — Network.** Layer 3 provides logical addressing and routing. See [Layer 3](#network-layer).
+
+</details>
+
+### Q2. Which PDU is most closely associated with Ethernet at Layer 2?
+
 A. Segment  
 B. Packet  
 C. Frame  
 D. Datagram  
 
-**3.** A switch forwards Ethernet traffic using MAC addresses. Which layer is most directly involved?
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**C — Frame.** Ethernet carries link-layer frames. See [Encapsulation](#encapsulation).
+
+</details>
+
+### Q3. A switch forwards Ethernet traffic using MAC addresses. Which layer is most directly involved?
+
 A. Physical  
 B. Data Link  
 C. Network  
 D. Session  
 
-**4.** Which pairing is correct?
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**B — Data Link.** Ethernet switches commonly use Layer 2 MAC addresses. See [Layer 2](#data-link-layer).
+
+</details>
+
+### Q4. Which pairing is correct?
+
 A. TCP — Internet layer  
 B. IP — Transport layer  
 C. HTTP — Application layer  
 D. Ethernet — Session layer  
 
-**5.** A laptop sends a packet to a server on a different network. Which MAC address is typically placed in the outgoing frame's destination field?
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**C — HTTP / Application.** HTTP is an application-layer protocol. See [Layer 7](#application-layer).
+
+</details>
+
+### Q5. A laptop sends a packet to a server on a different network. Which MAC address is typically placed in the outgoing frame's destination field?
+
 A. The remote server's MAC address  
 B. The default gateway's MAC address  
 C. The DNS server's MAC address  
 D. The laptop's own MAC address  
 
-**6.** Which statement best describes encapsulation?
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**B — Default gateway.** The first link targets the next hop, not the remote server's MAC. See [Packet path](#packet-path).
+
+</details>
+
+### Q6. Which statement best describes encapsulation?
+
 A. Each router encrypts the entire application payload  
 B. The receiver adds headers while delivering the data upward  
 C. Lower layers add protocol information as data moves toward transmission  
 D. Every packet always uses TCP  
 
-**7.** Which value normally decreases when an IPv4 packet passes through a router?
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**C — Lower layers add information.** Encapsulation wraps data in protocol headers (and sometimes trailers). See [Encapsulation](#encapsulation).
+
+</details>
+
+### Q7. Which value normally decreases when an IPv4 packet passes through a router?
+
 A. Destination TCP port  
 B. Source IP address  
 C. TTL  
 D. HTTP method  
 
-**8.** Which statement about TCP/IP and OSI is most accurate?
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**C — TTL.** Routers reduce the IPv4 TTL as they forward packets. See [Hop-by-hop changes](#hop-by-hop).
+
+</details>
+
+### Q8. Which statement about TCP/IP and OSI is most accurate?
+
 A. Both always contain exactly seven layers  
 B. TCP/IP's application layer combines functions described by OSI Layers 5–7  
 C. TCP/IP has no transport layer  
 D. Ethernet is an application-layer protocol  
 
-**9.** A firewall blocks inbound TCP connections to port `22`. Which layer information is it using most directly to identify that service port?
-A. Physical  
-B. Data Link  
-C. Transport  
-D. Presentation  
-
-**10.** Two captures of the same routed connection show different Ethernet MAC addresses but the same destination IP. What is the best explanation?
-A. The data must have been compromised  
-B. MAC addresses are rewritten for each local link during routing  
-C. The application changed from HTTPS to HTTP  
-D. TCP cannot cross routers  
-
 <details markdown="1">
-<summary>Knowledge check answers and explanations</summary>
+<summary>Reveal answer and explanation</summary>
 
-1. **B — Network.** Layer 3 provides logical addressing and routing. See [Layer 3](#network-layer).
-2. **C — Frame.** Ethernet carries link-layer frames. See [Encapsulation](#encapsulation).
-3. **B — Data Link.** Ethernet switches commonly use Layer 2 MAC addresses. See [Layer 2](#data-link-layer).
-4. **C — HTTP / Application.** HTTP is an application-layer protocol. See [Layer 7](#application-layer).
-5. **B — Default gateway.** The first link targets the next hop, not the remote server's MAC. See [Packet path](#packet-path).
-6. **C — Lower layers add information.** Encapsulation wraps data in protocol headers (and sometimes trailers). See [Encapsulation](#encapsulation).
-7. **C — TTL.** Routers reduce the IPv4 TTL as they forward packets. See [Hop-by-hop changes](#hop-by-hop).
-8. **B — Combined upper-layer functions.** The four-layer TCP/IP model groups OSI 5–7 into Application. See [OSI versus TCP/IP](#osi-vs-tcp-ip).
-9. **C — Transport.** TCP port numbers are transport-layer fields. See [Layer 4](#transport-layer).
-10. **B — New link-layer frames.** Each routed link can have different source/destination MAC addresses. See [Hop-by-hop changes](#hop-by-hop).
+**B — Combined upper-layer functions.** The four-layer TCP/IP model groups OSI 5–7 into Application. See [OSI versus TCP/IP](#osi-vs-tcp-ip).
 
 </details>
 
-## 11. Exam-day quick reference 
+**Score guide:** 7–8: strong understanding; 5–6: revisit Sections 3–9; 0–4: redraw the stack and repeat the lab.
+
+## 13. Discussion challenge
+
+A company deploys a firewall that permits TCP port 443 and assumes all permitted traffic is safe. Explain why port-based filtering cannot establish whether an application request is malicious. Recommend two complementary controls, explain their layer perspectives and limitations, and describe how encrypted traffic affects inspection.
+
+**Bonus:** Which CIA objectives could be affected by a malicious request or a mistaken firewall rule?
+
+## 14. Study from the Treadmill 🏃
+
+**Supplementary video:** [Professor Messer — The OSI Model (Network+ N10-009)](https://www.professormesser.com/network-plus/n10-009/n10-009-video/the-osi-model-n10-009/) — foundational networking material relevant to this lesson, not a standalone Security+ objective. The direct link has not been independently verified in this revision.
+
+**Active-listening prompts:** Which layers use MAC addresses, IP addresses and ports? Why do routers replace link-layer framing? How does the TCP/IP model group the upper OSI layers?
+
+## 15. One-minute recap
+
+- **OSI:** Seven conceptual layers; TCP/IP commonly uses four.
+- **MAC / IP / port:** Local delivery / network routing / transport endpoint.
+- **Encapsulation:** Data → segment or datagram → packet → frame → bits.
+- **Decapsulation:** Process protocol information in reverse at the receiver.
+- **Routing:** New link framing, reduced TTL or Hop Limit, possible NAT.
+- **Troubleshooting:** Use evidence to isolate the failing layer; security controls can span layers.
+
+### Exam-day quick reference 
 
 | If you see… | Think… |
 |---|---|
@@ -368,9 +530,7 @@ D. TCP cannot cross routers
 2. **Encapsulation adds protocol information as data moves down the stack; decapsulation processes it on the way up.**
 3. **The layer where a symptom appears is a clue, not necessarily the layer where its root cause lies.**
 
-### Coming next
-
-**Day 17 — IP Addressing and Subnetting:** IPv4, IPv6, CIDR notation, and how to determine which addresses belong to the same network.
+**Next:** Day 17 — IP Addressing and Subnetting: IPv4, IPv6, CIDR notation, and determining which addresses belong to the same network.
 
 ---
 © 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).  
