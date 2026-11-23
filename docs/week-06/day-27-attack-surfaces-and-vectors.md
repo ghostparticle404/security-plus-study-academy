@@ -3,9 +3,10 @@
 **Security+ Study Academy | Week 06: Threats, Vulnerabilities, and Mitigations**  
 **File:** `docs/week-06/day-27-attack-surfaces-and-vectors.md`  
 **Prerequisite:** [Day 26 — Threat Actors and Motivations](day-26-threat-actors-and-motivations.md)  
-**Estimated study time:** 85–110 minutes
+**Security+ SY0-701 alignment:** Domain 2, Objective 2.2 (threat vectors and attack surfaces); related Objectives 2.1 and 2.5.  
+**Estimated study time:** 60–80 minutes
 
-## Learning objectives
+## 1. Learning objectives
 
 By the end of this lesson, you should be able to:
 
@@ -15,7 +16,14 @@ By the end of this lesson, you should be able to:
 4. Model how an attacker could move from an initial entry point toward a valuable asset.
 5. Prioritize exposure-reduction measures based on likelihood, impact, and available evidence.
 
-## 1. Four concepts that sound similar
+## 2. The big idea: Know what is exposed
+
+A law firm may lock its office doors while leaving old vendor accounts or public sharing links active. Defenders must identify both physical and digital opportunities for compromise. Reducing unnecessary access helps protect confidentiality, integrity, and availability.
+
+🧠 **Memory hook:** Surface = all doors; entry point = one door; vector = how someone tries to enter; path = the route to the valuable asset.
+
+## 3. Four concepts that sound similar {#1-four-concepts-that-sound-similar}
+
 Security teams need to know **what is exposed**, **how an attacker might enter**, and **what could happen next**. These concepts describe different parts of the same problem.
 
 | Term | Meaning | Example |
@@ -32,11 +40,12 @@ A **vulnerability** is a weakness, such as a missing security patch or excessive
 <details markdown="1">
 <summary>Reveal quick check: classify the four concepts</summary>
 
-A company has a public customer portal (**attack surface**). Its login form is a possible **entry point**. An attacker tries password spraying (**attack vector**) and, after compromising an account, accesses sensitive reports (**attack path**).
+A public customer portal is part of a company’s **attack surface**. Its login form is a possible **entry point**. An attacker tries password spraying (**attack vector**) and, after compromising an account, accesses sensitive reports (**attack path**).
 
 </details>
 
-## 2. What belongs on an attack surface?
+## 4. What belongs on an attack surface? {#2-what-belongs-on-an-attack-surface}
+
 An attack surface is broader than the list of internet-facing IP addresses. It includes technology, people, processes, and physical environments. An asset can be internal and still exposed to a malicious insider or an attacker who has already gained access.
 
 ### Network and infrastructure
@@ -81,7 +90,8 @@ Doors, unattended devices, removable media, delivery areas, vendors, software de
 
 **Reduce exposure:** Apply visitor controls, disable unused vendor access, monitor privileged sessions, and review software and service dependencies.
 
-## 3. Attack vectors: how attempts begin
+## 5. Attack vectors: how attempts begin {#3-attack-vectors-how-attempts-begin}
+
 Classify vectors by **how the attacker attempts to gain access**, not by an assumed actor identity. The same actor may use several vectors in one campaign.
 
 | Vector | Typical mechanism | Illustrative entry point | Primary defensive ideas |
@@ -94,6 +104,10 @@ Classify vectors by **how the attacker attempts to gain access**, not by an assu
 | **Wireless attacks** | Abuse of wireless exposure or trust | Wi-Fi or nearby device | Strong encryption, segmentation, approved networks |
 | **Supply-chain / third-party compromise** | Trusted vendor, update, or integration is abused | Software dependency or vendor access | Vendor review, least privilege, monitoring, provenance |
 | **Physical intrusion** | Direct access to facilities or hardware | Office, server room, unattended laptop | Locks, badges, encryption, screen locking |
+
+### Other exam-relevant vectors
+
+Messages can arrive through SMS or instant messaging; malicious images or files may exploit vulnerable parsers. Voice calls can manipulate help desks. Unsupported systems, insecure networks, default credentials, and open service ports create opportunities for compromise. Suppliers may include service providers, hardware vendors, and software vendors. These exposures require patching or replacement, secure configuration, and vendor oversight.
 
 ### Email is not always the whole vector
 A message containing a link to a fake sign-in page can combine **phishing**, **credential theft**, and **account takeover**. Describe each stage accurately instead of forcing an entire incident into a single label.
@@ -114,7 +128,8 @@ Trying `Winter2026!` against hundreds of employee accounts is **password sprayin
 
 </details>
 
-## 4. Build an attack surface inventory
+## 6. Build an attack surface inventory {#4-build-an-attack-surface-inventory}
+
 An inventory turns an abstract concept into something a defender can review. Include assets that are internet-facing **and** internal assets reachable after compromise.
 
 | Field | What to record | Example |
@@ -133,7 +148,8 @@ An inventory turns an abstract concept into something a defender can review. Inc
 
 **Do not assume:** An open port is not automatically exploitable; a closed port does not mean an organization has no attack surface. Inventory and assess the surrounding configuration.
 
-## 5. Model an attack path
+## 7. Model an attack path {#5-model-an-attack-path}
+
 A useful path model connects an initial condition to a business consequence. The path is a **hypothesis to validate**, not proof that an attack occurred.
 
 ```text
@@ -176,14 +192,16 @@ If stolen credentials are insufficient to pass phishing-resistant MFA, the attac
 
 </details>
 
-## 6. External versus internal exposure
+## 8. External versus internal exposure {#6-external-versus-internal-exposure}
+
 An **external attack surface** is reachable from outside the organization's trusted environment, such as public web services or cloud sign-in pages. An **internal attack surface** is accessible from inside a network or to identities already granted some access.
 
 **Example:** A database is not directly exposed to the internet. However, if a compromised application server can connect to it with excessive privileges, the database remains part of a potential attack path.
 
 Do not confuse **internet-facing** with **high risk** or **internal** with **safe**. Evaluate authentication, authorization, sensitivity, configuration, and reachable dependencies.
 
-## 7. Prioritize exposure reduction
+## 9. Prioritize exposure reduction {#7-prioritize-exposure-reduction}
+
 A practical priority decision considers:
 
 - **Reachability:** Can an attacker reach the entry point easily?
@@ -208,7 +226,76 @@ These priorities are **illustrative**, not universal. A real assessment should i
 **Harden:** Patch, configure securely, enforce MFA and least privilege, and segment access.  
 **Monitor:** Log authentication and access, review changes, detect anomalies, and test controls.
 
-## 8. Practical lab: map a small law firm's attack surface
+## 10. Key terminology and self-assessment {#10-review-and-self-assessment}
+
+Before moving to Day 28, confirm that you can:
+
+- [ ] Explain attack surface, entry point, vector, path, and vulnerability without conflating them.
+- [ ] Identify external and internal exposure across technical and human systems.
+- [ ] Distinguish credential stuffing from password spraying.
+- [ ] Explain phishing, removable-media, wireless, and supply-chain vectors.
+- [ ] Build an attack surface inventory and model two plausible paths.
+- [ ] Mark assumptions separately from confirmed facts.
+- [ ] Recommend controls that reduce, harden, or monitor exposure.
+
+### Key terms
+**Attack surface:** Set of opportunities through which an asset or organization may be attacked.  
+**Entry point:** Specific access location or interface.  
+**Attack vector:** Method or route used to attempt compromise.  
+**Attack path:** Sequence connecting initial access to a target or impact.  
+**Trust boundary:** Separation between different trust or privilege levels.  
+**Credential stuffing:** Testing breached username/password pairs.  
+**Password spraying:** Testing a small set of passwords across many accounts.  
+**Supply-chain attack:** Compromise through a supplier, dependency, or trusted delivery mechanism.  
+**Lateral movement:** Attempt to access additional systems or accounts after initial compromise.  
+**Attack surface reduction:** Removal of unnecessary services, interfaces, accounts, or permissions.
+
+
+## 11. Worked case study: A small law firm's exposure
+
+A 20-person law firm uses Microsoft 365, a public client portal, guest Wi-Fi, managed laptops, outsourced IT, and personal cloud links. Its confidential case files are the asset at risk.
+
+| Observation | Possible exposure | First verification |
+| --- | --- | --- |
+| Public client portal | Login and upload interfaces | Review authentication and access controls |
+| Personal cloud links | Unapproved external sharing | Review permissions and approved alternatives |
+| Outsourced IT | Privileged remote access | Confirm active accounts and least privilege |
+
+A public interface is not proof of a vulnerability. The analyst should verify controls before assigning a risk rating.
+
+## 12. Guided notes — Write first, reveal later
+
+| Prompt | Your answer |
+| --- | --- |
+| Distinguish surface, entry point, vector and path. | _Write here._ |
+| Name three non-network exposures. | _Write here._ |
+| Compare spraying and stuffing. | _Write here._ |
+| Why can an internal database be exposed? | _Write here._ |
+| What is a trust boundary? | _Write here._ |
+| How does least privilege interrupt a path? | _Write here._ |
+| What determines exposure priority? | _Write here._ |
+| Compare reducing, hardening and monitoring. | _Write here._ |
+
+<details markdown="1">
+<summary>Reveal the completed notes table (sample answers)</summary>
+
+| Prompt | Model answer |
+| --- | --- |
+| Four concepts | All opportunities; specific access location; method; sequence toward impact. |
+| Non-network exposures | Staff recovery workflows, physical doors, vendor relationships. |
+| Credential attacks | Spraying uses a few passwords across accounts; stuffing reuses breached pairs. |
+| Internal database | A compromised application or identity may reach it. |
+| Trust boundary | Crossing between different trust or privilege levels. |
+| Least privilege | Limits reachable resources even after initial compromise. |
+| Priority | Reachability, exploitability, impact, dependencies, controls and evidence. |
+| Three strategies | Remove unnecessary access; strengthen remaining controls; observe activity. |
+
+</details>
+
+## 13. Hands-on lab: Map a small law firm's attack surface {#8-practical-lab-map-a-small-law-firms-attack-surface}
+
+**Time:** 15–25 minutes · **Tools:** Notebook or diagramming tool · **Scenario only**
+
 **Scenario:** A 20-person law firm uses Microsoft 365 for email and documents, a public client portal, an office Wi-Fi network with a guest SSID, managed laptops, and an outsourced IT provider. Staff sometimes exchange files using personal cloud links. The firm holds confidential case files.
 
 **Your task:** Build an attack surface model without scanning, probing, or accessing any real system. Use only the scenario details.
@@ -226,7 +313,7 @@ Create a table with at least **six** rows. Include the email service, client por
 ### Part B — Draw two hypothetical paths
 Create one **identity-based path** and one **third-party or network-based path**. Label each step as either a **scenario fact** or an **assumption requiring verification**.
 
-### Part C — Choose the first three actions
+### Part B continued — Choose the first three actions
 Prioritize three improvements. Explain the expected risk reduction, not just the name of the security tool.
 
 <details markdown="1">
@@ -250,7 +337,7 @@ Prioritize three improvements. Explain the expected risk reduction, not just the
 
 **Identity path:** Phishing message → employee discloses credentials *(assumption)* → attacker signs in if MFA is ineffective *(assumption)* → attacker reaches documents if permissions allow *(assumption)*.
 
-**Third-party path:** Outsourced IT account exists *(fact)* → vendor account is compromised *(assumption)* → attacker gains remote access if permissions permit *(assumption)* → attacker reaches sensitive systems if segmentation is inadequate *(assumption)*.
+**Third-party path:** Outsourced IT provider exists *(fact)* → remote-support account exists *(assumption)* → vendor account is compromised *(assumption)* → attacker gains remote access if permissions permit *(assumption)* → attacker reaches sensitive systems if segmentation is inadequate *(assumption)*.
 
 **Possible first actions:** (1) Verify MFA and privileged access on all staff and vendor identities; (2) review sharing permissions and replace personal file-sharing workflows; (3) confirm guest Wi-Fi isolation and review client portal access controls. Reprioritize when evidence reveals actual exposures.
 
@@ -259,19 +346,16 @@ Prioritize three improvements. Explain the expected risk reduction, not just the
 ### Lab deliverable: threat-aware surface model
 Submit an inventory, two labeled paths, and a short paragraph explaining how the threat actor profile from [Day 26](day-26-threat-actors-and-motivations.md) could change which exposures deserve attention.
 
-## 9. Security+ knowledge check
-Choose the **single best answer** for each question before opening the explanation.
+## 14. Eight original Security+-style questions {#9-security-knowledge-check}
 
-### Question 1
-Which description best defines an **attack surface**?
+Choose the **BEST** answer before revealing each explanation. These are original practice questions, not actual CompTIA items.
 
-A. The identity of the attacker
+### Q1. Which description best defines an **attack surface**?
 
-B. The complete set of opportunities through which a system or organization could be attacked
-
-C. Only the list of confirmed software vulnerabilities
-
-D. The financial damage caused by an incident
+A. The identity of the attacker  
+B. The complete set of opportunities through which a system or organization could be attacked  
+C. Only the list of confirmed software vulnerabilities  
+D. The financial damage caused by an incident  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -280,16 +364,12 @@ D. The financial damage caused by an incident
 
 </details>
 
-### Question 2
-A public VPN login page is most directly an example of which concept?
+### Q2. A public VPN login page is most directly an example of which concept?
 
-A. An entry point
-
-B. Data exfiltration
-
-C. A threat actor motivation
-
-D. A completed attack path
+A. An entry point  
+B. Data exfiltration  
+C. A threat actor motivation  
+D. A completed attack path  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -298,16 +378,12 @@ D. A completed attack path
 
 </details>
 
-### Question 3
-An attacker tests username/password pairs from a previous breach against a company portal. Which vector is this?
+### Q3. An attacker tests username/password pairs from a previous breach against a company portal. Which vector is this?
 
-A. Password spraying
-
-B. Credential stuffing
-
-C. Physical tailgating
-
-D. Watering-hole attack
+A. Password spraying  
+B. Credential stuffing  
+C. Physical tailgating  
+D. Watering-hole attack  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -316,16 +392,12 @@ D. Watering-hole attack
 
 </details>
 
-### Question 4
-Which condition most clearly increases an **internal** attack surface?
+### Q4. Which condition most clearly increases an **internal** attack surface?
 
-A. Disabling unused internal services
-
-B. Removing expired contractor accounts
-
-C. Giving all staff unrestricted access to shared servers
-
-D. Restricting administrative access to dedicated devices
+A. Disabling unused internal services  
+B. Removing expired contractor accounts  
+C. Giving all staff unrestricted access to shared servers  
+D. Restricting administrative access to dedicated devices  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -334,16 +406,12 @@ D. Restricting administrative access to dedicated devices
 
 </details>
 
-### Question 5
-A user receives a fake help-desk message requesting an MFA reset. What is the primary initial vector?
+### Q5. A user receives a fake help-desk message requesting an MFA reset. What is the primary initial vector?
 
-A. Social engineering
-
-B. Wireless jamming
-
-C. SQL injection
-
-D. Physical theft
+A. Social engineering  
+B. Wireless jamming  
+C. SQL injection  
+D. Physical theft  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -352,16 +420,12 @@ D. Physical theft
 
 </details>
 
-### Question 6
-Which sequence is the best example of an **attack path**?
+### Q6. Which sequence is the best example of an **attack path**?
 
-A. Laptop, switch, router, printer
-
-B. Confidentiality, integrity, availability
-
-C. Stolen credentials → cloud login → excessive permissions → sensitive file access
-
-D. Phishing, ransomware, hacktivism, espionage
+A. Laptop, switch, router, printer  
+B. Confidentiality, integrity, availability  
+C. Stolen credentials → cloud login → excessive permissions → sensitive file access  
+D. Phishing, ransomware, hacktivism, espionage  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -370,16 +434,12 @@ D. Phishing, ransomware, hacktivism, espionage
 
 </details>
 
-### Question 7
-A vendor account retains administrative access after a support contract ends. Which action most directly **reduces** the attack surface?
+### Q7. A vendor account retains administrative access after a support contract ends. Which action most directly **reduces** the attack surface?
 
-A. Add a warning banner to the login page
-
-B. Disable the unused vendor account
-
-C. Increase the size of log storage
-
-D. Rename the administrator account
+A. Add a warning banner to the login page  
+B. Disable the unused vendor account  
+C. Increase the size of log storage  
+D. Rename the administrator account  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -388,16 +448,12 @@ D. Rename the administrator account
 
 </details>
 
-### Question 8
-A database is not directly reachable from the internet. Which statement is most accurate?
+### Q8. A database is not directly reachable from the internet. Which statement is most accurate?
 
-A. It cannot be part of an attack path
-
-B. It is automatically secure
-
-C. It may still be reachable through a compromised application or privileged identity
-
-D. It requires no access controls
+A. It cannot be part of an attack path  
+B. It is automatically secure  
+C. It may still be reachable through a compromised application or privileged identity  
+D. It requires no access controls  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -406,66 +462,28 @@ D. It requires no access controls
 
 </details>
 
-### Question 9
-Which is the best example of a **supply-chain attack vector**?
+**Score guide:** 7–8 correct: strong understanding; 5–6: revisit the vector and path sections; 0–4: review the core concepts and repeat the lab.
 
-A. An employee forgets to lock a workstation
+## 15. Discussion challenge
 
-B. A trusted software update channel delivers malicious code after the supplier is compromised
+A supplier's trusted software update delivers malicious code. Explain why this is a supply-chain vector, identify two controls that could limit the impact, and distinguish verified facts from assumptions about the resulting attack path. How would you revise your assessment if no sensitive files were accessed?
 
-C. A user mistypes a password once
+## 16. Study from the Treadmill 🏃
 
-D. A company blocks an unused port
+- [Professor Messer — Security+ SY0-701 video course](https://www.professormesser.com/security-plus/sy0-701/sy0-701-video/sy0-701-comptia-security-plus-course/) — locate the threat vectors and attack surfaces lesson under Objective 2.2.
 
-<details markdown="1">
-<summary>Reveal answer and explanation</summary>
+**Active-listening prompts:** Which exposures are not internet-facing? How does a vector differ from a path? Which controls remove exposure rather than merely monitor it?
 
-**Correct answer: B.** A compromised supplier or trusted distribution process can become the route to the target.
+## 17. One-minute recap
 
-</details>
+- **Surface:** All opportunities for attack.
+- **Entry point:** Specific access location.
+- **Vector:** Method used to attempt compromise.
+- **Path:** Sequence toward an asset or impact; validate its assumptions.
+- **Internal exposure:** Still matters after initial access.
+- **Golden rule:** Reduce unnecessary exposure, harden what remains, and monitor activity.
 
-### Question 10
-An analyst draws an attack path but has not confirmed that MFA is disabled or that file permissions are excessive. How should these steps be described?
-
-A. Proven facts because the path is technically possible
-
-B. Irrelevant details that can be omitted
-
-C. Assumptions requiring validation
-
-D. Evidence that a nation-state actor is involved
-
-<details markdown="1">
-<summary>Reveal answer and explanation</summary>
-
-**Correct answer: C.** Threat modeling explores plausible paths; it does not establish that their prerequisites exist or that an incident occurred.
-
-</details>
-
-## 10. Review and self-assessment
-Before moving to Day 28, confirm that you can:
-
-- [ ] Explain attack surface, entry point, vector, path, and vulnerability without conflating them.
-- [ ] Identify external and internal exposure across technical and human systems.
-- [ ] Distinguish credential stuffing from password spraying.
-- [ ] Explain phishing, removable-media, wireless, and supply-chain vectors.
-- [ ] Build an attack surface inventory and model two plausible paths.
-- [ ] Mark assumptions separately from confirmed facts.
-- [ ] Recommend controls that reduce, harden, or monitor exposure.
-
-**Suggested score:** 8–10 correct = ready to advance; 6–7 = revisit the vector table and attack path; 0–5 = review the core concepts and repeat the lab.
-
-### Key terms
-**Attack surface:** Set of opportunities through which an asset or organization may be attacked.  
-**Entry point:** Specific access location or interface.  
-**Attack vector:** Method or route used to attempt compromise.  
-**Attack path:** Sequence connecting initial access to a target or impact.  
-**Trust boundary:** Separation between different trust or privilege levels.  
-**Credential stuffing:** Testing breached username/password pairs.  
-**Password spraying:** Testing a small set of passwords across many accounts.  
-**Supply-chain attack:** Compromise through a supplier, dependency, or trusted delivery mechanism.  
-**Lateral movement:** Attempt to access additional systems or accounts after initial compromise.  
-**Attack surface reduction:** Removal of unnecessary services, interfaces, accounts, or permissions.
+**Next:** [Day 28 — Social Engineering and Phishing](day-28-social-engineering-and-phishing.md).
 
 ---
 © 2026 Security+ Study Academy | Created by [ghostparticle404](https://github.com/ghostparticle404).  
