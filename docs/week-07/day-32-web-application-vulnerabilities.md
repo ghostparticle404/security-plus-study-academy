@@ -4,6 +4,11 @@
 
 A website can use HTTPS, run on a patched server, and still expose confidential information. Encryption protects information traveling between a browser and a server, but it does not guarantee that the application makes safe decisions about that information. Today, we examine weaknesses in the way web applications process input, establish identity, enforce permissions, and maintain sessions.
 
+> **CompTIA Security+ SY0-701** · **Week 07, Lesson 2 of 5**  
+> **Level:** Beginner to intermediate · **Study time:** 80–105 minutes  
+> **Previous:** [Day 31 — Vulnerability Sources and Misconfiguration](day-31-vulnerability-sources-and-misconfiguration.md)  
+> **Next:** Day 33
+
 ## Security+ exam alignment
 
 **SY0-701 — Domain 2: Threats, Vulnerabilities, and Mitigations**
@@ -15,7 +20,9 @@ A website can use HTTPS, run on a patched server, and still expose confidential 
 
 The primary exam focus is recognizing SQL injection, cross-site scripting (XSS), application attacks, session replay, and appropriate mitigations. The HTTP examples and additional web security categories provide context for understanding these concepts; they are not a requirement to memorize programming syntax.
 
-## Learning objectives
+<a id="learning-objectives"></a>
+
+## 1. Learning objectives
 
 By the end of this lesson, you should be able to:
 
@@ -27,7 +34,9 @@ By the end of this lesson, you should be able to:
 - Match common web application weaknesses to appropriate preventive controls.
 - Analyze fictional HTTP requests and identify potential weaknesses without assuming exploitation has occurred.
 
-## Why this topic matters
+<a id="why-this-topic-matters"></a>
+
+## 2. The big idea: Trust boundaries matter
 
 Web applications handle banking, healthcare, email, education, and business records. Their interfaces are designed to accept information from users, making them particularly important trust boundaries.
 
@@ -35,7 +44,9 @@ Imagine a receptionist who receives written requests. A legitimate request might
 
 As we learned in [Day 31](day-31-vulnerability-sources-and-misconfiguration.md), a weakness is not proof that an attack has occurred. Web security analysts must distinguish vulnerable behavior, suspicious requests, and confirmed impact.
 
-## 1. How web applications process requests
+<a id="1-how-web-applications-process-requests"></a>
+
+## 3. How web applications process requests
 
 A web application typically involves a browser, a web server or reverse proxy, application logic, and one or more data stores. These components may run on separate systems or within the same service.
 
@@ -72,7 +83,9 @@ A browser may reject an invalid email address or prevent a user from selecting a
 
 Security decisions must be enforced by the server or another trusted enforcement component. Hiding an administrative button is not equivalent to preventing unauthorized administrative requests.
 
-## 2. Injection vulnerabilities
+<a id="2-injection-vulnerabilities"></a>
+
+## 4. Injection vulnerabilities
 
 **Injection** occurs when untrusted data is interpreted as instructions by a component that processes a command, query, or other structured language. The underlying problem is a failure to maintain the boundary between data and executable instructions.
 
@@ -122,7 +135,9 @@ Defenders should avoid invoking a shell when a direct library or API can perform
 | Potential impact | Unauthorized database operations | Unauthorized system operations |
 | Primary prevention | Parameterized queries | Avoid shell interpretation and unsafe command construction |
 
-## 3. Cross-site scripting (XSS)
+<a id="3-cross-site-scripting-xss"></a>
+
+## 5. Cross-site scripting (XSS)
 
 Cross-site scripting occurs when an application causes untrusted content to be interpreted as executable script in a user's browser. Unlike SQL injection, the principal execution environment is the browser, not the database.
 
@@ -172,7 +187,9 @@ Primary defenses include context-appropriate output encoding, safe templating, a
 
 A **Content Security Policy (CSP)** can restrict permitted script execution and provide defense in depth. It does not replace correcting unsafe rendering behavior.
 
-## 4. Authentication and authorization weaknesses
+<a id="4-authentication-and-authorization-weaknesses"></a>
+
+## 6. Authentication and authorization weaknesses
 
 **Authentication** establishes who a user is. **Authorization** determines what that identity is permitted to do. A user may be correctly authenticated and still be unauthorized to access a particular resource.
 
@@ -204,7 +221,9 @@ Sequential identifiers are not inherently vulnerabilities. Replacing them with r
 
 Defenders should enforce authorization on every relevant request, deny access by default, apply least privilege, and test both object-level and function-level permissions.
 
-## 5. Sessions, cookies, and tokens
+<a id="5-sessions-cookies-and-tokens"></a>
+
+## 7. Sessions, cookies, and tokens
 
 HTTP is fundamentally stateless: individual requests do not inherently remember a user's previous login. Applications maintain continuity using session identifiers or tokens.
 
@@ -247,7 +266,9 @@ Controls include HTTPS, unpredictable session identifiers, short and appropriate
 
 Signed tokens protect integrity when correctly validated; signatures do not inherently encrypt token contents or prevent replay. Token-based systems must validate signatures, expiration, issuer, audience, and other applicable claims.
 
-## 6. Cross-site request forgery (CSRF)
+<a id="6-cross-site-request-forgery-csrf"></a>
+
+## 8. Cross-site request forgery (CSRF)
 
 CSRF occurs when a user's browser is induced to send an unwanted request to a site where the user is already authenticated, and that site accepts the request without adequate verification of its legitimacy.
 
@@ -267,7 +288,9 @@ Defenses include server-validated anti-CSRF tokens, appropriate SameSite cookie 
 
 XSS may defeat many CSRF defenses because script executing within the trusted origin may be able to access tokens or submit same-origin requests. Preventing both weaknesses remains important.
 
-## 7. Additional web weaknesses and defense in depth
+<a id="7-additional-web-weaknesses-and-defense-in-depth"></a>
+
+## 9. Additional web weaknesses and defense in depth
 
 The following concepts broaden your ability to recognize application exposure. Focus first on the core exam concepts above.
 
@@ -283,7 +306,9 @@ A **web application firewall (WAF)** inspects HTTP traffic and may block request
 
 Secure development combines input validation, safe interpreter interfaces, output encoding, access control, secure session handling, dependency management, and testing. These controls address different failure modes and are not interchangeable.
 
-## 8. Recognizing indicators in security operations
+<a id="8-recognizing-indicators-in-security-operations"></a>
+
+## 10. Recognizing indicators in security operations
 
 Security teams may examine reverse proxy logs, application logs, authentication events, WAF alerts, and database audit records. Correlation helps determine whether suspicious activity reached vulnerable functionality and produced an unauthorized result.
 
@@ -297,7 +322,88 @@ Security teams may examine reverse proxy logs, application logs, authentication 
 
 A status code alone does not prove an attack succeeded. A `200 OK` response might contain a generic error page; a `500 Internal Server Error` might result from a programming defect. Logs should avoid recording passwords, complete session tokens, and unnecessary sensitive data.
 
-## 9. Practical activity: Analyze safe example requests
+<a id="10-common-misconceptions-and-exam-traps"></a>
+
+## 11. Common misconceptions and exam traps
+
+| Misconception | Correct understanding |
+| --- | --- |
+| HTTPS prevents SQL injection. | TLS protects transport, not query construction. |
+| Input validation alone prevents XSS. | Safe rendering and context-appropriate output encoding are essential. |
+| SQL injection and XSS execute in the same place. | SQL injection targets the database interpreter; XSS targets the browser. |
+| A logged-in user can access any application resource. | Authorization must be checked independently. |
+| HttpOnly prevents all session abuse. | It restricts script access to cookies, not all authenticated actions. |
+| POST requests cannot be forged. | POST alone does not prevent CSRF. |
+| Random object identifiers replace authorization. | Unpredictable identifiers are not permission checks. |
+| A WAF fixes vulnerable source code. | It may mitigate exposure but does not remove the underlying defect. |
+
+<a id="11-key-terminology-and-takeaways"></a>
+
+## 12. Key terminology and takeaways
+
+| Term | Meaning |
+| --- | --- |
+| Trust boundary | A transition between different security assumptions. |
+| Injection | Untrusted data interpreted as instructions. |
+| Parameterized query | A query that binds values separately from SQL structure. |
+| XSS | Untrusted script execution in a browser's trusted web context. |
+| Output encoding | Representing data safely for a particular output context. |
+| Authentication | Establishing identity. |
+| Authorization | Determining permitted actions and resources. |
+| IDOR | Object access without adequate authorization checks. |
+| Session fixation | Retention of a known pre-authentication session identifier. |
+| CSRF | Acceptance of an unwanted authenticated browser request. |
+| WAF | A control that inspects and filters web application traffic. |
+
+Remember the interpreter, the trust boundary, and the missing control. Identifying those three elements is more useful than memorizing a collection of attack names.
+
+## 13. Worked case study — A secure connection, an insecure portal
+
+A fictional law firm uses HTTPS and MFA for its client document portal. During an authorized review with synthetic records, a tester discovers that the server checks login status but does not check whether the requested document belongs to the authenticated client.
+
+| Question | Analyst reasoning |
+| --- | --- |
+| Which control worked? | TLS protected transport; MFA helped establish identity. |
+| Which boundary failed? | The application failed to enforce object-level authorization. |
+| What is the weakness? | Broken access control, potentially IDOR/BOLA. |
+| What is the potential impact? | Horizontal privilege escalation and disclosure of another client's records. |
+| What is established? | The controlled test demonstrates missing authorization; historical disclosure is not established. |
+| What should change? | Enforce object permissions on every request, test with separate fictional accounts, and review access logs. |
+
+**Memory hook:** Encryption protects the journey; authorization controls the destination.
+
+## 14. Guided notes — Write first, reveal later
+
+Complete the table from memory before revealing the model answers.
+
+| Prompt | Your notes |
+| --- | --- |
+| Why is HTTPS insufficient to prevent injection? | |
+| What distinguishes SQL injection from command injection? | |
+| What distinguishes reflected, stored, and DOM-based XSS? | |
+| Why is authentication insufficient for object access? | |
+| What prevents session fixation? | |
+| What do Secure, HttpOnly, and SameSite do? | |
+| How does CSRF differ from XSS? | |
+| Why is a WAF alert not proof of compromise? | |
+
+<details markdown="1">
+<summary>Reveal model guided notes</summary>
+
+- **Why is HTTPS insufficient to prevent injection?** TLS protects transport, not how an interpreter processes input.
+- **What distinguishes SQL injection from command injection?** The former targets a database interpreter; the latter targets an operating system command processor.
+- **What distinguishes reflected, stored, and DOM-based XSS?** Immediate response, persistent content, and unsafe client-side processing, respectively; categories can overlap.
+- **Why is authentication insufficient for object access?** The server must independently verify permission for the requested object.
+- **What prevents session fixation?** Rotate the session identifier at login and invalidate the old identifier.
+- **What do Secure, HttpOnly, and SameSite do?** Restrict cookie transport, ordinary script access, and certain cross-site sending, respectively.
+- **How does CSRF differ from XSS?** CSRF induces an unwanted authenticated request; XSS executes untrusted script in a trusted origin.
+- **Why is a WAF alert not proof of compromise?** It reports a detection; application and database evidence are needed to establish impact.
+
+</details>
+
+<a id="9-practical-activity-analyze-safe-example-requests"></a>
+
+## 15. Hands-on lab — Analyze safe example requests
 
 **Estimated time:** 20 minutes.
 
@@ -305,7 +411,9 @@ A status code alone does not prove an attack succeeded. A `200 OK` response migh
 
 For each case, identify the likely weakness, explain the trust boundary involved, recommend a primary mitigation, and state what additional evidence would be needed to confirm impact.
 
-### Case A — Catalog search
+### Part A — Input and authorization boundaries
+
+#### Case A — Catalog search
 
 ```http
 GET /catalog?category=children%27s-books HTTP/1.1
@@ -321,7 +429,7 @@ The encoded apostrophe (`%27`) is ordinary user data. Unsafe query concatenation
 
 </details>
 
-### Case B — Discussion board
+#### Case B — Discussion board
 
 ```http
 POST /comments HTTP/1.1
@@ -340,7 +448,7 @@ The application appears to interpret stored user data as HTML. This indicates an
 
 </details>
 
-### Case C — Document portal
+#### Case C — Document portal
 
 ```http
 GET /api/documents/104 HTTP/1.1
@@ -357,7 +465,9 @@ This is broken object-level authorization and potentially IDOR. Authentication i
 
 </details>
 
-### Case D — Login lifecycle
+### Part B — Session and request integrity
+
+#### Case D — Login lifecycle
 
 A fictional application's session identifier remains unchanged when an anonymous visitor logs in. The identifier is known to another party before authentication.
 
@@ -368,7 +478,7 @@ This suggests session fixation. Rotate the identifier on successful authenticati
 
 </details>
 
-### Case E — Account settings
+#### Case E — Account settings
 
 ```http
 POST /account/preferences HTTP/1.1
@@ -388,45 +498,16 @@ The application may be vulnerable to CSRF. A browser could submit an unwanted re
 
 </details>
 
-## 10. Common misconceptions and exam traps
+<a id="12-practice-questions"></a>
 
-| Misconception | Correct understanding |
-| --- | --- |
-| HTTPS prevents SQL injection. | TLS protects transport, not query construction. |
-| Input validation alone prevents XSS. | Safe rendering and context-appropriate output encoding are essential. |
-| SQL injection and XSS execute in the same place. | SQL injection targets the database interpreter; XSS targets the browser. |
-| A logged-in user can access any application resource. | Authorization must be checked independently. |
-| HttpOnly prevents all session abuse. | It restricts script access to cookies, not all authenticated actions. |
-| POST requests cannot be forged. | POST alone does not prevent CSRF. |
-| Random object identifiers replace authorization. | Unpredictable identifiers are not permission checks. |
-| A WAF fixes vulnerable source code. | It may mitigate exposure but does not remove the underlying defect. |
-
-## 11. Key terminology and takeaways
-
-| Term | Meaning |
-| --- | --- |
-| Trust boundary | A transition between different security assumptions. |
-| Injection | Untrusted data interpreted as instructions. |
-| Parameterized query | A query that binds values separately from SQL structure. |
-| XSS | Untrusted script execution in a browser's trusted web context. |
-| Output encoding | Representing data safely for a particular output context. |
-| Authentication | Establishing identity. |
-| Authorization | Determining permitted actions and resources. |
-| IDOR | Object access without adequate authorization checks. |
-| Session fixation | Retention of a known pre-authentication session identifier. |
-| CSRF | Acceptance of an unwanted authenticated browser request. |
-| WAF | A control that inspects and filters web application traffic. |
-
-Remember the interpreter, the trust boundary, and the missing control. Identifying those three elements is more useful than memorizing a collection of attack names.
-
-## 12. Practice questions
+## 16. Eight original Security+-style questions
 
 **1.** A developer constructs database queries by appending values received from a web form. Which change most directly addresses the injection weakness?
 
-- A. Enable HTTPS on the server.
-- B. Use parameterized database queries.
-- C. Add a SameSite attribute to cookies.
-- D. Increase the session timeout.
+A. Enable HTTPS on the server.  
+B. Use parameterized database queries.  
+C. Add a SameSite attribute to cookies.  
+D. Increase the session timeout.  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -437,10 +518,10 @@ Remember the interpreter, the trust boundary, and the missing control. Identifyi
 
 **2.** A support portal saves customer messages and later displays them to employees. Unsafe rendering allows script execution when an employee opens a message. Which weakness is most directly described?
 
-- A. Reflected XSS
-- B. Command injection
-- C. CSRF
-- D. Stored XSS
+A. Reflected XSS  
+B. Command injection  
+C. CSRF  
+D. Stored XSS  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -451,10 +532,10 @@ Remember the interpreter, the trust boundary, and the missing control. Identifyi
 
 **3.** An authenticated employee can retrieve another employee's private report because the server checks login status but not report permissions. Which control is missing?
 
-- A. Object-level authorization
-- B. Transport encryption
-- C. Password hashing
-- D. Output encoding
+A. Object-level authorization  
+B. Transport encryption  
+C. Password hashing  
+D. Output encoding  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -465,10 +546,10 @@ Remember the interpreter, the trust boundary, and the missing control. Identifyi
 
 **4.** A session identifier known before login continues to grant access after the user authenticates. Which action most directly mitigates this weakness?
 
-- A. Increase cookie expiration time.
-- B. Encode all HTML output.
-- C. Regenerate the session identifier at login and invalidate the old one.
-- D. Parameterize database queries.
+A. Increase cookie expiration time.  
+B. Encode all HTML output.  
+C. Regenerate the session identifier at login and invalidate the old one.  
+D. Parameterize database queries.  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -479,10 +560,10 @@ Remember the interpreter, the trust boundary, and the missing control. Identifyi
 
 **5.** An authenticated user's browser submits an unwanted account change initiated by another website. Which control most directly verifies that the state-changing request includes the application's expected anti-forgery value?
 
-- A. Database encryption
-- B. Server-validated anti-CSRF token
-- C. HttpOnly cookie attribute
-- D. Password complexity policy
+A. Database encryption  
+B. Server-validated anti-CSRF token  
+C. HttpOnly cookie attribute  
+D. Password complexity policy  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -493,10 +574,10 @@ Remember the interpreter, the trust boundary, and the missing control. Identifyi
 
 **6.** A WAF reports a suspicious request followed by a database error. What should an analyst conclude first?
 
-- A. Confidential records were definitely stolen.
-- B. The WAF permanently corrected the application defect.
-- C. The request proves a zero-day exploit was used.
-- D. The events warrant investigation but do not independently prove successful exploitation.
+A. Confidential records were definitely stolen.  
+B. The WAF permanently corrected the application defect.  
+C. The request proves a zero-day exploit was used.  
+D. The events warrant investigation but do not independently prove successful exploitation.  
 
 <details markdown="1">
 <summary>Reveal answer and explanation</summary>
@@ -505,7 +586,43 @@ Remember the interpreter, the trust boundary, and the missing control. Identifyi
 
 </details>
 
-## 13. Study from the Treadmill
+**7.** A client-side script inserts untrusted text using `innerHTML`. Which change most directly addresses unsafe rendering when only plain text is needed?
+
+A. Increase the cookie lifetime  
+B. Disable database logging  
+C. Use `textContent` instead  
+D. Add a random document identifier
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**Answer: C.** `textContent` inserts plain text without interpreting it as HTML. The other choices do not correct the unsafe DOM operation.
+
+</details>
+
+**8.** An application passes user-provided filenames into a shell command. Which design most directly reduces command injection risk?
+
+A. Use a direct library or API instead of invoking a shell  
+B. Enable a longer session timeout  
+C. Add an HttpOnly cookie  
+D. Randomize database record identifiers
+
+<details markdown="1">
+<summary>Reveal answer and explanation</summary>
+
+**Answer: A.** Avoiding shell interpretation removes that command-construction boundary. Validate inputs and use least privilege as additional safeguards.
+
+</details>
+
+**Score guide:** 7–8: ready to advance; 5–6: review missed concepts; 0–4: revisit the instructional sections and repeat the lab.
+
+## 17. Discussion challenge
+
+A developer argues that HTTPS, MFA, and a WAF make server-side authorization checks unnecessary. Explain why each control addresses a different problem. Describe how you would validate access controls using fictional accounts and records in an authorized test environment.
+
+<a id="13-study-from-the-treadmill"></a>
+
+## 18. Study from the Treadmill 🏃
 
 Walking, commuting, or taking a break from your desk? Reinforce today's lesson with these free Professor Messer Security+ SY0-701 videos. You do not need to follow along with a lab while watching.
 
@@ -520,7 +637,7 @@ Walking, commuting, or taking a break from your desk? Reinforce today's lesson w
 
 The first three videos total 25 minutes and 31 seconds. The fourth is additional reinforcement.
 
-## 14. References and further reading
+### References and further reading
 
 - [CompTIA Security+ certification](https://www.comptia.org/certifications/security)
 - [OWASP Top Ten](https://owasp.org/www-project-top-ten/)
@@ -529,6 +646,16 @@ The first three videos total 25 minutes and 31 seconds. The fourth is additional
 - [OWASP Session Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Session_Management_Cheat_Sheet.html)
 - [OWASP Cross-Site Request Forgery Prevention Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Cross-Site_Request_Forgery_Prevention_Cheat_Sheet.html)
 - [OWASP Authorization Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Authorization_Cheat_Sheet.html)
+
+## 19. One-minute recap
+
+- Keep untrusted data separate from interpreter instructions.
+- Use parameterized queries, safe rendering, and server-side authorization.
+- Protect sessions with rotation, expiration, revocation, and appropriate cookie settings.
+- Prevent forged requests with anti-CSRF controls.
+- Correlate alerts with evidence before claiming exploitation.
+
+**Next:** Day 33 — continue Week 07.
 
 ---
 
